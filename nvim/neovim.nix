@@ -70,7 +70,7 @@
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
-        ${builtins.readFile ./plugins/fine-cmdline.lua}
+        #${builtins.readFile ./plugins/fine-cmdline.lua}
         require("ibl").setup()
         require("bufferline").setup{}
         require("lualine").setup({
@@ -80,3 +80,4 @@
     };
   };
 }
+
