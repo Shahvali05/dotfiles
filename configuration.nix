@@ -227,9 +227,11 @@
   };
 
   virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+
   #virtualisation.virtualbox.host.dkms.enable = true; # Rebuilds modules on kernel update
-  boot.kernelPackages = pkgs.linuxPackages_6_6; # Adjust to your kernel version
-  virtualisation.virtualbox.guest.enable = true;
+  #boot.kernelPackages = pkgs.linuxPackages_6_6; # Adjust to your kernel version
+  #virtualisation.virtualbox.guest.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
