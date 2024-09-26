@@ -228,11 +228,8 @@
 
   virtualisation.virtualbox.host.enable = true;
   #virtualisation.virtualbox.host.dkms.enable = true; # Rebuilds modules on kernel update
-  boot.kernelPackages = pkgs.linuxPackages_5_10; # Adjust to your kernel version
+  boot.kernelPackages = pkgs.linuxPackages_6_6; # Adjust to your kernel version
   virtualisation.virtualbox.guest.enable = true;
-
-  #virtualisation.virtualbox.host.enable = true;
-  #virtualisation.virtualbox.guest.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
