@@ -55,7 +55,6 @@
       ];
       extraConfig = ''
         set noemoji
-        nnoremap : <cmd>FineCmdline<CR>
       '';
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
@@ -79,4 +78,3 @@
     };
   };
 }
-
