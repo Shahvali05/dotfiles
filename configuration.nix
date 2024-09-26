@@ -162,6 +162,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    networkmanagerapplet
     pavucontrol
     dbus
     dunst
