@@ -162,6 +162,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    pavucontrol
     dbus
     dunst
     pulseaudio
