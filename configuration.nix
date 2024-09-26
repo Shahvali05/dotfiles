@@ -148,6 +148,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    hyprpicker
     telegram-desktop
     obsidian
     swaylock
