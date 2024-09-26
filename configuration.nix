@@ -148,7 +148,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    #virtualbox
+    virtualbox
     telegram-desktop
     obsidian
     swaylock
@@ -227,7 +227,7 @@
   };
 
   virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+  users.extraGroups.vboxusers.members = [ "laraeter" ];
 
   #virtualisation.virtualbox.host.dkms.enable = true; # Rebuilds modules on kernel update
   #boot.kernelPackages = pkgs.linuxPackages_6_6; # Adjust to your kernel version
