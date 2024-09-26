@@ -148,7 +148,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    virtualbox
+    #virtualbox
     telegram-desktop
     obsidian
     swaylock
