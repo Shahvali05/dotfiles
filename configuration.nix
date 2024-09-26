@@ -227,7 +227,7 @@
   };
 
   virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.dkms.enable = true; # Rebuilds modules on kernel update
+  #virtualisation.virtualbox.host.dkms.enable = true; # Rebuilds modules on kernel update
   boot.kernelPackages = pkgs.linuxPackages_5_10; # Adjust to your kernel version
   virtualisation.virtualbox.guest.enable = true;
 
