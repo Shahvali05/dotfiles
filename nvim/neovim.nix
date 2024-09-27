@@ -12,7 +12,6 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
-        vscodium
         black
         clang-tools
         clang
@@ -62,6 +61,7 @@
         vim-tmux-navigator
         formatter-nvim
         catppuccin-nvim
+        codeium-nvim
       ];
       extraConfig = ''
         set noemoji
@@ -81,7 +81,7 @@
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
-        ${builtins.readFile ./plugins/codium.lua}
+        ${builtins.readFile ./plugins/codeium.lua}
         require("bufferline").setup{}
         require("lualine").setup({
           icons_enabled = true,
