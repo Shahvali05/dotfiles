@@ -9,8 +9,6 @@ require'lspconfig'.bashls.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.gopls.setup{}
 
-local formatter = require("formatter")
-
 formatter.setup({
   logging = false,
   filetype = {
