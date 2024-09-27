@@ -36,10 +36,10 @@
         nvim-cmp
         nvim-surround
         nvim-lspconfig
-        cmp-nvim-lsp
-        cmp-buffer
+        #cmp-nvim-lsp
+        #cmp-buffer
         luasnip
-        cmp_luasnip
+        #cmp_luasnip
         friendly-snippets
         lspkind-nvim
         comment-nvim
