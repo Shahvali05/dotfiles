@@ -1,5 +1,8 @@
 { pkgs, inputs, ... }:
+
+
 {
+  nixpkgs.config.allowUnfree = true;
   programs = {
     neovim = {
       enable = true;
