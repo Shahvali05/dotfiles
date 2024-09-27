@@ -134,6 +134,7 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
+    ripgrep
     valgrind
     gnumake
     unzip
