@@ -5,7 +5,7 @@ require("catppuccin").setup({
   transparent_background = false,
   integrations = {
     nvimtree = true,
-    lsp = true,
+    lsp = false,
     treesitter = true,
     gitsigns = true,
     telescope = true,
