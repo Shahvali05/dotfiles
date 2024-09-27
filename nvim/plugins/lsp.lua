@@ -7,3 +7,4 @@ require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.yamlls.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.clangd.setup{}
+require'lspconfig'.gopls.setup{}
