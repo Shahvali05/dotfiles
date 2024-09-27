@@ -81,7 +81,7 @@
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
-        ${builtins.readFile ./plugins/codeium.lua}
+        ${builtins.readFile ./plugins/codium.lua}
         require("bufferline").setup{}
         require("lualine").setup({
           icons_enabled = true,
