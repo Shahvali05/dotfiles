@@ -1,4 +1,3 @@
-
 local formatter = require("formatter")
 
 formatter.setup({
@@ -32,4 +31,12 @@ formatter.setup({
       end,
     },
   },
+})
+
+-- Вызов форматтера на сохранение
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.py", "*.cpp", ".c", ".h", "*.go" },
+  callback = function()
+    vim.cmd("Format")
+  end,
 })
