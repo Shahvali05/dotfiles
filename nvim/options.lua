@@ -15,7 +15,7 @@ opt.mouse = "a"
 opt.cursorline = true
 opt.backspace = "indent,eol,start"
 opt.clipboard:append("unnamedplus")
-#opt.splitright = true
-#opt.splitbelow = true
+--opt.splitright = true
+--opt.splitbelow = true
 opt.swapfile = false
 vim.g.mapleader = " "
