@@ -57,6 +57,7 @@
         telescope-fzf-native-nvim
         vim-tmux-navigator
         formatter-nvim
+        catppuccin-nvim
       ];
       extraConfig = ''
         set noemoji
@@ -67,6 +68,7 @@
         ${builtins.readFile ./plugins/alpha.lua}
         ${builtins.readFile ./plugins/autopairs.lua}
         ${builtins.readFile ./plugins/auto-session.lua}
+        ${builtins.readFile ./plugins/catppuccin.lua}
         ${builtins.readFile ./plugins/comment.lua}
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/cmp.lua}
