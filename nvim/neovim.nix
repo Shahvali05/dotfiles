@@ -62,7 +62,6 @@
         formatter-nvim
         catppuccin-nvim
         cmp-tabnine
-        tabnine-vim
       ];
       extraConfig = ''
         set noemoji
