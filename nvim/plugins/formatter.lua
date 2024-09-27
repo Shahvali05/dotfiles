@@ -1,10 +1,10 @@
+
 local formatter = require("formatter")
 
 formatter.setup({
   logging = false,
   filetype = {
     python = {
-      -- Используем black для форматирования Python
       function()
         return {
           exe = "black",
@@ -14,7 +14,6 @@ formatter.setup({
       end,
     },
     cpp = {
-      -- Используем clang-format для форматирования C++
       function()
         return {
           exe = "clang-format",
@@ -24,7 +23,6 @@ formatter.setup({
       end,
     },
     go = {
-      -- Используем gofmt для форматирования Go
       function()
         return {
           exe = "gofmt",
@@ -36,11 +34,11 @@ formatter.setup({
   },
 })
 
--- Вызов форматтера на сохранение
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = { "*.py", "*.cpp", ".h", "*.go" },  -- Расширения файлов, для которых выполнять форматирование
+-- Форматируем перед сохранением
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.py", "*.cpp", "*.go" },  -- Укажи файлы, которые нужно форматировать
   callback = function()
-    vim.cmd("Format")
+    vim.cmd("Format")  -- Выполнить форматирование
   end,
 })
 
