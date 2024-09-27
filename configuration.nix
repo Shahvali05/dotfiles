@@ -148,6 +148,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    typora
     hyprpicker
     telegram-desktop
     obsidian
