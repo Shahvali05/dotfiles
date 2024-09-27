@@ -12,6 +12,7 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+        vscodium
         black
         clang-tools
         clang
@@ -61,7 +62,6 @@
         vim-tmux-navigator
         formatter-nvim
         catppuccin-nvim
-        cmp-tabnine
       ];
       extraConfig = ''
         set noemoji

@@ -27,7 +27,6 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "nvim_lsp" }, -- language servers
     { name = "luasnip" }, -- snippets
-    { name = 'cmp_tabnine' },
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
   }),
