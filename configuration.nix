@@ -142,7 +142,7 @@
     slurp
     grim
     btop
-    #neovim
+    neovim
     neofetch
     brightnessctl
     killall
