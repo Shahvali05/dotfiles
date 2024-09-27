@@ -57,7 +57,6 @@
         telescope-fzf-native-nvim
         vim-tmux-navigator
         formatter-nvim
-        #require("ibl").setup()
       ];
       extraConfig = ''
         set noemoji
@@ -84,3 +83,4 @@
     };
   };
 }
+#require("ibl").setup()
