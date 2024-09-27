@@ -30,7 +30,7 @@
         auto-session
         bufferline-nvim
         dressing-nvim
-        indent-blankline-nvim
+        #indent-blankline-nvim
         nui-nvim
         #finecmdline
         nvim-treesitter.withAllGrammars
