@@ -57,6 +57,7 @@
         telescope-fzf-native-nvim
         vim-tmux-navigator
         formatter-nvim
+        #require("ibl").setup()
       ];
       extraConfig = ''
         set noemoji
@@ -75,7 +76,6 @@
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
-        #require("ibl").setup()
         require("bufferline").setup{}
         require("lualine").setup({
           icons_enabled = true,
