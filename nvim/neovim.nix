@@ -16,7 +16,7 @@
         luajitPackages.lua-lsp
         nil
         rust-analyzer
-        #nodePackages.bash-language-server
+        nodePackages.bash-language-server
         yaml-language-server
         pyright
         marksman
@@ -28,7 +28,7 @@
         dressing-nvim
         indent-blankline-nvim
         nui-nvim
-        #finecmdline
+        finecmdline
         nvim-treesitter.withAllGrammars
         lualine-nvim
         nvim-autopairs
@@ -36,10 +36,10 @@
         nvim-cmp
         nvim-surround
         nvim-lspconfig
-        #cmp-nvim-lsp
-        #cmp-buffer
+        cmp-nvim-lsp
+        cmp-buffer
         luasnip
-        #cmp_luasnip
+        cmp_luasnip
         friendly-snippets
         lspkind-nvim
         comment-nvim
