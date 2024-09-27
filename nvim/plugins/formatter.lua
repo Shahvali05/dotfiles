@@ -39,6 +39,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.py", "*.cpp", ".c", ".h", "*.go" },
   callback = function()
     vim.cmd("Format")          -- Выполняем форматирование
-    vim.cmd("silent! update")  -- Сохраняем файл после форматирования
+    vim.cmd("w")  -- Сохраняем файл после форматирования
   end,
 })
