@@ -28,7 +28,7 @@
         dressing-nvim
         indent-blankline-nvim
         nui-nvim
-        finecmdline
+        #finecmdline
         nvim-treesitter.withAllGrammars
         lualine-nvim
         nvim-autopairs
