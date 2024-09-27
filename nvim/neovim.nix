@@ -61,7 +61,7 @@
         vim-tmux-navigator
         formatter-nvim
         catppuccin-nvim
-        codeium-nvim
+        codeium-vim
       ];
       extraConfig = ''
         set noemoji
