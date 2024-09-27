@@ -9,6 +9,8 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+        clang-tools
+        clang
         lua-language-server
         gopls
         xclip
