@@ -8,7 +8,7 @@
       enable = true;
       defaultEditor = true;
       viAlias = true;
-      vimAlias = true;
+      nvAlias = true;
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
