@@ -35,3 +35,12 @@ formatter.setup({
     },
   },
 })
+
+-- Вызов форматтера на сохранение
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.py", "*.cpp", ".h", "*.go" },  -- Расширения файлов, для которых выполнять форматирование
+  callback = function()
+    vim.cmd("Format")
+  end,
+})
+
