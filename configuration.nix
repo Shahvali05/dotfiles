@@ -134,6 +134,7 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
+    gnumake
     unzip
     git
     wl-clipboard
