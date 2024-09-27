@@ -13,7 +13,7 @@
         clang-tools
         clang
         lua-language-server
-        gofmt
+        #gofmt
         gopls
         xclip
         wl-clipboard
