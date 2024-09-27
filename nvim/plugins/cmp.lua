@@ -39,3 +39,36 @@ cmp.setup({
     }),
   },
 })
+
+-- Use buffer source for `/` (searching) and `:` (cmdline).
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+-- Setup LSP.
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspconfig = require('lspconfig')
+
+-- Пример настройки для clangd (C++)
+lspconfig.clangd.setup {
+  capabilities = capabilities,
+}
+
+-- Пример настройки для других LSP
+lspconfig.pyright.setup {
+  capabilities = capabilities,
+}
+
+lspconfig.gopls.setup {
+  capabilities = capabilities,
+}
