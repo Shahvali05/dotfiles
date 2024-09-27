@@ -61,7 +61,7 @@
         vim-tmux-navigator
         formatter-nvim
         catppuccin-nvim
-        github-copilot-vim
+        cmp-tabnine
       ];
       extraConfig = ''
         set noemoji
