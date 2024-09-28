@@ -29,6 +29,7 @@ cmp.setup({
     { name = "luasnip" }, -- snippets
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
+    { name = "codeium" }, -- add Codeium source here
   }),
 
   -- configure lspkind for vs-code like pictograms in completion menu
