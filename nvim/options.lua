@@ -19,3 +19,9 @@ opt.clipboard:append("unnamedplus")
 --opt.splitbelow = true
 opt.swapfile = false
 vim.g.mapleader = " "
+
+vim.opt.colorcolumn = "81"
+vim.cmd("highlight ColorColumn ctermbg=red guibg=#232234")
+
+vim.o.foldmethod = 'indent'
+vim.cmd('autocmd BufReadPost * normal! zR')
