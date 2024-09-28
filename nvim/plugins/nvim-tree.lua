@@ -45,9 +45,3 @@ nvimtree.setup({
 local keymap = vim.keymap -- for conciseness
 
 keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
-
--- Open file in new tab
-keymap.set("n", "<C-t>", "<cmd>NvimTreeOpenTab<CR>", { desc = "Open file in new tab" })
-
--- Закрывать вкладку
-keymap.set("n", "<leader>x", "<cmd>Bdelete<CR>", { desc = "Close current tab" })
