@@ -34,9 +34,9 @@ formatter.setup({
 })
 
 -- Вызов форматтера на сохранение
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.py", "*.cpp", ".c", ".h", "*.go" },
-  callback = function()
-    vim.cmd("Format")
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = { "*.py", "*.cpp", ".c", ".h", "*.go" },
+--   callback = function()
+--     vim.cmd("Format")
+--   end,
+-- })
