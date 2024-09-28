@@ -12,7 +12,6 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
-        copilot-cli
         black
         clang-tools
         clang
@@ -62,7 +61,6 @@
         vim-tmux-navigator
         formatter-nvim
         catppuccin-nvim
-        copilot-vim
       ];
       extraConfig = ''
         set noemoji
