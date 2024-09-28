@@ -12,6 +12,7 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+        copilot-cli
         black
         clang-tools
         clang
@@ -61,7 +62,7 @@
         vim-tmux-navigator
         formatter-nvim
         catppuccin-nvim
-        codeium-vim
+        copilot-vim
       ];
       extraConfig = ''
         set noemoji
@@ -74,7 +75,6 @@
         ${builtins.readFile ./plugins/autopairs.lua}
         ${builtins.readFile ./plugins/catppuccin.lua}
         ${builtins.readFile ./plugins/cmp.lua}
-        ${builtins.readFile ./plugins/codeium.lua}
         ${builtins.readFile ./plugins/comment.lua}
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/lsp.lua}
