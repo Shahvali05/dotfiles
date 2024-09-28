@@ -122,6 +122,12 @@
   # hyprland
   programs.hyprland.enable = true; # enable Hyprland
 
+  buildInputs = [
+    pkgs.vulkan-loader
+    pkgs.patchelf
+    # Другие нужные библиотеки...
+  ];
+
   # -------------------------------------------------------------------------------------------------------------
   # List packages installed in system profile. To search, run:
   # $ nix search wget
