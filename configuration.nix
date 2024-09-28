@@ -134,7 +134,6 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
-    ripgrep
     valgrind
     gnumake
     unzip
@@ -167,8 +166,6 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
-    python312Packages.pip
-    python312Packages.pynvim
     networkmanagerapplet
     pavucontrol
     dbus

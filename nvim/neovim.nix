@@ -13,7 +13,6 @@
       withNodeJs = true;
       extraPackages = with pkgs; [
         ripgrep
-        curl
         nodePackages.npm
         nodejs
         black
