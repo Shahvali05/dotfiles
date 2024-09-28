@@ -12,7 +12,6 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
-      	nvchad
         tabby
         nodejs
         black
@@ -32,6 +31,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+      	nvchad
         codeium-vim
         alpha-nvim
         auto-session
