@@ -12,6 +12,7 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+        codeium
         tabby
         nodejs
         black
@@ -31,6 +32,8 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        codeium-nvim
+        codeium-vim
         alpha-nvim
         auto-session
         bufferline-nvim
