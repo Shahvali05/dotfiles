@@ -12,6 +12,7 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+      	nvchad
         tabby
         nodejs
         black
