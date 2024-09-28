@@ -134,7 +134,6 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
-    patchelf
     ripgrep
     valgrind
     gnumake
@@ -168,7 +167,6 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
-    vulkan-loader
     networkmanagerapplet
     pavucontrol
     dbus
