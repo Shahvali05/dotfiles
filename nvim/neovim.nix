@@ -70,9 +70,11 @@
         ${builtins.readFile ./options.lua}
         ${builtins.readFile ./keymaps.lua}
         ${builtins.readFile ./plugins/alpha.lua}
-        ${builtins.readFile ./plugins/autopairs.lua}
         ${builtins.readFile ./plugins/auto-session.lua}
+        ${builtins.readFile ./plugins/autopairs.lua}
         ${builtins.readFile ./plugins/catppuccin.lua}
+        ${builtins.readFile ./plugins/cmp.lua}
+        ${builtins.readFile ./plugins/codeium.lua}
         ${builtins.readFile ./plugins/comment.lua}
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/lsp.lua}
@@ -80,7 +82,6 @@
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
-        ${builtins.readFile ./plugins/codeium.lua}
         require("bufferline").setup{}
         require("lualine").setup({
           icons_enabled = true,
@@ -90,4 +91,3 @@
   };
 }
 #require("ibl").setup()
-#${builtins.readFile ./plugins/cmp.lua}
