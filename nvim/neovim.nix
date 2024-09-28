@@ -12,7 +12,9 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
-        tabby
+        ripgrep
+        curl
+        nodePackages.npm
         nodejs
         black
         clang-tools
