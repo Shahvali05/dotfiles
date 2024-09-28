@@ -75,7 +75,6 @@
         ${builtins.readFile ./plugins/catppuccin.lua}
         ${builtins.readFile ./plugins/comment.lua}
         ${builtins.readFile ./plugins/formatter.lua}
-        ${builtins.readFile ./plugins/cmp.lua}
         ${builtins.readFile ./plugins/lsp.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
         ${builtins.readFile ./plugins/telescope.lua}
@@ -91,3 +90,4 @@
   };
 }
 #require("ibl").setup()
+#${builtins.readFile ./plugins/cmp.lua}
