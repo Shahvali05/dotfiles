@@ -12,37 +12,6 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 --keymap.set("n", "<leader>x", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- Закрывать вкладку
 --keymap.set("n", "<leader>o", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- Открывать новую вкладку
 
--- Настройки для tabufline
-M.tabufline = {
-  plugin = true,
-
-  n = {
-    -- Перемещение по буферам
-    ["<tab>"] = {
-      function()
-        require("nvchad.tabufline").tabuflineNext()
-      end,
-      "Goto next buffer",
-    },
-
-    ["<S-tab>"] = {
-      function()
-        require("nvchad.tabufline").tabuflinePrev()
-      end,
-      "Goto prev buffer",
-    },
-
-    -- Закрыть буфер + скрыть терминал
-    ["<leader>x"] = {
-      function()
-        require("nvchad.tabufline").close_buffer()
-      end,
-      "Close buffer",
-    },
-  },
-}
-
-
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
