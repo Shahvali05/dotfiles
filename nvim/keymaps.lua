@@ -6,8 +6,8 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 -- window management
 
 -- Перемещение по вкладкам
-keymap.set("n", "<Tab>", "<cmd>bNext<CR>", { desc = "Go to next tab" })  -- Вперёд по вкладкам
-keymap.set("n", "<S-Tab>", "<cmd>bnext<CR>", { desc = "Go to previous tab" })  -- Назад по вкладкам
+keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next tab" })  -- Вперёд по вкладкам
+keymap.set("n", "<S-Tab>", "<cmd>bNext<CR>", { desc = "Go to previous tab" })  -- Назад по вкладкам
 keymap.set("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close current tab" }) -- Закрывать вкладку
 keymap.set("n", "<leader>n", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- Открывать новую вкладку
 
