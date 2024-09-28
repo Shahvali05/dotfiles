@@ -63,7 +63,10 @@
       };
     };
   };
-  security.pam.services.greetd.enableGnomeKeyring = true;
+
+  # +++++++++++++++++++
+  #security.pam.services.greetd.enableGnomeKeyring = true;
+  # +++++++++++++++++++
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
