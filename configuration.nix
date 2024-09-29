@@ -135,6 +135,7 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
+    swww
     codeium
     valgrind
     gnumake
@@ -166,6 +167,10 @@
     waybar
     xfce.thunar
     # -------------------------------------
+    # libs
+    # -------------------------------------
+    check
+    # -------------------------------------
     # system's programs
     # -------------------------------------
     networkmanagerapplet
@@ -189,7 +194,6 @@
     python3
     go
     greetd.tuigreet
-    swww
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
     (pkgs.stdenv.mkDerivation {
