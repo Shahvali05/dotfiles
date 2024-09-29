@@ -127,11 +127,15 @@
   # hyprland
   programs.hyprland.enable = true; # enable Hyprland
 
+  boot.binfmt.emulatedSystems = [ "linux" ];
+
   # -------------------------------------------------------------------------------------------------------------
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   # -------------------------------------------------------------------------------------------------------------
   environment.systemPackages = with pkgs; [
+    glibc
+    libstdcxx
     # -------------------------------------
     # console
     # -------------------------------------
