@@ -127,6 +127,8 @@
   # hyprland
   programs.hyprland.enable = true; # enable Hyprland
 
+  boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
+
   # -------------------------------------------------------------------------------------------------------------
   # List packages installed in system profile. To search, run:
   # $ nix search wget
