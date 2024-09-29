@@ -32,6 +32,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        codeium-vim
         codeium-nvim
         alpha-nvim
         auto-session
