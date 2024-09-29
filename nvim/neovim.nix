@@ -32,6 +32,8 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        promise-async
+        nvim-ufo
         codeium-vim
         alpha-nvim
         auto-session
