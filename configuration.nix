@@ -172,7 +172,6 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
-    patchelf
     networkmanagerapplet
     pavucontrol
     dbus
