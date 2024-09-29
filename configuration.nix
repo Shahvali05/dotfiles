@@ -139,6 +139,7 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
+    codeium
     valgrind
     gnumake
     unzip
@@ -171,6 +172,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    patchelf
     networkmanagerapplet
     pavucontrol
     dbus
