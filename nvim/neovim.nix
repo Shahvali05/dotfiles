@@ -84,6 +84,7 @@
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/lsp.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
+        ${builtins.readFile ./plugins/nvim-ufo.lua}
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}

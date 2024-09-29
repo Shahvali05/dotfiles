@@ -23,11 +23,5 @@ vim.g.mapleader = " "
 vim.opt.colorcolumn = "81"
 vim.cmd("highlight ColorColumn ctermbg=red guibg=#232234")
 
-require('ufo').setup()
-vim.o.foldcolumn = '1'
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
 --vim.o.foldmethod = 'indent'
 --vim.cmd('autocmd BufReadPost * normal! zR')
