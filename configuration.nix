@@ -139,6 +139,7 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
+    codeium
     valgrind
     gnumake
     unzip
