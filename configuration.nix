@@ -153,7 +153,6 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    gtklock
     typora
     hyprpicker
     telegram-desktop
