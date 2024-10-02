@@ -177,6 +177,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    python312Packages.debugpy
     networkmanagerapplet
     pavucontrol
     dbus
