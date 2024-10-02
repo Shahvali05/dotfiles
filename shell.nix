@@ -4,6 +4,8 @@ mkShell {
   # Задаем NIX_LD_LIBRARY_PATH для поиска библиотек
   NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
     glibc
+    pkgs.python3
+    pkgs.python3Packages.debugpy  # Add debugpy here
   ];
 
   # Задаем NIX_LD для использования динамического загрузчика
