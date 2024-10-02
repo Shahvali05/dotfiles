@@ -11,7 +11,7 @@
         dmenu = "${pkgs.rofi}/bin/rofi -dmenu -p dunst:";
         font = "Iosevka Nerd Font 12"; # Можно заменить на любой шрифт по вкусу
         geometry = "400x80-30+30";     # Размер и расположение уведомлений
-        transparency = 0.9;            # Прозрачность
+        #transparency = 0.9;            # Прозрачность
         frame_width = 2;               # Толщина рамки
         separator_height = 2;          # Высота разделителя между уведомлениями
         frame_color = "#3b4252";       # Цвет рамки
