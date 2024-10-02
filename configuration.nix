@@ -177,7 +177,6 @@
     networkmanagerapplet
     pavucontrol
     dbus
-    dunst
     pulseaudio
     black
     pyright
