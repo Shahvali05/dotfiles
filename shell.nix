@@ -4,6 +4,9 @@ mkShell {
   # Задаем NIX_LD_LIBRARY_PATH для поиска библиотек
   NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
     glibc
+  ];
+
+  buildInputs = [
     pkgs.python3
     pkgs.python3Packages.debugpy  # Add debugpy here
   ];
