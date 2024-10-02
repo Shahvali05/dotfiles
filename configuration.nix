@@ -153,6 +153,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    blueman
     rofi
     typora
     hyprpicker
