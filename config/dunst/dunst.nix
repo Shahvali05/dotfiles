@@ -1,53 +1,26 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
+  config.services.dunst = {
+    enable = true;
 
-  # Настройка dunst
-  home.packages = with pkgs; [
-    dunst
-  ];
+    settings = {
+      global = {
+        follow = "keyboard";
+        markup = "full";
+        dmenu = "${pkgs.rofi}/bin/rofi -dmenu -p dunst:";
+      };
 
-  home.file.".config/dunst/dunstrc".text = ''
-    [global]
-    font = monospace 10
-    geometry = 300x50-10+10
-    transparency = 0.8
-    show_age_threshold = 60
-    notification_limit = 5
-    frame_color = "#323232"
-    foreground = "#FFFFFF"
-    background = "#1E1E1E"
+      urgency_low.timeout = 5;
+      urgency_normal.timeout = 10;
+      urgency_critical.timeout = 15;
 
-    [urgency_low]
-    timeout = 5
-    background = "#2E2E2E"
-    foreground = "#FFFFFF"
-    frame_color = "#2E2E2E"
-
-    [urgency_normal]
-    timeout = 10
-    background = "#1E1E1E"
-    foreground = "#FFFFFF"
-    frame_color = "#323232"
-
-    [urgency_critical]
-    timeout = 0
-    background = "#FF0000"
-    foreground = "#FFFFFF"
-    frame_color = "#FF0000"
-  '';
-
-  # Дополнительные параметры запуска dunst
-  home.sessionVariables = {
-    DUNST_CONFIG = "${pkgs.writeTextFile { name = "dunstrc"; text = builtins.readFile ./path-to-your-dunstrc; }}";
+      shortcuts = {
+        context = "mod1+period";
+        close = "mod1+space";
+        close_all = "mod1+shift+space";
+        history = "mod1+grave";
+      };
+    };
   };
-
-  # Запуск dunst при старте
-  home.activation.init = ''
-    if ! pgrep -x "dunst" > /dev/null; then
-      dunst &
-    fi
-  '';
 }
-
