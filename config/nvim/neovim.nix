@@ -34,6 +34,7 @@
       plugins = with pkgs.vimPlugins; [
         promise-async
         nvim-ufo
+        codeium-nvim
         codeium-vim
         alpha-nvim
         auto-session
