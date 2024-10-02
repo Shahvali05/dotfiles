@@ -136,7 +136,7 @@
     # console's programs
     # -------------------------------------
     swww
-    codeium
+    #codeium
     valgrind
     gnumake
     unzip
