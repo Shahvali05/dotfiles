@@ -32,6 +32,11 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        nvim-dap
+        nvim-dap-ui
+        nvim-dap-virtual-text
+        nvim-dap-python
+        nvim-dap-go
         promise-async
         nvim-ufo
         codeium-vim
@@ -84,6 +89,7 @@
         ${builtins.readFile ./plugins/comment.lua}
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/lsp.lua}
+        ${builtins.readFile ./plugins/nvim-dap.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
         ${builtins.readFile ./plugins/nvim-ufo.lua}
         ${builtins.readFile ./plugins/telescope.lua}
