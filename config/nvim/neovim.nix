@@ -81,7 +81,6 @@
         ${builtins.readFile ./plugins/autopairs.lua}
         ${builtins.readFile ./plugins/catppuccin.lua}
         ${builtins.readFile ./plugins/cmp.lua}
-        ${builtins.readFile ./plugins/codeium.lua}
         ${builtins.readFile ./plugins/comment.lua}
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/lsp.lua}
