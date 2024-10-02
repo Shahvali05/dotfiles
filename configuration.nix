@@ -153,6 +153,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    rofi
     typora
     hyprpicker
     telegram-desktop
