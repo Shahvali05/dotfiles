@@ -34,6 +34,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        nvim-scrollbar
         nvim-dap
         nvim-dap-ui
         nvim-dap-virtual-text
