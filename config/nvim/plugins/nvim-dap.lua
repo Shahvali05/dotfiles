@@ -39,6 +39,7 @@ vim.api.nvim_set_keymap('n', '<leader>dl', ':lua require"dap".run_last()<CR>', {
 -- Open DAP UI
 vim.api.nvim_set_keymap('n', '<leader>du', ':lua require("dapui").toggle()<CR>', { noremap = true, silent = true })
 
+
 -- Определяем таблицу с горячими клавишами
 local keymap_list = {
     "<F5>: Продолжить выполнение программы",
@@ -51,8 +52,8 @@ local keymap_list = {
     -- Добавьте сюда все свои горячие клавиши
 }
 
--- Функция для отображения списка горячих клавиш в правом сплите
-local function show_keymaps()
+-- Глобальная функция для отображения списка горячих клавиш в правом сплите
+_G.show_keymaps = function()
     -- Открываем новый сплит справа
     vim.cmd('vsplit')
     
@@ -71,3 +72,4 @@ end
 
 -- Привязываем функцию к кастомной команде
 vim.api.nvim_set_keymap('n', '<leader>k', ':lua show_keymaps()<CR>', { noremap = true, silent = true })
+
