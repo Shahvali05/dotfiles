@@ -1,7 +1,6 @@
 local dap = require('dap')
 local dapui = require('dapui')
 local dap_virt_text = require("nvim-dap-virtual-text")
-local dap_python = require('dap-python')
 
 -- nvim-dap-ui setup
 dapui.setup()
@@ -10,7 +9,7 @@ dapui.setup()
 dap_virt_text.setup()
 
 -- Python adapter
-require('dap-python').setup('~/.virtualenvs/debugpy/bin/python') -- change the path to your python interpreter
+require('dap-python').setup('/run/current-system/sw/bin/python') -- change the path to your python interpreter
 
 -- Go adapter
 require('dap-go').setup()
@@ -25,8 +24,6 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
-
-dap_python.setup('/run/current-system/sw/bin/python3')
 
 -- Nvim-dap
 vim.api.nvim_set_keymap('n', '<F5>', ':lua require"dap".continue()<CR>', { noremap = true, silent = true })
