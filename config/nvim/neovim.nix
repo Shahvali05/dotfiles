@@ -33,13 +33,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        {
-          url = "https://github.com/nvim-treesitter/nvim-treesitter";
-        }
-        {
-          url = "https://github.com/p00f/nvim-ts-rainbow";
-        }
-        #rainbow
+        rainbow
         nvim-dap
         nvim-dap-ui
         nvim-dap-virtual-text
@@ -55,7 +49,7 @@
         #indent-blankline-nvim
         nui-nvim
         #finecmdline
-        #nvim-treesitter.withAllGrammars
+        nvim-treesitter
         lualine-nvim
         nvim-autopairs
         nvim-web-devicons
