@@ -1,5 +1,5 @@
 require('nvim-treesitter.configs').setup {
-  ensure_installed = {},
+  ensure_installed = { "c", "cpp", "go", "python" },  -- Укажите языки, которые хотите установить
 
   auto_install = false,
 
