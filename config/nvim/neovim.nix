@@ -12,7 +12,7 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
-        gdb
+        ctags
         python311Packages.debugpy
         ripgrep
         nodePackages.npm
