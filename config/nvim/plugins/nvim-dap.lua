@@ -9,7 +9,7 @@ dapui.setup()
 dap_virt_text.setup()
 
 -- Python adapter
-require('dap-python').setup('/run/current-system/sw/bin/python') -- change the path to your python interpreter
+require('dap-python').setup('/run/current-system/sw/bin/python3.11') -- change the path to your python interpreter
 
 -- Go adapter
 require('dap-go').setup()
