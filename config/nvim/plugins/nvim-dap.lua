@@ -2,40 +2,6 @@ local dap = require('dap')
 local dapui = require('dapui')
 local dap_virt_text = require("nvim-dap-virtual-text")
 
--- C/C++ Debug Adapter
-dap.adapters.cpp = {
-  type = 'executable';
-  command = 'gdb'; -- Убедитесь, что GDB установлен
-  name = "GDB";
-}
-
-dap.configurations.cpp = {
-  {
-    name = "Launch file";
-    type = "cpp";
-    request = "launch";
-    program = "${workspaceFolder}/your_program"; -- Укажите путь к исполняемому файлу
-    args = {};
-    stopAtEntry = false;
-    cwd = "${workspaceFolder}";
-    runInTerminal = false; -- Установите в true, если хотите запускать в терминале
-    environment = {};
-    externalConsole = false;
-    MIMode = "gdb"; -- Убедитесь, что используете GDB
-    setupCommands = {
-      {
-        text = "-enable-pretty-printing", 
-        description =  "enable pretty printing",
-        ignoreFailures = true,
-      },
-    },
-  },
-}
-
--- Добавьте аналогичную конфигурацию для C
-dap.adapters.c = dap.adapters.cpp
-dap.configurations.c = dap.configurations.cpp
-
 -- nvim-dap-ui setup
 dapui.setup()
 
