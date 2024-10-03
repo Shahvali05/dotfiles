@@ -19,6 +19,7 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- commentary
 keymap.set("n", "<F3>", "<cmd>Commentary<CR>", { desc = "Comment" })
+keymap.set("v", "<F3>", "<cmd>Commentary<CR>", { desc = "Comment" })
 keymap.set("n", "<F8>", "<cmd>Tagbar<CR>", { desc = "Tagbar" })
 
 -- Определяем таблицу с горячими клавишами
