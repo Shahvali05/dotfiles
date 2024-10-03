@@ -35,7 +35,6 @@
       ];
       plugins = with pkgs.vimPlugins; [
         noice-nvim
-        nvim-scrollbar
         nvim-dap
         nvim-dap-ui
         nvim-dap-virtual-text
@@ -95,7 +94,6 @@
         ${builtins.readFile ./plugins/lsp.lua}
         ${builtins.readFile ./plugins/noice.lua}
         ${builtins.readFile ./plugins/nvim-dap.lua}
-        ${builtins.readFile ./plugins/nvim-scrollbar.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
         ${builtins.readFile ./plugins/nvim-ufo.lua}
         ${builtins.readFile ./plugins/telescope.lua}
