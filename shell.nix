@@ -6,6 +6,11 @@ mkShell {
     glibc
   ];
 
+  buildInputs = [
+    pkgs.python311Packages.debugpy  # Add debugpy here
+    # Add other necessary packages here
+  ];
+
   # Задаем NIX_LD для использования динамического загрузчика
   NIX_LD = lib.fileContents "${stdenv.cc}/nix-support/dynamic-linker";
 
