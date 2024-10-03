@@ -33,6 +33,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        rainbow
         nvim-dap
         nvim-dap-ui
         nvim-dap-virtual-text
