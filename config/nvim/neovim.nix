@@ -34,7 +34,6 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        nvim-navbuddy
         nvim-dap
         nvim-dap-ui
         nvim-dap-virtual-text
@@ -93,7 +92,6 @@
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/lsp.lua}
         ${builtins.readFile ./plugins/nvim-dap.lua}
-        ${builtins.readFile ./plugins/nvim-navbuddy.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
         ${builtins.readFile ./plugins/nvim-ufo.lua}
         ${builtins.readFile ./plugins/telescope.lua}
