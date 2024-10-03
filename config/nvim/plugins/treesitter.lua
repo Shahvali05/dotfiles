@@ -7,6 +7,8 @@ require('nvim-treesitter.configs').setup {
 
   indent = { enable = true },
 
+  parser_dir = "~/.local/share/nvim/treesitter",  -- Указываем пользовательский каталог
+
   rainbow = {
     enable = true,
     extended_mode = true,  -- Включите, если хотите окрашивать больше типов скобок
