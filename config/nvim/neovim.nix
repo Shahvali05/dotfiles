@@ -34,6 +34,8 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        vim-commentary
+        tagbar
         noice-nvim
         nvim-dap
         nvim-dap-ui
