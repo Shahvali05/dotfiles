@@ -36,5 +36,7 @@ vim.api.nvim_set_keymap('n', '<leader>lp', ':lua require"dap".set_breakpoint(nil
 vim.api.nvim_set_keymap('n', '<leader>dr', ':lua require"dap".repl.open()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>dl', ':lua require"dap".run_last()<CR>', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<leader>dp', ':lua require"dap-python".test_method()<CR>', { noremap = true, silent = true })
+
 -- Open DAP UI
 vim.api.nvim_set_keymap('n', '<leader>du', ':lua require("dapui").toggle()<CR>', { noremap = true, silent = true })
