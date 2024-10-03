@@ -17,7 +17,7 @@ require("noice").setup({
     view_search = "virtualtext",
   },
   -- Настройки командной строки
-  cmdline = {
-    view = "cmdline",
-  },
+  --cmdline = {
+  --  view = "cmdline",
+  --},
 })
