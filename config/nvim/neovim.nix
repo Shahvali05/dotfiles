@@ -49,7 +49,7 @@
         #indent-blankline-nvim
         nui-nvim
         #finecmdline
-        nvim-treesitter
+        nvim-treesitter.withAllGrammars
         lualine-nvim
         nvim-autopairs
         nvim-web-devicons
