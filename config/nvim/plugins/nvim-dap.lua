@@ -1,6 +1,7 @@
 local dap = require('dap')
 local dapui = require('dapui')
 local dap_virt_text = require("nvim-dap-virtual-text")
+local dap_python = require('dap-python')
 
 -- nvim-dap-ui setup
 dapui.setup()
