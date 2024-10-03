@@ -18,7 +18,8 @@ keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 -- commentary
-keymap.set("n", "<F3>", "<cmd>Commentary<CR>", { desc = "Comment line" })
+keymap.set("n", "<F3>", "<cmd>Commentary<CR>", { desc = "Comment" })
+keymap.set("n", "<F8>", "<cmd>Tagbar<CR>", { desc = "Tagbar" })
 
 -- Определяем таблицу с горячими клавишами
 local keymap_list = {
