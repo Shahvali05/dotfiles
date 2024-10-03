@@ -1,9 +1,9 @@
 require('nvim-treesitter.configs').setup {
-    ensure_installed = {},
+  ensure_installed = { "c", "cpp", "go", "python" },
 
-    auto_install = false,
+  auto_install = false,
 
-    highlight = { enable = true },
+  highlight = { enable = true },
 
-    indent = { enable = true },
+  indent = { enable = true },
 }
