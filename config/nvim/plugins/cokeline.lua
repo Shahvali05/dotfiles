@@ -1,1 +1,1 @@
-require('tabline').setup()
+require('luatab').setup{}

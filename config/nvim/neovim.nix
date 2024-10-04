@@ -35,7 +35,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        tabline-nvim
+        luatab-nvim
         #barbar-nvim
         colorizer
         #nvim-cokeline
