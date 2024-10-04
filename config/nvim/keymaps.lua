@@ -8,7 +8,10 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 -- Перемещение по вкладкам
 keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next tab" })  -- Вперёд по вкладкам
 keymap.set("n", "<S-Tab>", "<cmd>bNext<CR>", { desc = "Go to previous tab" })  -- Назад по вкладкам
-keymap.set("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close current tab" }) -- Закрывать вкладку
+vim.keymap.set("n", "<leader>x", function()
+  vim.cmd("bdelete")
+  vim.cmd("bnext")
+end, { desc = "Close current tab and go to next" })
 keymap.set("n", "<leader>o", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- Открывать новую вкладку
 
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
