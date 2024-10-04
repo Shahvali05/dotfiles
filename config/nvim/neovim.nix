@@ -49,7 +49,7 @@
         codeium-vim
         alpha-nvim
         auto-session
-        bufferline-nvim
+        #bufferline-nvim
         dressing-nvim
         #indent-blankline-nvim
         nui-nvim
