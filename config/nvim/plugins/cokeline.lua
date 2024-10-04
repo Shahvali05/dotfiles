@@ -1,11 +1,11 @@
-local nvim_tree = require('nvim-tree.api')
+local api = require('nvim-tree.api')
 
--- Настраиваем функцию, которая переключается на другой буфер, если закрывается текущий
+-- Функция для переключения на другой буфер при закрытии текущего
 local function switch_to_other_buffer()
   local current_buf = vim.api.nvim_get_current_buf()
-  -- Если текущий буфер - nvim-tree, переключаемся на следующий
-  if nvim_tree.is_visible() then
-    -- Закрываем файл, если текущий буфер nvim-tree
+
+  -- Проверяем, открыт ли nvim-tree
+  if api.tree.is_tree_buf(current_buf) then
     vim.cmd("bnext")
   end
 end
