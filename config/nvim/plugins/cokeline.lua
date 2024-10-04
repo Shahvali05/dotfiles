@@ -1,1 +1,1 @@
-require('cokeline').setup()
+require('tabline').setup()
