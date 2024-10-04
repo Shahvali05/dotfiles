@@ -1,4 +1,4 @@
-require('cokeline').setup({
+require('barbar').setup({
   rendering = {
     max_buffer_width = 30,
   },

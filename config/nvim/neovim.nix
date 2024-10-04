@@ -35,8 +35,9 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        barbar-nvim
         colorizer
-        nvim-cokeline
+        #nvim-cokeline
         vim-commentary
         tagbar
         noice-nvim
