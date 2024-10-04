@@ -35,17 +35,6 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        {
-          plugin = {
-            name = "overlength.nvim";
-            src = pkgs.fetchFromGitHub {
-              owner = "chrisgrieser";
-              repo = "overlength.nvim";
-              rev = "main";  # Используй конкретную ветку или коммит, если нужно
-              sha256 = lib.fakeSha256;
-            };
-          };
-        }
         colorizer
         nvim-cokeline
         vim-commentary
