@@ -36,7 +36,7 @@
       ];
       plugins = with pkgs.vimPlugins; [
         #barbar-nvim
-        tabline-nvim
+        nvim-cokeline
         vim-commentary
         tagbar
         noice-nvim
@@ -104,7 +104,7 @@
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
-        require("tabline").setup{}
+        require("cokeline").setup{}
         require("lualine").setup({
           icons_enabled = true,
         })
