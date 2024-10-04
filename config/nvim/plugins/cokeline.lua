@@ -7,12 +7,12 @@ require('cokeline').setup({
       return buffer.is_focused and '#ffffff' or '#999999'
     end,
     bg = function(buffer)
-      return buffer.is_focused and '#005f87' or '#1c1c1c'
+      return buffer.is_focused and '#363A59' or '#1c1c1c'
     end,
   },
   fill_hl = 'CokelineFill',  -- Настройка фона для пустых мест
 })
 
 -- Определение серого фона для пустых участков
-vim.api.nvim_set_hl(0, 'CokelineFill', { bg = '#182F40' })  -- Серый цвет фона
+vim.api.nvim_set_hl(0, 'CokelineFill', { bg = '#232F37' })  -- Серый цвет фона
 
