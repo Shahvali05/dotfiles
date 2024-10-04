@@ -35,7 +35,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        #barbar-nvim
+        twilight-nvim
         nvim-cokeline
         vim-commentary
         tagbar
@@ -105,6 +105,7 @@
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
         ${builtins.readFile ./plugins/cokeline.lua}
+        require("twilight").setup()
         require("lualine").setup({
           icons_enabled = true,
         })
