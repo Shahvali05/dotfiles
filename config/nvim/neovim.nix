@@ -35,6 +35,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        colorizer
         nvim-cokeline
         vim-commentary
         tagbar
