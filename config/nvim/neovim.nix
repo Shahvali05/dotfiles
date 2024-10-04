@@ -35,7 +35,8 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        barbar-nvim
+        #barbar-nvim
+        tabline-nvim
         vim-commentary
         tagbar
         noice-nvim
@@ -103,7 +104,7 @@
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
-        require("barbar").setup{}
+        require("tabline").setup{}
         require("lualine").setup({
           icons_enabled = true,
         })
