@@ -104,7 +104,7 @@
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
-        require("cokeline").setup{}
+        ${builtins.readFile ./plugins/cokeline.lua}
         require("lualine").setup({
           icons_enabled = true,
         })
