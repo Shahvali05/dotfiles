@@ -12,6 +12,7 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+        delve
         ctags
         python311Packages.debugpy
         ripgrep
