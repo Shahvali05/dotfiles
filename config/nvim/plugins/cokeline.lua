@@ -1,20 +1,3 @@
-local api = require('nvim-tree.api')
-
--- Функция для переключения на другой буфер при закрытии текущего
-local function switch_to_other_buffer()
-  local current_buf = vim.api.nvim_get_current_buf()
-
-  -- Проверяем, открыт ли nvim-tree
-  if api.tree.is_tree_buf(current_buf) then
-    vim.cmd("bnext")
-  end
-end
-
--- Вызов функции при закрытии буфера
-vim.api.nvim_create_autocmd("BufDelete", {
-  callback = switch_to_other_buffer
-})
-
 require('cokeline').setup({
   rendering = {
     max_buffer_width = 30,
