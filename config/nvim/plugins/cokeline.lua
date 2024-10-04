@@ -14,5 +14,5 @@ require('cokeline').setup({
 })
 
 -- Определение серого фона для пустых участков
-vim.api.nvim_set_hl(0, 'CokelineFill', { bg = '#232F37' })  -- Серый цвет фона
+vim.api.nvim_set_hl(0, 'CokelineFill', { bg = '#0C1012' })  -- Серый цвет фона
 
