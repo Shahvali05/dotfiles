@@ -23,7 +23,7 @@ dap.adapters.lldb = {
 
 dap.adapters.codelldb = {
   type = 'server',
-  port = "${port}",
+  port = 13000,
   executable = {
     -- Укажите путь к исполняемому файлу codelldb
     command = '/home/laraeter/Downloads/extension/adapter/codelldb',
