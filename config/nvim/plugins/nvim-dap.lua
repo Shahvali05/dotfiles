@@ -16,12 +16,9 @@ require('dap-go').setup()
 
 -- cpp adapter
 dap.adapters.lldb = {
-  type = 'server',
-  port = 12345,  -- укажите свободный порт
-  executable = {
-    command = '/home/laraeter/Downloads/extension/adapter/codelldb',
-    args = { "--port", "12345" },  -- тот же порт
-  }
+  type = 'executable',
+  command = '/home/laraeter/Downloads/extension/adapter/codelldb',
+  name = "lldb"
 }
 
 dap.configurations.cpp = {
