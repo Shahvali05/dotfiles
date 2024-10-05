@@ -72,7 +72,6 @@
         nvim-ts-context-commentstring
         plenary-nvim
         neodev-nvim
-        luasnip              # добавляет поддержку сниппетов (шаблонов кода)
         telescope-nvim
         todo-comments-nvim
         nvim-tree-lua
