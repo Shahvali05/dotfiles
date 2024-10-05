@@ -1,6 +1,6 @@
 require('lualine').setup({
   options = {
-    theme = 'gruvbox', -- Выбираем тему, можно попробовать 'dracula', 'nord', 'solarized'
+    theme = 'nord', -- Выбираем тему, можно попробовать 'dracula', 'nord', 'solarized'
     icons_enabled = true,
     section_separators = { left = '', right = ''}, -- Добавляем стильные разделители секций
     component_separators = { left = '', right = ''},
