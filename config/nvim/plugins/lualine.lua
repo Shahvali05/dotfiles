@@ -1,6 +1,6 @@
 require('lualine').setup({
   options = {
-    theme = 'nord', -- Выбираем тему, можно попробовать 'dracula', 'nord', 'solarized'
+    theme = 'dracula', -- Выбираем тему, можно попробовать 'dracula', 'nord', 'solarized'
     icons_enabled = true,
     section_separators = { left = '', right = ''}, -- Добавляем стильные разделители секций
     component_separators = { left = '', right = ''},
@@ -15,9 +15,9 @@ require('lualine').setup({
     lualine_z = {'location'} -- Текущая строка и столбец
   },
   inactive_sections = { -- Для неактивных окон
-    lualine_a = {},
+    lualine_a = {mode},
     lualine_b = {},
-    lualine_c = {{'filename', path = 1}},
+    lualine_c = {},
     lualine_x = {'location'},
     lualine_y = {},
     lualine_z = {}
