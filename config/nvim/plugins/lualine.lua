@@ -1,6 +1,6 @@
 require('lualine').setup({
   options = {
-    theme = 'solarized', -- Выбираем тему, можно попробовать 'dracula', 'nord', 'solarized'
+    theme = 'dracula', -- Выбираем тему, можно попробовать 'dracula', 'nord', 'solarized'
     icons_enabled = true,
     section_separators = { left = '', right = ''}, -- Добавляем стильные разделители секций
     component_separators = { left = '', right = ''},
@@ -23,6 +23,6 @@ require('lualine').setup({
     lualine_z = {}
   },
   tabline = {}, -- Если нужна отдельная панель с буферами/табами
-  -- extensions = {'fugitive', 'nvim-tree'} -- Расширения для интеграции с nvim-tree и Fugitive
+  extensions = {'fugitive', 'nvim-tree'} -- Расширения для интеграции с nvim-tree и Fugitive
 })
 
