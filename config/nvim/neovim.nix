@@ -34,7 +34,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        vim-rooter
+        # vim-rooter
         cmp-path
         colorizer
         nvim-cokeline
