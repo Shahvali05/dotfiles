@@ -93,19 +93,18 @@
         ${builtins.readFile ./plugins/catppuccin.lua}
         ${builtins.readFile ./plugins/cmp.lua}
         ${builtins.readFile ./plugins/codeium.lua}
+        ${builtins.readFile ./plugins/cokeline.lua}
         ${builtins.readFile ./plugins/comment.lua}
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/lsp.lua}
+        ${builtins.readFile ./plugins/lualine.lua}
         ${builtins.readFile ./plugins/noice.lua}
         ${builtins.readFile ./plugins/nvim-dap.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
         ${builtins.readFile ./plugins/nvim-ufo.lua}
-        ${builtins.readFile ./plugins/rainbow.lua}
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
-        ${builtins.readFile ./plugins/cokeline.lua}
-        ${builtins.readFile ./plugins/lualine.lua}
       '';
     };
   };
