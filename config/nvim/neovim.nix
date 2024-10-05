@@ -8,7 +8,6 @@ let
       owner = "olexsmir";
       repo = "nvim-gopher";
       rev = "main";
-      sha256 = lib.fakeSha256;
     };
   };
 in
