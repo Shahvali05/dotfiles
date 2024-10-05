@@ -34,6 +34,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        gopher
         # vim-rooter
         cmp-path
         colorizer
@@ -96,6 +97,7 @@
         ${builtins.readFile ./plugins/cokeline.lua}
         ${builtins.readFile ./plugins/comment.lua}
         ${builtins.readFile ./plugins/formatter.lua}
+        ${builtins.readFile ./plugins/gopher.lua}
         ${builtins.readFile ./plugins/lsp.lua}
         ${builtins.readFile ./plugins/lualine.lua}
         ${builtins.readFile ./plugins/noice.lua}
