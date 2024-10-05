@@ -37,7 +37,7 @@
       plugins = with pkgs.vimPlugins; [
         colorizer
         nvim-cokeline
-        # vim-commentary
+        vim-commentary
         tagbar
         noice-nvim
         nvim-dap
