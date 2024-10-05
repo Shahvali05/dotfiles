@@ -90,6 +90,7 @@
         ${builtins.readFile ./plugins/alpha.lua}
         ${builtins.readFile ./plugins/auto-session.lua}
         ${builtins.readFile ./plugins/autopairs.lua}
+        ${builtins.readFile ./plugins/blankline.lua}
         ${builtins.readFile ./plugins/catppuccin.lua}
         ${builtins.readFile ./plugins/cmp.lua}
         ${builtins.readFile ./plugins/codeium.lua}
