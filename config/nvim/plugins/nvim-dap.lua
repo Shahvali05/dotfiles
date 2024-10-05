@@ -32,7 +32,7 @@ dap.adapters.codelldb = function(on_adapter)
   }
   local handle
   local pid_or_err
-  handle, pid_or_err = vim.loop.spawn('/path/to/lldb', opts, function(code)
+  handle, pid_or_err = vim.loop.spawn('/home/laraeter/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/adapter/codelldb', opts, function(code)
     stdout:close()
     stderr:close()
     handle:close()
@@ -74,7 +74,7 @@ dap.configurations.cpp = {
     request = "launch",
 
     program = function()
-      return vim.fn.input('', vim.fn.getcwd() , 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
 
     args = {"--log_level=all"},
