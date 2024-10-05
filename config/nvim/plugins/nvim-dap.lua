@@ -21,6 +21,16 @@ dap.adapters.lldb = {
   name = "lldb"
 }
 
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    -- Укажите путь к исполняемому файлу codelldb
+    command = '/path/to/your/codelldb/extension/adapter/codelldb',
+    args = {"--port", "${port}"},
+  }
+}
+
 dap.configurations.cpp = {
   {
     name = "Launch",
