@@ -14,6 +14,31 @@ require('dap-python').setup('/run/current-system/sw/bin/python3.11') -- change t
 -- Go adapter
 require('dap-go').setup()
 
+-- cpp adapter
+dap.adapters.lldb = {
+  type = 'executable',
+  command = '/home/laraeter/Downloads/extension/adapter/codelldb',
+  name = "lldb"
+}
+
+dap.configurations.cpp = {
+  {
+    name = "Launch",
+    type = "lldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+  },
+}
+
+-- Для других языков можно скопировать и изменить конфигурацию
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+
 -- Automatically open and close dap-ui on dap events
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
