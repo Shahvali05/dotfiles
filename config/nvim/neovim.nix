@@ -1,17 +1,5 @@
 { pkgs, inputs, ... }:
 
-let
-  gopherPlugin = pkgs.vimPlugins.buildVimPluginFrom2Nix {
-    pname = "gopher";
-    version = "main";
-    src = pkgs.fetchFromGitHub {
-      owner = "olexsmir";
-      repo = "nvim-gopher";
-      rev = "main";
-    };
-  };
-in
-
 {
   nixpkgs.config.allowUnfree = true;
   programs = {
@@ -46,7 +34,6 @@ in
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        gopherPlugin
         # vim-rooter
         cmp-path
         colorizer
