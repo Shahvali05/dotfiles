@@ -2,7 +2,7 @@ local dap = require('dap')
 
 dap.adapters.lldb = {
   type = 'executable',
-  command = '/home/laraeter/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/adapter/codelldb', -- укажи путь к бинарнику
+  command = './nix/store/lrmk0kkf6jwnwyw11a1drk65xr6adfif-vscode-extension-vadimcn-vscode-lldb-1.10.0/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb', -- укажи путь к бинарнику
   name = "lldb"
 }
 
