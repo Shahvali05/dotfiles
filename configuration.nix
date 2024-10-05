@@ -177,6 +177,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    vscode-extensions.vadimcn.vscode-lldb
     networkmanagerapplet
     pavucontrol
     dbus
