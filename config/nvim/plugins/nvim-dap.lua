@@ -25,16 +25,15 @@ dap.adapters.codelldb = {
   type = 'server',
   port = 13000,
   executable = {
-    -- Укажите путь к исполняемому файлу codelldb
     command = '/home/laraeter/Downloads/extension/adapter/codelldb',
-    args = {"--port", "${port}"},
+    args = {"--port", "13000"},
   }
 }
 
 dap.configurations.cpp = {
   {
     name = "Launch",
-    type = "lldb",
+    type = "codelldb",
     request = "launch",
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
