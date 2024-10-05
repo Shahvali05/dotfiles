@@ -11,6 +11,7 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+        vscode-extensions.vadimcn.vscode-lldb
         delve
         ctags
         python311Packages.debugpy
