@@ -68,8 +68,8 @@
         cmp_luasnip
         friendly-snippets
         lspkind-nvim
-        # comment-nvim
-        # nvim-ts-context-commentstring
+        comment-nvim
+        nvim-ts-context-commentstring
         plenary-nvim
         neodev-nvim
         luasnip              # добавляет поддержку сниппетов (шаблонов кода)
