@@ -2,7 +2,7 @@ local dap = require('dap')
 
 dap.adapters.lldb = {
   type = 'executable',
-  command = '/home/laraeter/Downloads/extension/adapter/codelldb', -- укажи путь к бинарнику
+  command = '/home/laraeter/Downloads/extension/lldb/bin', -- укажи путь к бинарнику
   name = "lldb"
 }
 
