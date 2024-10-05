@@ -1,6 +1,5 @@
 { pkgs, inputs, ... }:
 
-
 {
   nixpkgs.config.allowUnfree = true;
   programs = {
@@ -22,7 +21,7 @@
         clang-tools
         clang
         lua-language-server
-        #gofmt
+        # gofmt
         gopls
         xclip
         wl-clipboard
