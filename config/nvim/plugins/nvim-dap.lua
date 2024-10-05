@@ -40,7 +40,7 @@ dap.adapters.codelldb = function(on_adapter)
  }
  local handle
  local pid_or_err
- handle, pid_or_err = vim.loop.spawn('/home/laraeter/Downloads/extension/lldb/bin/lldb', opts, function(code)
+ handle, pid_or_err = vim.loop.spawn('/home/laraeter/Downloads/extension/lldb/bin/lldb-server', opts, function(code)
    stdout:close()
    stderr:close()
    handle:close()
