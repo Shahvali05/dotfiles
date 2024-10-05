@@ -103,9 +103,7 @@
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
         ${builtins.readFile ./plugins/cokeline.lua}
-        require("lualine").setup({
-          icons_enabled = true,
-        })
+        ${builtins.readFile ./plugins/lualine.lua}
       '';
     };
   };
