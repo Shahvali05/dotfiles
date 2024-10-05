@@ -177,7 +177,6 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
-    lldb_18
     networkmanagerapplet
     pavucontrol
     dbus
