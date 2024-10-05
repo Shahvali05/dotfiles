@@ -79,8 +79,7 @@ dap.configurations.cpp = {
       if not cwd:match("/$") then
         cwd = cwd .. "/"
       end
-      return vim.fn.input('', cwd, 'file')
-      -- return vim.fn.input('', vim.fn.getcwd() , 'file')
+      return vim.fn.input('', vim.fn.getcwd() , 'file')
     end,
 
     args = {"--log_level=all"},
