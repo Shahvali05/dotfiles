@@ -4,6 +4,7 @@ mkShell {
   # Задаем NIX_LD_LIBRARY_PATH для поиска библиотек
   NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
     glibc
+    zlib
   ];
 
   buildInputs = [

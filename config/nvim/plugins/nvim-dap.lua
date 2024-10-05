@@ -17,10 +17,10 @@ require('dap-go').setup()
 -- cpp adapter
 dap.adapters.lldb = {
   type = 'server',
-  port = "${12345}",  -- укажите порт
+  port = 12345,  -- укажите свободный порт
   executable = {
     command = '/home/laraeter/Downloads/extension/adapter/codelldb',
-    args = { "--port", "12345" },  -- замените "12345" на нужный вам порт
+    args = { "--port", "12345" },  -- тот же порт
   }
 }
 
