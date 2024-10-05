@@ -2,27 +2,45 @@ require('lualine').setup({
   options = {
     theme = 'dracula', -- Выбираем тему, можно попробовать 'dracula', 'nord', 'solarized'
     icons_enabled = true,
-    section_separators = { left = '', right = ''}, -- Добавляем стильные разделители секций
+    section_separators = { left = '', right = ''},
     component_separators = { left = '', right = ''},
-    disabled_filetypes = {}, -- Можем отключить lualine для определённых типов файлов
+    disabled_filetypes = {},
   },
   sections = {
-    lualine_a = {'mode'}, -- Отображение текущего режима (например, Normal, Insert)
-    lualine_b = {'branch', 'diff', 'diagnostics'}, -- Ветка Git, изменения и диагностика LSP
-    lualine_c = {{'filename', path = 1}}, -- Имя файла с полным путём
-    lualine_x = {'encoding', 'fileformat', 'filetype'}, -- Кодировка, формат файла, тип файла
-    lualine_y = {'progress'}, -- Прогресс по документу
-    lualine_z = {'location'} -- Текущая строка и столбец
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {{'filename', path = 1}},
+    lualine_x = {
+      'encoding', 
+      'fileformat', 
+      'filetype', 
+      {
+        function()
+          local clients = vim.lsp.get_active_clients()
+          if next(clients) == nil then
+            return 'No LSP'
+          end
+          local lsp_names = {}
+          for _, client in ipairs(clients) do
+            table.insert(lsp_names, client.name)
+          end
+          return table.concat(lsp_names, ', ') -- Если активен несколько LSP, они будут отображены через запятую
+        end,
+        icon = ' LSP:', -- Иконка LSP
+        color = { fg = '#ffffff', gui = 'bold' }, -- Можно настроить цвет
+      },
+    },
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
   },
-  inactive_sections = { -- Для неактивных окон
-    lualine_a = {mode},
+  inactive_sections = {
+    lualine_a = {},
     lualine_b = {},
-    lualine_c = {},
+    lualine_c = {{'filename', path = 1}},
     lualine_x = {'location'},
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {}, -- Если нужна отдельная панель с буферами/табами
-  extensions = {'fugitive', 'nvim-tree'} -- Расширения для интеграции с nvim-tree и Fugitive
+  tabline = {},
+  extensions = {'fugitive', 'nvim-tree'}
 })
-
