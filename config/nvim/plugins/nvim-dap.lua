@@ -17,7 +17,7 @@ require('dap-go').setup()
 -- cpp adapter
 dap.adapters.lldb = {
   type = 'executable',
-  command = '/home/laraeter/Downloads/extension/adapter/codelldb',
+  command = '/home/laraeter/Downloads/extension/lldb/bin/lldb',
   name = "lldb"
 }
 
@@ -26,7 +26,7 @@ dap.adapters.codelldb = {
   port = "${port}",
   executable = {
     -- Укажите путь к исполняемому файлу codelldb
-    command = '/path/to/your/codelldb/extension/adapter/codelldb',
+    command = '/home/laraeter/Downloads/extension/adapter/codelldb',
     args = {"--port", "${port}"},
   }
 }
