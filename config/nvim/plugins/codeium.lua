@@ -1,3 +1,7 @@
+local highlight = {
+    "RainbowBlack",
+}
+
 require("ibl").setup{
-  scope = { highlight = '#000000' },
+  scope = { highlight = highlight },
 }
