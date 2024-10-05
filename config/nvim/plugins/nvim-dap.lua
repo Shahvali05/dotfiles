@@ -15,34 +15,34 @@ require('dap-python').setup('/run/current-system/sw/bin/python3.11') -- change t
 require('dap-go').setup()
 
 -- cpp adapter
-dap.adapters.lldb = {
-  type = 'executable',
-  command = '/home/laraeter/Downloads/extension/lldb/bin/lldb',
-  name = "lldb"
-}
+-- dap.adapters.lldb = {
+  -- type = 'executable',
+  -- command = '/home/laraeter/Downloads/extension/lldb/bin/lldb',
+  -- name = "lldb"
+-- }
 
 dap.adapters.codelldb = {
   type = 'server',
-  port = 13000,
+  port = "${port}",
   executable = {
     command = '/home/laraeter/Downloads/extension/adapter/codelldb',
-    args = {"--port", "13000"},
+    args = {"--port", "${port}"},
   }
 }
 
-dap.configurations.cpp = {
-  {
-    name = "Launch",
-    type = "codelldb",
-    request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = {},
-  },
-}
+-- dap.configurations.cpp = {
+  -- {
+    -- name = "Launch",
+    -- type = "codelldb",
+    -- request = "launch",
+    -- program = function()
+      -- return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    -- end,
+    -- cwd = '${workspaceFolder}',
+    -- stopOnEntry = false,
+    -- args = {},
+  -- },
+-- }
 
 -- Для других языков можно скопировать и изменить конфигурацию
 dap.configurations.c = dap.configurations.cpp
