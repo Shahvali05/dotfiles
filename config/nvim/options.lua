@@ -27,15 +27,5 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
--- Настройки отступа для Python
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
-  callback = function()
-    vim.opt_local.tabstop = 4
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.expandtab = true
-  end,
-})
-
 --vim.o.foldmethod = 'indent'
 --vim.cmd('autocmd BufReadPost * normal! zR')
