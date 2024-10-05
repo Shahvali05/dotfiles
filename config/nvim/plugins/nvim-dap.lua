@@ -74,12 +74,8 @@ dap.configurations.cpp = {
     request = "launch",
 
     program = function()
-      -- Добавляем слэш в конце пути, если его нет
-      local cwd = vim.fn.getcwd()
-      if not cwd:match("/$") then
-        cwd = cwd .. "/"
-      end
-      return vim.fn.input('', vim.fn.getcwd() , 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      -- return vim.fn.input('', vim.fn.getcwd() , 'file')
     end,
 
     args = {"--log_level=all"},
