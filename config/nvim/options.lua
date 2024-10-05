@@ -23,7 +23,7 @@ vim.g.mapleader = " "
 vim.opt.colorcolumn = "81"
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    vim.cmd('highlight ColorColumn ctermbg=red guibg=#3E1A28')
+    vim.cmd('highlight ColorColumn ctermbg=red guibg=#271D2D')
   end,
 })
 
