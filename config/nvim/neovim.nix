@@ -50,11 +50,11 @@
         codeium-vim
         alpha-nvim
         auto-session
-        #bufferline-nvim
+        # bufferline-nvim
         dressing-nvim
-        #indent-blankline-nvim
+        # indent-blankline-nvim
         nui-nvim
-        #finecmdline
+        # finecmdline
         nvim-treesitter.withAllGrammars
         lualine-nvim
         nvim-autopairs
@@ -68,11 +68,11 @@
         cmp_luasnip
         friendly-snippets
         lspkind-nvim
-        comment-nvim
-        nvim-ts-context-commentstring
+        # comment-nvim
+        # nvim-ts-context-commentstring
         plenary-nvim
         neodev-nvim
-        luasnip
+        luasnip              # добавляет поддержку сниппетов (шаблонов кода)
         telescope-nvim
         todo-comments-nvim
         nvim-tree-lua
@@ -80,7 +80,6 @@
         vim-tmux-navigator
         formatter-nvim
         catppuccin-nvim
-        tabby-nvim
       ];
       extraConfig = ''
         set noemoji
