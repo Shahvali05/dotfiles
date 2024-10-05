@@ -1,4 +1,4 @@
-require("indent_blankline").setup {
+require("indent-blankline").setup {
     char = '│', -- Символ для вертикальной линии
     show_trailing_blankline_indent = false, -- Не показывать отступы для пустых строк
     show_first_indent_level = true, -- Показать линию на первом уровне отступа
