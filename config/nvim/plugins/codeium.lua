@@ -79,3 +79,6 @@ vim.api.nvim_set_keymap(
   "<Esc><Cmd>lua refactoring_menu()<CR>", 
   { noremap = true, silent = true, expr = false }
 )
+
+telescope.load_extension("refactoring")
+
