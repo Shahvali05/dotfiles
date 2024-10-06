@@ -244,9 +244,9 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      serif = [ "LiberationSerif" ];
-      sansSerif = [ "LiberationSans" ];
-      monospace = [ "JetBrainsMono" "FiraCode" ];
+      serif = [ "Liberation Serif" ];
+      sansSerif = [ "Noto Sans" ];
+      monospace = [ "JetBrains Mono" "Fira Code" ];
     };
   };
 
