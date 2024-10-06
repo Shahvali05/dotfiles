@@ -1,17 +1,17 @@
 { pkgs, inputs, ... }:
 
-let
-  lspEndhints = pkgs.vimUtils.buildVimPlugin {
-    pname = "nvim-lsp-endhints";
-    version = "main";
-    src = pkgs.fetchFromGitHub {
-      owner = "chrisgrieser";
-      repo = "nvim-lsp-endhints";
-      rev = "main";  # Вы можете указать конкретный коммит, если нужно
-      sha256 = "dCySjZoCxcCkt8D1UVJF9wQheU8vgmDxkI0JeGURpnQ=";  # Замените на актуальную хэш-сумму
-    };
-  };
-in
+# let
+  # lspEndhints = pkgs.vimUtils.buildVimPlugin {
+    # pname = "nvim-lsp-endhints";
+    # version = "main";
+    # src = pkgs.fetchFromGitHub {
+      # owner = "chrisgrieser";
+      # repo = "nvim-lsp-endhints";
+      # rev = "main";  # Вы можете указать конкретный коммит, если нужно
+      # sha256 = "dCySjZoCxcCkt8D1UVJF9wQheU8vgmDxkI0JeGURpnQ=";  # Замените на актуальную хэш-сумму
+    # };
+  # };
+# in
 
 let
   gopher = pkgs.vimUtils.buildVimPlugin {
@@ -60,7 +60,8 @@ in
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        lspEndhints
+        refactoring-nvim
+        # lspEndhints
         gopher
         # lsp-inlayhints-nvim
         # vim-rooter
