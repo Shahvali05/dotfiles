@@ -75,12 +75,6 @@
     # EDITOR = "emacs";
   };
 
-  programs.kitty = {
-    enable = true;
-    font.name = "FiraCode Nerd Font";
-    font.size = 16;
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
