@@ -178,6 +178,18 @@
     # check
     # gtest
     # -------------------------------------
+    # fonts
+    # -------------------------------------
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
+    # -------------------------------------
     # system's programs
     # -------------------------------------
     networkmanagerapplet
@@ -212,6 +224,9 @@
     })
   ];
 
+  # -------------------------------------------------------------------------------------------------------------
+  # nix-ld
+  # -------------------------------------------------------------------------------------------------------------
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = [
   ];
@@ -229,24 +244,30 @@
   # -------------------------------------------------------------------------------------------------------------
   # fonts
   # -------------------------------------------------------------------------------------------------------------
+  # fonts.packages = with pkgs; [
+    # (nerdfonts.override {
+      # fonts = [ "JetBrainsMono" "DroidSansMono" "FiraCode" ];
+    # })
+    # font-awesome
+    # liberation_ttf
+    # noto-fonts-cjk
+  # ];
+
+  # fonts.fontconfig = {
+    # enable = true;
+    # defaultFonts = {
+      # serif = [];
+      # sansSerif = [];
+      # monospace = [];
+    # };
+  # };
   fonts.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [ "JetBrainsMono" "DroidSansMono" "FiraCode" ];
-    })
-    font-awesome
-    liberation_ttf
-    noto-fonts-cjk
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      serif = [ "Liberation Serif" ];
-      sansSerif = [ "Noto Sans" ];
-      monospace = [ "Fira Code" ];
-    };
-  };
-
+  # -------------------------------------------------------------------------------------------------------------
+  # virtualisation
+  # -------------------------------------------------------------------------------------------------------------
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "laraeter" ];
 
@@ -276,6 +297,10 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  # -------------------------------------------------------------------------------------------------------------
+  # shell
+  # -------------------------------------------------------------------------------------------------------------
   programs.fish.enable = true;
   programs.bash = {
     interactiveShellInit = ''
