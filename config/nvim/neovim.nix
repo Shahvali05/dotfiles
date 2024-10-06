@@ -34,6 +34,15 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        {
+          name = "gopher.nvim";
+          src = pkgs.fetchFromGitHub {
+            owner = "olexsmir";
+            repo = "gopher.nvim";
+            rev = "v0.1.5"; # укажите нужную версию или ветку
+            sha256 = "0j27q1zq9swnl7w78qjrd050xliyyx363indddpkvi4aq4ycai1q"; # укажите правильную хэш-сумму
+          };
+        }
         # lsp-inlayhints-nvim
         # vim-rooter
         cmp-path
