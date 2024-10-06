@@ -13,18 +13,18 @@
   # };
 # in
 
-let
-  gopher = pkgs.vimUtils.buildVimPlugin {
-    pname = "gopher.nvim";
-    version = "1.3.0";
-    src = pkgs.fetchFromGitHub {
-      owner = "olexsmir";
-      repo = "gopher.nvim";
-      rev = "v0.1.5";
-      sha256 = "x+r+D9jCbgq3dmb5DkI1tvNQyETUvrth8rkDPzjjV2U=";
-    };
-  };
-in
+# let
+#   gopher = pkgs.vimUtils.buildVimPlugin {
+#     pname = "gopher.nvim";
+#     version = "1.3.0";
+#     src = pkgs.fetchFromGitHub {
+#       owner = "olexsmir";
+#       repo = "gopher.nvim";
+#       rev = "v0.1.5";
+#       sha256 = "x+r+D9jCbgq3dmb5DkI1tvNQyETUvrth8rkDPzjjV2U=";
+#     };
+#   };
+# in
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -62,7 +62,7 @@ in
       plugins = with pkgs.vimPlugins; [
         refactoring-nvim
         # lspEndhints
-        gopher
+        # gopher
         # lsp-inlayhints-nvim
         # vim-rooter
         cmp-path
@@ -133,6 +133,7 @@ in
         ${builtins.readFile ./plugins/nvim-dap.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
         ${builtins.readFile ./plugins/nvim-ufo.lua}
+        ${builtins.readFile ./plugins/refactoring.lua}
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
