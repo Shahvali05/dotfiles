@@ -1,5 +1,18 @@
 { pkgs, inputs, ... }:
 
+let
+  gopher = pkgs.vimUtils.buildVimPlugin {
+    pname = "gopher.nvim";
+    version = "1.3.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "olexsmir";
+      repo = "gopher.nvim";
+      rev = "v0.1.5";
+      sha256 = "0j27q1zq9swnl7w78qjrd050xliyyx363indddpkvi4aq4ycai1q";
+    };
+  };
+in
+
 {
   nixpkgs.config.allowUnfree = true;
   programs = {
@@ -34,15 +47,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        {
-          name = "gopher.nvim";
-          src = pkgs.fetchFromGitHub {
-            owner = "olexsmir";
-            repo = "gopher.nvim";
-            rev = "v0.1.5"; # укажите нужную версию или ветку
-            sha256 = "0j27q1zq9swnl7w78qjrd050xliyyx363indddpkvi4aq4ycai1q"; # укажите правильную хэш-сумму
-          };
-        }
+        gopher
         # lsp-inlayhints-nvim
         # vim-rooter
         cmp-path
