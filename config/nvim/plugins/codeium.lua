@@ -28,8 +28,8 @@ lspconfig.rust_analyzer.setup({
 })
 
 -- Пример для clangd
-lspconfig.clangd.setup({
-  on_attach = function(client, bufnr)
-    require('lsp-inlayhints').on_attach(client, bufnr)
-  end,
-})
+-- lspconfig.clangd.setup({
+  -- on_attach = function(client, bufnr)
+    -- require('lsp-inlayhints').on_attach(client, bufnr)
+  -- end,
+-- })
