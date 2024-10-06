@@ -34,7 +34,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        lsp-inlayhints-nvim
+        # lsp-inlayhints-nvim
         # vim-rooter
         cmp-path
         colorizer
