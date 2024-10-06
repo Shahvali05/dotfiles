@@ -77,6 +77,12 @@ dap.configurations.cpp = {
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
 
+    -- Запрос аргументов у пользователя
+    args = function()
+      local input_args = vim.fn.input('Arguments: ')
+      return vim.split(input_args, " ") -- Разделяем аргументы пробелами
+    end,
+
     args = {"--log_level=all"},
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
