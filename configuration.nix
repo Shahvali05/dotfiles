@@ -178,18 +178,6 @@
     # check
     # gtest
     # -------------------------------------
-    # fonts
-    # -------------------------------------
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
-    # -------------------------------------
     # system's programs
     # -------------------------------------
     networkmanagerapplet
@@ -244,26 +232,23 @@
   # -------------------------------------------------------------------------------------------------------------
   # fonts
   # -------------------------------------------------------------------------------------------------------------
-  # fonts.packages = with pkgs; [
-    # (nerdfonts.override {
-      # fonts = [ "JetBrainsMono" "DroidSansMono" "FiraCode" ];
-    # })
-    # font-awesome
-    # liberation_ttf
-    # noto-fonts-cjk
-  # ];
-
-  # fonts.fontconfig = {
-    # enable = true;
-    # defaultFonts = {
-      # serif = [];
-      # sansSerif = [];
-      # monospace = [];
-    # };
-  # };
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    (nerdfonts.override {
+      fonts = [ "JetBrainsMono" "DroidSansMono" "FiraCode" ];
+    })
+    font-awesome
+    liberation_ttf
+    noto-fonts-cjk
   ];
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      serif = [ "LiberationSerif" ];
+      sansSerif = [ "LiberationSans" ];
+      monospace = [ "JetBrainsMono" "FiraCode" ];
+    };
+  };
 
   # -------------------------------------------------------------------------------------------------------------
   # virtualisation
