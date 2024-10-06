@@ -1,11 +1,5 @@
 -- Установка плагина
 require('lsp-endhints').setup({
-  inlay_hints = {
-    parameter_hints = true,  -- Включить подсказки для параметров
-    type_hints = true,       -- Включить подсказки типов
-    other_hints = true,      -- Включить прочие подсказки
-    only_current_line = false,  -- Подсказки будут отображаться во всех строках, а не только в текущей
-  },
   -- Использовать под капотом тот же LSP клиент, что и вы настроили
   enabled_clients = { 'pyright', 'nil_ls', 'marksman', 'rust_analyzer', 'yamlls', 'bashls', 'clangd', 'gopls' },
 })
