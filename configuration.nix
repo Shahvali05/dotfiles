@@ -154,7 +154,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    viber
+    # viber
     evince
     blueman
     rofi
