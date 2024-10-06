@@ -83,7 +83,7 @@ dap.configurations.cpp = {
       return vim.split(input_args, " ") -- Разделяем аргументы пробелами
     end,
 
-    args = {"--log_level=all"},
+    --args = {"--log_level=all"},
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
     terminal = 'integrated',
