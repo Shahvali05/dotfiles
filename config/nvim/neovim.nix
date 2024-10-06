@@ -8,7 +8,7 @@ let
       owner = "chrisgrieser";
       repo = "nvim-lsp-endhints";
       rev = "main";  # Вы можете указать конкретный коммит, если нужно
-      sha256 = "x+WELuFGs/LYvQxNsd++XBl5rMJrMuWhU8c7K67CDhk=";  # Замените на актуальную хэш-сумму
+      sha256 = "dCySjZoCxcCkt8D1UVJF9wQheU8vgmDxkI0JeGURpnQ=";  # Замените на актуальную хэш-сумму
     };
   };
 in
