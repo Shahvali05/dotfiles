@@ -154,7 +154,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    # viber
+    pgadmin4
     evince
     blueman
     rofi
