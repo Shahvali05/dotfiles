@@ -156,7 +156,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    dbeaver-bin
+    # dbeaver-bin
     evince
     blueman
     rofi
