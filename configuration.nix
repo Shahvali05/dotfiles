@@ -164,7 +164,6 @@
     telegram-desktop
     obsidian
     swaylock
-    vscode
     aseprite
     discord
     wf-recorder
