@@ -64,7 +64,7 @@
     };
   };
 
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
 
   security.pam.services.greetd.enableGnomeKeyring = true;
 
