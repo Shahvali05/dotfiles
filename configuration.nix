@@ -154,9 +154,6 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    pgmanage
-    pgadmin4-desktopmode
-    pgadmin4
     evince
     blueman
     rofi
@@ -183,6 +180,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    postgresql
     networkmanagerapplet
     pavucontrol
     dbus
