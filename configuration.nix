@@ -64,6 +64,8 @@
     };
   };
 
+  services.flatpak.enable = true;
+
   security.pam.services.greetd.enableGnomeKeyring = true;
 
   # Enable the X11 windowing system.
@@ -135,7 +137,6 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
-    flatpak
     gdb
     swww
     codeium
@@ -212,14 +213,6 @@
         tar -xf $src -C $out/share/icons
       '';
     })
-  ];
-
-  # -------------------------------------------------------------------------------------------------------------
-  # flatpak
-  # -------------------------------------------------------------------------------------------------------------
-  environment.variables.XDG_DATA_DIRS = [
-    "/var/lib/flatpak/exports/share"
-    "/home/laraeter/.local/share/flatpak/exports/share"
   ];
 
   # -------------------------------------------------------------------------------------------------------------
