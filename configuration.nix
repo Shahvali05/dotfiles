@@ -154,6 +154,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    pgadmin4-desktopmode
     pgadmin4
     evince
     blueman
