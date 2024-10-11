@@ -137,7 +137,7 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
-    telnet
+    inetutils
     gdb
     swww
     codeium
