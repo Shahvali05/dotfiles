@@ -156,6 +156,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    simplex-chat-desktop
     libreoffice
     # dbeaver-bin
     evince
