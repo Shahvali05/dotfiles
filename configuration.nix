@@ -262,9 +262,7 @@
   users.extraGroups.vboxusers.members = [ "laraeter" ];
 
   virtualisation.docker.enable = true;
-  users.laraeter.extraGroups = [ "docker" ];
-  # users.extraGroups.docker.members = [ "laraeter" ];
-
+  users.extraGroups.docker.members = [ "laraeter" ];
 
   # -------------------------------------------------------------------------------------------------------------
   # postgresql
