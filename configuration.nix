@@ -261,6 +261,9 @@
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "laraeter" ];
 
+  virtualisation.docker.enable = true;
+  users.extraGroups.docker.members = [ "laraeter" ];
+
   # -------------------------------------------------------------------------------------------------------------
   # postgresql
   # -------------------------------------------------------------------------------------------------------------
