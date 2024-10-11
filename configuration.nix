@@ -156,6 +156,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    libreoffice
     # dbeaver-bin
     evince
     blueman
