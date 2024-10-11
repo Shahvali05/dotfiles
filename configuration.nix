@@ -262,11 +262,8 @@
   users.extraGroups.vboxusers.members = [ "laraeter" ];
 
   virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ "laraeter" ];
-  users.laraeter = {
-    isNormalUser = true;
-    extraGroups = [ "docker" ];
-  };
+  users.laraeter.extraGroups = [ "docker" ];
+  # users.extraGroups.docker.members = [ "laraeter" ];
 
 
   # -------------------------------------------------------------------------------------------------------------
