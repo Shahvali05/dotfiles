@@ -157,6 +157,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    qbittorrent
     simplex-chat-desktop
     libreoffice
     # dbeaver-bin
