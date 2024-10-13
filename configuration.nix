@@ -30,7 +30,7 @@
   networking.networkmanager.enable = true;
 
   # nameservers
-  networking.nameservers = ["ns1.hosting.reg.ru"];
+  networking.nameservers = ["1.1.1.1"];
 
   # Set your time zone.
   time.timeZone = "Europe/Moscow";
