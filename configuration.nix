@@ -157,6 +157,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    logseq
     qbittorrent
     simplex-chat-desktop
     libreoffice
