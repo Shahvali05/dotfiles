@@ -137,8 +137,6 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
-    tftp
-    tftpd-hpa
     inetutils
     gdb
     swww
