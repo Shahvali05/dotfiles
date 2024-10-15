@@ -157,6 +157,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    nekoray
     v2raya
     logseq
     qbittorrent
