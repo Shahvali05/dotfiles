@@ -5,6 +5,11 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 -- window management
 
+-- Прокрутка
+local opts = { silent = true, noremap = true }
+keymap.set("n", "<C-j>", "<cmd>lua vim.lsp.util.scroll(4)<CR>", opts)  -- Прокрутка вниз
+keymap.set("n", "<C-k>", "<cmd>lua vim.lsp.util.scroll(-4)<CR>", opts) -- Прокрутка вверх
+
 -- Перемещение по вкладкам
 keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next tab" })  -- Вперёд по вкладкам
 keymap.set("n", "<S-Tab>", "<cmd>bNext<CR>", { desc = "Go to previous tab" })  -- Назад по вкладкам
