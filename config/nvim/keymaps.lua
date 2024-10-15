@@ -7,8 +7,8 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Прокрутка
 local opts = { silent = true, noremap = true }
-keymap.set("n", "<C-j>", "<cmd>lua vim.lsp.util.scroll(4)<CR>", opts)  -- Прокрутка вниз
-keymap.set("n", "<C-k>", "<cmd>lua vim.lsp.util.scroll(-4)<CR>", opts) -- Прокрутка вверх
+keymap.set("i", "<C-j>", "<cmd>lua vim.lsp.util.scroll(4)<CR>", opts)  -- Прокрутка вниз
+keymap.set("i", "<C-k>", "<cmd>lua vim.lsp.util.scroll(-4)<CR>", opts) -- Прокрутка вверх
 
 -- Перемещение по вкладкам
 keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Go to next tab" })  -- Вперёд по вкладкам
