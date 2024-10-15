@@ -157,6 +157,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    v2raya
     logseq
     qbittorrent
     simplex-chat-desktop
