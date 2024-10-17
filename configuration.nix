@@ -157,8 +157,8 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    pomodoro-gtk
     nekoray
-    v2raya
     logseq
     qbittorrent
     simplex-chat-desktop
