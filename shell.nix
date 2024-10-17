@@ -9,6 +9,7 @@ mkShell {
 
   buildInputs = [
     pkgs.python311Packages.debugpy  # Add debugpy here
+    gtest
     # Add other necessary packages here
   ];
 
