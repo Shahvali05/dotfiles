@@ -157,6 +157,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    vscode
     pomodoro-gtk
     nekoray
     logseq
