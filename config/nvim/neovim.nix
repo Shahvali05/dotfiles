@@ -37,6 +37,7 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+        ccls
         delve
         ctags
         python311Packages.debugpy
