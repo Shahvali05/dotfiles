@@ -41,6 +41,6 @@ cmp.setup({
 })
 
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-    pattern = "*.tpp",
-    command = "setfiletype cpp",
+  pattern = "*.tpp",
+  command = "setfiletype cpp",
 })

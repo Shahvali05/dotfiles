@@ -157,6 +157,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    cmake
     vscode
     pomodoro-gtk
     nekoray
