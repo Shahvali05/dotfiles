@@ -157,6 +157,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    wireguard-tools
     cmake
     vscode
     pomodoro-gtk
