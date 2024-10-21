@@ -137,6 +137,7 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
+    android-tools
     inetutils
     gdb
     swww
