@@ -276,9 +276,10 @@
 
   programs.adb.enable = true;
   users = {
-  laraeter = {
-    isNormalUser = true;
-    extraGroups = [ "adbusers" "kvm" ];
+    laraeter = {
+      isNormalUser = true;
+      extraGroups = [ "adbusers" "kvm" ];
+    };
   };
 
   # -------------------------------------------------------------------------------------------------------------
