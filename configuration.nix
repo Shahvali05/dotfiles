@@ -274,6 +274,9 @@
   virtualisation.docker.enable = true;
   users.extraGroups.docker.members = [ "laraeter" ];
 
+  programs.adb.enable = true;
+  users.laraeter.extraGroups = ["adbusers kvm"];
+
   # -------------------------------------------------------------------------------------------------------------
   # postgresql
   # -------------------------------------------------------------------------------------------------------------
