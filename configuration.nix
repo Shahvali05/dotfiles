@@ -275,7 +275,11 @@
   users.extraGroups.docker.members = [ "laraeter" ];
 
   programs.adb.enable = true;
-  users.laraeter.extraGroups = ["adbusers kvm"];
+  users = {
+  laraeter = {
+    isNormalUser = true;
+    extraGroups = [ "adbusers" "kvm" ];
+  };
 
   # -------------------------------------------------------------------------------------------------------------
   # postgresql
