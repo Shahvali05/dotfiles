@@ -158,7 +158,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    helvum
+    qpwgraph
     steam
     cmake
     vscode
