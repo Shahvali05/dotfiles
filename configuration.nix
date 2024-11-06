@@ -158,6 +158,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    filezilla
     qpwgraph
     steam
     cmake
