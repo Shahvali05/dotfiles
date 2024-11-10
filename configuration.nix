@@ -283,10 +283,16 @@
   # -------------------------------------------------------------------------------------------------------------
   services.postgresql = {
     enable = true;
+
+    # Указываем имя базы данных, которая будет создана при инициализации.
     ensureDatabases = [ "mydatabase" ];
+
+    # Устанавливаем метод аутентификации. 
+    # Здесь `trust` позволит всем локальным пользователям подключаться без пароля.
+    # Убедитесь, что это подходит для ваших нужд безопасности.
     authentication = pkgs.lib.mkOverride 10 ''
-      #type database  DBuser  auth-method
-      local all       all     trust
+      # type  database  user  auth-method
+      local   all       all   trust
     '';
   };
 
