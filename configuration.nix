@@ -279,7 +279,7 @@
   programs.adb.enable = true;
 
   # -------------------------------------------------------------------------------------------------------------
-  # postgresql
+  # SQL
   # -------------------------------------------------------------------------------------------------------------
   services.postgresql = {
     enable = true;
@@ -294,6 +294,11 @@
       # type  database  user  auth-method
       local   all       all   trust
     '';
+  };
+
+  services.mysql = {
+    enable = true;
+    package = pkgs.mysql;  # или pkgs.mariadb, если предпочитаете MariaDB
   };
 
   # Some programs need SUID wrappers, can be configured further or are
