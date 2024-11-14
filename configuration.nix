@@ -196,6 +196,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    odin
     postgresql
     networkmanagerapplet
     pavucontrol
