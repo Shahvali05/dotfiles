@@ -196,6 +196,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    heimdall
     odin
     postgresql
     networkmanagerapplet
