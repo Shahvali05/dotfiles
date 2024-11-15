@@ -304,6 +304,21 @@
     package = pkgs.mysql;  # или pkgs.mariadb, если предпочитаете MariaDB
   };
 
+  # -------------------------------------------------------------------------------------------------------------
+  # waydroid
+  # -------------------------------------------------------------------------------------------------------------
+  # Включение поддержки cgroups v1 и v2
+  boot.kernelParams = [
+    "cgroup_enable=memory"
+    "swapaccount=1"
+  ];
+
+  # Включение системного сервиса для LXC
+  systemd.services.lxcfs.enable = true;
+
+  # Поддержка контейнеров
+  virtualisation.lxc.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
