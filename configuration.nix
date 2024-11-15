@@ -159,6 +159,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    keepassxc
     filezilla
     qpwgraph
     steam
