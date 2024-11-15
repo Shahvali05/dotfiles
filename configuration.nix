@@ -197,7 +197,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
-    unstable.waydroid
+    waydroid
     heimdall odin
     postgresql
     networkmanagerapplet
