@@ -197,8 +197,8 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
-    heimdall
-    odin
+    waydroid
+    heimdall odin
     postgresql
     networkmanagerapplet
     pavucontrol
