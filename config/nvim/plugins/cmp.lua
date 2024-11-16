@@ -2,6 +2,11 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
+-- Настройка vim-dadbod
+vim.g.db_ui_auto_execute_table_helpers = 1
+vim.g.db_ui_use_nerd_fonts = 1
+vim.g.db_ui_save_location = '~/.config/nvim/db_ui'
+
 -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -29,6 +34,7 @@ cmp.setup({
     { name = "luasnip" }, -- snippets
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
+    { name = 'vim-dadbod-completion' }
   }),
 
   -- configure lspkind for vs-code like pictograms in completion menu
