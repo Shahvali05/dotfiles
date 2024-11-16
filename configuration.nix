@@ -197,6 +197,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    openjdk11
     gitlab-runner
     waydroid
     heimdall
