@@ -159,6 +159,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    pgadmin4
     keepassxc
     filezilla
     qpwgraph
