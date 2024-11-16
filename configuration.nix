@@ -159,7 +159,6 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    dbeaver
     # pgadmin4
     keepassxc
     filezilla
@@ -173,12 +172,11 @@
     qbittorrent
     simplex-chat-desktop
     libreoffice
-    # dbeaver-bin
+    dbeaver-bin
     evince
     blueman
     rofi
-    typora
-    hyprpicker
+    typora hyprpicker
     telegram-desktop
     obsidian
     swaylock
