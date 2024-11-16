@@ -197,8 +197,10 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    gitlab-runner
     waydroid
-    heimdall odin
+    heimdall
+    odin
     postgresql
     networkmanagerapplet
     pavucontrol
