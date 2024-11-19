@@ -197,6 +197,7 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
+    v4l-utils
     openjdk11
     gitlab-runner
     waydroid
