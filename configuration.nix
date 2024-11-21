@@ -159,7 +159,6 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    pgadmin4
     python312Packages.pgcli
     keepassxc
     filezilla
