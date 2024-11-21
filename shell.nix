@@ -5,11 +5,13 @@ mkShell {
   NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
     glibc
     zlib
+    ncurses
   ];
 
   buildInputs = [
     pkgs.python311Packages.debugpy  # Add debugpy here
     gtest
+    ncurses
     # Add other necessary packages here
   ];
 
