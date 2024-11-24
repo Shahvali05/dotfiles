@@ -159,6 +159,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    obs-studio
     python312Packages.pgcli
     keepassxc
     filezilla
