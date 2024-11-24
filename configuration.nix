@@ -198,9 +198,9 @@
     # -------------------------------------
     # system's programs
     # -------------------------------------
-    ffmpeg_7
-    ffmpeg_7-full
-    ffmpeg_7-headless
+    opus
+    libvpx
+    ffmpeg
     v4l-utils
     openjdk11
     gitlab-runner
