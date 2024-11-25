@@ -159,7 +159,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
-    chatgpt-cli
+    rPackages.chatgpt
     obs-studio
     python312Packages.pgcli
     keepassxc
