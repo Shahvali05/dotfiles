@@ -295,6 +295,8 @@
   services.postgresql = {
     enable = true;
 
+    package = pkgs.postgresql_14;
+
     # Указываем имя базы данных, которая будет создана при инициализации.
     ensureDatabases = [ "mydatabase" ];
 
