@@ -137,6 +137,7 @@
     # -------------------------------------
     # console's programs
     # -------------------------------------
+    tree
     mysql-workbench
     android-tools
     inetutils
@@ -197,8 +198,7 @@
     # gtest
     # -------------------------------------
     # system's programs
-    # -------------------------------------
-    libvpx
+    # ------------------------------------- libvpx
     ffmpeg
     v4l-utils
     openjdk11
