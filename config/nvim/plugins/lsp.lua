@@ -1,14 +1,6 @@
 local lspconfig = require("lspconfig")
 
-require'lspconfig'.pyright.setup{
-  settings = {
-    python = {
-      analysis = {
-        extraPaths = { "." }, -- Путь к директории с файлами
-      },
-    },
-  }
-}
+require'lspconfig'.pyright.setup{}
 require'lspconfig'.nil_ls.setup{}
 require'lspconfig'.marksman.setup{}
 require'lspconfig'.rust_analyzer.setup{}
