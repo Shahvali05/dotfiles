@@ -20,6 +20,11 @@
   # network
   # -------------------------------------------------------------------------------------------------------------
   networking.hostName = "nixos"; # Define your hostname.
+  networking.proxy = {
+    http = "http://127.0.0.1:2081";
+    https = "http://127.0.0.1:2081";
+    socks5 = "socks://127.0.0.1:2080";
+  };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
