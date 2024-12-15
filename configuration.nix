@@ -203,7 +203,7 @@
     v4l-utils
     openjdk11
     gitlab-runner
-    waydroid
+    # waydroid
     heimdall
     odin
     postgresql
@@ -320,7 +320,7 @@
   # waydroid
   # -------------------------------------------------------------------------------------------------------------
   # Подключение Waydroid
-  # services.waydroid.enable = true;
+  services.waydroid.enable = true;
 
   # Обеспечение работы OpenGL (графический рендеринг)
   hardware.opengl.enable = true;
