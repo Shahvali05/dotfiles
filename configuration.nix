@@ -326,7 +326,7 @@
   hardware.opengl.enable = true;
 
   # Подключение модулей ядра, необходимых для Waydroid
-  boot.kernelModules = [ "binder_linux" "ashmem_linux" ];
+  # boot.kernelModules = [ "binder_linux" "ashmem_linux" ];
 
   # Включение поддержки cgroups v1 и v2
   boot.kernelParams = [
