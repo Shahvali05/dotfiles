@@ -1,4 +1,6 @@
 local keymap = vim.keymap
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 -- clear search highlights
@@ -24,6 +26,12 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 keymap.set("n", "<F3>", "<cmd>Commentary<CR>", { desc = "Comment" })
 keymap.set("v", "<F3>", ":Commentary<CR>", { desc = "Comment Visual Selection" })
 keymap.set("n", "<F8>", "<cmd>Tagbar<CR>", { desc = "Tagbar" })
+
+-- Открыть терминал снизу
+map("n", "<leader>t", ":botright split | resize 15 | terminal<CR>", opts)
+
+-- Закрыть терминал (в режиме терминала)
+map("t", "<Esc>", [[<C-\><C-n>:q<CR>]], opts)
 
 -- Определяем таблицу с горячими клавишами
 local keymap_list = {
