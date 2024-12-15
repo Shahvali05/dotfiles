@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <nixos-unstable/nixos/modules/services/misc/waydroid.nix>
     ];
 
   # -------------------------------------------------------------------------------------------------------------
@@ -320,7 +321,7 @@
   # waydroid
   # -------------------------------------------------------------------------------------------------------------
   # Подключение Waydroid
-  # services.waydroid.enable = true;
+  services.waydroid.enable = true;
 
   # Обеспечение работы OpenGL (графический рендеринг)
   hardware.opengl.enable = true;
