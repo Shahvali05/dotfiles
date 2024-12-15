@@ -323,7 +323,7 @@
   # services.waydroid.enable = true;
 
   # Обеспечение работы OpenGL (графический рендеринг)
-  # hardware.opengl.enable = true;
+  hardware.opengl.enable = true;
 
   # Подключение модулей ядра, необходимых для Waydroid
   boot.kernelModules = [ "binder_linux" "ashmem_linux" ];
