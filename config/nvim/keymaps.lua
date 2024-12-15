@@ -30,8 +30,7 @@ keymap.set("n", "<F8>", "<cmd>Tagbar<CR>", { desc = "Tagbar" })
 -- Открыть терминал снизу и сразу перейти в режим Insert
 map("n", "<leader>c", ":botright split | resize 15 | terminal | startinsert<CR>", opts)
 
--- Закрыть терминал (в режиме терминала) и удалить его из списка буферов
-map("t", "<Esc>", [[<C-\><C-n>:bd!<CR>]], opts)
+map("t", "<Esc>", [[<C-\><C-n>:q<CR>]], opts)
 
 -- Определяем таблицу с горячими клавишами
 local keymap_list = {
