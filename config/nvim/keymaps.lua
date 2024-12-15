@@ -28,7 +28,7 @@ keymap.set("v", "<F3>", ":Commentary<CR>", { desc = "Comment Visual Selection" }
 keymap.set("n", "<F8>", "<cmd>Tagbar<CR>", { desc = "Tagbar" })
 
 -- Открыть терминал снизу
-map("n", "<leader>t", ":botright split | resize 15 | terminal<CR>", opts)
+map("n", "<leader>c", ":botright split | resize 15 | terminal<CR>", opts)
 
 -- Закрыть терминал (в режиме терминала) и удалить его из списка буферов
 map("t", "<Esc>", [[<C-\><C-n>:bd!<CR>]], opts)
