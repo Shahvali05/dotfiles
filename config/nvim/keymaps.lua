@@ -27,10 +27,11 @@ keymap.set("n", "<F3>", "<cmd>Commentary<CR>", { desc = "Comment" })
 keymap.set("v", "<F3>", ":Commentary<CR>", { desc = "Comment Visual Selection" })
 keymap.set("n", "<F8>", "<cmd>Tagbar<CR>", { desc = "Tagbar" })
 
--- Открыть терминал снизу и сразу перейти в режим Insert
-map("n", "<leader>c", ":botright split | resize 15 | terminal | startinsert<CR>", opts)
+-- Открыть терминал снизу
+map("n", "<leader>t", ":botright split | resize 15 | terminal<CR>", opts)
 
-map("t", "<Esc>", [[<C-\><C-n>:q<CR>]], opts)
+-- Закрыть терминал (в режиме терминала) и удалить его из списка буферов
+map("t", "<Esc>", [[<C-\><C-n>:bd!<CR>]], opts)
 
 -- Определяем таблицу с горячими клавишами
 local keymap_list = {
