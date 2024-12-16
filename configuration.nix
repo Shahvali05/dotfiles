@@ -160,6 +160,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    elements
     element
     obs-studio
     python312Packages.pgcli
