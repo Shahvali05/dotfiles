@@ -160,6 +160,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    element-desktop
     elements
     element
     obs-studio
