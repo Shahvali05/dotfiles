@@ -160,6 +160,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    element
     obs-studio
     python312Packages.pgcli
     keepassxc
