@@ -26,20 +26,6 @@
 #   };
 # in
 
-let
-  avante-nvim = pkgs.vimUtils.buildVimPlugin {
-    pname = "avante.nvim";
-    version = "0.0.14";
-    src = pkgs.fetchFromGitHub {
-      owner = "yetone";
-      repo = "avante.nvim";
-      rev = "main";
-      sha256 = "Ck9ZlX47kmOzRE+RPEVEf61sJy7/ez1EWVXx31WnAXg=";
-    };
-  };
-in
-
-
 {
   nixpkgs.config.allowUnfree = true;
   programs = {
@@ -75,7 +61,6 @@ in
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        avante-nvim
         vim-dadbod
         vim-dadbod-ui
         vim-dadbod-completion
