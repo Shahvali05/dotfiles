@@ -61,6 +61,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        avante-nvim
         vim-dadbod
         vim-dadbod-ui
         vim-dadbod-completion
