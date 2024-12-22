@@ -26,6 +26,20 @@
 #   };
 # in
 
+let
+  avante-nvim = pkgs.vimUtils.buildVimPlugin {
+    pname = "avante.nvim";
+    version = "0.0.14"; # Укажите актуальную версию, если она известна
+    src = pkgs.fetchFromGitHub {
+      owner = "yetone"; # Укажите имя владельца репозитория, например, "username"
+      repo = "avante.nvim";
+      rev = "main"; # Или замените на актуальный commit или tag
+      sha256 = "0d4b8a7rzh7vw7hqlgnz6hdz82jy1sp8rxm39l4i48f0fg8jkbs1"; # Укажите корректный SHA256
+    };
+  };
+in
+
+
 {
   nixpkgs.config.allowUnfree = true;
   programs = {
