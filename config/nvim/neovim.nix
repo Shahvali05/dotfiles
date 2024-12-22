@@ -29,12 +29,12 @@
 let
   avante-nvim = pkgs.vimUtils.buildVimPlugin {
     pname = "avante.nvim";
-    version = "0.0.14"; # Укажите актуальную версию, если она известна
+    version = "0.0.14";
     src = pkgs.fetchFromGitHub {
-      owner = "yetone"; # Укажите имя владельца репозитория, например, "username"
+      owner = "yetone";
       repo = "avante.nvim";
-      rev = "main"; # Или замените на актуальный commit или tag
-      sha256 = "0d4b8a7rzh7vw7hqlgnz6hdz82jy1sp8rxm39l4i48f0fg8jkbs1"; # Укажите корректный SHA256
+      rev = "main";
+      sha256 = "Ck9ZlX47kmOzRE+RPEVEf61sJy7/ez1EWVXx31WnAXg=";
     };
   };
 in
