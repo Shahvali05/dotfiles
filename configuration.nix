@@ -172,7 +172,7 @@
     cmake
     vscode
     # pomodoro-gtk
-    openpomodoro-cli
+    pom
     nekoray
     logseq
     qbittorrent
