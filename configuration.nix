@@ -171,7 +171,8 @@
     steam
     cmake
     vscode
-    pomodoro-gtk
+    # pomodoro-gtk
+    openpomodoro-cli
     nekoray
     logseq
     qbittorrent
