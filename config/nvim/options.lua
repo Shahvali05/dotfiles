@@ -28,6 +28,11 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 -- vim.api.nvim_set_keymap('v', 'p', ':let @+=@0<CR>p', { noremap = true, silent = true })
+-- Настроить нажатие > в Visual режиме для добавления табуляции
+vim.api.nvim_set_keymap('x', '>', '>gv', { noremap = true, silent = true })
+
+-- Настроить нажатие < в Visual режиме для уменьшения отступа
+vim.api.nvim_set_keymap('x', '<', '<gv', { noremap = true, silent = true })
 
 --vim.o.foldmethod = 'indent'
 --vim.cmd('autocmd BufReadPost * normal! zR')
