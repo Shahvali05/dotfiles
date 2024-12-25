@@ -37,6 +37,7 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+        python311Packages.jedi-language-server
         ccls
         delve
         ctags
