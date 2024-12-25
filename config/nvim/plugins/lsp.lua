@@ -1,6 +1,12 @@
 local lspconfig = require("lspconfig")
 
-require'lspconfig'.jedi_language_server.setup{}
+require'lspconfig'.jedi_language_server.setup{
+  settings = {
+    jedi = {
+      useLibraryCodeForTypes = true,
+    },
+  }
+}
 -- Включаем диагностику, но отключаем обновление в режиме вставки
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -10,8 +16,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
--- Дополнительно для улучшенной подсветки ошибок
--- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float({ focusable = false })]])
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    update_in_insert = false,
+    severity_sort = true,  -- Сортировать ошибки по серьезности
+    display_diagnostics = true,
+  }
+)
+
+vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float({ focusable = false })]])
 
 -- require'lspconfig'.pyright.setup{}
 require'lspconfig'.nil_ls.setup{}
