@@ -37,9 +37,6 @@
       vimdiffAlias = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
-        python311Packages.python-lsp-server
-        python311Packages.pylsp-rope
-        python311Packages.jedi-language-server
         ccls
         delve
         ctags
@@ -65,7 +62,6 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
-        lsp-colors-nvim
         null-ls-nvim
         vim-dadbod
         vim-dadbod-ui
