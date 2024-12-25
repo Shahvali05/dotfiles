@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
-vim.api.nvim_set_keymap('v', 'p', ':let @+=@0<CR>p', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('v', 'p', ':let @+=@0<CR>p', { noremap = true, silent = true })
 
 --vim.o.foldmethod = 'indent'
 --vim.cmd('autocmd BufReadPost * normal! zR')
