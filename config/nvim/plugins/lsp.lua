@@ -1,5 +1,16 @@
 local lspconfig = require("lspconfig")
 
+require'lspconfig'.pylsp.setup{
+  settings = {
+    pylsp = {
+      plugins = {
+        rope = {
+          enable = true,  -- Включаем поддержку rope
+        },
+      },
+    },
+  },
+}
 require'lspconfig'.jedi_language_server.setup{}
 -- require'lspconfig'.pyright.setup{}
 require'lspconfig'.nil_ls.setup{}
