@@ -63,6 +63,7 @@
         marksman
       ];
       plugins = with pkgs.vimPlugins; [
+        lsp-colors-nvim
         null-ls-nvim
         vim-dadbod
         vim-dadbod-ui
