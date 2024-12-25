@@ -1,7 +1,13 @@
 local lspconfig = require("lspconfig")
 
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.nil_ls.setup{}
+-- require'lspconfig'.pyright.setup{}
+require'lspconfig'.nil_ls.setup({
+  sources = {
+    null_ls.builtins.diagnostics.mypy.with({
+      extra_args = {"--ignore-missing-imports"}, -- Опционально
+    }),
+  },
+})
 require'lspconfig'.marksman.setup{}
 require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.yamlls.setup{}
