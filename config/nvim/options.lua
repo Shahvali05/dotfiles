@@ -33,9 +33,5 @@ vim.api.nvim_set_keymap('x', '>', '>gv', { noremap = true, silent = true })
 -- Настроить нажатие < в Visual режиме для уменьшения отступа
 vim.api.nvim_set_keymap('x', '<', '<gv', { noremap = true, silent = true })
 
--- Поменять роли p и P
-vim.api.nvim_set_keymap('n', 'p', 'P', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'P', 'p', { noremap = true, silent = true })
-
 --vim.o.foldmethod = 'indent'
 --vim.cmd('autocmd BufReadPost * normal! zR')
