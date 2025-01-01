@@ -160,6 +160,7 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    easyeffects
     element-desktop
     elements
     element
