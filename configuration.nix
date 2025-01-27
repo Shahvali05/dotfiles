@@ -160,6 +160,8 @@
     # -------------------------------------
     # desktop's programs
     # -------------------------------------
+    code-cursor
+    github-desktop
     easyeffects
     element-desktop
     elements
