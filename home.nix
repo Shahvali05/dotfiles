@@ -4,6 +4,8 @@
   imports = [
     ./config/nvim/neovim.nix
     ./config/dunst/dunst.nix
+    ./config/hypr/default.nix
+    ./config/waybar/default.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -72,6 +74,10 @@
   #  /etc/profiles/per-user/laraeter/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    GDK_BACKEND = "wayland";
     # EDITOR = "emacs";
   };
 
