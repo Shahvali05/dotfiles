@@ -67,10 +67,6 @@
         vim-dadbod-ui
         vim-dadbod-completion
         refactoring-nvim
-        # lspEndhints
-        # gopher
-        # lsp-inlayhints-nvim
-        # vim-rooter
         cmp-path
         colorizer
         nvim-cokeline
@@ -87,11 +83,9 @@
         codeium-vim
         alpha-nvim
         auto-session
-        # bufferline-nvim
         dressing-nvim
         indent-blankline-nvim
         nui-nvim
-        # finecmdline
         nvim-treesitter.withAllGrammars
         lualine-nvim
         nvim-autopairs
@@ -129,8 +123,6 @@
         ${builtins.readFile ./plugins/blankline.lua}
         ${builtins.readFile ./plugins/catppuccin.lua}
         ${builtins.readFile ./plugins/cmp.lua}
-        ${builtins.readFile ./plugins/codeium.lua}
-        ${builtins.readFile ./plugins/cokeline.lua}
         ${builtins.readFile ./plugins/comment.lua}
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/lsp.lua}
