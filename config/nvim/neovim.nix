@@ -48,7 +48,6 @@
         clang-tools
         clang
         lua-language-server
-        # gofmt
         gopls
         xclip
         wl-clipboard
@@ -57,7 +56,6 @@
         rust-analyzer
         nodePackages.bash-language-server
         yaml-language-server
-        # pyright
         mypy
         marksman
       ];
