@@ -4,8 +4,8 @@
   imports = [
     ./config/nvim/neovim.nix
     ./config/dunst/dunst.nix
-    ./config/hypr/default.nix
-    ./config/waybar/default.nix
+    # ./config/hypr/default.nix
+    # ./config/waybar/default.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
