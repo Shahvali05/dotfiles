@@ -10,7 +10,7 @@ require('lualine').setup {
       { 'mode', fmt = function(str) return str:sub(1,1) end }, -- Только первая буква режима (N, I, V)
     },
     lualine_b = { 
-      { 'branch', icon = '', fmt = function(str) return str:sub(1,10)..'…' end }, -- Укороченная ветка Git
+      { 'branch', icon = '', fmt = function(str) return str:sub(1,10)..' ' end }, -- Укороченная ветка Git
     },
     lualine_c = { 
       { 
