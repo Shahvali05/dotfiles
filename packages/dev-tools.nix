@@ -42,7 +42,7 @@
     lua-language-server
     gcc
     nodejs
-    python314
+    python3
     go
   ];
 }
