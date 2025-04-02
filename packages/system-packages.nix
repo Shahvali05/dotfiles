@@ -45,6 +45,7 @@
     wf-recorder
     chromium
     xfce.thunar
+    onlyoffice-desktopeditors
   ] ++ [
     # Custom cursor
     (pkgs.stdenv.mkDerivation {
