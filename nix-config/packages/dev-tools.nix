@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     # Development tools
-    mysql-workbench
     android-tools
     inetutils
     gdb

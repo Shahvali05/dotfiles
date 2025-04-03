@@ -1,18 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
-        user = "greeter";
-      };
-    };
-  };
-
-  security.pam.services.greetd.enableGnomeKeyring = true;
-  
   services.printing.enable = true;
   
   hardware.pulseaudio.enable = false;
@@ -34,6 +22,15 @@
     '';
   };
 
-  services.mysql.enable = true;
-  services.mysql.package = pkgs.mysql;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
+        user = "greeter";
+      };
+    };
+  };
+
+  security.pam.services.greetd.enableGnomeKeyring = true;
 }
