@@ -6,7 +6,7 @@
   environment.systemPackages = with pkgs; [
     waybar
     swww
-    swaylock
+    hyprlock
     wofi
     hyprpicker
     xdg-desktop-portal-hyprland

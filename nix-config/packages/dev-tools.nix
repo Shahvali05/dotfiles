@@ -19,6 +19,9 @@
     aseprite
     
     # System utilities
+    gtk3
+    gtk4
+    xdg-desktop-portal-gtk
     fuse
     ffmpeg
     v4l-utils

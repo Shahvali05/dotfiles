@@ -10,6 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     # Console tools
+    lxappearance
     kitty
     tree
     unzip
@@ -40,7 +41,6 @@
     rofi
     telegram-desktop
     obsidian
-    discord
     wf-recorder
     chromium
     xfce.thunar

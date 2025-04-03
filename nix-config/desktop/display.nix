@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  services.xserver.enable = false;
+  # services.xserver.enable = false;
   # services.xserver.desktopManager.gnome.enable = true;
   
   # services.xserver.xkb = {
