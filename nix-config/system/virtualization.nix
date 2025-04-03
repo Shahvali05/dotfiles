@@ -7,7 +7,7 @@
   virtualisation.lxc.enable = true;
   
   programs.adb.enable = true;
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   
   systemd.services.lxcfs.enable = true;
   

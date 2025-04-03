@@ -32,7 +32,6 @@
     filezilla
     steam
     vscode
-    logseq
     qbittorrent
     libreoffice
     dbeaver-bin
