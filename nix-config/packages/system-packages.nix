@@ -4,9 +4,9 @@
   programs.firefox.enable = true;
   programs.nix-ld.enable = true;
   
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-27.3.11"
-  ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "electron-27.3.11"
+  # ];
 
   environment.systemPackages = with pkgs; [
     # Console tools
@@ -44,15 +44,5 @@
     wf-recorder
     chromium
     xfce.thunar
-  ] ++ [
-    # Custom cursor
-    (pkgs.stdenv.mkDerivation {
-      name = "my-custom-cursor";
-      src = /home/laraeter/.icons/Bibata-Modern-Ice.tar.xz;
-      installPhase = ''
-        mkdir -p $out/share/icons
-        tar -xf $src -C $out/share/icons
-      '';
-    })
   ];
 }
