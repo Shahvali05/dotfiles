@@ -10,7 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     # Console tools
-    lxappearance
+    nwg-look
     kitty
     tree
     unzip
@@ -26,6 +26,9 @@
     pamixer
     
     # Desktop programs
+    pomodoro-gtk
+    bottles
+    gthumb
     github-desktop
     element-desktop
     obs-studio
