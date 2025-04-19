@@ -14,7 +14,7 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    nixosConfigurations.nixos-laraeter = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
         ./configuration.nix
