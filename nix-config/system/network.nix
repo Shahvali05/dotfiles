@@ -19,4 +19,6 @@
     LC_TELEPHONE = "ru_RU.UTF-8";
     LC_TIME = "ru_RU.UTF-8";
   };
+
+  networking.firewall.allowedTCPPorts = [ 8000 ];
 }

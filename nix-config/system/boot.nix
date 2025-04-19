@@ -6,6 +6,8 @@
   
   boot.kernelModules = [ "binder_linux" "ashmem_linux" "fuse" ];
   boot.kernelParams = [
+    "iommu=pt"
+    "amd_iommu=on"
     "cgroup_enable=memory"
     "swapaccount=1"
   ];

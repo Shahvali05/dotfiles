@@ -1,7 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  services.dbus.enable = true;
   services.printing.enable = true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
   
   security.rtkit.enable = true;
   services.pipewire = {

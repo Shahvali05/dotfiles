@@ -1,7 +1,7 @@
 CONFIG_PATH := $(shell pwd)/configuration.nix
 
 rebuild:
-	sudo nixos-rebuild switch -I nixos-config=$(CONFIG_PATH)
+	sudo nixos-rebuild switch --flake .
 
 test:
 	nixos-rebuild test -I nixos-config=$(CONFIG_PATH)

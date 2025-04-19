@@ -4,12 +4,14 @@
   programs.firefox.enable = true;
   programs.nix-ld.enable = true;
   
-  # nixpkgs.config.permittedInsecurePackages = [
-  #   "electron-27.3.11"
-  # ];
+  nixpkgs.config.permittedInsecurePackages = [
+    # "electron-27.3.11"
+  ];
 
   environment.systemPackages = with pkgs; [
     # Console tools
+    playerctl
+    ffmpeg
     nwg-look
     kitty
     tree
@@ -26,11 +28,15 @@
     pamixer
     
     # Desktop programs
+    lmstudio
+    clapper
+    alacritty
+    # virt-manager
+    zathura
     pomodoro-gtk
     bottles
     gthumb
     github-desktop
-    element-desktop
     obs-studio
     keepassxc
     filezilla
@@ -38,9 +44,7 @@
     vscode
     qbittorrent
     libreoffice
-    dbeaver-bin
-    evince
-    blueman
+    # blueman
     rofi
     telegram-desktop
     obsidian

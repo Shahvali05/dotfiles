@@ -2,19 +2,25 @@
 
 let
   python-with-my-plugins = pkgs.python312.withPackages (ps: with ps; [
+    debugpy
     python-lsp-server
     pylsp-mypy
     mypy
+    ruff
   ]);
 in
 {
   environment.systemPackages = with pkgs; [
     # For neovim (temp)
     bash-language-server
+    vscode-langservers-extracted
     python-with-my-plugins
-    ruff
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.eslint
 
     # Development tools
+    # qemu
     android-tools
     inetutils
     gdb
@@ -31,6 +37,8 @@ in
     aseprite
     
     # System utilities
+    bluez
+    libvirt
     gvfs
     ntfs3g
     udisks2
@@ -40,7 +48,6 @@ in
     gtk4
     xdg-desktop-portal-gtk
     fuse
-    ffmpeg
     v4l-utils
     openjdk11
     gitlab-runner
