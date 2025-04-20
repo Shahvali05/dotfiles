@@ -17,6 +17,7 @@
         cmp-nvim-lsp
         cmp-buffer
         cmp_luasnip
+        indent-blankline-nvim
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
