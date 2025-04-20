@@ -25,6 +25,7 @@
         # vim-commentary
         todo-comments-nvim
         nvim-ts-context-commentstring
+        nvim-lspconfig
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
