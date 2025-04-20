@@ -149,6 +149,33 @@ local lsp_servers = {
       }
     }
   },
+
+  gopls = {
+    setup = {
+      on_attach = configs.on_attach,
+      capabilities = configs.capabilities,
+      root_dir = lspconfig.util.root_pattern('go.mod', '.git') or vim.fn.getcwd(),
+      filetypes = { "go", "gomod", "gowork", "gotmpl" },
+      settings = {
+        gopls = {
+          analyses = {
+            unusedparams = true,
+            shadow = true,
+          },
+          staticcheck = true,
+          gofumpt = true, -- Для строгого форматирования
+          hints = {
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
+          },
+        },
+      },
+    },
+  },
 }
 
 
@@ -162,9 +189,10 @@ local function setup()
   lspconfig.ruff.setup(lsp_servers.ruff.setup)
   lspconfig.pyright.setup(lsp_servers.pyright.setup)
   lspconfig.jsonls.setup(lsp_servers.jsonls.setup)
-  lspconfig.ts_ls.setup(lsp_servers.ts_ls.setup) -- Заменяем tsserver на ts_ls
+  lspconfig.ts_ls.setup(lsp_servers.ts_ls.setup)
   lspconfig.eslint.setup(lsp_servers.eslint.setup)
   lspconfig.html.setup(lsp_servers.html.setup)
+  lspconfig.gopls.setup(lsp_servers.gopls.setup)
 
   -- Настройка отображения диагностики
   vim.diagnostic.config({
