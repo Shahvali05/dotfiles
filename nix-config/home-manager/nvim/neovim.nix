@@ -20,6 +20,7 @@
         cmp_luasnip
         indent-blankline-nvim
         lspkind-nvim
+        colorizer
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
