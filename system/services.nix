@@ -34,4 +34,18 @@
       };
     };
   };
+
+  systemd.services.zapret = {
+    description = "Zapret DPI bypass service";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "/opt/zapret/init.d/sysv/zapret start";
+      ExecStop = "/opt/zapret/init.d/sysv/zapret stop";
+      ExecReload = "/opt/zapret/init.d/sysv/zapret restart";
+      Environment = "PATH=/run/current-system/sw/bin:/nix/store/*-iptables*/bin:/nix/store/*-nftables*/bin:/nix/store/*-ipset*/bin";
+    };
+  };
 }
