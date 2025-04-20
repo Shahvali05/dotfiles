@@ -36,30 +36,26 @@ vim.api.nvim_set_keymap(
   "v",
   "<leader>re",
   "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
-  { noremap = true, silent = true, expr = false },
-  { desc = "Извлечь функцию из выбранного кода" }
+  { noremap = true, silent = true, expr = false, desc = "Извлечь функцию из выбранного кода" }
 )
 
 vim.api.nvim_set_keymap(
   "v",
   "<leader>rf",
   "<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
-  { noremap = true, silent = true, expr = false },
-  { desc = "Извлечь функцию в отдельный файл" }
+  { noremap = true, silent = true, expr = false, desc = "Извлечь функцию в отдельный файл" }
 )
 
 vim.api.nvim_set_keymap(
   "v",
   "<leader>rv",
   "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
-  { noremap = true, silent = true, expr = false },
-  { desc = "Извлечь переменную из выражения" }
+  { noremap = true, silent = true, expr = false, desc = "Извлечь переменную из выражения" }
 )
 
 vim.api.nvim_set_keymap(
   "v",
   "<leader>ri",
   "<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
-  { noremap = true, silent = true, expr = false },
-  { desc = "Вставить переменную напрямую" }
+  { noremap = true, silent = true, expr = false, desc = "Вставить переменную напрямую" }
 )
