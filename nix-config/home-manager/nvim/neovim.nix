@@ -23,6 +23,7 @@
         nvim-colorizer-lua
         # comment-nvim
         vim-commentary
+        todo-comments-nvim
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
