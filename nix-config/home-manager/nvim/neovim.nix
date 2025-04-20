@@ -28,6 +28,7 @@
         nvim-lspconfig
         SchemaStore-nvim
         lualine-nvim
+        noice-nvim
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
