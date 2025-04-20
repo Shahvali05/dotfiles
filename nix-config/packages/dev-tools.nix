@@ -26,7 +26,6 @@ in
     gdb
     valgrind
     gnumake
-    codeium
     cmake
     python312Packages.pgcli
     qpwgraph
