@@ -21,6 +21,7 @@
         indent-blankline-nvim
         lspkind-nvim
         nvim-colorizer-lua
+        comment-nvim
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
