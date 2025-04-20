@@ -10,6 +10,9 @@
   home.packages = with pkgs; [
     brave
     lazydocker
+    mako
+    libnotify
+    mpv
   ];
 
   home.file = {

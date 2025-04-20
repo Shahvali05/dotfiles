@@ -1,5 +1,12 @@
 { pkgs, inputs, ... }:
 
+let
+  python-with-my-plugins = pkgs.python312.withPackages (ps: with ps; [
+    debugpy
+    python-lsp-server
+    ruff
+  ]);
+in
 {
   nixpkgs.config.allowUnfree = true;
   programs = {
@@ -7,7 +14,20 @@
       enable = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+        ripgrep
         codeium
+        python-with-my-plugins
+        bash-language-server
+        vscode-langservers-extracted
+        nodePackages.typescript
+        nodePackages.typescript-language-server
+        nodePackages.eslint
+        black
+        pyright
+        gopls
+        clang-tools
+        clang
+        lua-language-server
       ];
       plugins = with pkgs.vimPlugins; [
         alpha-nvim

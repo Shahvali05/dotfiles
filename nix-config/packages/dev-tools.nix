@@ -1,24 +1,7 @@
 { config, pkgs, ... }:
 
-let
-  python-with-my-plugins = pkgs.python312.withPackages (ps: with ps; [
-    debugpy
-    python-lsp-server
-    pylsp-mypy
-    mypy
-    ruff
-  ]);
-in
 {
   environment.systemPackages = with pkgs; [
-    # For neovim (temp)
-    bash-language-server
-    vscode-langservers-extracted
-    python-with-my-plugins
-    nodePackages.typescript
-    nodePackages.typescript-language-server
-    nodePackages.eslint
-
     # Development tools
     # qemu
     android-tools
@@ -59,12 +42,6 @@ in
     pulseaudio
     
     # Programming languages and tools
-    black
-    pyright
-    gopls
-    clang-tools
-    clang
-    lua-language-server
     gcc
     nodejs
     python3
