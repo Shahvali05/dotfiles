@@ -37,6 +37,7 @@
         nvim-tree-lua
         nvim-ufo
         refactoring-nvim
+        nvim-treesitter.withAllGrammars
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
