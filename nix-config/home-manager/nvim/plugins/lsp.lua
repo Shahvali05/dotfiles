@@ -134,7 +134,7 @@ local lsp_servers = {
     },
   },
 
-  tsserver = {
+  ts_ls = {
     setup = {
       on_attach = configs.on_attach,
       capabilities = configs.capabilities,
@@ -147,7 +147,7 @@ local lsp_servers = {
     setup = {
       on_attach = function(client, bufnr)
         configs.on_attach(client, bufnr)
-        -- Отключаем форматирование через tsserver, если используем eslint
+        -- Отключаем форматирование через ts_ls, если используем eslint
         client.server_capabilities.documentFormattingProvider = true
         client.server_capabilities.documentRangeFormattingProvider = true
       end,
@@ -191,7 +191,7 @@ local function setup()
   lspconfig.pyright.setup(lsp_servers.pyright.setup)
   -- lspconfig.pylsp.setup(lsp_servers.pylsp.setup)
   lspconfig.jsonls.setup(lsp_servers.jsonls.setup)
-  lspconfig.tsserver.setup(lsp_servers.tsserver.setup)
+  lspconfig.ts_ls.setup(lsp_servers.ts_ls.setup)
   lspconfig.eslint.setup(lsp_servers.eslint.setup)
   lspconfig.html.setup(lsp_servers.html.setup)
 
