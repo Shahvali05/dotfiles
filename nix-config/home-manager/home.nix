@@ -1,8 +1,7 @@
 { pkgs, ... }: {
-  # imports = {
-  #   ./config/nvim/neovim.nix
-  #   ./config/dunst/dunst.nix
-  # }
+  imports = {
+    ./nvim/neovim.nix
+  }
   home.username = "laraeter";
   home.homeDirectory = "/home/laraeter";
   home.stateVersion = "24.11";
@@ -13,6 +12,9 @@
     neovim
     brave
   ];
+
+  home.file = {
+  };
 
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Hyprland";
