@@ -29,6 +29,11 @@
         SchemaStore-nvim
         lualine-nvim
         noice-nvim
+        nvim-dap
+        nvim-dap-ui
+        nvim-dap-virtual-text
+        nvim-dap-python
+        nvim-dap-go
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
