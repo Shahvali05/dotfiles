@@ -20,7 +20,6 @@
         cmp_luasnip
         indent-blankline-nvim
         lspkind-nvim
-        colorizer
         nvim-colorizer-lua
         comment-nvim
         # vim-commentary
