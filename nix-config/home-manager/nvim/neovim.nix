@@ -21,7 +21,7 @@
         indent-blankline-nvim
         lspkind-nvim
         nvim-colorizer-lua
-        # comment-nvim
+        comment-nvim
         vim-commentary
         todo-comments-nvim
       ];
