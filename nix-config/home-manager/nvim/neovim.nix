@@ -34,6 +34,7 @@
         nvim-dap-virtual-text
         nvim-dap-python
         nvim-dap-go
+        nvim-tree-lua
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
