@@ -9,7 +9,6 @@
   # Пакеты для пользователя
   home.packages = with pkgs; [
     codeium
-    neovim
     brave
   ];
 
