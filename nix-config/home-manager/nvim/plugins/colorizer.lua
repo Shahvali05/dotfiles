@@ -1,4 +1,4 @@
-colorizer = require("colorizer")
+colorizer = require("nvim-colorizer")
 
 
 -- ============================================================================
