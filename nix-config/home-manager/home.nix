@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./nvim/neovim.nix
-  ]
+  ];
   home.username = "laraeter";
   home.homeDirectory = "/home/laraeter";
   home.stateVersion = "24.11";
