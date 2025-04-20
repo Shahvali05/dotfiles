@@ -36,6 +36,7 @@
         nvim-dap-go
         nvim-tree-lua
         nvim-ufo
+        refactoring-nvim
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
