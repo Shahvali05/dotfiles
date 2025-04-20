@@ -7,6 +7,7 @@
       enable = true;
       withNodeJs = true;
       extraPackages = with pkgs; [
+        codeium
       ];
       plugins = with pkgs.vimPlugins; [
         alpha-nvim
@@ -42,6 +43,8 @@
         telescope-fzf-native-nvim
         tokyonight-nvim
         which-key-nvim
+        codeium-vim
+        codeium-nvim
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
