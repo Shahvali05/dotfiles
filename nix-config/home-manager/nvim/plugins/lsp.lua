@@ -12,11 +12,11 @@ local configs = {
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'gd',         vim.lsp.buf.definition,    bufopts)
-    vim.keymap.set('n', 'K',          vim.lsp.buf.hover,         bufopts)
-    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename,        bufopts)
-    vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action,   bufopts)
-    vim.keymap.set('n', '<leader>e',  vim.diagnostic.open_float, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
 
     -- Автоформат при сохранении
     if client.server_capabilities.documentFormattingProvider then
@@ -38,15 +38,12 @@ local configs = {
 -- Конфигурация LSP серверов
 -- ============================================================================
 
-local venv_path = os.getenv('VIRTUAL_ENV')
-local py_path = nil
--- decide which python executable to use for mypy
-if venv_path ~= nil then
-  py_path = venv_path .. "/bin/python3"
-else
-  py_path = vim.g.python3_host_prog
-end
 
+-- Определяем путь к Python
+local venv_path = os.getenv('VIRTUAL_ENV')
+local py_path = venv_path and (venv_path .. "/bin/python3") or vim.g.python3_host_prog
+
+-- Автозапуск bash-language-server для shell-скриптов
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'sh',
   callback = function()
@@ -57,6 +54,7 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Устанавливаем filetype для файлов .jf
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   pattern = "*.jf",
   callback = function()
@@ -67,9 +65,9 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 local lsp_servers = {
   ruff = {
     setup = {
-      on_attach    = configs.on_attach,
+      on_attach = configs.on_attach,
       capabilities = configs.capabilities,
-      root_dir     = lspconfig.util.root_pattern('.git', 'pyproject.toml', 'setup.py') or vim.fn.getcwd(),
+      root_dir = lspconfig.util.root_pattern('.git', 'pyproject.toml', 'setup.py') or vim.fn.getcwd(),
     }
   },
 
@@ -80,15 +78,13 @@ local lsp_servers = {
       root_dir = lspconfig.util.root_pattern('.git', 'pyproject.toml', 'setup.py') or vim.fn.getcwd(),
       settings = {
         pyright = {
-          -- Отключаем линтерские проверки, которые пересекаются с Ruff
           disableOrganizeImports = true, -- Ruff сам сортирует импорты
           disableTaggedHints = true, -- Отключаем подсказки для аннотаций
         },
         python = {
           analysis = {
-            -- Отключаем диагностику, которая дублируется Ruff
             ignore = { '*' }, -- Игнорируем все правила линтера Pyright
-            typeCheckingMode = "basic", -- Режим проверки типов: "off", "basic", "strict"
+            typeCheckingMode = "basic", -- "off", "basic", "strict"
             diagnosticMode = "openFilesOnly", -- Проверять только открытые файлы
             pythonPath = py_path, -- Указываем путь к интерпретатору Python
           },
@@ -96,29 +92,6 @@ local lsp_servers = {
       },
     }
   },
-
-  -- pylsp = {
-  --   setup = {
-  --     on_attach    = configs.on_attach,
-  --     capabilities = configs.capabilities,
-  --     settings     = {
-  --       pylsp = {
-  --         plugins = {
-  --           pycodestyle = { enabled = false }, -- Отключить pycodestyle
-  --           pyflakes    = { enabled = false }, -- Отключить pyflakes
-  --           pylsp_mypy  = {
-  --             enabled    = true,               -- Включить mypy
-  --             live_mode  = false,              -- Не запускать в реальном времени
-  --             strict     = false,              -- Не включать строгий режим
-  --             overrides  = { "--python-executable", py_path, true }, -- Определяем путь к python
-  --             report_progress = true,
-  --           },
-  --         },
-  --       },
-  --     },
-  --     root_dir = lspconfig.util.root_pattern('.git', 'pyproject.toml', 'setup.py') or vim.fn.getcwd(),
-  --   }
-  -- },
 
   jsonls = {
     setup = {
@@ -134,7 +107,7 @@ local lsp_servers = {
     },
   },
 
-  ts_ls = {
+  ts_ls = { -- Заменяем tsserver на ts_ls
     setup = {
       on_attach = configs.on_attach,
       capabilities = configs.capabilities,
@@ -147,7 +120,6 @@ local lsp_servers = {
     setup = {
       on_attach = function(client, bufnr)
         configs.on_attach(client, bufnr)
-        -- Отключаем форматирование через ts_ls, если используем eslint
         client.server_capabilities.documentFormattingProvider = true
         client.server_capabilities.documentRangeFormattingProvider = true
       end,
@@ -155,7 +127,7 @@ local lsp_servers = {
       root_dir = lspconfig.util.root_pattern('.eslintrc', '.eslintrc.js', '.eslintrc.json', 'package.json') or vim.fn.getcwd(),
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       settings = {
-        format = { enable = true }, -- Включаем форматирование через ESLint
+        format = { enable = true },
         lint = { enable = true },
       },
     }
@@ -189,22 +161,20 @@ local function setup()
   -- Настройка LSP серверов
   lspconfig.ruff.setup(lsp_servers.ruff.setup)
   lspconfig.pyright.setup(lsp_servers.pyright.setup)
-  -- lspconfig.pylsp.setup(lsp_servers.pylsp.setup)
   lspconfig.jsonls.setup(lsp_servers.jsonls.setup)
-  lspconfig.ts_ls.setup(lsp_servers.ts_ls.setup)
+  lspconfig.ts_ls.setup(lsp_servers.ts_ls.setup) -- Заменяем tsserver на ts_ls
   lspconfig.eslint.setup(lsp_servers.eslint.setup)
   lspconfig.html.setup(lsp_servers.html.setup)
 
   -- Настройка отображения диагностики
   vim.diagnostic.config({
-    virtual_text       = true,     -- Отображать текст прямо в коде
-    signs              = true,     -- Показывать знаки в колонке слева
-    underline          = true,     -- Подчеркивать проблемный код
-    update_in_insert   = false,    -- Не обновлять во время вставки
-    severity_sort      = true,     -- Сортировка по уровню серьёзности
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
   })
 end
-
 
 -- Запуск конфигурации
 setup()
