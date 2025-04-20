@@ -9,7 +9,7 @@
       extraPackages = with pkgs; [
       ];
       plugins = with pkgs.vimPlugins; [
-      ]
+      ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
         ${builtins.readFile ./keymaps.lua}
