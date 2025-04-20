@@ -40,6 +40,7 @@
         nvim-treesitter.withAllGrammars
         telescope-nvim
         telescope-fzf-native-nvim
+        tokyonight-nvim
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
