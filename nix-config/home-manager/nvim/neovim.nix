@@ -10,6 +10,8 @@
       ];
       plugins = with pkgs.vimPlugins; [
         alpha-nvim
+        auto-session
+        nvim-autopairs
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
