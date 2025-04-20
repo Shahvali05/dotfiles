@@ -29,4 +29,14 @@
   home.packages = with pkgs; [
     brave
   ];
+
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    GDK_BACKEND = "wayland";
+    # EDITOR = "emacs";
+  };
+
+  # programs.home-manager.enable = true;
 }
