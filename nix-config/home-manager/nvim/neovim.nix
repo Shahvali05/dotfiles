@@ -12,6 +12,11 @@
         alpha-nvim
         auto-session
         nvim-autopairs
+        cmp-path
+        nvim-cmp
+        cmp-nvim-lsp
+        cmp-buffer
+        cmp_luasnip
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
