@@ -23,7 +23,7 @@
         lspkind-nvim
         nvim-colorizer-lua
         comment-nvim
-        # vim-commentary
+        vim-commentary
         todo-comments-nvim
         nvim-ts-context-commentstring
         nvim-lspconfig
