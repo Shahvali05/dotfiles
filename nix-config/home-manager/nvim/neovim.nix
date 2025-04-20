@@ -41,6 +41,7 @@
         telescope-nvim
         telescope-fzf-native-nvim
         tokyonight-nvim
+        which-key-nvim
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
