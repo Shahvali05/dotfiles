@@ -10,7 +10,6 @@
 
   environment.systemPackages = with pkgs; [
     # Console tools
-    zapret
     playerctl
     ffmpeg
     nwg-look
