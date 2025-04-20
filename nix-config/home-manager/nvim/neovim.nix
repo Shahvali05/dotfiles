@@ -38,6 +38,8 @@
         nvim-ufo
         refactoring-nvim
         nvim-treesitter.withAllGrammars
+        telescope-nvim
+        telescope-fzf-native-nvim
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
