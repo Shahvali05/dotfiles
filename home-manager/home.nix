@@ -13,6 +13,7 @@
     mako
     libnotify
     mpv
+    zapret
   ];
 
   home.file = {
