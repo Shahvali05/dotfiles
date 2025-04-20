@@ -28,6 +28,12 @@ keymap.set("n", "<leader>sh", "<C-w>s | <cmd>bnext<CR>", { desc = "Горизо�
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Сделать окна одинакового размера" })
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Закрыть текущее окно" })
 
+-- Перемещение между окнами
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom split" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top split" })
+
 
 -- ============================================================================
 -- Терминал

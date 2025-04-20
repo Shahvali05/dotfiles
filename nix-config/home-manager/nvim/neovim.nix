@@ -36,6 +36,7 @@
         nvim-dap-python
         nvim-dap-go
         nvim-tree-lua
+        nvim-web-devicons
         nvim-ufo
         refactoring-nvim
         nvim-treesitter.withAllGrammars
