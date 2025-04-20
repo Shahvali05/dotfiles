@@ -21,7 +21,6 @@
     slurp
     grim
     btop
-    neovim
     neofetch
     brightnessctl
     killall
