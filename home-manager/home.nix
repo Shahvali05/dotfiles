@@ -14,6 +14,7 @@
     libnotify
     mpv
     remmina
+    python312Packages.bpython
   ];
 
   home.file = {

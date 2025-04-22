@@ -24,4 +24,3 @@ mkShell {
     echo "Using NIX_LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH"
   '';
 }
-
