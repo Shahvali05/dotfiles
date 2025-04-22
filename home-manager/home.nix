@@ -10,6 +10,7 @@
   home.packages = with pkgs; [
     brave
     lazydocker
+    docker-compose
     mako
     libnotify
     mpv
