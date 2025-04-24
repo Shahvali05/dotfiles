@@ -8,6 +8,7 @@
 
   # Пакеты для пользователя
   home.packages = with pkgs; [
+    wget
     brave
     lazydocker
     docker-compose
