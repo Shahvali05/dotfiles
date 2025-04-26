@@ -18,4 +18,11 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "24.11";
+
+  services.xserver.windowManager.qtile = {
+    enable = true;
+    extraPackages = python3Packages: with python3Packages; [
+      qtile-extras
+    ];
+  };
 }
