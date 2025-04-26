@@ -63,7 +63,8 @@ class KbWidget(widget.TextBox):
         self.update_self()
 
 
-kbl = KbWidget()
+kbl = (KeyboardLayout(configured_keyboards=["us", "ru"]),)
+
 
 # class MicrophoneWidget(widget.TextBox):
 #
@@ -103,18 +104,18 @@ keys = [
     # Скриншот
     Key([], "Print", lazy.spawn("flameshot gui")),
     Key(
-        [mod],
-        "Space",
+        [],
+        "Caps_Lock",
         lazy.widget["keyboardlayout"].next_keyboard(),
         desc="Next keyboard layout",
     ),
     # Увеличение яркости
-    Key(
-        [],
-        "ISO_Next_Group",
-        lazy.function(lambda q: q.current_screen.top.widgets[kbindex].update_self()),
-        desc="Next keyboard layout.",
-    ),
+    # Key(
+    #     [],
+    #     "ISO_Next_Group",
+    #     lazy.function(lambda q: q.current_screen.top.widgets[kbindex].update_self()),
+    #     desc="Next keyboard layout.",
+    # ),
     # Key([], "XF86AudioMicMute", lazy.spawn("amixer set Capture toggle"), desc="Toggle Microphone",),
     Key(
         [], "XF86MonBrightnessUp", lazy.spawn("light -A 10")
@@ -317,7 +318,6 @@ screens = [
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Clock(format="🕒 %H:%M"),
-                KeyboardLayout(configured_keyboards=["us", "ru"]),
                 widget.TextBox(
                     text="|",
                     foreground="#ff0000",
