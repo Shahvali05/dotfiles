@@ -25,15 +25,27 @@
     '';
   };
 
-  services.greetd = {
+  services.xserver.enable = true;
+  services.xserver.windowManager.qtile = {
     enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
-        user = "greeter";
-      };
-    };
+    backend = "wayland"; # Использование Wayland вместо X11
+    extraPackages = python3Packages: with python3Packages; [
+      qtile-extras
+      # Добавьте другие необходимые Python-пакеты
+    ];
   };
+  services.xserver.windowManager.qtile.enable = true;
+  services.xserver.displayManager.ly.enable = true;
+
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = {
+  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
+  #       user = "greeter";
+  #     };
+  #   };
+  # };
 
   # Включение XWayland для совместимости
   programs.xwayland.enable = true;
