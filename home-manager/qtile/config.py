@@ -63,8 +63,7 @@ class KbWidget(widget.TextBox):
         self.update_self()
 
 
-# kbl = (KeyboardLayout(configured_keyboards=["us", "ru"]),)
-
+kbl = KbWidget()
 
 # class MicrophoneWidget(widget.TextBox):
 #
@@ -311,6 +310,7 @@ screens = [
                     foreground="#ff0000",
                 ),
                 KeyboardLayout(configured_keyboards=["us", "ru"]),
+                # kbl,
                 widget.TextBox(
                     text="|",
                     foreground="#ff0000",
