@@ -3,8 +3,8 @@
 {
   # Установка Qtile и зависимостей
   home.packages = with pkgs; [
-    (python312Packages.qtile.override { withWayland = true; }) # Qtile с Wayland
-    python312Packages.pywlroots # Wayland-протоколы для Qtile
+    python312Packages.qtile # Qtile с поддержкой Wayland
+    python312Packages.pywlroots # Wayland-протоколы
     python312Packages.pywayland # Wayland-поддержка
     python312Packages.xkbcommon # Управление клавиатурой
     wlroots # Wayland-композитор
