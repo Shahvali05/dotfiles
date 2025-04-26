@@ -34,51 +34,18 @@
   #     };
   #   };
   # };
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true; # Ensure Wayland support
-    theme = "${pkgs.sddm-sugar-candy-theme}"; # Optional: A modern theme
-  };
 
-  # Add Qtile and Hyprland to system packages
-  environment.systemPackages = with pkgs; [
-    qtile.override { withWayland = true; } # Qtile with Wayland backend
-    hyprland # Hyprland compositor
-    # Dependencies for Qtile Wayland
-    pywlroots
-    pywayland
-    python-xkbcommon
-    wlroots
-    # Optional utilities for Wayland
-    waybar
-    wofi
-  ];
-
-  # Define Wayland session files for Qtile and Hyprland
-  environment.etc = {
-    # Qtile Wayland session
-    "xdg/wayland-sessions/qtile.desktop".text = ''
-      [Desktop Entry]
-      Name=Qtile (Wayland)
-      Comment=Qtile Tiling Window Manager (Wayland)
-      Exec=${pkgs.qtile}/bin/qtile start -b wayland
-      Type=Application
-      DesktopNames=qtile
-      Keywords=wm;tiling
-    '';
-
-    # Hyprland Wayland session (already provided by Hyprland package, but included for clarity)
-    "xdg/wayland-sessions/hyprland.desktop".text = ''
-      [Desktop Entry]
-      Name=Hyprland
-      Comment=Hyprland Wayland Compositor
-      Exec=${pkgs.hyprland}/bin/Hyprland
-      Type=Application
-      DesktopNames=Hyprland
-      Keywords=wm;tiling
-    '';
-  };
-
-  # Ensure XWayland is available for compatibility
+  # Включение XWayland для совместимости
   programs.xwayland.enable = true;
+
+  # Опционально: сессия Hyprland (обычно предоставляется пакетом hyprland)
+  environment.etc."xdg/wayland-sessions/hyprland.desktop".text = ''
+    [Desktop Entry]
+    Name=Hyprland
+    Comment=Hyprland Wayland Compositor
+    Exec=${pkgs.hyprland}/bin/Hyprland
+    Type=Application
+    DesktopNames=Hyprland
+    Keywords=wm;tiling
+  '';
 }

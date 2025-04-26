@@ -13,7 +13,7 @@ keys = [
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     # Launch terminal
-    Key([mod], "Return", lazy.spawn("foot"), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
     # Reload config
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     # Quit Qtile
