@@ -10,6 +10,7 @@
 
   # Пакеты для пользователя
   home.packages = with pkgs; [
+    wlrctl # for qtile-wayland
     wget
     brave
     lazydocker

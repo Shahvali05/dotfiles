@@ -12,6 +12,12 @@ from os import path
 import subprocess
 from libqtile.config import Match
 
+
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+# Переменные
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
 home = path.expanduser("~")
 qconf = home + "/.config/qtile/"
 getlayout = qconf + "getlayout.sh"
@@ -23,9 +29,19 @@ mod = "mod4"
 terminal = guess_terminal()
 
 
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+# Автозапуск
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
 @hook.subscribe.startup_once
 def autostart():
     Popen([autostart_sh])
+
+
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+# Kastom widgets
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 
 # Custom keyboard widget
@@ -53,6 +69,12 @@ kbl = KbWidget()
 #        super().__init__("", **config)
 #        self.update_self()
 # microphone_widget = MicrophoneWidget(),
+
+
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+# Клавиши
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -139,6 +161,12 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
+
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+# Workspaces
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
 groups = [Group(i) for i in "123456789"]
 
 for i in groups:
@@ -165,19 +193,25 @@ for i in groups:
         ]
     )
 
+
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+# МАКЕТЫ
+# = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
 ## МАКЕТЫ (в скобках прописываются параметры, толщина бордера, цвета...) -----------
 layouts = [
     # layout.Columns(),
     # layout.Max(), # Фуллскрин
     # layout.Stack(num_stacks=2), #Какая то фигня
-    layout.Bsp(
-        border_focus="#FF0000", border_normal="#263238", border_width=1, margin=10
-    ),  # Как в bspwm
+    # layout.Bsp(
+    # border_focus="#FF0000", border_normal="#263238", border_width=1, margin=10
+    # ),  # Как в bspwm
     # layout.Matrix(), # В 2 колонки
     # layout.MonadTall(border_focus = "#FF0000", border_normal = "#263238", border_width=1, margin = 10), # Как в dwm
     # layout.MonadWide(border_focus = "#FF0000", border_normal = "#263238", border_width=1, margin = 10), # Как в dwm только по горизонтали
     # layout.RatioTile(border_focus = "#FF0000", border_normal = "#263238", border_width=1, margin = 10), # Окна мазайкой 3х3, 4х4 ...
-    # layout.Tile(), # Как в dwm
+    layout.Tile(),  # Как в dwm
     # layout.TreeTab(), # Вертикальный монокль с заголовками
     # layout.VerticalTile(), # Окна открываются вертикально
     # layout.Zoomy(), # Как в dwm ток мастер окно большое
