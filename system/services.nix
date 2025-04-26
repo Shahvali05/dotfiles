@@ -38,7 +38,7 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "${pkgs.sddm-sugar-candy-theme}";
+    # theme = "${pkgs.sddm-sugar-candy-theme}";
   };
 
   # Включение XWayland для совместимости
