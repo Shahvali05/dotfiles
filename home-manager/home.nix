@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./nvim/neovim.nix
+    ./mako/mako.nix
   ];
   home.username = "laraeter";
   home.homeDirectory = "/home/laraeter";
