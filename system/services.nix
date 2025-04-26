@@ -28,7 +28,6 @@
   services.xserver.enable = true;
   services.xserver.windowManager.qtile = {
     enable = true;
-    backend = "wayland"; # Использование Wayland вместо X11
     extraPackages = python3Packages: with python3Packages; [
       qtile-extras
       # Добавьте другие необходимые Python-пакеты
