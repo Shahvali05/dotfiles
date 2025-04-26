@@ -34,7 +34,15 @@
       # Добавьте другие необходимые Python-пакеты
     ];
   };
-  services.xserver.displayManager.ly.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd 'dbus-run-session qtile start'";
+        user = "greeter";
+      };
+    };
+  };
 
   # services.greetd = {
   #   enable = true;
