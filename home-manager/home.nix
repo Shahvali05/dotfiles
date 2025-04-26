@@ -2,6 +2,7 @@
   imports = [
     ./nvim/neovim.nix
     ./mako/mako.nix
+    ./qtile/qtile.nix
   ];
   home.username = "laraeter";
   home.homeDirectory = "/home/laraeter";
