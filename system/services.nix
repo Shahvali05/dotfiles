@@ -34,7 +34,6 @@
       # Добавьте другие необходимые Python-пакеты
     ];
   };
-  services.xserver.windowManager.qtile.enable = true;
   services.xserver.displayManager.ly.enable = true;
 
   # services.greetd = {
