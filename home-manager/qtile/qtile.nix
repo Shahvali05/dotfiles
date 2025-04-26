@@ -1,19 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  # Включение Qtile с поддержкой Wayland
-  programs.qtile = {
-    enable = true;
-    package = pkgs.qtile.override { withWayland = true; }; # Wayland-бэкенд
-    configFile = ./config.py; # Ссылка на config.py
-  };
-
-  # Пакеты для Qtile Wayland
+  # Установка Qtile и зависимостей
   home.packages = with pkgs; [
-    pywlroots
-    pywayland
-    python-xkbcommon
-    wlroots
+    (python312Packages.qtile.override { withWayland = true; }) # Qtile с Wayland
+    python312Packages.pywlroots # Wayland-протоколы для Qtile
+    python312Packages.pywayland # Wayland-поддержка
+    python312Packages.xkbcommon # Управление клавиатурой
+    wlroots # Wayland-композитор
     foot # Wayland-терминал
     wofi # Запуск приложений
   ];
@@ -26,7 +20,7 @@
     [Desktop Entry]
     Name=Qtile (Wayland)
     Comment=Qtile Tiling Window Manager (Wayland)
-    Exec=${pkgs.qtile}/bin/qtile start -b wayland
+    Exec=${pkgs.python312Packages.qtile}/bin/qtile start -b wayland
     Type=Application
     DesktopNames=qtile
     Keywords=wm;tiling
