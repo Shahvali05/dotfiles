@@ -17,7 +17,7 @@ qconf = home + "/.config/qtile/"
 getlayout = qconf + "getlayout.sh"
 # get_microphone_icon = qconf + "microfon.sh"
 
-autostart_sh = "/home/shahvali/.config/qtile/autostart.sh"
+autostart_sh = home + "/.config/qtile/autostart.sh"
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -325,9 +325,16 @@ kbindex = next(
 
 # Drag floating layouts.
 mouse = [
-    #    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    #    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
-    #    Click([mod], "Button2", lazy.window.bring_to_front()),
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),
+    Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
 dgroups_key_binder = None
