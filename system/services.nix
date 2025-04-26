@@ -25,8 +25,6 @@
     '';
   };
 
-  services.xserver.displayManager.sessionPackages = [ pkgs.qtile ];
-
   services.greetd = {
     enable = true;
     settings = {
