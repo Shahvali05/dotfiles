@@ -103,8 +103,8 @@ keys = [
     # Скриншот
     Key([], "Print", lazy.spawn("flameshot gui")),
     Key(
-        [],
-        "Caps_Lock",
+        [mod],
+        "Space",
         lazy.widget["keyboardlayout"].next_keyboard(),
         desc="Next keyboard layout",
     ),
