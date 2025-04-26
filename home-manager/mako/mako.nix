@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
-  programs.mako = {
+  services.mako = {
     enable = true;  # включает mako (устанавливает пакет и запускает daemon)
     anchor = "top-right";    # позиционирование уведомлений
     borderRadius = 8;        # радиус скругления углов
