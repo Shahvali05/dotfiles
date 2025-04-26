@@ -25,45 +25,18 @@
     '';
   };
 
-  services.xserver.enable = true;
-  services.xserver.windowManager.qtile = {
-    enable = true;
-    extraPackages = python3Packages: with python3Packages; [
-      qtile-extras
-      # Добавьте другие необходимые Python-пакеты
-    ];
-  };
+  services.xserver.displayManager.sessionPackages = [ pkgs.qtile ];
+
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd 'dbus-run-session qtile start'";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions:${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --time --time-format '%I:%M %p | %a • %h | %F'";
         user = "greeter";
       };
     };
   };
 
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     default_session = {
-  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
-  #       user = "greeter";
-  #     };
-  #   };
-  # };
-
   # Включение XWayland для совместимости
   programs.xwayland.enable = true;
-
-  # Опционально: сессия Hyprland (обычно предоставляется пакетом hyprland)
-  environment.etc."xdg/wayland-sessions/hyprland.desktop".text = ''
-    [Desktop Entry]
-    Name=Hyprland
-    Comment=Hyprland Wayland Compositor
-    Exec=${pkgs.hyprland}/bin/Hyprland
-    Type=Application
-    DesktopNames=Hyprland
-    Keywords=wm;tiling
-  '';
 }

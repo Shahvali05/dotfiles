@@ -19,7 +19,6 @@
     aseprite
     
     # System utilities
-    qtile
     bluez
     libvirt
     gvfs
