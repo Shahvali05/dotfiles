@@ -31,7 +31,7 @@ terminal = guess_terminal()
 wl_input_rules = {
     "type:keyboard": InputConfig(
         kb_layout="us,ru",
-        kb_options="grp:alt_shift_toggle",
+        kb_options="grp:caps_toggle,caps:none",
     ),
 }
 
