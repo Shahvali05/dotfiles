@@ -1,12 +1,7 @@
-#!/bin/sh
-
-# Переключение раскладки через setxkbmap
-current_layout=$(cat /tmp/layout_status 2>/dev/null)
-
-if [ "$current_layout" = "us" ]; then
-    setxkbmap ru
-    echo ru > ./layout_status
+#!/run/current-system/sw/bin/bash
+CURRENT=$(wlrctl keyboard get-layout)
+if [ "$CURRENT" = "us" ]; then
+    wlrctl keyboard set-layout ru
 else
-    setxkbmap us
-    echo us > ./layout_status
+    wlrctl keyboard set-layout us
 fi
