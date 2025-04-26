@@ -4,7 +4,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from libqtile.widget import Volume
 from libqtile.widget import Wlan
-from libqtile.widget import Battery
+from libqtile.widget import Battery, KeyboardLayout
 from libqtile import hook
 from subprocess import Popen, check_output
 from pulsectl import Pulse
@@ -317,6 +317,7 @@ screens = [
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Clock(format="🕒 %H:%M"),
+                KeyboardLayout(configured_keyboards=["us", "ru"]),
                 widget.TextBox(
                     text="|",
                     foreground="#ff0000",
