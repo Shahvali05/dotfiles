@@ -55,7 +55,7 @@ static const int repeat_rate = 25;
 static const int repeat_delay = 600;
 
 /* logging */
-static const enum wlr_log_importance log_level = WLR_DEBUG; /* Добавлено для log_level */
+static const enum wlr_log_importance log_level = WLR_DEBUG;
 
 /* trackpad */
 static LibinputConfigTrackpad trackpad_config = {
@@ -70,13 +70,13 @@ static LibinputConfigTrackpad trackpad_config = {
     .click_method = LIBINPUT_CONFIG_CLICK_METHOD_BUTTON_AREAS,
     .send_events_mode = LIBINPUT_CONFIG_SEND_EVENTS_ENABLED,
     .accel_profile = LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE,
-    .accel_speed = 0.0, /* Добавлено для accel_speed */
+    .accel_speed = 0.0,
     .button_map = LIBINPUT_CONFIG_TAP_MAP_LRM,
 };
 
 /* key definitions */
 #define MODKEY WLR_MODIFIER_ALT
-static const char *termcmd[] = { "alacritty", NULL };
+static const char *termcmd[] = { "foot", NULL };
 static const char *menucmd[] = { "wmenu-run", NULL };
 
 static const Key keys[] = {
@@ -103,9 +103,13 @@ static const Key keys[] = {
     { MODKEY|WLR_MODIFIER_SHIFT,    XKB_KEY_comma, toggletag,  {.ui = 1 << 7 } },
     { MODKEY,                       XKB_KEY_period, view,      {.ui = 1 << 8 } },
     { MODKEY|WLR_MODIFIER_SHIFT,    XKB_KEY_period, toggletag, {.ui = 1 << 8 } },
-    /* Добавлены для устранения предупреждений */
-    { MODKEY,                       XKB_KEY_z, zoom,           {0} }, /* Zoom */
-    { MODKEY,                       XKB_KEY_v, toggleview,     {.ui = 1 << 0} }, /* Toggleview */
+    /* Добавлены привязки для устранения предупреждений */
+    { MODKEY,                       XKB_KEY_e, togglefullscreen, {0} }, /* Полноэкранный режим */
+    { MODKEY,                       XKB_KEY_g, tagmon,         {.i = +1} }, /* Переключение монитора */
+    { MODKEY,                       XKB_KEY_r, tag,            {.ui = 1 << 0} }, /* Переключение тэга */
+    { MODKEY,                       XKB_KEY_c, killclient,     {0} }, /* Закрытие клиента */
+    { MODKEY,                       XKB_KEY_n, focusmon,       {.i = +1} }, /* Фокус на мониторе */
+    { MODKEY,                       XKB_KEY_v, chvt,           {.i = 1} }, /* Смена виртуального терминала */
     TAGKEYS(                        XKB_KEY_1, XKB_KEY_9,      1, 9 ),
 };
 
