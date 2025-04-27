@@ -10,7 +10,6 @@ from subprocess import Popen, check_output
 from pulsectl import Pulse
 from os import path
 import subprocess
-from libqtile.backend.wayland import InputConfig
 
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -27,13 +26,6 @@ autostart_sh = home + "/.config/qtile/autostart.sh"
 
 mod = "mod4"
 terminal = guess_terminal()
-
-wl_input_rules = {
-    "type:keyboard": InputConfig(
-        kb_layout="us,ru",
-        kb_options="grp:caps_toggle,caps:none",
-    ),
-}
 
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -102,12 +94,6 @@ keys = [
     ),
     # Скриншот
     Key([], "Print", lazy.spawn("flameshot gui")),
-    Key(
-        [],
-        "Caps_Lock",
-        lazy.widget["keyboardlayout"].next_keyboard(),
-        desc="Next keyboard layout",
-    ),
     # Увеличение яркости
     # Key(
     #     [],

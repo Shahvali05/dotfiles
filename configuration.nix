@@ -25,4 +25,34 @@
       qtile-extras
     ];
   };
+
+  services.xserver.xkb = {
+    layout = "us,ru";
+    options = "grp:caps_toggle,caps:none";
+  };
+
+  # Создание пользовательского XKB-файла для настройки Caps Lock
+  environment.etc."xkb/symbols/custom".text = ''
+    xkb_symbols "custom" {
+        include "us"
+        include "ru"
+        key <CAPS> { [ ISO_Next_Group ] }; // Caps Lock переключает раскладку
+        modifier_map Lock { <CAPS> };
+    };
+  '';
+
+  # Настройка Wayland-композитора (пример для Sway)
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true; # Для GTK-приложений
+    extraSessionCommands = ''
+      export XKB_DEFAULT_LAYOUT=us,ru
+      export XKB_DEFAULT_OPTIONS=grp:caps_toggle,caps:none
+    '';
+  };
+
+  # Установка пакетов, если нужно (например, wev для отладки)
+  environment.systemPackages = with pkgs; [
+    wev # Для отладки событий клавиш в Wayland
+  ];
 }
