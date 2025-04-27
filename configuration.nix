@@ -24,6 +24,11 @@
     extraPackages = python3Packages: with python3Packages; [
       qtile-extras
     ];
+    wrapperFeatures.gtk = true; # Для GTK-приложений
+    extraSessionCommands = ''
+      export XKB_DEFAULT_LAYOUT=us,ru
+      export XKB_DEFAULT_OPTIONS=grp:caps_toggle,caps:none
+    '';
   };
 
   services.xserver.xkb = {
@@ -40,15 +45,6 @@
         modifier_map Lock { <CAPS> };
     };
   '';
-
-  programs.qtile = {
-    enable = true;
-    wrapperFeatures.gtk = true; # Для GTK-приложений
-    extraSessionCommands = ''
-      export XKB_DEFAULT_LAYOUT=us,ru
-      export XKB_DEFAULT_OPTIONS=grp:caps_toggle,caps:none
-    '';
-  };
 
   # Установка пакетов, если нужно (например, wev для отладки)
   environment.systemPackages = with pkgs; [
