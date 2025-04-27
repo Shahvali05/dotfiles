@@ -55,7 +55,7 @@ static const int repeat_rate = 25;
 static const int repeat_delay = 600;
 
 /* logging */
-static const enum wlr_log_importance log_level = WLR_DEBUG;
+static enum wlr_log_importance log_level = WLR_DEBUG; /* Убрано const для возможности изменения */
 
 /* trackpad */
 static LibinputConfigTrackpad trackpad_config = {
@@ -69,8 +69,8 @@ static LibinputConfigTrackpad trackpad_config = {
     .scroll_method = LIBINPUT_CONFIG_SCROLL_2FG,
     .click_method = LIBINPUT_CONFIG_CLICK_METHOD_BUTTON_AREAS,
     .send_events_mode = LIBINPUT_CONFIG_SEND_EVENTS_ENABLED,
-    .accel_profile = LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE,
-    .accel_speed = 0.0,
+    .accel_profile = LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE, /* Определено для устранения ошибки */
+    .accel_speed = 0.0, /* Определено для устранения ошибки */
     .button_map = LIBINPUT_CONFIG_TAP_MAP_LRM,
 };
 
@@ -110,6 +110,8 @@ static const Key keys[] = {
     { MODKEY,                       XKB_KEY_c, killclient,     {0} }, /* Закрытие клиента */
     { MODKEY,                       XKB_KEY_n, focusmon,       {.i = +1} }, /* Фокус на мониторе */
     { MODKEY,                       XKB_KEY_v, chvt,           {.i = 1} }, /* Смена виртуального терминала */
+    { MODKEY,                       XKB_KEY_z, zoom,           {0} }, /* Zoom */
+    { MODKEY,                       XKB_KEY_w, toggleview,     {.ui = 1 << 0} }, /* Toggleview */
     TAGKEYS(                        XKB_KEY_1, XKB_KEY_9,      1, 9 ),
 };
 
