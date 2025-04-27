@@ -10,7 +10,9 @@
 
   # Пакеты для пользователя
   home.packages = with pkgs; [
-    dwl
+    (dwl.override {
+      conf = builtins.readFile "${config.home.homeDirectory}/.config/dwl/config.h";
+    })
     wget
     brave
     lazydocker
