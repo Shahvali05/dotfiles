@@ -27,7 +27,6 @@
     pamixer
     
     # Desktop programs
-    evince
     lmstudio
     clapper
     alacritty
