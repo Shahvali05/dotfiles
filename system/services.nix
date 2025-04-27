@@ -37,7 +37,7 @@
 
   # Включение XWayland для совместимости
   programs.xwayland.enable = true;
-  services.xserver.desktopManager.gnome = {
-    enable = true;
-  };
+  # services.xserver.desktopManager.gnome = {
+  #   enable = true;
+  # };
 }
