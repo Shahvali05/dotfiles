@@ -37,4 +37,5 @@
 
   # Включение XWayland для совместимости
   programs.xwayland.enable = true;
+  services.xserver.windowManager.gnome3.enable = true;
 }
