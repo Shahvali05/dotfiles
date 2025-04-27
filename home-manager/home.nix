@@ -10,6 +10,7 @@
 
   # Пакеты для пользователя
   home.packages = with pkgs; [
+    dwl
     # (dwl.override {
     #   conf = builtins.readFile ./dwl/config.h;
     # })
