@@ -11,7 +11,7 @@
   # Пакеты для пользователя
   home.packages = with pkgs; [
     (dwl.override {
-      conf = builtins.readFile "${config.home.homeDirectory}/.config/dwl/config.h";
+      conf = builtins.readFile "./dwl/config.h";
     })
     wget
     brave
