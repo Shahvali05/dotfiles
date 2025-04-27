@@ -13,6 +13,8 @@
     playerctl
     ffmpeg
     nwg-look
+    kvantum
+    qt5ct
     kitty
     tree
     unzip
