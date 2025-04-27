@@ -55,10 +55,24 @@ static const int repeat_rate = 25;
 static const int repeat_delay = 600;
 
 /* logging */
-static enum wlr_log_importance log_level = WLR_DEBUG; /* Убрано const для возможности изменения */
+static enum wlr_log_importance log_level = WLR_DEBUG;
 
 /* trackpad */
-static LibinputConfigTrackpad trackpad_config = {
+static struct {
+    int tap_to_click;
+    int tap_and_drag;
+    int drag_lock;
+    int natural_scrolling;
+    int disable_while_typing;
+    int left_handed;
+    int middle_button_emulation;
+    enum libinput_config_scroll_method scroll_method;
+    enum libinput_config_click_method click_method;
+    enum libinput_config_send_events_mode send_events_mode;
+    enum libinput_config_accel_profile accel_profile;
+    double accel_speed;
+    enum libinput_config_tap_button_map button_map;
+} trackpad_config = {
     .tap_to_click = 1,
     .tap_and_drag = 1,
     .drag_lock = 1,
@@ -69,8 +83,8 @@ static LibinputConfigTrackpad trackpad_config = {
     .scroll_method = LIBINPUT_CONFIG_SCROLL_2FG,
     .click_method = LIBINPUT_CONFIG_CLICK_METHOD_BUTTON_AREAS,
     .send_events_mode = LIBINPUT_CONFIG_SEND_EVENTS_ENABLED,
-    .accel_profile = LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE, /* Определено для устранения ошибки */
-    .accel_speed = 0.0, /* Определено для устранения ошибки */
+    .accel_profile = LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE,
+    .accel_speed = 0.0,
     .button_map = LIBINPUT_CONFIG_TAP_MAP_LRM,
 };
 
