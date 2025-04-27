@@ -39,6 +39,5 @@
   programs.xwayland.enable = true;
   services.xserver.desktopManager.gnome = {
     enable = true;
-    wayland = true; # Если ты хочешь использовать Wayland, включи это.
   };
 }
