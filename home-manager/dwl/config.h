@@ -11,6 +11,7 @@ static const int showbar                   = 1; /* 0 means no bar */
 static const int topbar                    = 1; /* 0 means bottom bar */
 static const char *fonts[]                 = {"monospace:size=10"};
 static const float rootcolor[]             = COLOR(0x181716ff);
+static const char *urgentcolor = "#ff0000";
 static const float fullscreen_bg[]         = COLOR(0xb16286ff);
 static uint32_t colors[][3]                = {
 	/*               fg          bg          border    */
@@ -20,6 +21,7 @@ static uint32_t colors[][3]                = {
 };
 
 /* tagging - TAGCOUNT must be no greater than 31 */
+#define TAGCOUNT 9
 static char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 /* logging */
