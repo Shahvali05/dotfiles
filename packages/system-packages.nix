@@ -14,7 +14,7 @@
     ffmpeg
     nwg-look
     gruvbox-kvantum
-    qt5ct
+    libsForQt5.qt5ct
     kitty
     tree
     unzip
