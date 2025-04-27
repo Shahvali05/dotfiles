@@ -41,8 +41,7 @@
     };
   '';
 
-  # Настройка Wayland-композитора (пример для Sway)
-  programs.sway = {
+  programs.qtile = {
     enable = true;
     wrapperFeatures.gtk = true; # Для GTK-приложений
     extraSessionCommands = ''
