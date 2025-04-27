@@ -37,5 +37,8 @@
 
   # Включение XWayland для совместимости
   programs.xwayland.enable = true;
-  services.xserver.windowManager.gnome3.enable = true;
+  services.xserver.desktopManager.gnome = {
+    enable = true;
+    wayland = true; # Если ты хочешь использовать Wayland, включи это.
+  };
 }
