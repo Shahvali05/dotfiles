@@ -13,7 +13,7 @@
     playerctl
     ffmpeg
     nwg-look
-    gruvbox-kvantum
+    themechanger
     libsForQt5.qt5ct
     kitty
     tree
