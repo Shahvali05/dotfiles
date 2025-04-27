@@ -13,7 +13,7 @@
     playerctl
     ffmpeg
     nwg-look
-    kvantum
+    gruvbox-kvantum
     qt5ct
     kitty
     tree
