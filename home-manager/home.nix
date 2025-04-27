@@ -11,7 +11,10 @@
   # Пакеты для пользователя
   home.packages = with pkgs; [
     (dwl.override {
-      conf = builtins.readFile "${builtins.getEnv "HOME"}/nixos/home-manager/dwl/config.h";
+      conf = builtins.readFile (builtins.path {
+        path = /home/laraeter/nixos/home-manager/dwl/config.h;
+        name = "dwl-config";
+      });
     })
     wget
     brave
