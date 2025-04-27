@@ -2,7 +2,7 @@
   imports = [
     ./nvim/neovim.nix
     ./mako/mako.nix
-    ./qtile/qtile.nix
+    # ./qtile/qtile.nix
   ];
   home.username = "laraeter";
   home.homeDirectory = "/home/laraeter";
@@ -10,7 +10,7 @@
 
   # Пакеты для пользователя
   home.packages = with pkgs; [
-    wlrctl # for qtile-wayland
+    dwl
     wget
     brave
     lazydocker
