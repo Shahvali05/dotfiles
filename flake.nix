@@ -14,6 +14,7 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     config.allowBroken = true;
+    config.allowUnfree = true;
   in {
     packages.${system} = {
       dwl = pkgs.stdenv.mkDerivation {
