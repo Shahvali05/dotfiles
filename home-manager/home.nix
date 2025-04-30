@@ -8,7 +8,6 @@
   home.homeDirectory = "/home/laraeter";
   home.stateVersion = "24.11";
 
-  allowBroken = true;
   # Пакеты для пользователя
   home.packages = with pkgs; [
     minecraft

@@ -13,6 +13,7 @@
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    config.allowBroken = true;
   in {
     packages.${system} = {
       dwl = pkgs.stdenv.mkDerivation {
