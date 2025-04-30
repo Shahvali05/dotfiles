@@ -10,6 +10,7 @@
 
   # Пакеты для пользователя
   home.packages = with pkgs; [
+    minecraft
     wget
     brave
     lazydocker
