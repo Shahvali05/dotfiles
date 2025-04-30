@@ -8,7 +8,7 @@
   home.homeDirectory = "/home/laraeter";
   home.stateVersion = "24.11";
 
-  nixpkgs.config.allowBroken = true;
+  allowBroken = true;
   # Пакеты для пользователя
   home.packages = with pkgs; [
     minecraft
