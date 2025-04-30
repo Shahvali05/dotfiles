@@ -13,36 +13,7 @@
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    config.allowBroken = true;
-    config.allowUnfree = true;
   in {
-    packages.${system} = {
-      dwl = pkgs.stdenv.mkDerivation {
-        pname = "dwl";
-        version = "git";
-
-        src = pkgs.fetchFromGitHub {
-          owner = "djpohly";
-          repo = "dwl";
-          rev = "main"; # Можно конкретный коммит сюда поставить для стабильности
-          sha256 = "0000000000000000000000000000000000000000000000000000"; # Поставим правильно ниже
-        };
-
-        nativeBuildInputs = with pkgs; [ pkg-config ];
-        buildInputs = with pkgs; [ wayland libxkbcommon wlroots ];
-
-        configurePhase = ''
-          cp ${./dwl-config.h} config.h
-        '';
-
-        installPhase = ''
-          mkdir -p $out/bin
-          make
-          cp dwl $out/bin/
-        '';
-      };
-    };
-
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
       # specialArgs = { inherit inputs; };
