@@ -2,7 +2,7 @@
 
 let
   python-with-my-plugins = pkgs.python312.withPackages (ps: with ps; [
-    debugpy
+    # debugpy
     python-lsp-server
     ruff
   ]);

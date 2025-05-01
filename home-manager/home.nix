@@ -20,6 +20,7 @@
     mpv
     remmina
     python312Packages.bpython
+    python312Packages.debugpy
   ];
 
   home.file = {
