@@ -61,6 +61,7 @@ in
         refactoring-nvim
         nvim-treesitter.withAllGrammars
         telescope-nvim
+        telescope-dap-nvim
         telescope-fzf-native-nvim
         tokyonight-nvim
         which-key-nvim
