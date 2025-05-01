@@ -17,6 +17,9 @@ require('telescope').setup({
 -- Загрузка расширения fzf
 require('telescope').load_extension('fzf')
 
+-- Загрузка расширения dap
+require('telescope').load_extension('dap')
+
 
 -- ============================================================================
 -- Привязки клавиш для Telescope
