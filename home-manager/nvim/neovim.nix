@@ -55,6 +55,8 @@ in
         nvim-dap-virtual-text
         nvim-dap-python
         nvim-dap-go
+        nvim-dap-rr
+        nvim-dap-rego
         nvim-tree-lua
         nvim-web-devicons
         nvim-ufo
