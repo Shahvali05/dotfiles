@@ -15,6 +15,12 @@
     ./packages/dev-tools.nix
   ];
 
+  nix.gc = {
+    automatic = true; # Включить автоматическую очистку
+    dates = "weekly"; # Запускать раз в неделю
+    options = "--delete-older-than 30d"; # Удалять поколения старше 30 дней
+  };
+
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "24.11";
