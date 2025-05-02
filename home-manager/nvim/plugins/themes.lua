@@ -93,6 +93,6 @@ vim.opt.colorcolumn = "80"
 -- цвет столбца
 vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
-        vim.cmd('highlight ColorColumn ctermbg=red guibg=#342D2F')
+        vim.cmd('highlight ColorColumn ctermbg=red guibg=#5D4F60')
     end,
 })
