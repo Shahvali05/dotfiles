@@ -35,6 +35,8 @@
     };
   };
 
-  # Включение XWayland для совместимости
   programs.xwayland.enable = true;
+
+  # Включение systemd-resolved для сетевого доступа
+  services.resolved.enable = true;
 }
