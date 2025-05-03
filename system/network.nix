@@ -3,7 +3,7 @@
 {
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-  networking.nameservers = ["1.1.1.1"];
+  # networking.nameservers = ["1.1.1.1"];
   
   time.timeZone = "Europe/Moscow";
   
