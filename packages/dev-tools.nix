@@ -22,6 +22,8 @@
     bluez
     libvirt
     gvfs
+    gvfs-smb
+    fuse3
     ntfs3g
     udisks2
     udiskie

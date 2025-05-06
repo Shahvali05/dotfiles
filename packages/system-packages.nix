@@ -52,5 +52,6 @@
     wf-recorder
     chromium
     xfce.thunar
+    thunar-volman
   ];
 }
