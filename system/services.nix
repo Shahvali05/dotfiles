@@ -39,18 +39,18 @@
 
   # Включение systemd-resolved для сетевого доступа
   services.resolved.enable = true;
-  services.udisks2.enable = true;
-  security.polkit.enable = true;
+  # services.udisks2.enable = true;
+  # security.polkit.enable = true;
 
-  systemd.user.services.udiskie = {
-    description = "udiskie mount daemon";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.udiskie}/bin/udiskie --tray --automount --notify";
-      Restart = "on-failure";
-      # Обязательно указываем переменную для Wayland
-      Environment = "XDG_RUNTIME_DIR=/run/user/${toString config.users.users.laraeter.uid}";
-    };
-    path = with pkgs; [ udiskie gvfs fuse3 ];
-  };
+  # systemd.user.services.udiskie = {
+  #   description = "udiskie mount daemon";
+  #   wantedBy = [ "default.target" ];
+  #   serviceConfig = {
+  #     ExecStart = "${pkgs.udiskie}/bin/udiskie --tray --automount --notify";
+  #     Restart = "on-failure";
+  #     # Обязательно указываем переменную для Wayland
+  #     Environment = "XDG_RUNTIME_DIR=/run/user/${toString config.users.users.laraeter.uid}";
+  #   };
+  #   path = with pkgs; [ udiskie gvfs fuse3 ];
+  # };
 }

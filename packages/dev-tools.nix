@@ -22,10 +22,10 @@
     bluez
     libvirt
     gvfs
-    fuse3
+    # fuse3
     ntfs3g
-    udisks2
-    udiskie
+    # udisks2
+    # udiskie
     librsvg
     gdk-pixbuf
     gtk3
