@@ -39,4 +39,5 @@
 
   # Включение systemd-resolved для сетевого доступа
   services.resolved.enable = true;
+  services.udisks2.enable = true;
 }

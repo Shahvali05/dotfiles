@@ -24,6 +24,7 @@
     gvfs
     ntfs3g
     udisks2
+    udiskie
     librsvg
     gdk-pixbuf
     gtk3
@@ -33,7 +34,7 @@
     v4l-utils
     openjdk11
     gitlab-runner
-    waydroid
+    # waydroid
     heimdall
     odin
     postgresql
