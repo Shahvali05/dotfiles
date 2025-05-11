@@ -176,6 +176,21 @@ local lsp_servers = {
       },
     },
   },
+
+  clangd = {
+    setup = {
+      on_attach = configs.on_attach,
+      capabilities = configs.capabilities,
+      root_dir = lspconfig.util.root_pattern('.git', 'compile_commands.json', 'build') or vim.fn.getcwd(),
+      filetypes = { "c", "cpp", "objc", "objcpp" },
+      cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy" },
+      settings = {
+        clangd = {
+          fallbackFlags = { "-std=c++17" }, -- Флаги по умолчанию для C++17
+        },
+      },
+    },
+  },
 }
 
 
@@ -193,6 +208,7 @@ local function setup()
   lspconfig.eslint.setup(lsp_servers.eslint.setup)
   lspconfig.html.setup(lsp_servers.html.setup)
   lspconfig.gopls.setup(lsp_servers.gopls.setup)
+  lspconfig.clangd.setup(lsp_servers.clangd.setup)
 
   -- Настройка отображения диагностики
   vim.diagnostic.config({
