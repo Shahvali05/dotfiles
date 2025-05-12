@@ -2,10 +2,10 @@ vim.g.jukit_mappings = 0
 
 local keymap = vim.keymap
 
-keymap.set("n", "<leader>os", ":lua require('jukit.splits').output()<CR>", { silent = true desc = "Открыть окно вывода" })
+keymap.set("n", "<leader>os", ":lua require('jukit.splits').output()<CR>", { silent = true })
 
 -- Открывает новое окно вывода без выполнения команд
-keymap.set("n", "<leader>ts", ":lua require('jukit.splits').term()<CR>", { silent = true desc = "Открыть окно терминала" })
+keymap.set("n", "<leader>ts", ":lua require('jukit.splits').term()<CR>", { silent = true })
 
 -- Открывает новое окно истории вывода, где отображаются сохранённые результаты IPython
 keymap.set("n", "<leader>hs", ":lua require('jukit.splits').history()<CR>", { silent = true })
