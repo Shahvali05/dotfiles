@@ -4,7 +4,7 @@ set shellcmdflag=-c
 let g:jukit_mappings = 0
 
 " Установка команды для окна вывода
-let g:jukit_shell_cmd = 'conda activate MyCondaEnv && ipython'
+let g:jukit_shell_cmd = 'ipython'
 
 " Привязки клавиш
 nnoremap <leader>os :call jukit#splits#output()<cr>
