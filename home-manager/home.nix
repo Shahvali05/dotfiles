@@ -8,6 +8,14 @@
   home.homeDirectory = "/home/laraeter";
   home.stateVersion = "24.11";
 
+  myPython = pkgs.python312.withPackages (ps: with ps; [
+    matplotlib
+    bpython
+    debugpy
+    ipykernel
+    jupyter
+  ]);
+
   # Пакеты для пользователя
   home.packages = with pkgs; [
     prismlauncher
@@ -20,11 +28,7 @@
     mpv
     remmina
     conda
-    jupyter
-    python312Packages.bpython
-    python312Packages.debugpy
-    python312Packages.ipykernel
-    python312Packages.matplotlib
+    myPython
   ];
 
   home.file = {
