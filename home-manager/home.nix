@@ -19,9 +19,9 @@
     libnotify
     mpv
     remmina
+    miniconda
     python312Packages.bpython
     python312Packages.debugpy
-    miniconda
   ];
 
   home.file = {
