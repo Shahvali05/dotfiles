@@ -19,9 +19,9 @@
     libnotify
     mpv
     remmina
+    conda
     python312Packages.bpython
     python312Packages.debugpy
-    python312Packages.conda
   ];
 
   home.file = {
