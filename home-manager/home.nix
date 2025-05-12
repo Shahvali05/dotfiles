@@ -21,6 +21,7 @@
     remmina
     python312Packages.bpython
     python312Packages.debugpy
+    miniconda
   ];
 
   home.file = {
