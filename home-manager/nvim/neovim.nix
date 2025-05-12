@@ -106,7 +106,7 @@ in
         ${builtins.readFile ./plugins/treesitter.lua}
         ${builtins.readFile ./plugins/vim-markdown.lua}
         ${builtins.readFile ./plugins/which-key.lua}
-        ${builtins.readFile ./plugins/vim-jukit.lua}
+        vim.cmd('${builtins.readFile ./plugins/vim-jukit.vim}')
       '';
     };
   };
