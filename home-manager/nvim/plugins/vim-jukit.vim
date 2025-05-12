@@ -77,3 +77,4 @@ nnoremap <leader>pd :call jukit#convert#save_nb_to_file(0,1,'pdf')<cr>
 "   - Конвертирует файл в PDF и открывает его
 nnoremap <leader>rpd :call jukit#convert#save_nb_to_file(1,1,'pdf')<cr>
 "   - То же, что выше, но перевыполняет все ячейки перед конвертацией в PDF
+nnoremap <leader>pos :call jukit#ueberzug#set_default_pos()<cr>
