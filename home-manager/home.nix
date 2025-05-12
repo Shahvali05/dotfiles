@@ -20,11 +20,10 @@
     mpv
     remmina
     conda
-    # jupyter
+    jupyter
     python312Packages.bpython
     python312Packages.debugpy
     python312Packages.ipykernel
-    python312Packages.jupyter
     python312Packages.matplotlib
   ];
 
