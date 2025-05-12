@@ -6,6 +6,17 @@ let
     python-lsp-server
     ruff
   ]);
+
+  vim-jukit = pkgs.vimUtils.buildVimPlugin {
+    pname = "vim-jukit";
+    version = "1.4.1";
+    src = pkgs.fetchFromGitHub {
+      owner = "luk400";
+      repo = "vim-jukit";
+      rev = "32514c68d7f1961a57b821c0021c9a0a9e4be9c1";
+      sha256 = pkgs.lib.fakeSha256; # временно, Nix подскажет правильный хэш
+    };
+  };
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -69,6 +80,7 @@ in
         which-key-nvim
         codeium-vim
         codeium-nvim
+        vim-jukit
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
