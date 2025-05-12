@@ -1,4 +1,14 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+
+let
+  myPython = pkgs.python312.withPackages (ps: with ps; [
+    matplotlib
+    bpython
+    debugpy
+    ipykernel
+    jupyter
+  ]);
+in {
   imports = [
     ./nvim/neovim.nix
     ./mako/mako.nix
@@ -8,13 +18,6 @@
   home.homeDirectory = "/home/laraeter";
   home.stateVersion = "24.11";
 
-  myPython = pkgs.python312.withPackages (ps: with ps; [
-    matplotlib
-    bpython
-    debugpy
-    ipykernel
-    jupyter
-  ]);
 
   # Пакеты для пользователя
   home.packages = with pkgs; [
