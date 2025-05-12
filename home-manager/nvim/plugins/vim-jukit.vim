@@ -1,5 +1,3 @@
-set shell=/bin/bash
-set shellcmdflag=-c
 " Отключение стандартных привязок vim-jukit
 let g:jukit_mappings = 0
 
