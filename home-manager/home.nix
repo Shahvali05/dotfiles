@@ -7,6 +7,7 @@ let
     debugpy
     ipykernel
     jupyter
+    ueberzug
   ]);
 in {
   imports = [
