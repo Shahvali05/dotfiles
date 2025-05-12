@@ -42,6 +42,14 @@ nvimtree.setup({
   git = {
     ignore = false, -- Показывать файлы, игнорируемые git
   },
+  on_attach = function(bufnr)
+    local api = require("nvim-tree.api")
+    local function opts(desc)
+      return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+    -- Привязка Enter для открытия файла
+    vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
+  end,
 })
 
 -- ============================================================================
