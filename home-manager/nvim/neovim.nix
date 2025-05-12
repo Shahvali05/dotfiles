@@ -14,7 +14,7 @@ let
       owner = "luk400";
       repo = "vim-jukit";
       rev = "32514c68d7f1961a57b821c0021c9a0a9e4be9c1";
-      sha256 = pkgs.lib.fakeSha256; # временно, Nix подскажет правильный хэш
+      sha256 = "sha256-GUqYNRLGXaPyYm09rthoXbtV0sNjElEY1aSfK3X32mk=";
     };
   };
 in
