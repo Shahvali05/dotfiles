@@ -33,6 +33,7 @@ in {
     remmina
     conda
     myPython
+    gimp
   ];
 
   home.file = {
