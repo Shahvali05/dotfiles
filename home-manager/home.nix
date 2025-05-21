@@ -17,7 +17,7 @@ in {
   ];
   home.username = "laraeter";
   home.homeDirectory = "/home/laraeter";
-  home.stateVersion = "25.05";
+  home.stateVersion = "24.11";
 
 
   # Пакеты для пользователя
