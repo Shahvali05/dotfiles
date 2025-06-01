@@ -22,7 +22,7 @@
     bluez
     libvirt
     gvfs
-    gvfs-fuse
+    # gvfs-fuse
     # fuse3
     ntfs3g
     # udisks2
