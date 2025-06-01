@@ -34,6 +34,7 @@ in {
     conda
     myPython
     gimp
+    lutris
   ];
 
   home.file = {
