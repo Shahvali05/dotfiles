@@ -42,17 +42,11 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
-  hardware.opengl.enable = true;
-
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.extraPackages = with pkgs; [
+    mesa
     vulkan-loader
     vulkan-tools
-    mesa
-    mesa-vulkan-drivers
-  ];
-
-  hardware.opengl.extraPackages32 = with pkgs; [
-    vulkan-loader
+    mesa_vulkan_drivers
   ];
 
   environment.variables = {
