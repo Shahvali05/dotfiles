@@ -46,6 +46,7 @@
     lmstudio
     clapper
     alacritty
+    heroic
     # virt-manager
     zathura
     pomodoro-gtk
