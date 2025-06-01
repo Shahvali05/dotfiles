@@ -9,9 +9,9 @@
   ];
 
   environment.systemPackages = with pkgs; let
-    steamFHS = (buildFHSUserEnv {
-      name = "steam-fhs";
-      targetPkgs = pkgs: with pkgs; [
+    steamEnv = buildEnv {
+      name = "steam-env";
+      paths = [
         steam
         steam-run
         mesa
@@ -20,19 +20,7 @@
         libva
         gamescope
       ];
-      multiPkgs = pkgs: with pkgs; [
-        (pkgsi686Linux.mesa)
-        (pkgsi686Linux.vulkan-loader)
-        (pkgsi686Linux.libva)
-        xorg.libX11
-        xorg.libXcursor
-        xorg.libXinerama
-        xorg.libXrandr
-        xorg.libXi
-        libGL
-        libva
-      ];
-    }).env;
+    };
   in [
     # Console tools
     playerctl
@@ -54,7 +42,7 @@
     pamixer
     
     # Desktop programs
-    steamFHS
+    steamEnv
     lmstudio
     clapper
     alacritty
