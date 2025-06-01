@@ -13,6 +13,14 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  fileSystems."/mnt/games" = {
+    device = "UUID=e4fa4ca8-7825-4132-96cf-1912e2061551";  # подставьте свой UUID из lsblk -f
+    fsType = "ext4";
+    # Опционально можно указать дополнительные монтировочные параметры, например:
+    # options = [ "defaults" ];
+  };
+
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/5754f47e-6abb-4be8-8156-a8742d3ceb66";
       fsType = "ext4";
