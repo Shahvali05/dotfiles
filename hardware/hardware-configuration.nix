@@ -14,10 +14,9 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/mnt/games" = {
-    device = "UUID=e4fa4ca8-7825-4132-96cf-1912e2061551";  # подставьте свой UUID из lsblk -f
+    device = "UUID=e4fa4ca8-7825-4132-96cf-1912e2061551";
     fsType = "ext4";
-    # Опционально можно указать дополнительные монтировочные параметры, например:
-    # options = [ "defaults" ];
+    options = [ "defaults" "uid=1000" "gid=100" "umask=0022" ];
   };
 
 
