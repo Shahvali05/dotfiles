@@ -43,8 +43,6 @@
   services.udisks2.enable = true;
 
   hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
 
   hardware.graphics.extraPackages = with pkgs; [
     mesa
