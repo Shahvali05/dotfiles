@@ -45,7 +45,6 @@
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
-  hardware.vulkan.enable = true;
 
   hardware.graphics.extraPackages = with pkgs; [
     mesa
