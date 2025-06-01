@@ -47,9 +47,15 @@
   hardware.opengl.extraPackages = with pkgs; [
     vulkan-loader
     vulkan-tools
+    mesa
+    mesa-vulkan-drivers
   ];
 
   hardware.opengl.extraPackages32 = with pkgs; [
     vulkan-loader
   ];
+
+  environment.variables = {
+    SDL_VIDEODRIVER = "wayland,x11";
+  };
 }
