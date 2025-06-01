@@ -41,9 +41,6 @@
     obs-studio
     keepassxc
     filezilla
-    steam
-    mesa-demos
-    vulkan-tools
     vscode
     qbittorrent
     libreoffice
@@ -55,5 +52,25 @@
     chromium
     xfce.thunar
     xfce.thunar-volman
+  ];
+
+  environment.systemPackages = with pkgs; let
+    steamEnv = buildEnv {
+      name = "steam-env";
+      paths = [
+        steam
+        steam-run
+        mesa
+        vulkan-loader
+        vulkan-tools
+        libva
+        (pkgsi686Linux.mesa)
+        (pkgsi686Linux.vulkan-loader)
+        (pkgsi686Linux.libva)
+        gamescope
+      ];
+    };
+  in [
+    steamEnv
   ];
 }
