@@ -46,7 +46,6 @@
     mesa
     vulkan-loader
     vulkan-tools
-    mesa_vulkan_drivers
   ];
 
   environment.variables = {
