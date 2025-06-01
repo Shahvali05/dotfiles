@@ -42,7 +42,7 @@
     keepassxc
     filezilla
     steam
-    mesa-utils
+    mesa-demos
     vscode
     qbittorrent
     libreoffice
