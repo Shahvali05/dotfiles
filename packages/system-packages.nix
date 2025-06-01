@@ -43,7 +43,7 @@
     filezilla
     steam
     mesa-demos
-    vulkaninfo
+    vulkan-tools
     vscode
     qbittorrent
     libreoffice
