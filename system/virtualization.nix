@@ -18,6 +18,7 @@
   
   programs.adb.enable = true;
   hardware.graphics.enable = true;
+  hardware.xone.enable = true;
   systemd.services.lxcfs.enable = true;
   
   users.extraGroups = {

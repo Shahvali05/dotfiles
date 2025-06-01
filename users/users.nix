@@ -6,7 +6,7 @@
     description = "Shahvali";
     extraGroups = [ "networkmanager" "wheel" "disk" "storage" "plugdev" ];
   };
-  
+
   programs.fish.enable = true;
   programs.bash.interactiveShellInit = ''
     if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -15,4 +15,6 @@
       exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
     fi
   '';
+
+  services.getty.autologinUser = "laraeter";
 }

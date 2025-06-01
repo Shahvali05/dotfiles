@@ -3,7 +3,17 @@
 {
   programs.firefox.enable = true;
   programs.nix-ld.enable = true;
-  
+  programs = {
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+    };
+  };
+
   nixpkgs.config.permittedInsecurePackages = [
     # "electron-27.3.11"
   ];
