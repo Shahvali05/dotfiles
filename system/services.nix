@@ -42,20 +42,18 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
-  hardware.opengl.enable = true;
+  # hardware.graphics.extraPackages = with pkgs; [
+  #   mesa
+  #   vulkan-loader
+  #   vulkan-tools
+  # ];
 
-  hardware.graphics.extraPackages = with pkgs; [
-    mesa
-    vulkan-loader
-    vulkan-tools
-  ];
+  # hardware.graphics.extraPackages32 = with pkgs; [
+  #   mesa
+  #   vulkan-loader
+  # ];
 
-  hardware.graphics.extraPackages32 = with pkgs; [
-    mesa
-    vulkan-loader
-  ];
-
-  environment.variables = {
-    SDL_VIDEODRIVER = "wayland,x11";
-  };
+  # environment.variables = {
+  #   SDL_VIDEODRIVER = "wayland,x11";
+  # };
 }
