@@ -16,8 +16,10 @@
   fileSystems."/mnt/games" = {
     device = "UUID=e4fa4ca8-7825-4132-96cf-1912e2061551";
     fsType = "ext4";
-    options = [ "defaults" "uid=1000" "gid=100" "umask=0022" ];
   };
+  systemd.tmpfiles.rules = [
+    "d /mnt/games 0755 laraeter users -"
+  ];
 
 
   fileSystems."/" =
