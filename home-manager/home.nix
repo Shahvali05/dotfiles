@@ -35,7 +35,7 @@ in {
     myPython
     gimp
     lutris
-    firefox
+    firefox-esr
   ];
 
   home.file = {
