@@ -35,8 +35,7 @@ in {
     myPython
     gimp
     lutris
-    freetube
-    minitube
+    pipe-viewer
   ];
 
   home.file = {
