@@ -36,6 +36,7 @@ in {
     gimp
     lutris
     freetube
+    minitube
   ];
 
   home.file = {
