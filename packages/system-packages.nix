@@ -57,6 +57,7 @@
     clapper
     alacritty
     heroic
+    gnome.gnome-software
     # virt-manager
     zathura
     pomodoro-gtk

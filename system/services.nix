@@ -42,6 +42,8 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  services.flatpak.enable = true;
+
   # hardware.graphics.extraPackages = with pkgs; [
   #   mesa
   #   vulkan-loader
