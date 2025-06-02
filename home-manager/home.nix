@@ -35,7 +35,7 @@ in {
     myPython
     gimp
     lutris
-    firefox-esr
+    freetube
   ];
 
   home.file = {
