@@ -20,7 +20,7 @@
     LC_TIME = "ru_RU.UTF-8";
   };
 
-  networking.firewall.allowedTCPPorts = [ 8000 ];
+  networking.firewall.allowedTCPPorts = [ 8000, 69 ];
 
   # networking.interfaces.wlp4s0.ipv4.addresses = [
   #   {address = "192.168.1.2"; prefixLength = 24; }
