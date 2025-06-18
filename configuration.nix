@@ -27,7 +27,7 @@
 
   services.tftpd-hpa = {
     enable = true;
-    directories = [ "/var/tftp" ];
+    directory = "/var/tftp";
     # port = 69;
   };
 }
