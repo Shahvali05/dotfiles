@@ -43,19 +43,4 @@
   services.udisks2.enable = true;
 
   services.flatpak.enable = true;
-
-  # hardware.graphics.extraPackages = with pkgs; [
-  #   mesa
-  #   vulkan-loader
-  #   vulkan-tools
-  # ];
-
-  # hardware.graphics.extraPackages32 = with pkgs; [
-  #   mesa
-  #   vulkan-loader
-  # ];
-
-  # environment.variables = {
-  #   SDL_VIDEODRIVER = "wayland,x11";
-  # };
 }
