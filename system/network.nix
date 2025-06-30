@@ -35,7 +35,7 @@
       # Note: The private key can also be included inline via the privateKey option,
       # but this makes the private key world-readable; thus, using privateKeyFile is
       # recommended.
-      privateKeyFile = "OCgmUj7JEPIx1aRKpnPD3blfpm0TKO+pQbRvIh8Ha3I=";
+      privateKeyFile = "/etc/wireguard/private.key";
 
       peers = [
         # For a client configuration, one peer entry for the server will suffice.
