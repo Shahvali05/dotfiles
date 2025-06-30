@@ -36,6 +36,7 @@ in {
     gimp
     lutris
     pipe-viewer
+    proxychains
   ];
 
   home.file = {
