@@ -37,6 +37,7 @@ in {
     lutris
     pipe-viewer
     proxychains
+    zip
   ];
 
   home.file = {
