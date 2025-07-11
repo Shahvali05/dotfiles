@@ -38,7 +38,6 @@ in {
     pipe-viewer
     proxychains
     zip
-    neohtop
   ];
 
   home.file = {
