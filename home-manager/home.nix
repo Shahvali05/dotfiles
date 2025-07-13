@@ -39,6 +39,7 @@ in {
     proxychains
     zip
     zed-editor
+    onlyoffice-desktopeditors
   ];
 
   home.file = {
