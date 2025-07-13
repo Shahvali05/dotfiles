@@ -38,6 +38,7 @@ in {
     pipe-viewer
     proxychains
     zip
+    zed-editor
   ];
 
   home.file = {
