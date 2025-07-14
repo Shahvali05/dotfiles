@@ -40,6 +40,7 @@ in {
     zip
     zed-editor
     onlyoffice-desktopeditors
+    sqlitebrowser
   ];
 
   home.file = {
