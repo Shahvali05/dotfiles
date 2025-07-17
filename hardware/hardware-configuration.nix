@@ -13,24 +13,15 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/mnt/games" = {
-    device = "UUID=e4fa4ca8-7825-4132-96cf-1912e2061551";
-    fsType = "ext4";
-  };
-  systemd.tmpfiles.rules = [
-    "d /mnt/games 0755 laraeter users -"
-  ];
-
-
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/5754f47e-6abb-4be8-8156-a8742d3ceb66";
+    { device = "/dev/disk/by-uuid/f2846483-de94-4957-928b-dd40bded0b17";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/D11B-A2E2";
+    { device = "/dev/disk/by-uuid/9019-0BBC";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices = [ ];
@@ -40,6 +31,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp5s0f3u1.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

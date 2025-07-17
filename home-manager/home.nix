@@ -41,6 +41,7 @@ in {
     zed-editor
     onlyoffice-desktopeditors
     sqlitebrowser
+    pywalfox-native
   ];
 
   home.file = {
