@@ -43,6 +43,7 @@ in {
     sqlitebrowser
     pywalfox-native
     rmtrash
+    lsd
   ];
 
   home.file = {
