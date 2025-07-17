@@ -42,6 +42,7 @@ in {
     onlyoffice-desktopeditors
     sqlitebrowser
     pywalfox-native
+    rmtrash
   ];
 
   home.file = {
