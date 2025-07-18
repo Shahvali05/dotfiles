@@ -44,7 +44,7 @@
 
   services.flatpak.enable = true;
 
-  services.indexHtmlServer = {
+  systemd.services.indexHtmlServer = {
     description = "tartarus-startpage";
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
