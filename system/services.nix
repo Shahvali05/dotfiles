@@ -45,7 +45,7 @@
   services.flatpak.enable = true;
 
   services.indexHtmlServer = {
-    description = "Local index.html web server";
+    description = "tartarus-startpage";
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
 
