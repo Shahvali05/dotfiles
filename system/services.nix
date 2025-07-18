@@ -43,4 +43,17 @@
   services.udisks2.enable = true;
 
   services.flatpak.enable = true;
+
+  services.indexHtmlServer = {
+    description = "Local index.html web server";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      ExecStart = "${pkgs.python3}/bin/python3 -m http.server 8080";
+      WorkingDirectory = "/home/laraeter/nixos/system/user-services/tartarus-startpage/index.html";
+      Restart = "always";
+      User = "laraeter";
+    };
+  };
 }
