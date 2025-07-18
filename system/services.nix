@@ -51,7 +51,7 @@
 
     serviceConfig = {
       ExecStart = "${pkgs.python3}/bin/python3 -m http.server 8080";
-      WorkingDirectory = "/home/laraeter/nixos/system/user-services/tartarus-startpage/index.html";
+      WorkingDirectory = "/home/laraeter/nixos/system/user-services/tartarus-startpage/";
       Restart = "always";
       User = "laraeter";
     };
