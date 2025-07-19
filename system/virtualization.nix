@@ -8,7 +8,7 @@
   virtualisation.docker.enable = true;
 
   # waydroid
-  # virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.enable = true;
   virtualisation.lxc.enable = true;
 
   # virt-manager

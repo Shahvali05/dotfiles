@@ -129,6 +129,12 @@ const default_config = {
               icon: "spider",
               icon_color: "#2B79D4",
             },
+            {
+              name: "MCPE",
+              url: "https://panel.mcpehost.ru/user/detail",
+              icon: "brand-minecraft",
+              icon_color: "#8F5B35",
+            },
           ],
         },
         {
