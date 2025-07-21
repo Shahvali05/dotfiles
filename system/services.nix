@@ -56,4 +56,6 @@
       User = "laraeter";
     };
   };
+
+  programs.eww.enable = true;
 }
