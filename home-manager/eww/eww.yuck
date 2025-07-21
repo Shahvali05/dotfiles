@@ -27,10 +27,10 @@
                         (volume)
                         (ram)
                         (battery)
-                        (eventbox :onhoverlost "bash -c '/usr/bin/eww update keyrev=false && /usr/bin/eww update keyhov=false && /usr/bin/eww update wifirev=false && /usr/bin/eww update wifihov=false'"
+                        (eventbox :onhoverlost "bash -c 'eww update keyrev=false && eww update keyhov=false && eww update wifirev=false && eww update wifihov=false'"
                                   (wifi)
                         )
-                        (eventbox :onhoverlost "bash -c '/usr/bin/eww update keyrev=false && /usr/bin/eww update keyhov=false && /usr/bin/eww update wifirev=false && /usr/bin/eww update wifihov=false'"
+                        (eventbox :onhoverlost "bash -c 'eww update keyrev=false && eww update keyhov=false && eww update wifirev=false && eww update wifihov=false'"
                                   (keyboard)
                         )
               )
