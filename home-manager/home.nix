@@ -59,6 +59,9 @@ in {
   };
 
   programs.home-manager.enable = true;
-  programs.eww.enable = true;
 
+  programs.eww = {
+    enable = true;
+    configDir = ./eww;  # путь к конфигурации
+  };
 }
