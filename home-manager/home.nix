@@ -44,6 +44,7 @@ in {
     pywalfox-native
     rmtrash
     lsd
+    eww
   ];
 
   home.file = {
@@ -58,4 +59,6 @@ in {
   };
 
   programs.home-manager.enable = true;
+  programs.eww.enable = true;
+
 }

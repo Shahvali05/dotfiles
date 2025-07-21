@@ -4,7 +4,6 @@
   programs.hyprland.enable = true;
   
   environment.systemPackages = with pkgs; [
-    eww
     waybar
     swww
     hyprlock
