@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 wifi_info=$(nmcli -t -f active,ssid,signal dev wifi | grep '^yes')
 

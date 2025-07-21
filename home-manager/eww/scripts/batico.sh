@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 get_icon(){
   case $1 in
@@ -26,8 +26,17 @@ get_icon(){
 }
 
 while true; do
-    BATTERY=$(cat /sys/class/power_supply/BAT0/capacity)
-    STATUS=$(cat /sys/class/power_supply/BAT0/status)
+    # Читаем данные, подавляем ошибки если файл отсутствует
+    BATTERY=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null)
+    STATUS=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
+
+    # Если данных нет, ждем и пробуем снова
+    if [[ -z "$BATTERY" || -z "$STATUS" ]]; then
+        echo "(box :class \"UNKNOWN\" \"⚠\")"
+        sleep 5
+        continue
+    fi
+
     CLASS=""
     ICON=""
     get_icon "$BATTERY"

@@ -1,11 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 while true; do
-    CHARGE_NOW=$(cat /sys/class/power_supply/BAT0/charge_now)
-    CURRENT_NOW=$(cat /sys/class/power_supply/BAT0/current_now)
-    CURRENT_NOW=${CURRENT_NOW#-}
-    CHARGE_FULL=$(cat /sys/class/power_supply/BAT0/charge_full)
-    STATUS=$(cat /sys/class/power_supply/BAT0/status)
+    CHARGE_NOW=$(cat /sys/class/power_supply/BAT0/charge_now 2>/dev/null)
+    CURRENT_NOW=$(cat /sys/class/power_supply/BAT0/current_now 2>/dev/null)
+    CHARGE_FULL=$(cat /sys/class/power_supply/BAT0/charge_full 2>/dev/null)
+    STATUS=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
+
+    # Пропускаем, если данные не получены
+    if [[ -z "$CHARGE_NOW" || -z "$CURRENT_NOW" || -z "$CHARGE_FULL" || -z "$STATUS" ]]; then
+        echo "Battery info not available"
+        sleep 5
+        continue
+    fi
+
+    CURRENT_NOW=${CURRENT_NOW#-}  # Убираем минус, если есть
 
     if [ "$CURRENT_NOW" -ne 0 ]; then
         if [[ "$STATUS" == "Discharging" ]]; then
@@ -22,6 +30,9 @@ while true; do
         else
             echo "0 h 0 min to full, $STATUS"
         fi
+    else
+        echo "Battery usage unknown"
     fi
+
     sleep 1
 done
