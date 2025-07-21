@@ -26,17 +26,8 @@ get_icon(){
 }
 
 while true; do
-    # Читаем данные, подавляем ошибки если файл отсутствует
-    BATTERY=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null)
-    STATUS=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
-
-    # Если данных нет, ждем и пробуем снова
-    if [[ -z "$BATTERY" || -z "$STATUS" ]]; then
-        echo "(box :class \"UNKNOWN\" \"⚠\")"
-        sleep 5
-        continue
-    fi
-
+    BATTERY=$(cat /sys/class/power_supply/BAT1/capacity)
+    STATUS=$(cat /sys/class/power_supply/BAT1/status)
     CLASS=""
     ICON=""
     get_icon "$BATTERY"

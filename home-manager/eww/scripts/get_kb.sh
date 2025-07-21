@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
-HYPRLAND_SIGNATURE_ACTUAL=$(ls -td /run/user/1000/hypr/*/ 2>/dev/null | head -n1 | xargs basename)
-
-if [[ -z "$HYPRLAND_SIGNATURE_ACTUAL" ]]; then
-    echo "No Hyprland socket found"
+# Проверяем, доступен ли hyprctl
+if ! command -v hyprctl &> /dev/null; then
+    echo "Ошибка: hyprctl не найден. Убедитесь, что вы используете Hyprland."
     exit 1
 fi
 
-socat -u UNIX-CONNECT:/run/user/1000/hypr/"$HYPRLAND_SIGNATURE_ACTUAL"/.socket2.sock - | \
-    stdbuf -o0 awk -F '>>|,' '/^activelayout>>/ { print toupper(substr($3, 1, 2)) }'
+# Получаем текущую раскладку с помощью hyprctl
+CURRENT_LAYOUT=$(hyprctl devices | grep -A 10 "Keyboards" | grep "active keymap" | awk '{print $NF}')
+
+# Проверяем, удалось ли получить раскладку
+if [ -z "$CURRENT_LAYOUT" ]; then
+    echo "Ошибка: Не удалось определить текущую раскладку клавиатуры."
+    exit 1
+fi
+
+# Выводим текущую раскладку
+echo "$CURRENT_LAYOUT"

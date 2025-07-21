@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BATTERY_PATH="/sys/class/power_supply/BAT0"
+BATTERY_PATH="/sys/class/power_supply/BAT1"
 
 if [[ ! -r "$BATTERY_PATH/capacity" || ! -r "$BATTERY_PATH/status" ]]; then
     echo "(box :class \"bat-bar\" \"⚠ Battery info not found\")"

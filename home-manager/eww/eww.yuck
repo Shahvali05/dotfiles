@@ -93,7 +93,7 @@
                             (literal :content batico)
                        )
                        (label :class "bsht" 
-                              :text "${EWW_BATTERY.BAT0.capacity}%")
+                              :text "${EWW_BATTERY.BAT1.capacity}%")
                   )
     )
 )
@@ -575,7 +575,7 @@
                                   :orientation "v"
                                   (box :class "bat-percent"
                                        :space-evenly false
-                                       (label :text "Battery ${EWW_BATTERY.BAT0.capacity}%")
+                                       (label :text "Battery ${EWW_BATTERY.BAT1.capacity}%")
                                   )
                                   (box :class "bat-status"
                                        :space-evenly false

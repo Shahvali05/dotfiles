@@ -1,38 +1,42 @@
 #!/usr/bin/env bash
 
+# Путь к папке батареи
+BAT_PATH="/sys/class/power_supply/BAT1"
+
+# Проверяем, существует ли папка батареи
+if [ ! -d "$BAT_PATH" ]; then
+    echo "Ошибка: Устройство батареи $BAT_PATH не найдено"
+    exit 1
+fi
+
 while true; do
-    CHARGE_NOW=$(cat /sys/class/power_supply/BAT0/charge_now 2>/dev/null)
-    CURRENT_NOW=$(cat /sys/class/power_supply/BAT0/current_now 2>/dev/null)
-    CHARGE_FULL=$(cat /sys/class/power_supply/BAT0/charge_full 2>/dev/null)
-    STATUS=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
+    # Читаем текущий заряд (μWh), мощность (μW), полную емкость (μWh) и статус
+    ENERGY_NOW=$(cat "$BAT_PATH/energy_now" 2>/dev/null || echo 0)
+    POWER_NOW=$(cat "$BAT_PATH/power_now" 2>/dev/null || echo 0)
+    POWER_NOW=${POWER_NOW#-} # Убираем знак минус, если есть
+    ENERGY_FULL=$(cat "$BAT_PATH/energy_full" 2>/dev/null || echo 0)
+    STATUS=$(cat "$BAT_PATH/status" 2>/dev/null || echo "Unknown")
 
-    # Пропускаем, если данные не получены
-    if [[ -z "$CHARGE_NOW" || -z "$CURRENT_NOW" || -z "$CHARGE_FULL" || -z "$STATUS" ]]; then
-        echo "Battery info not available"
-        sleep 5
-        continue
-    fi
-
-    CURRENT_NOW=${CURRENT_NOW#-}  # Убираем минус, если есть
-
-    if [ "$CURRENT_NOW" -ne 0 ]; then
+    # Проверяем, что POWER_NOW не равно 0, чтобы избежать деления на ноль
+    if [ "$POWER_NOW" -ne 0 ]; then
         if [[ "$STATUS" == "Discharging" ]]; then
-            MINUTES_LEFT=$(( CHARGE_NOW * 60 / CURRENT_NOW ))
+            # Время до разряда (в минутах)
+            MINUTES_LEFT=$(( ENERGY_NOW * 60 / POWER_NOW ))
             HOURS=$(( MINUTES_LEFT / 60 ))
             MINS=$(( MINUTES_LEFT % 60 ))
-            echo "$HOURS h $MINS min left, $STATUS"
+            echo "$HOURS ч $MINS мин осталось, $STATUS"
         elif [[ "$STATUS" == "Charging" ]]; then
-            DIFF=$(( CHARGE_FULL - CHARGE_NOW ))
-            MINUTES_TO_FULL=$(( DIFF * 60 / CURRENT_NOW ))
+            # Время до полной зарядки
+            DIFF=$(( ENERGY_FULL - ENERGY_NOW ))
+            MINUTES_TO_FULL=$(( DIFF * 60 / POWER_NOW ))
             HOURS=$(( MINUTES_TO_FULL / 60 ))
             MINS=$(( MINUTES_TO_FULL % 60 ))
-            echo "$HOURS h $MINS min to full, $STATUS"
+            echo "$HOURS ч $MINS мин до полной зарядки, $STATUS"
         else
-            echo "0 h 0 min to full, $STATUS"
+            echo "0 ч 0 мин до полной зарядки, $STATUS"
         fi
     else
-        echo "Battery usage unknown"
+        echo "Ошибка: Не удалось прочитать power_now, $STATUS"
     fi
-
     sleep 1
 done
