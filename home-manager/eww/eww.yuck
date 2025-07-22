@@ -271,7 +271,7 @@
 (defwidget keyboard []
     (box :class "keyboard"
         (eventbox :onhover "./scripts/kb-delay.sh"
-                  :onhoverlost "bash -c '/usr/bin/eww update keyrev=false && /usr/bin/eww update keyhov=false'"
+                  :onhoverlost "bash -c 'eww update keyrev=false && eww update keyhov=false'"
                   :onclick "hyprctl switchxkblayout at-translated-set-2-keyboard next"
                   :cursor "pointer"
                   (box :orientation "h"

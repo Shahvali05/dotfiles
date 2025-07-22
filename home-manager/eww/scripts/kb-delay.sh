@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-/usr/bin/eww update keyhov=true
-(sleep 0.45 && /usr/bin/eww update keyrev="$(/usr/bin/eww get keyhov)") &
+eww update keyhov=true
+(sleep 0.45 && eww update keyrev="$(eww get keyhov)") &
