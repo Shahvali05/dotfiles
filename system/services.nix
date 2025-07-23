@@ -58,6 +58,6 @@
   };
 
   services.redis.servers.redis.enable = true;
-  services.redis.servers.redis.user = "lokaciyabot";
+  services.redis.servers.redis.user = "laraeter";
   services.redis.servers.redis.port = 6379;
 }
