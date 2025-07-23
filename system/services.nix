@@ -57,7 +57,14 @@
     };
   };
 
-  services.redis.servers.redis.enable = true;
-  services.redis.servers.redis.user = "laraeter";
-  services.redis.servers.redis.port = 6379;
+  services.redis = {
+    enable = true;
+    port = 6379; # Порт по умолчанию, можно изменить
+    dataDir = "/var/lib/redis"; # Папка для хранения данных
+    bind = "127.0.0.1"; # Привязка к localhost
+    extraConfig = ''
+      maxmemory 256mb
+      maxmemory-policy allkeys-lru
+    '';
+  };
 }
