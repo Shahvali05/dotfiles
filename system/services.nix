@@ -57,13 +57,13 @@
     };
   };
 
-  services.redis = {
+  services.redis.servers.default = {
     enable = true;
     port = 6379;
     bind = "127.0.0.1";
-    extraConfig = ''
-      maxmemory 256mb
-      maxmemory-policy allkeys-lru
-    '';
+    settings = {
+      maxmemory = "256mb";
+      maxmemory-policy = "allkeys-lru";
+    };
   };
 }
