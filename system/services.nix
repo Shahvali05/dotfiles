@@ -59,9 +59,8 @@
 
   services.redis = {
     enable = true;
-    port = 6379; # Порт по умолчанию, можно изменить
-    dataDir = "/var/lib/redis"; # Папка для хранения данных
-    bind = "127.0.0.1"; # Привязка к localhost
+    port = 6379;
+    bind = "127.0.0.1";
     extraConfig = ''
       maxmemory 256mb
       maxmemory-policy allkeys-lru
