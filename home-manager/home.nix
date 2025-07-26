@@ -49,6 +49,7 @@ in {
     eww
     jq
     socat
+    lm_sensors
   ];
 
   home.file = {

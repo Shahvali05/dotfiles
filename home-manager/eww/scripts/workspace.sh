@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ws() {
-    local workspaces=6
+    local workspaces=10
     local workspace_icon=()
     local workspace_class=()
     local output=""
@@ -25,7 +25,7 @@ ws() {
     done
 
     output="(box :class \"ws\" :halign \"end\" :orientation \"h\" :spacing 5 :space-evenly \"false\""
-    for i in {1..6}; do
+    for ((i=1; i<=workspaces; i++)); do
         idx=$((i-1))
         output+=" (eventbox :onclick \"hyprctl dispatch workspace $i\" :cursor \"pointer\" :class \"${workspace_class[$idx]}\" (label :text \"${workspace_icon[$idx]}\"))"
     done

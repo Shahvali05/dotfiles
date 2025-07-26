@@ -53,7 +53,7 @@
          )
          (eventbox :class "tray-button"
                    :width 20
-                   :onclick "${trayrev==false?"/usr/bin/eww update trayrev=true":"/usr/bin/eww update trayrev=false"}"
+                   :onclick "${trayrev==false?"eww update trayrev=true":"eww update trayrev=false"}"
                    :cursor "pointer"
                    (label :class "tray-text" :text "${trayrev==false?"‹":"›"}")         
          )
@@ -102,7 +102,7 @@
 (defvar wifihov false)
 (defvar wifictlrev false)
 
-(defpoll wifistatus :interval "1s" :initial "{\"icon\": \"睊\", \"ssid\": \"Disconnected\", \"strength\": 0}"
+(defpoll wifistatus :interval "10s" :initial "{\"icon\": \"睊\", \"ssid\": \"Disconnected\", \"strength\": 0}"
     "./scripts/current-wifi.sh"
 )
 
@@ -110,7 +110,7 @@
     (box :class "wifi"
         (eventbox :cursor "pointer"
                   :onhover "./scripts/wifi-delay.sh"
-                  :onhoverlost "bash -c '/usr/bin/eww update wifirev=false && /usr/bin/eww update wifihov=false'"
+                  :onhoverlost "bash -c 'eww update wifirev=false && eww update wifihov=false'"
                   :onclick "${ctlrev==true?"./scripts/usrctl.sh && ./scripts/wifictl.sh":"./scripts/wifictl.sh"}"
                   (box :orientation "h"
                        :space-evenly false
@@ -165,7 +165,7 @@
               (revealer :reveal {wificonfigrev}
                         :transition "slidedown"
                         :duration "350ms"
-                        (eventbox :onhoverlost "/usr/bin/eww update wificonfigrev=false"
+                        (eventbox :onhoverlost "eww update wificonfigrev=false"
                                   (box :class "wifictl-container"
                                        :space-evenly false
                                        :orientation "v"
@@ -181,7 +181,7 @@
                                                    :space-evenly false
                                                    :class "iwifi"
                                                    :height 30
-                                                   :onaccept "/usr/bin/eww update wificonfigrev=false && nmcli device wifi connect \"${wifissidrev}\" password \"{}\""
+                                                   :onaccept "eww update wificonfigrev=false && nmcli device wifi connect \"${wifissidrev}\" password \"{}\""
                                             ))
                                        )
                                        (box :orientation "h"
@@ -191,12 +191,12 @@
                                             (eventbox :cursor "pointer"
                                                       :height 30
                                                       :class "wifi-buttons"
-                                                      :onclick "/usr/bin/eww update wificonfigrev=false && nmcli device wifi connect \"${wifissidrev}\""
+                                                      :onclick "eww update wificonfigrev=false && nmcli device wifi connect \"${wifissidrev}\""
                                                       (label :text "Connect")
                                             )
                                             (eventbox :cursor "pointer"
                                                       :class "wifi-buttons"
-                                                      :onclick "/usr/bin/eww update wificonfigrev=false && nmcli connection delete \"${wifissidrev}\""
+                                                      :onclick "eww update wificonfigrev=false && nmcli connection delete \"${wifissidrev}\""
                                                       (label :text "Remove")
                                             )
                                        )
@@ -206,13 +206,13 @@
                                             :class "wifi-bcon"
                                             (eventbox :cursor "pointer"
                                                       :class "wifi-buttons"
-                                                      :onclick "/usr/bin/eww update wificonfigrev=false && nmcli device disconnect wlp0s20f3"
+                                                      :onclick "eww update wificonfigrev=false && nmcli device disconnect wlp0s20f3"
                                                       :height 30
                                                       (label :text "Disconnect")
                                             )
                                             (eventbox :cursor "pointer"
                                                       :class "wifi-buttons"
-                                                      :onclick "/usr/bin/eww update wificonfigrev=false && nmcli connection delete \"${wifissidrev}\""
+                                                      :onclick "eww update wificonfigrev=false && nmcli connection delete \"${wifissidrev}\""
                                                       (label :text "Remove")
                                             )
                                        )
@@ -229,7 +229,7 @@
 
 (defwidget wifi-option [ssid auto inuse]
     (eventbox :cursor "pointer"
-              :onclick "/usr/bin/eww update wificonfigrev=false && /usr/bin/eww update wificonfigrev=true && /usr/bin/eww update wificlass=${auto==false?"1":inuse==false?"2":"3"} && /usr/bin/eww update wifissidrev=\"${ssid}\""
+              :onclick "eww update wificonfigrev=false && eww update wificonfigrev=true && eww update wificlass=${auto==false?"1":inuse==false?"2":"3"} && eww update wifissidrev=\"${ssid}\""
               (box :class "wifi-option-box"
                    :orientation "v"
                    (box :class "wifi-ssid"
@@ -247,7 +247,7 @@
 (defwindow wifictl
     :monitor 0
     :stacking "overlay"
-    :focusable "ondemand"
+    :focusable true
     :geometry (geometry :anchor "top right"
                         :x "5px"
                         :y "-14px"
@@ -304,7 +304,7 @@
 (defwidget menu []
     (button-module :class "menu"
                    :subclass "menu-eventbox"
-                   :icon " "
+                   :icon " "
                    :cmd "~/.config/eww/scripts/menuctl.sh"
     )
 )
@@ -314,7 +314,7 @@
 (defwindow menuctl
     :monitor 0
     :stacking "overlay"
-    :focusable "ondemand"
+    :focusable true
     :geometry (geometry :anchor "top left"
                         :x "5px"
                         :y "-4px"
@@ -391,7 +391,19 @@
     (literal :content workspaces-output)
 )
 
-(defvar workspaces-output "(box :class \"ws\" :halign \"end\" :orientation \"h\" :spacing 5 :space-evenly \"false\" (eventbox :onclick \"hyprctl dispatch workspace 1\" :cursor \"pointer\" :class \"visiting\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 2\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 3\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 4\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 5\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 6\" :cursor \"pointer\" :class \"free\" (label :text \" \")))")
+(defvar workspaces-output
+  "(box :class \"ws\" :halign \"end\" :orientation \"h\" :spacing 5 :space-evenly \"false\"
+    (eventbox :onclick \"hyprctl dispatch workspace 1\" :cursor \"pointer\" :class \"visiting\" (label :text \" \"))
+    (eventbox :onclick \"hyprctl dispatch workspace 2\" :cursor \"pointer\" :class \"free\" (label :text \" \"))
+    (eventbox :onclick \"hyprctl dispatch workspace 3\" :cursor \"pointer\" :class \"free\" (label :text \" \"))
+    (eventbox :onclick \"hyprctl dispatch workspace 4\" :cursor \"pointer\" :class \"free\" (label :text \" \"))
+    (eventbox :onclick \"hyprctl dispatch workspace 5\" :cursor \"pointer\" :class \"free\" (label :text \" \"))
+    (eventbox :onclick \"hyprctl dispatch workspace 6\" :cursor \"pointer\" :class \"free\" (label :text \" \"))
+    (eventbox :onclick \"hyprctl dispatch workspace 7\" :cursor \"pointer\" :class \"free\" (label :text \" \"))
+    (eventbox :onclick \"hyprctl dispatch workspace 8\" :cursor \"pointer\" :class \"free\" (label :text \" \"))
+    (eventbox :onclick \"hyprctl dispatch workspace 9\" :cursor \"pointer\" :class \"free\" (label :text \" \"))
+    (eventbox :onclick \"hyprctl dispatch workspace 10\" :cursor \"pointer\" :class \"free\" (label :text \" \"))
+  )")
 
 (defwidget divider []
     (label :class "div" :text "|")
@@ -689,7 +701,6 @@
                    )
               )
          )
-         (cpu-panel)
          (music-player) 
          )
     ))
@@ -714,49 +725,50 @@
 )
 
 (defwidget cpu-panel []
-    (box :class "cpu-container"
-         :orientation "v"
-         :space-evenly false
-         (box :orientation "h"
-              :class "cpu-header"
-              :space-evenly false
-              (label :text "Core Temperature" :style "color:#cdd6f4;font-size:20px;")
-         )
-         (box :class "graph-container"
-              :orientation "v"
-              :space-evenly false
-              (overlay
-              (graph :thickness 2
-                     :dynamic true
-                     :height "100"
-                     :width "350"
-                     :class "graph-display"
-                     :time-range "300s"
-                     :min 0
-                     :max 101
-                     :value {EWW_TEMPS.CORETEMP_PACKAGE_ID_0}
-              )
-              (box :class "main-temp"
-                   :halign "start"
-                   :valign "end"
-                   (label :class "main-temp-text" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0} °C")
-              )
-              )
-         )
-         (box :class "minicore-container"
-              :orientation "v"
-              :space-evenly false
-              (box :class "minicores"
-                   (label :class "C0" :text "Core 0: ${EWW_TEMPS.CORETEMP_CORE_0} °C")
-                   (label :class "C1" :text "Core 1: ${EWW_TEMPS.CORETEMP_CORE_1} °C")
-              )
-              (box :class "minicores"
-                   (label :class "C2" :text "Core 2: ${EWW_TEMPS.CORETEMP_CORE_2} °C")
-                   (label :class "C3" :text "Core 3: ${EWW_TEMPS.CORETEMP_CORE_3} °C")
-              )
-         )
-
-    )
+  (box :class "cpu-container"
+       :orientation "v"
+       :space-evenly false
+       (box :orientation "h"
+            :class "cpu-header"
+            :space-evenly false
+            (label :text "Core Temperature" :style "color:#cdd6f4;font-size:16px;")
+       )
+       (box :class "graph-container"
+            :orientation "v"
+            :space-evenly false
+            (overlay
+             (graph :thickness 1
+                    :dynamic true
+                    :height "80"
+                    :width "200"
+                    :class "graph-display"
+                    :time-range "300s"
+                    :min 0
+                    :max 101
+                    :value {EWW_TEMPS.CORETEMP_PACKAGE_ID_0}
+             )
+             (box :class "main-temp"
+                  :halign "start"
+                  :valign "end"
+                  (label :class "main-temp-text" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0} °C" :style "font-size:12px;")
+             )
+            )
+       )
+       (box :class "minicore-container"
+            :orientation "v"
+            :space-evenly false
+            (box :class "minicores"
+                 (label :class "C0" :text "Core 0: ${EWW_TEMPS.CORETEMP_CORE_0} °C" :style "font-size:10px;")
+                 (label :class "C1" :text "Core 1: ${EWW_TEMPS.CORETEMP_CORE_1} °C" :style "font-size:10px;")
+                 (label :class "C2" :text "Core 2: ${EWW_TEMPS.CORETEMP_CORE_2} °C" :style "font-size:10px;")
+            )
+            (box :class "minicores"
+                 (label :class "C3" :text "Core 3: ${EWW_TEMPS.CORETEMP_CORE_3} °C" :style "font-size:10px;")
+                 (label :class "C4" :text "Core 4: ${EWW_TEMPS.CORETEMP_CORE_4} °C" :style "font-size:10px;")
+                 (label :class "C5" :text "Core 5: ${EWW_TEMPS.CORETEMP_CORE_5} °C" :style "font-size:10px;")
+            )
+       )
+  )
 )
 
 (defwidget music-player []
