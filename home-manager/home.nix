@@ -44,7 +44,11 @@ in {
     pywalfox-native
     rmtrash
     lsd
+
+    # eww
     eww
+    jq
+    socat
   ];
 
   home.file = {

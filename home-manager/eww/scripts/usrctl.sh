@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ -z $(eww active-windows | grep 'usrctl') ]]; then
-    /usr/bin/eww open usrctl && /usr/bin/eww update ctlrev=true
+    eww open usrctl && eww update ctlrev=true
 else
-    /usr/bin/eww update ctlrev=false
-    (sleep 0.2 && /usr/bin/eww close usrctl) &
+    eww update ctlrev=false
+    (sleep 0.2 && eww close usrctl) &
 fi

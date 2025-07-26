@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ -z $(eww active-windows | grep 'wifictl') ]]; then
-    /usr/bin/eww open wifictl && /usr/bin/eww update wifictlrev=true
+    eww open wifictl && eww update wifictlrev=true
 else
-    /usr/bin/eww update wifictlrev=false && /usr/bin/eww update wificonfigrev=false
-    (sleep 0.2 && /usr/bin/eww close wifictl) &
+    eww update wifictlrev=false && eww update wificonfigrev=false
+    (sleep 0.2 && eww close wifictl) &
 fi

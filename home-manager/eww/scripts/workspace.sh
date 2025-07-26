@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ws() {
     local workspaces=6
@@ -30,7 +30,7 @@ ws() {
         output+=" (eventbox :onclick \"hyprctl dispatch workspace $i\" :cursor \"pointer\" :class \"${workspace_class[$idx]}\" (label :text \"${workspace_icon[$idx]}\"))"
     done
     output+=")"
-    /usr/bin/eww update workspaces-output="$output"
+    eww update workspaces-output="$output"
 }
 
 HYPRLAND_SIGNATURE_ACTUAL=$(ls -td /run/user/1000/hypr/*/ | head -n1 | xargs basename)

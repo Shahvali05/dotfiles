@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 playerctl metadata -F -f '{{playerName}}|{{position}}|{{mpris:length}}' | while IFS='|' read -r player position length; do
     pos_sec=$(( (position + 500000) / 1000000 ))
