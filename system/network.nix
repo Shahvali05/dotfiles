@@ -21,6 +21,7 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 8000 69 18101 19132 ];
+  networking.firewall.allowedUDPPorts = [ 19132 ];
 
   # networking.interfaces.wlp4s0.ipv4.addresses = [
   #   {address = "192.168.1.2"; prefixLength = 24; }
