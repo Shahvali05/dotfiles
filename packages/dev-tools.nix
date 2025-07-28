@@ -19,6 +19,7 @@
     aseprite
     
     # System utilities
+    bridge-utils
     bluez
     libvirt
     gvfs
