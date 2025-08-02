@@ -4,7 +4,7 @@
   users.users.laraeter = {
     isNormalUser = true;
     description = "Shahvali";
-    extraGroups = [ "networkmanager" "wheel" "disk" "storage" "plugdev" "waydroid" ];
+    extraGroups = [ "networkmanager" "wheel" "disk" "storage" "plugdev" ];
   };
 
   programs.fish.enable = true;

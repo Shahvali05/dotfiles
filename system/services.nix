@@ -42,8 +42,6 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
-  services.flatpak.enable = true;
-
   systemd.services.tartarus-startpage = {
     description = "tartarus-startpage";
     after = [ "network.target" ];

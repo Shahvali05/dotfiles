@@ -25,5 +25,6 @@
     vboxusers.members = [ "laraeter" ];
     docker.members = [ "laraeter" ];
     libvirtd.members = [ "laraeter" ];
+    waydroid.members = [ "laraeter" ];
   };
 }
