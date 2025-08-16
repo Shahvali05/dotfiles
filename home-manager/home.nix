@@ -44,8 +44,8 @@ in {
     pywalfox-native
     rmtrash
     lsd
+    mangareader
 
-    # eww
     eww
     jq
     socat
@@ -65,8 +65,8 @@ in {
 
   programs.home-manager.enable = true;
 
-  programs.eww = {
-    enable = true;
-    configDir = ./eww;  # путь к конфигурации
-  };
+  # programs.eww = {
+  #   enable = true;
+  #   configDir = ./eww;  # путь к конфигурации
+  # };
 }

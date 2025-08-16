@@ -49,6 +49,7 @@ in
         cmp-nvim-lsp
         cmp-buffer
         luasnip
+        bufferline-nvim
         cmp_luasnip
         indent-blankline-nvim
         lspkind-nvim
@@ -89,6 +90,7 @@ in
         ${builtins.readFile ./plugins/auto-session.lua}
         ${builtins.readFile ./plugins/autopairs.lua}
         ${builtins.readFile ./plugins/blankline.lua}
+        ${builtins.readFile ./plugins/bufferline.lua}
         ${builtins.readFile ./plugins/cmp.lua}
         ${builtins.readFile ./plugins/colorizer.lua}
         ${builtins.readFile ./plugins/comment.lua}
