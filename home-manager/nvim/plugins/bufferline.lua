@@ -3,30 +3,30 @@ vim.opt.termguicolors = true
 require("bufferline").setup({
   options = {
     always_show_bufferline = false,
-    separator_style = "thin", -- без лишних жирных разделителей
-    show_buffer_close_icons = true,
+    separator_style = "slant", -- трапеция
+    show_buffer_close_icons = false, -- убираем крестики
     show_close_icon = false,
     indicator = {
-      style = 'none', -- убираем подчеркивание
+      style = 'none', -- без подчеркиваний
     },
     offsets = {
       {
         filetype = "NvimTree",
         text = "File Explorer",
         text_align = "center",
-        separator = false, -- без разрыва линии
-        highlight = "BufferLineOffset", -- фон будет как у всей ленты
+        separator = false,
+        highlight = "BufferLineOffset",
       }
     },
   },
   highlights = {
-    fill = { bg = "#3f4a5a" }, -- цвет всей ленты
-    background = { bg = "#3f4a5a", fg = "#c0c8d6" }, -- цвет неактивных вкладок
-    buffer_selected = { bg = "#4b5a6e", fg = "#ffffff", bold = true }, -- активная вкладка
-    buffer_visible = { bg = "#3f4a5a", fg = "#d0d8e0" }, -- видимая, но не активная
+    fill = { bg = "#3f4a5a" },
+    background = { bg = "#3f4a5a", fg = "#c0c8d6" },
+    buffer_selected = { bg = "#4b5a6e", fg = "#ffffff", bold = true },
+    buffer_visible = { bg = "#3f4a5a", fg = "#d0d8e0" },
     separator = { fg = "#3f4a5a", bg = "#3f4a5a" },
     separator_selected = { fg = "#4b5a6e", bg = "#4b5a6e" },
     separator_visible = { fg = "#3f4a5a", bg = "#3f4a5a" },
-    offset_separator = { fg = "#3f4a5a", bg = "#3f4a5a" }, -- чтобы File Explorer входил в ленту
+    offset_separator = { fg = "#3f4a5a", bg = "#3f4a5a" },
   }
 })
