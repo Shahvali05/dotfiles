@@ -6,8 +6,8 @@
 require('lualine').setup({
   options = {
     theme                = 'auto',             -- Автоматическая тема
-    -- component_separators = { left = '│', right = '│' }, -- Тонкие разделители
-    section_separators   = { left = '', right = '' }, -- Скругленные края
+    component_separators = { left = '│', right = '│' }, -- Тонкие разделители
+    section_separators   = { left = '', right = '' }, -- Скругленные края
     globalstatus         = true,               -- Единая строка состояния для всех окон
   },
 
