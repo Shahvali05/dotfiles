@@ -24,9 +24,16 @@ require("bufferline").setup({
     background = { bg = "#3f4a5a", fg = "#c0c8d6" },
     buffer_selected = { bg = "#4b5a6e", fg = "#ffffff", bold = true },
     buffer_visible = { bg = "#3f4a5a", fg = "#d0d8e0" },
+
+    -- разделители
     separator = { fg = "#3f4a5a", bg = "#3f4a5a" },
     separator_selected = { fg = "#4b5a6e", bg = "#4b5a6e" },
     separator_visible = { fg = "#3f4a5a", bg = "#3f4a5a" },
     offset_separator = { fg = "#3f4a5a", bg = "#3f4a5a" },
+
+    -- 🟢 индикатор "modified"
+    modified = { bg = "#3f4a5a", fg = "#a6e3a1" },
+    modified_selected = { bg = "#4b5a6e", fg = "#a6e3a1" },
+    modified_visible = { bg = "#3f4a5a", fg = "#a6e3a1" },
   }
 })
