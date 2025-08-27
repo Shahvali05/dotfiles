@@ -45,6 +45,7 @@ in {
     rmtrash
     lsd
     mangareader
+    cool-retro-term
 
     eww
     jq
