@@ -46,6 +46,7 @@ in {
     lsd
     mangareader
     cool-retro-term
+    wine
 
     eww
     jq
