@@ -71,27 +71,27 @@ local lsp_servers = {
     }
   },
 
-  pyright = {
-    setup = {
-      on_attach = configs.on_attach,
-      capabilities = configs.capabilities,
-      root_dir = lspconfig.util.root_pattern('.git', 'pyproject.toml', 'setup.py') or vim.fn.getcwd(),
-      settings = {
-        pyright = {
-          disableOrganizeImports = true, -- Ruff сам сортирует импорты
-          disableTaggedHints = true, -- Отключаем подсказки для аннотаций
-        },
-        python = {
-          analysis = {
-            ignore = { '*' }, -- Игнорируем все правила линтера Pyright
-            typeCheckingMode = "basic", -- "off", "basic", "strict"
-            diagnosticMode = "openFilesOnly", -- Проверять только открытые файлы
-            pythonPath = py_path, -- Указываем путь к интерпретатору Python
-          },
-        },
-      },
-    }
-  },
+  -- pyright = {
+  --   setup = {
+  --     on_attach = configs.on_attach,
+  --     capabilities = configs.capabilities,
+  --     root_dir = lspconfig.util.root_pattern('.git', 'pyproject.toml', 'setup.py') or vim.fn.getcwd(),
+  --     settings = {
+  --       pyright = {
+  --         disableOrganizeImports = true, -- Ruff сам сортирует импорты
+  --         disableTaggedHints = true, -- Отключаем подсказки для аннотаций
+  --       },
+  --       python = {
+  --         analysis = {
+  --           ignore = { '*' }, -- Игнорируем все правила линтера Pyright
+  --           typeCheckingMode = "basic", -- "off", "basic", "strict"
+  --           diagnosticMode = "openFilesOnly", -- Проверять только открытые файлы
+  --           pythonPath = py_path, -- Указываем путь к интерпретатору Python
+  --         },
+  --       },
+  --     },
+  --   }
+  -- },
 
   jsonls = {
     setup = {
@@ -202,7 +202,10 @@ local lsp_servers = {
 local function setup()
   -- Настройка LSP серверов
   lspconfig.ruff.setup(lsp_servers.ruff.setup)
-  lspconfig.pyright.setup(lsp_servers.pyright.setup)
+  lspconfig.basedpyright.setup {
+    on_attach = configs.on_attach,
+    capabilities = configs.capabilities,
+  }
   lspconfig.jsonls.setup(lsp_servers.jsonls.setup)
   lspconfig.ts_ls.setup(lsp_servers.ts_ls.setup)
   lspconfig.eslint.setup(lsp_servers.eslint.setup)

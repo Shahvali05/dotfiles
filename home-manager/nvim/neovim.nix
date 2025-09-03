@@ -34,7 +34,8 @@ in
         nodePackages.typescript-language-server
         nodePackages.eslint
         black
-        pyright
+        # pyright
+        basedpyright
         gopls
         clang-tools
         clang
