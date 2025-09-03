@@ -201,7 +201,7 @@ local lsp_servers = {
 
 local function setup()
   -- Настройка LSP серверов
-  lspconfig.ruff.setup(lsp_servers.ruff.setup)
+  -- lspconfig.ruff.setup(lsp_servers.ruff.setup)
   lspconfig.basedpyright.setup {
     on_attach = configs.on_attach,
     capabilities = configs.capabilities,
