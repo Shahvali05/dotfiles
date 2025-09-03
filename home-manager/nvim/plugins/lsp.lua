@@ -71,6 +71,21 @@ local lsp_servers = {
     }
   },
 
+  basedpyright = {
+    setup = {
+      on_attach = configs.on_attach,
+      capabilities = configs.capabilities,
+      settings = {
+        python = {
+          analysis = {
+            diagnosticMode = "openFilesOnly",   -- только открытые файлы
+            diagnosticUpdateMode = "save",      -- проверять только при сохранении
+          },
+        },
+      },
+    }
+  },
+
   -- pyright = {
   --   setup = {
   --     on_attach = configs.on_attach,
@@ -202,10 +217,7 @@ local lsp_servers = {
 local function setup()
   -- Настройка LSP серверов
   -- lspconfig.ruff.setup(lsp_servers.ruff.setup)
-  lspconfig.basedpyright.setup {
-    on_attach = configs.on_attach,
-    capabilities = configs.capabilities,
-  }
+  lspconfig.basedpyright.setup(lsp_servers.basedpyright.setup)
   lspconfig.jsonls.setup(lsp_servers.jsonls.setup)
   lspconfig.ts_ls.setup(lsp_servers.ts_ls.setup)
   lspconfig.eslint.setup(lsp_servers.eslint.setup)
