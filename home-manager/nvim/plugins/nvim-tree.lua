@@ -48,6 +48,15 @@ nvimtree.setup({
   git = {
     ignore = false, -- Показывать файлы, игнорируемые git
   },
+  on_attach = function(bufnr)
+    local api = require("nvim-tree.api")
+
+    -- стандартные бинды nvim-tree
+    api.config.mappings.default_on_attach(bufnr)
+    
+    -- убираем Tab (чтобы он не открывал preview)
+    vim.keymap.del("n", "<Tab>", { buffer = bufnr })
+  end,
 })
 
 -- ============================================================================
