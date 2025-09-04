@@ -36,7 +36,6 @@ nvimtree.setup({
     },
   },
   actions = {
-    quit_on_open = false,
     open_file = {
       window_picker = {
         enable = false, -- Отключить выбор окна при открытии файла
