@@ -56,7 +56,7 @@
     wayland
     wlroots
     libinput
-    xkbcommon
+    libxkbcommon
 
     steamEnv
     lmstudio
