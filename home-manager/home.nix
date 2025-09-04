@@ -15,7 +15,7 @@ let
     patches = (old.patches or []) ++ [
       (builtins.fetchurl {
         url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/bar/bar.patch";
-        sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+        sha256 = "sha256:0r6b3fgayjx0h78xryk587180f8ckd8gyri317kq6qjfjzfkjxgr=";
       })
     ];
   });
