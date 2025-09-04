@@ -53,9 +53,9 @@ in {
     socat
     lm_sensors
 
-    (pkgs.dwl.override {
-      conf = builtins.readFile ./dwl/config.h;
-    })
+    # (pkgs.dwl.override {
+    #   conf = builtins.readFile ./dwl/config.h;
+    # })
   ];
 
   home.file = {
@@ -75,4 +75,15 @@ in {
   #   enable = true;
   #   configDir = ./eww;  # путь к конфигурации
   # };
+
+  programs.dwl = {
+    enable = true;
+    package = pkgs.dwl.overrideAttrs (old: {
+      patches = (old.patches or []) ++ [
+        ./dwl/patches/bar.patch
+      ];
+      conf = builtins.readFile ./dwl/config.h;
+    });
+  };
+
 }
