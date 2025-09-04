@@ -27,7 +27,6 @@
 
 
   # Установим dwl
-  programs.dwl.enable = true;
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true;
 }
