@@ -12,7 +12,6 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Основная конфигурация
 nvimtree.setup({
-  hijack_unnamed_buffer_when_open = false,
   update_focused_file = {
     enable = true,
     update_cwd = true,
