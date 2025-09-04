@@ -53,6 +53,11 @@
     
     # Desktop programs
     dwl
+    wayland
+    wlroots
+    libinput
+    xkbcommon
+
     steamEnv
     lmstudio
     clapper
