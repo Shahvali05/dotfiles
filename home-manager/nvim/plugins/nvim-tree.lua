@@ -36,6 +36,7 @@ nvimtree.setup({
     },
   },
   actions = {
+    quit_on_open = false,
     open_file = {
       window_picker = {
         enable = false, -- Отключить выбор окна при открытии файла
@@ -47,6 +48,12 @@ nvimtree.setup({
   },
   git = {
     ignore = false, -- Показывать файлы, игнорируемые git
+  },
+  tab = {
+    sync = {
+      open = true,
+      close = true,  -- закрывать nvim-tree, если это последний буфер
+    },
   },
 })
 
