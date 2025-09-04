@@ -24,4 +24,10 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "24.11";
+
+
+  # Установим dwl
+  programs.wayland.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.wlr.enable = true;
 }

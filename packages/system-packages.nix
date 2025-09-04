@@ -52,6 +52,7 @@
     pamixer
     
     # Desktop programs
+    dwl
     steamEnv
     lmstudio
     clapper

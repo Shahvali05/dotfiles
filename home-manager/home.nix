@@ -52,6 +52,10 @@ in {
     jq
     socat
     lm_sensors
+
+    (pkgs.dwl.override {
+      conf = builtins.readFile ./dwl/config.h;
+    })
   ];
 
   home.file = {
