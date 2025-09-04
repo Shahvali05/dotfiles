@@ -10,10 +10,13 @@ let
     ueberzug
   ]);
   myDwl = (pkgs.dwl.override {
-    conf = builtins.readFile ./dwl/config.h;
+    configH = builtins.readFile ./dwl/config.h;
   }).overrideAttrs (old: {
     patches = (old.patches or []) ++ [
-      ./dwl/patches/bar.patch
+      (builtins.fetchurl {
+        url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/bar/bar.patch";
+        sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+      })
     ];
   });
 in {
