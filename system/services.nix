@@ -44,6 +44,7 @@
     };
   };
 
+  programs.wayland.enable = true;
   programs.xwayland.enable = true;
 
   services.resolved.enable = true;
