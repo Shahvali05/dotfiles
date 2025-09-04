@@ -12,6 +12,11 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Основная конфигурация
 nvimtree.setup({
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
+    update_root = false,
+  },
   view = {
     width = 35,
     relativenumber = true,
