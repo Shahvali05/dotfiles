@@ -35,30 +35,19 @@ nvimtree.setup({
       },
     },
   },
-  actions = {
-    open_file = {
-      window_picker = {
-        enable = false, -- Отключить выбор окна при открытии файла
-      },
-    },
-  },
+  -- actions = {
+  --   open_file = {
+  --     window_picker = {
+  --       enable = false, -- Отключить выбор окна при открытии файла
+  --     },
+  --   },
+  -- },
   filters = {
-    custom = { ".DS_Store" }, -- Скрыть определённые файлы
+    custom = { ".DS_Store" "__pycache__" ".git" ".venv" }, -- Скрыть определённые файлы
   },
   git = {
     ignore = false, -- Показывать файлы, игнорируемые git
   },
-})
-
--- Автоматически закрывать nvim-tree, если он остался единственным окном
-vim.api.nvim_create_autocmd("BufEnter", {
-  nested = true,
-  callback = function()
-    if #vim.api.nvim_list_wins() == 1 and
-       vim.bo.filetype == "NvimTree" then
-      vim.cmd("BufferLineCycleNext")
-    end
-  end
 })
 
 -- ============================================================================
