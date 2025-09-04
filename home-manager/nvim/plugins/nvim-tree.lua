@@ -43,7 +43,7 @@ nvimtree.setup({
   --   },
   -- },
   filters = {
-    custom = { ".DS_Store" "__pycache__" ".git" ".venv" }, -- Скрыть определённые файлы
+    custom = { ".DS_Store", "__pycache__", ".git", ".venv" }, -- Скрыть определённые файлы
   },
   git = {
     ignore = false, -- Показывать файлы, игнорируемые git
