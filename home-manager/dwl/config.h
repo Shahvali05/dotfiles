@@ -17,10 +17,10 @@ static const float urgentcolor[] = COLOR(0xff0000ff);
 static const float fullscreen_bg[] = {0.0f, 0.0f, 0.0f,
                                       1.0f}; /* You can also use glsl colors */
 
-static const float colors[][3] = {
-  [SchemeNorm] = { 0.0, 0.0, 0.0 },   // фон
-  [SchemeSel]  = { 1.0, 1.0, 1.0 },   // выделение
-  [SchemeUrg]  = { 1.0, 0.0, 0.0 },   // urgent
+static const unsigned int colors[][3] = {
+    [SchemeNorm] = 0x222222, // фон нормального окна
+    [SchemeSel]  = 0x005577, // выделенный
+    [SchemeUrg]  = 0xFF0000, // urgent
 };
 
 /* tagging - TAGCOUNT must be no greater than 31 */
