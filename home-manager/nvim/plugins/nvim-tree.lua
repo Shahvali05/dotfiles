@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     if #vim.api.nvim_list_wins() == 1 and
        vim.bo.filetype == "NvimTree" then
-      vim.cmd("bNext")
+      vim.cmd("BufferLineCycleNext")
     end
   end
 })
