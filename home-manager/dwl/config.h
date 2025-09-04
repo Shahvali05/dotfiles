@@ -137,12 +137,12 @@ static const enum libinput_config_tap_button_map button_map =
 
 /* commands */
 static const char *termcmd[] = {"alacritty", NULL};
-static const char *menucmd[] = {"wmenu-run", NULL};
+static const char *menucmd[] = {"wofi", "--show", "drun", NULL};
 
 static const Key keys[] = {
     /* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
     /* modifier                  key                 function        argument */
-    {MODKEY, XKB_KEY_p, spawn, {.v = menucmd}},
+    {MODKEY, XKB_KEY_m, spawn, {.v = menucmd}},
     {MODKEY, XKB_KEY_Return, spawn, {.v = termcmd}},
     {MODKEY, XKB_KEY_j, focusstack, {.i = +1}},
     {MODKEY, XKB_KEY_k, focusstack, {.i = -1}},
@@ -152,13 +152,13 @@ static const Key keys[] = {
     {MODKEY, XKB_KEY_l, setmfact, {.f = +0.05f}},
     {MODKEY, XKB_KEY_Return, zoom, {0}},
     {MODKEY, XKB_KEY_Tab, view, {0}},
-    {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_C, killclient, {0}},
-    {MODKEY, XKB_KEY_t, setlayout, {.v = &layouts[0]}},
-    {MODKEY, XKB_KEY_f, setlayout, {.v = &layouts[1]}},
-    {MODKEY, XKB_KEY_m, setlayout, {.v = &layouts[2]}},
-    {MODKEY, XKB_KEY_space, setlayout, {0}},
+    {MODKEY, XKB_KEY_w, killclient, {0}},
+    {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_T, setlayout, {.v = &layouts[0]}},
+    {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_F, setlayout, {.v = &layouts[1]}},
+    {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_M, setlayout, {.v = &layouts[2]}},
+    /* {MODKEY, XKB_KEY_space, setlayout, {0}}, */
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_space, togglefloating, {0}},
-    {MODKEY, XKB_KEY_e, togglefullscreen, {0}},
+    {MODKEY, XKB_KEY_f, togglefullscreen, {0}},
     {MODKEY, XKB_KEY_0, view, {.ui = ~0}},
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_parenright, tag, {.ui = ~0}},
     {MODKEY, XKB_KEY_comma, focusmon, {.i = WLR_DIRECTION_LEFT}},
@@ -210,5 +210,5 @@ static const Key keys[] = {
 static const Button buttons[] = {
     {MODKEY, BTN_LEFT, moveresize, {.ui = CurMove}},
     {MODKEY, BTN_MIDDLE, togglefloating, {0}},
-    {MODKEY, BTN_RIGHT, moveresize, {.ui = CurResize}},
+    {MODKEY | WLR_MODIFIER_SHIFT, BTN_LEFT, moveresize, {.ui = CurResize}},
 };
