@@ -12,6 +12,12 @@ let
   myDwl = (pkgs.dwl.override {
     configH = builtins.readFile ./dwl/config.h;
   }).overrideAttrs (old: {
+    buildInputs = (old.buildInputs or []) ++ [
+      pkgs.fcft
+      pkgs.libdrm
+      pkgs.pixman
+      pkgs.pango
+    ];
     patches = (old.patches or []) ++ [
       (builtins.fetchurl {
         url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/bar/bar-0.7.patch";
