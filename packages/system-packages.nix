@@ -53,6 +53,7 @@
     
     # Desktop programs
     # dwl
+    myCustomDwlPackage
     wayland
     wlroots
     libinput

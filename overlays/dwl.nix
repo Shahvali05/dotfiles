@@ -1,12 +1,12 @@
 self: super: {
-  dwl = super.dwl.overrideAttrs (old: rec {
+  myCustomDwlPackage = super.dwl.overrideAttrs (old: rec {
     pname = "dwl";
     version = "0.7";
 
     # Локальный исходник dwl 0.7 (можно скачать и положить в ./dwl-0.7)
     src = ./dwl;
 
-    configH = builtins.readFile ./dwl/config.h;
+    configH = ./dwl/config.h;
 
     # buildInputs, чтобы nix видел все нужные библиотеки
     buildInputs = (old.buildInputs or []) ++ [
