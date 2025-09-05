@@ -129,14 +129,19 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
+static struct xkb_rule_names rules = {
+    .layout = "us,ru",
+    .variant = ",",
+    .options = "grp:caps_toggle", // Переключение по Caps Lock
+};
 static const char *termcmd[] = { "alacritty", NULL };
-static const char *menucmd[] = { "wmenu-run", NULL };
+static const char *menucmd[] = { "wofi", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
 	{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
+	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_b,          togglebar,      {0} },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
@@ -147,7 +152,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_Return,     zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
 	{ MODKEY,                    XKB_KEY_g,          togglegaps,     {0} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_C,          killclient,     {0} },
+	{ MODKEY,                    XKB_KEY_w,          killclient,     {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_T,          setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F,          setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_M,          setlayout,      {.v = &layouts[2]} },
@@ -194,3 +199,4 @@ static const Button buttons[] = {
 	{ ClkTagBar,   MODKEY, BTN_LEFT,   tag,            {0} },
 	{ ClkTagBar,   MODKEY, BTN_RIGHT,  toggletag,      {0} },
 };
+
