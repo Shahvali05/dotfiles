@@ -67,7 +67,9 @@ static const struct xkb_rule_names xkb_rules = {
 	/* example:
 	.options = "ctrl:nocaps",
 	*/
-	.options = NULL,
+	layout = "us,ru",
+	.variant = ",",
+	.options = "grp:caps_toggle",
 };
 
 static const int repeat_rate = 25;
@@ -129,11 +131,6 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static struct xkb_rule_names rules = {
-    .layout = "us,ru",
-    .variant = ",",
-    .options = "grp:caps_toggle", // Переключение по Caps Lock
-};
 static const char *termcmd[] = { "alacritty", NULL };
 static const char *menucmd[] = { "wofi", NULL };
 
