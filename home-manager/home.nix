@@ -9,7 +9,6 @@ let
     jupyter
     ueberzug
   ]);
-  pkgsWithOverlay = import <nixpkgs> { overlays = [ (import ./overlays/dwl.nix) ]; };
 in {
   imports = [
     ./nvim/neovim.nix
@@ -53,9 +52,8 @@ in {
     jq
     socat
     lm_sensors
-
-    dwl
   ];
+
 
   home.file = {
   };

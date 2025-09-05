@@ -52,7 +52,7 @@
     pamixer
     
     # Desktop programs
-    dwl
+    # dwl
     wayland
     wlroots
     libinput
