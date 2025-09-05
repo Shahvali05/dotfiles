@@ -6,32 +6,9 @@ Subject: [PATCH] gaps!
 Co-authored-by: sewn <sewn@disroot.org>
 Co-authored-by: serenevoid <ajuph9224@gmail.com>
 ---
- config.def.h |  4 ++++
- dwl.c        | 34 ++++++++++++++++++++++++++--------
- 2 files changed, 30 insertions(+), 8 deletions(-)
+ dwl.c | 34 ++++++++++++++++++++++++++--------
+ 1 file changed, 26 insertions(+), 8 deletions(-)
 
-diff --git a/config.def.h b/config.def.h
-index 22d2171..b388b4e 100644
---- a/config.def.h
-+++ b/config.def.h
-@@ -6,6 +6,9 @@
- /* appearance */
- static const int sloppyfocus               = 1;  /* focus follows mouse */
- static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
-+static const int smartgaps                 = 0;  /* 1 means no outer gap when there is only one window */
-+static int gaps                            = 1;  /* 1 means gaps between windows are added */
-+static const unsigned int gappx            = 10; /* gap pixel between windows */
- static const unsigned int borderpx         = 1;  /* border pixel of windows */
- static const float rootcolor[]             = COLOR(0x222222ff);
- static const float bordercolor[]           = COLOR(0x444444ff);
-@@ -135,6 +138,7 @@ static const Key keys[] = {
- 	{ MODKEY,                    XKB_KEY_l,          setmfact,       {.f = +0.05f} },
- 	{ MODKEY,                    XKB_KEY_Return,     zoom,           {0} },
- 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
-+	{ MODKEY,                    XKB_KEY_g,          togglegaps,     {0} },
- 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_C,          killclient,     {0} },
- 	{ MODKEY,                    XKB_KEY_t,          setlayout,      {.v = &layouts[0]} },
- 	{ MODKEY,                    XKB_KEY_f,          setlayout,      {.v = &layouts[1]} },
 diff --git a/dwl.c b/dwl.c
 index dc0437e..dc851df 100644
 --- a/dwl.c
@@ -44,15 +21,15 @@ index dc0437e..dc851df 100644
  	unsigned int seltags;
  	unsigned int sellt;
  	uint32_t tagset[2];
-@@ -336,6 +337,7 @@ static void tagmon(const Arg *arg);
- static void tile(Monitor *m);
+@@ -374,6 +375,7 @@ static void tile(Monitor *m);
+ static void togglebar(const Arg *arg);
  static void togglefloating(const Arg *arg);
  static void togglefullscreen(const Arg *arg);
 +static void togglegaps(const Arg *arg);
  static void toggletag(const Arg *arg);
  static void toggleview(const Arg *arg);
  static void unlocksession(struct wl_listener *listener, void *data);
-@@ -949,6 +951,8 @@ createmon(struct wl_listener *listener, void *data)
+@@ -949,6 +950,8 @@ createmon(struct wl_listener *listener, void *data)
  
  	wlr_output_state_init(&state);
  	/* Initialize monitor state using configured rules */
@@ -108,7 +85,7 @@ index dc0437e..dc851df 100644
  		}
  		i++;
  	}
-@@ -2686,6 +2697,13 @@ togglefullscreen(const Arg *arg)
+@@ -2686,6 +2692,13 @@ togglefullscreen(const Arg *arg)
  		setfullscreen(sel, !sel->isfullscreen);
  }
  
@@ -124,4 +101,3 @@ index dc0437e..dc851df 100644
  {
 -- 
 2.45.2
-
