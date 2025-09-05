@@ -21,6 +21,7 @@ let
 
     patches = (old.patches or []) ++ [
       ./dwl/patches/bar-0.7.patch
+      ./dwl/patches/gaps.patch
     ];
   });
 in {
