@@ -138,27 +138,38 @@ static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
 	{ MODKEY,                    XKB_KEY_m,          spawn,          {.v = menucmd} },
-        { MODKEY,                    0x6d8,              spawn,          {.v = menucmd} },  /* RU: ь */
+        { MODKEY,                    0x6d8,              spawn,          {.v = menucmd} },  // ь
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_b,          togglebar,      {0} },
-        { MODKEY,                    0x6c9,              togglebar,      {0} },
+        { MODKEY,                    0x6c9,              togglebar,      {0} }, // и
 	{ MODKEY,                    XKB_KEY_h,          focusstack,     {.i = +1} },
-        { MODKEY,                    0x6d2,              focusstack,     {.i = +1} },
+        { MODKEY,                    0x6d2,              focusstack,     {.i = +1} }, // р
 	{ MODKEY,                    XKB_KEY_l,          focusstack,     {.i = -1} },
+        { MODKEY,                    0x6c4,              focusstack,     {.i = -1} }, // д
 	{ MODKEY,                    XKB_KEY_i,          incnmaster,     {.i = +1} },
+        { MODKEY,                    0x6db,              incnmaster,     {.i = +1} }, // ш
 	{ MODKEY,                    XKB_KEY_d,          incnmaster,     {.i = -1} },
+        { MODKEY,                    0x6d7,              incnmaster,     {.i = -1} }, // в
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_H,          setmfact,       {.f = -0.05f} },
+        { MODKEY|WLR_MODIFIER_SHIFT, 0x6f2,              setmfact,       {.f = -0.05f} }, // Р
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_L,          setmfact,       {.f = +0.05f} },
+        { MODKEY|WLR_MODIFIER_SHIFT, 0x6e4,              setmfact,       {.f = +0.05f} }, // Д
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
-	{ MODKEY,                    XKB_KEY_g,          togglegaps,     {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_G,          togglegaps,     {0} },
+        { MODKEY|WLR_MODIFIER_SHIFT, 0x6f0,              togglegaps,     {0} }, // П
 	{ MODKEY,                    XKB_KEY_w,          killclient,     {0} },
+        { MODKEY,                    0x6c3,              killclient,     {0} }, // ц
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_T,          setlayout,      {.v = &layouts[0]} },
+        { MODKEY|WLR_MODIFIER_SHIFT, 0x6e5,              setlayout,      {.v = &layouts[0]} }, // Е
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F,          setlayout,      {.v = &layouts[1]} },
+        { MODKEY|WLR_MODIFIER_SHIFT, 0x6e1,              setlayout,      {.v = &layouts[1]} }, // А
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_M,          setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
+        { MODKEY|WLR_MODIFIER_SHIFT, 0x6f8,              setlayout,      {.v = &layouts[2]} }, // Ь
+	// { MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_space,      togglefloating, {0} },
-	{ MODKEY,                    XKB_KEY_f,         togglefullscreen, {0} },
+	{ MODKEY,                    XKB_KEY_f,          togglefullscreen, {0} },
+        { MODKEY,                    0x6c1,              togglefullscreen, {0} }, // а
 	{ MODKEY,                    XKB_KEY_0,          view,           {.ui = ~0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_parenright, tag,            {.ui = ~0} },
 	{ MODKEY,                    XKB_KEY_comma,      focusmon,       {.i = WLR_DIRECTION_LEFT} },
@@ -175,6 +186,7 @@ static const Key keys[] = {
 	TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                   7),
 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                  8),
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
+        { MODKEY|WLR_MODIFIER_SHIFT, 0x6ea,              quit,           {0} }, // Й
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
