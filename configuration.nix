@@ -29,4 +29,5 @@
   # Установим dwl
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true;
+  services.keyd.enable = true;
 }

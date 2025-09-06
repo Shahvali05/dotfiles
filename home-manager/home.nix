@@ -84,7 +84,6 @@ in {
   };
 
   programs.home-manager.enable = true;
-  services.keyd.enable = true;
 
   # programs.eww = {
   #   enable = true;
