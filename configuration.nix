@@ -34,5 +34,5 @@
     enable = true;
     layouts = [ "us" "ru" ];
     options = [ "grp:alt_shift_toggle" ];
-  }
+  };
 }
