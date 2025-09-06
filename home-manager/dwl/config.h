@@ -138,7 +138,7 @@ static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
 	{ MODKEY,                    XKB_KEY_m,          spawn,          {.v = menucmd} },
-	// { MODKEY,                    XKB_KEY_russian_ь,          spawn,          {.v = menucmd} },
+	{ MODKEY,                    XKB_KEY_cyrillic_softsign,          spawn,          {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_b,          togglebar,      {0} },
 	{ MODKEY,                    XKB_KEY_h,          focusstack,     {.i = +1} },
