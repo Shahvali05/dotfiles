@@ -29,10 +29,4 @@
   # Установим dwl
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true;
-
-  programs.swaykbdd = {
-    enable = true;
-    layouts = [ "us" "ru" ];
-    options = [ "grp:alt_shift_toggle" ];
-  };
 }
