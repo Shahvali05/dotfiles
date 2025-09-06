@@ -156,8 +156,8 @@ static const Key keys[] = {
         { MODKEY|WLR_MODIFIER_SHIFT, 0x6e4,              setmfact,       {.f = +0.05f} }, // Д
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_G,          togglegaps,     {0} },
-        { MODKEY|WLR_MODIFIER_SHIFT, 0x6f0,              togglegaps,     {0} }, // П
+	// { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_G,          togglegaps,     {0} },
+        // { MODKEY|WLR_MODIFIER_SHIFT, 0x6f0,              togglegaps,     {0} }, // П
 	{ MODKEY,                    XKB_KEY_w,          killclient,     {0} },
         { MODKEY,                    0x6c3,              killclient,     {0} }, // ц
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_T,          setlayout,      {.v = &layouts[0]} },
