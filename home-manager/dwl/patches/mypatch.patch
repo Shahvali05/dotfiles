@@ -329,7 +329,7 @@ index 0000000000000000000000000000000000000000..b06a73689eb2e534e22d3143cb7eb6e9
 +	fcft_fini();
 +}
 diff --git a/dwl.c b/dwl.c
-index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a8faaeb5a 100644
+index a2711f67245f4162555361a2660eded49684df4b..2c3561d3c6dd9ef6a0f3b5d7c59ac2452063eb59 100644
 --- a/dwl.c
 +++ b/dwl.c
 @@ -5,6 +5,7 @@
@@ -729,7 +729,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  
  	/* The xdg-protocol specifies:
  	 *
-@@ -1336,6 +1512,104 @@ dirtomon(enum wlr_direction dir)
+@@ -1336,6 +1512,106 @@ dirtomon(enum wlr_direction dir)
  	return selmon;
  }
  
@@ -742,19 +742,29 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
 +    uint32_t i, occ = 0, urg = 0;
 +    Client *c;
 +    Buffer *buf;
++    int num_windows = 0; /* Количество видимых окон */
++    int window_width; /* Ширина для каждого окна */
 +
 +    if (!m->scene_buffer->node.enabled)
 +        return;
 +    if (!(buf = bufmon(m)))
 +        return;
 +
-+    /* draw status first so it can be overdrawn by tags later */
-+    if (m == selmon) { /* status is only drawn on selected monitor */
++    /* Подсчёт видимых окон для вычисления ширины */
++    wl_list_for_each(c, &clients, link) {
++        if (c->mon != m || !(c->tags & m->tagset[m->seltags]) || c->isfloating || c->isfullscreen)
++            continue;
++        num_windows++;
++    }
++
++    /* Отрисовка статуса (справа) */
++    if (m == selmon) {
 +        drwl_setscheme(m->drw, colors[SchemeNorm]);
 +        tw = TEXTW(m, stext) - m->lrpad + 2; /* 2px right padding */
 +        drwl_text(m->drw, m->b.width - tw, 0, tw, m->b.height, 0, stext, 0);
 +    }
 +
++    /* Подсчёт оккупированных и срочных тегов */
 +    wl_list_for_each(c, &clients, link) {
 +        if (c->mon != m)
 +            continue;
@@ -762,6 +772,8 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
 +        if (c->isurgent)
 +            urg |= c->tags;
 +    }
++
++    /* Отрисовка тегов */
 +    x = 0;
 +    c = focustop(m);
 +    for (i = 0; i < LENGTH(tags); i++) {
@@ -774,46 +786,36 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
 +                urg & 1 << i);
 +        x += w;
 +    }
++
++    /* Отрисовка символа компоновки */
 +    w = TEXTW(m, m->ltsymbol);
 +    drwl_setscheme(m->drw, colors[SchemeNorm]);
 +    x = drwl_text(m->drw, x, 0, w, m->b.height, m->lrpad / 2, m->ltsymbol, 0);
 +
-+    if ((w = m->b.width - tw - x) > m->b.height) {
++    /* Отрисовка названий всех видимых окон */
++    if ((w = m->b.width - tw - x) > m->b.height && num_windows > 0) {
 +        Client *active_c = focustop(m); /* Активное окно для подсветки */
++        window_width = w / num_windows; /* Динамическая ширина для каждого окна */
 +        int initial_x = x; /* Сохраняем начальную позицию для проверки переполнения */
-+        char display_name[32]; /* Объявляем переменную в начале блока */
-+        int text_w; /* Объявляем переменную в начале блока */
++
 +        wl_list_for_each(c, &clients, link) {
 +            if (c->mon != m || !(c->tags & m->tagset[m->seltags]) || c->isfloating || c->isfullscreen)
-+                continue; /* Только видимые, не плавающие, не полноэкранные окна на текущем теге */
++                continue;
 +
-+            const char *name = client_get_title(c); /* Используем title, так как app_id недоступен */
-+            snprintf(display_name, sizeof(display_name), "%.20s", name); /* Ограничиваем до 20 символов */
-+            text_w = TEXTW(m, display_name);
-+            if (x + text_w > m->b.width - tw)
-+                break; /* Прерываем, если текст не помещается */
-+
++            const char *name = client_get_title(c); /* Полный заголовок окна */
 +            drwl_setscheme(m->drw, colors[c == active_c ? SchemeSel : SchemeNorm]); /* Подсветка активного */
-+            drwl_text(m->drw, x, 0, text_w, m->b.height, m->lrpad / 2, display_name, 0);
-+            x += text_w;
-+
-+            /* Добавляем разделитель, если есть следующее окно */
-+            if (c->link.next != &clients) {
-+                int sep_w = TEXTW(m, "|");
-+                if (x + sep_w <= m->b.width - tw) {
-+                    drwl_setscheme(m->drw, colors[SchemeNorm]);
-+                    drwl_text(m->drw, x, 0, sep_w, m->b.height, 0, "|", 0);
-+                    x += sep_w;
-+                }
-+            }
++            drwl_text(m->drw, x, 0, window_width, m->b.height, m->lrpad / 2, name, 0);
++            x += window_width;
 +        }
-+        /* Если ничего не нарисовано, заполняем пустым прямоугольником */
++
++        /* Если нет окон, заполняем пустым прямоугольником */
 +        if (x == initial_x) {
 +            drwl_setscheme(m->drw, colors[SchemeNorm]);
 +            drwl_rect(m->drw, x, 0, w, m->b.height, 1, 1);
 +        }
 +    }
 +
++    /* Обновление сцены Wayland */
 +    wlr_scene_buffer_set_dest_size(m->scene_buffer,
 +        m->b.real_width, m->b.real_height);
 +    wlr_scene_node_set_position(&m->scene_buffer->node, m->m.x,
@@ -834,7 +836,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  void
  focusclient(Client *c, int lift)
  {
-@@ -1371,13 +1645,13 @@ focusclient(Client *c, int lift)
+@@ -1371,13 +1647,13 @@ focusclient(Client *c, int lift)
  		/* Don't change border color if there is an exclusive focus or we are
  		 * handling a drag operation */
  		if (!exclusive_focus && !seat->drag)
@@ -850,7 +852,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  		 * and focus it after the overlay is closed. */
  		if (old_client_type == LayerShell && wlr_scene_node_coords(
  					&old_l->scene->node, &unused_lx, &unused_ly)
-@@ -1388,12 +1662,11 @@ focusclient(Client *c, int lift)
+@@ -1388,12 +1664,11 @@ focusclient(Client *c, int lift)
  		/* Don't deactivate old client if the new one wants focus, as this causes issues with winecfg
  		 * and probably other clients */
  		} else if (old_c && !client_is_unmanaged(old_c) && (!c || !client_wants_focus(c))) {
@@ -865,7 +867,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  
  	if (!c) {
  		/* With no client, all we have left is to clear focus */
-@@ -1715,7 +1988,7 @@ mapnotify(struct wl_listener *listener, void *data)
+@@ -1715,7 +1990,7 @@ mapnotify(struct wl_listener *listener, void *data)
  
  	for (i = 0; i < 4; i++) {
  		c->border[i] = wlr_scene_rect_create(c->scene, 0, 0,
@@ -874,7 +876,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  		c->border[i]->node.data = c;
  	}
  
-@@ -1734,11 +2007,15 @@ mapnotify(struct wl_listener *listener, void *data)
+@@ -1734,11 +2009,15 @@ mapnotify(struct wl_listener *listener, void *data)
  	 * try to apply rules for them */
  	if ((p = client_get_parent(c))) {
  		c->isfloating = 1;
@@ -891,7 +893,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  
  unset_fullscreen:
  	m = c->mon ? c->mon : xytomon(c->geom.x, c->geom.y);
-@@ -1775,7 +2052,12 @@ monocle(Monitor *m)
+@@ -1775,7 +2054,12 @@ monocle(Monitor *m)
  	wl_list_for_each(c, &clients, link) {
  		if (!VISIBLEON(c, m) || c->isfloating || c->isfullscreen)
  			continue;
@@ -905,7 +907,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  		n++;
  	}
  	if (n)
-@@ -2032,46 +2314,6 @@ pointerfocus(Client *c, struct wlr_surface *surface, double sx, double sy,
+@@ -2032,46 +2316,6 @@ pointerfocus(Client *c, struct wlr_surface *surface, double sx, double sy,
  	wlr_seat_pointer_notify_motion(seat, time, sx, sy);
  }
  
@@ -952,7 +954,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  
  void
  powermgrsetmode(struct wl_listener *listener, void *data)
-@@ -2226,30 +2468,17 @@ run(char *startup_cmd)
+@@ -2226,30 +2470,17 @@ run(char *startup_cmd)
  
  	/* Now that the socket exists and the backend is started, run the startup command */
  	if (startup_cmd) {
@@ -985,7 +987,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  
  	/* At this point the outputs are initialized, choose initial selmon based on
  	 * cursor position, and set default cursor image */
-@@ -2315,7 +2544,7 @@ setfloating(Client *c, int floating)
+@@ -2315,7 +2546,7 @@ setfloating(Client *c, int floating)
  			(p && p->isfullscreen) ? LyrFS
  			: c->isfloating ? LyrFloat : LyrTile]);
  	arrange(c->mon);
@@ -994,7 +996,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  }
  
  void
-@@ -2338,7 +2567,7 @@ setfullscreen(Client *c, int fullscreen)
+@@ -2338,7 +2569,7 @@ setfullscreen(Client *c, int fullscreen)
  		resize(c, c->prev, 0);
  	}
  	arrange(c->mon);
@@ -1003,7 +1005,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  }
  
  void
-@@ -2363,7 +2592,7 @@ setlayout(const Arg *arg)
+@@ -2363,7 +2594,7 @@ setlayout(const Arg *arg)
  		selmon->lt[selmon->sellt] = (Layout *)arg->v;
  	strncpy(selmon->ltsymbol, selmon->lt[selmon->sellt]->symbol, LENGTH(selmon->ltsymbol));
  	arrange(selmon);
@@ -1012,7 +1014,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  }
  
  /* arg > 1.0 will set mfact absolutely */
-@@ -2436,6 +2665,7 @@ setup(void)
+@@ -2436,6 +2667,7 @@ setup(void)
  	for (i = 0; i < (int)LENGTH(sig); i++)
  		sigaction(sig[i], &sa, NULL);
  
@@ -1020,7 +1022,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  	wlr_log_init(log_level, NULL);
  
  	/* The Wayland display is managed by libwayland. It handles accepting
-@@ -2625,6 +2855,11 @@ setup(void)
+@@ -2625,6 +2857,11 @@ setup(void)
  	LISTEN_STATIC(&output_mgr->events.apply, outputmgrapply);
  	LISTEN_STATIC(&output_mgr->events.test, outputmgrtest);
  
@@ -1032,7 +1034,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  	/* Make sure XWayland clients don't connect to the parent X server,
  	 * e.g when running in the x11 backend or the wayland backend and the
  	 * compositor has Xwayland support */
-@@ -2649,6 +2884,7 @@ void
+@@ -2649,6 +2886,7 @@ void
  spawn(const Arg *arg)
  {
  	if (fork() == 0) {
@@ -1040,7 +1042,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  		dup2(STDERR_FILENO, STDOUT_FILENO);
  		setsid();
  		execvp(((char **)arg->v)[0], (char **)arg->v);
-@@ -2667,6 +2903,30 @@ startdrag(struct wl_listener *listener, void *data)
+@@ -2667,6 +2905,30 @@ startdrag(struct wl_listener *listener, void *data)
  	LISTEN_STATIC(&drag->icon->events.destroy, destroydragicon);
  }
  
@@ -1071,7 +1073,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  void
  tag(const Arg *arg)
  {
-@@ -2677,7 +2937,7 @@ tag(const Arg *arg)
+@@ -2677,7 +2939,7 @@ tag(const Arg *arg)
  	sel->tags = arg->ui & TAGMASK;
  	focusclient(focustop(selmon), 1);
  	arrange(selmon);
@@ -1080,7 +1082,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  }
  
  void
-@@ -2691,7 +2951,7 @@ tagmon(const Arg *arg)
+@@ -2691,7 +2953,7 @@ tagmon(const Arg *arg)
  void
  tile(Monitor *m)
  {
@@ -1089,7 +1091,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  	int i, n = 0;
  	Client *c;
  
-@@ -2700,28 +2960,43 @@ tile(Monitor *m)
+@@ -2700,28 +2962,43 @@ tile(Monitor *m)
  			n++;
  	if (n == 0)
  		return;
@@ -1140,7 +1142,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  void
  togglefloating(const Arg *arg)
  {
-@@ -2739,6 +3014,13 @@ togglefullscreen(const Arg *arg)
+@@ -2739,6 +3016,13 @@ togglefullscreen(const Arg *arg)
  		setfullscreen(sel, !sel->isfullscreen);
  }
  
@@ -1154,7 +1156,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  void
  toggletag(const Arg *arg)
  {
-@@ -2750,7 +3032,7 @@ toggletag(const Arg *arg)
+@@ -2750,7 +3034,7 @@ toggletag(const Arg *arg)
  	sel->tags = newtags;
  	focusclient(focustop(selmon), 1);
  	arrange(selmon);
@@ -1163,7 +1165,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  }
  
  void
-@@ -2763,7 +3045,7 @@ toggleview(const Arg *arg)
+@@ -2763,7 +3047,7 @@ toggleview(const Arg *arg)
  	selmon->tagset[selmon->seltags] = newtagset;
  	focusclient(focustop(selmon), 1);
  	arrange(selmon);
@@ -1172,7 +1174,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  }
  
  void
-@@ -2811,7 +3093,7 @@ unmapnotify(struct wl_listener *listener, void *data)
+@@ -2811,7 +3095,7 @@ unmapnotify(struct wl_listener *listener, void *data)
  	}
  
  	wlr_scene_node_destroy(&c->scene->node);
@@ -1181,7 +1183,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  	motionnotify(0, NULL, 0, 0, 0, 0);
  }
  
-@@ -2911,6 +3193,13 @@ updatemons(struct wl_listener *listener, void *data)
+@@ -2911,6 +3195,13 @@ updatemons(struct wl_listener *listener, void *data)
  		}
  	}
  
@@ -1195,7 +1197,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  	/* FIXME: figure out why the cursor image is at 0,0 after turning all
  	 * the monitors on.
  	 * Move the cursor image where it used to be. It does not generate a
-@@ -2921,12 +3210,45 @@ updatemons(struct wl_listener *listener, void *data)
+@@ -2921,12 +3212,45 @@ updatemons(struct wl_listener *listener, void *data)
  	wlr_output_manager_v1_set_configuration(output_mgr, config);
  }
  
@@ -1242,7 +1244,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  }
  
  void
-@@ -2939,10 +3261,10 @@ urgent(struct wl_listener *listener, void *data)
+@@ -2939,10 +3263,10 @@ urgent(struct wl_listener *listener, void *data)
  		return;
  
  	c->isurgent = 1;
@@ -1255,7 +1257,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  }
  
  void
-@@ -2955,7 +3277,7 @@ view(const Arg *arg)
+@@ -2955,7 +3279,7 @@ view(const Arg *arg)
  		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
  	focusclient(focustop(selmon), 1);
  	arrange(selmon);
@@ -1264,7 +1266,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  }
  
  void
-@@ -2996,6 +3318,7 @@ xytonode(double x, double y, struct wlr_surface **psurface,
+@@ -2996,6 +3320,7 @@ xytonode(double x, double y, struct wlr_surface **psurface,
  {
  	struct wlr_scene_node *node, *pnode;
  	struct wlr_surface *surface = NULL;
@@ -1272,7 +1274,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  	Client *c = NULL;
  	LayerSurface *l = NULL;
  	int layer;
-@@ -3004,9 +3327,12 @@ xytonode(double x, double y, struct wlr_surface **psurface,
+@@ -3004,9 +3329,12 @@ xytonode(double x, double y, struct wlr_surface **psurface,
  		if (!(node = wlr_scene_node_at(&layers[layer]->node, x, y, nx, ny)))
  			continue;
  
@@ -1288,7 +1290,7 @@ index a2711f67245f4162555361a2660eded49684df4b..1b6bfb3e9a173485ce8fbfcff905885a
  		/* Walk the tree to find a node that knows the client */
  		for (pnode = node; pnode && !c; pnode = &pnode->parent->node)
  			c = pnode->data;
-@@ -3145,10 +3471,10 @@ sethints(struct wl_listener *listener, void *data)
+@@ -3145,10 +3473,10 @@ sethints(struct wl_listener *listener, void *data)
  		return;
  
  	c->isurgent = xcb_icccm_wm_hints_get_urgency(c->surface.xwayland->hints);
