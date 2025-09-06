@@ -20,7 +20,7 @@ let
     ];
 
     patches = (old.patches or []) ++ [
-      ./dwl/patches/mypatch_backup.patch
+      ./dwl/patches/mypatch.patch
       # ./dwl/patches/gaps.patch
       # ./dwl/patches/bar-0.7.patch
     ];
