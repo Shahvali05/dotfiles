@@ -30,4 +30,16 @@
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true;
   services.keyd.enable = true;
+  users.groups.keyd = {};
+  users.users.keyd = {
+    isSystemUser = true;
+    group = "keyd";
+  };
+  environment.etc."keyd/keyd.conf".text = ''
+    [ids]
+    * = ...
+
+    [main]
+    capslock = escape
+  '';
 }
