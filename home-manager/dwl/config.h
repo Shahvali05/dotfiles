@@ -199,12 +199,12 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
         { MODKEY|WLR_MODIFIER_SHIFT, 0x6ea,              quit,           {0} }, // Й
 	{ 0,                         0x1008ff12,         spawn,          {.v = (const char*[]) { "pamixer", "--toggle-mute", NULL }} },
-	{ 0,                         0x1008ff11,         spawn,          {.v = (const char*[]) { "pamixer", "-d", "5", NULL },
-	{ 0,                         0x1008ff13,         spawn,          {.v = (const char*[]) { "pamixer", "-i", "5", NULL },
-        { 0,                         0x1008ffb2,         spawn,          {.v = (const char*[]) { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL },
-        { 0,                         0x1008ff03,         spawn,          {.v = (const char*[]) { "brightnessctl", "set", "10%-", NULL },
-        { 0,                         0x1008ff02,         spawn,          {.v = (const char*[]) { "brightnessctl", "set", "+10%", NULL },
-        { 0,                         0xff61,             spawn,          {.v = (const char*[]) { "grim", "-g", "\"$(slurp)\"", "-", "|", "wl-copy", NULL },
+	{ 0,                         0x1008ff11,         spawn,          {.v = (const char*[]) { "pamixer", "-d", "5", NULL }} },
+	{ 0,                         0x1008ff13,         spawn,          {.v = (const char*[]) { "pamixer", "-i", "5", NULL }} },
+        { 0,                         0x1008ffb2,         spawn,          {.v = (const char*[]) { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL }} },
+        { 0,                         0x1008ff03,         spawn,          {.v = (const char*[]) { "brightnessctl", "set", "10%-", NULL }} },
+        { 0,                         0x1008ff02,         spawn,          {.v = (const char*[]) { "brightnessctl", "set", "+10%", NULL }} },
+        { 0,                         0xff61,             spawn,          {.v = (const char*[]) { "grim", "-g", "\"$(slurp)\"", "-", "|", "wl-copy", NULL }} },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
