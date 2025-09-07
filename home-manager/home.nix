@@ -68,6 +68,7 @@ in {
     jq
     socat
     lm_sensors
+    wbg
 
     myDwl
   ];
