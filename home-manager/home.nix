@@ -73,7 +73,7 @@ in {
   ];
 
   home.file = {
-    "status.sh" = = {
+    "status.sh" = {
       source = ./scripts/status.sh;
       executable = true; # чтобы можно было запускать
     };
