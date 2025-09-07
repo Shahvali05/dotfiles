@@ -73,7 +73,10 @@ in {
   ];
 
   home.file = {
-    "status.sh" = ./scripts/status.sh;
+    "status.sh" = = {
+      source = ./scripts/status.sh;
+      executable = true; # чтобы можно было запускать
+    };
   };
 
   home.sessionVariables = {
