@@ -16,11 +16,11 @@ static const char *fonts[]                 = {"JetBrainsMono Nerd Font Mono:size
 static const float rootcolor[]             = COLOR(0x000000ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
-static uint32_t colors[][3]                = {
-	/*               fg          bg          border    */
-	[SchemeNorm] = { 0xbbbbbbff, 0x222222ff, 0x444444ff },
-	[SchemeSel]  = { 0xeeeeeeff, 0x005577ff, 0x005577ff },
-	[SchemeUrg]  = { 0,          0,          0x770000ff },
+static uint32_t colors[][3] = {
+    /*               fg          bg          border    */
+    [SchemeNorm] = { 0xE1F9D8FF, 0x2E3440FF, 0x3B4252FF },
+    [SchemeSel]  = { 0xE1F9D8FF, 0x81A1C1FF, 0x81A1C1FF }, // светлый синий для выделенного
+    [SchemeUrg]  = { 0xEBCB8BFF, 0xBF616AFF, 0xBF616AFF }, // желто-красный для urgent
 };
 
 /* tagging - TAGCOUNT must be no greater than 31 */
