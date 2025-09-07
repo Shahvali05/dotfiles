@@ -37,17 +37,25 @@ get_bat() {
         local icon
 
         if [[ "$battery_state" == "Charging" ]]; then
-            icon="󱐋"
+            icon="󰂄"
         elif [[ "$battery_percentage" -ge 80 ]]; then
-            icon="󱊣"
+            icon="󰁹"
+        elif [[ "$battery_percentage" -ge 70 ]]; then
+            icon="󰂀"
         elif [[ "$battery_percentage" -ge 60 ]]; then
-            icon="󱊢"
+            icon="󰁿"
+        elif [[ "$battery_percentage" -ge 50 ]]; then
+            icon="󰁾"
         elif [[ "$battery_percentage" -ge 40 ]]; then
-            icon="󱊡"
+            icon="󰁽"
+        elif [[ "$battery_percentage" -ge 30 ]]; then
+            icon="󰁼"
         elif [[ "$battery_percentage" -ge 20 ]]; then
-            icon="󰂎"
+            icon="󰁻"
+        elif [[ "$battery_percentage" -ge 10 ]]; then
+            icon="󰁺"
         else
-            icon="󰂃"
+            icon="󰂎"
         fi
         echo -n "$icon$battery_percentage%"
     else
