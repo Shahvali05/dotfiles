@@ -37,17 +37,17 @@ get_bat() {
         local icon
 
         if [[ "$battery_state" == "Charging" ]]; then
-            icon=""
+            icon="󱐋"
         elif [[ "$battery_percentage" -ge 80 ]]; then
-            icon=""
+            icon="󱊣"
         elif [[ "$battery_percentage" -ge 60 ]]; then
-            icon=""
+            icon="󱊢"
         elif [[ "$battery_percentage" -ge 40 ]]; then
-            icon=""
+            icon="󱊡"
         elif [[ "$battery_percentage" -ge 20 ]]; then
-            icon=""
+            icon="󰂎"
         else
-            icon=""
+            icon="󰂃"
         fi
         echo -n "$icon$battery_percentage%"
     else
@@ -141,7 +141,7 @@ get_net() {
         if (( bluetooth_connected > 0 )); then
             bluetooth_icon="󰂱"
         else
-            bluetooth_icon="󰂯"
+            bluetooth_icon=""
         fi
     else
         bluetooth_icon=""
