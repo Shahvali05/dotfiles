@@ -70,7 +70,6 @@ in {
     lm_sensors
 
     myDwl
-    swaykbdd
   ];
 
   home.file = {
@@ -87,12 +86,6 @@ in {
   };
 
   programs.home-manager.enable = true;
-
-  services.swaykbdd = {
-    enable = true;
-    layouts = [ "us" "ru" ];
-    options = "grp:caps_toggle";
-  };
 
   # programs.eww = {
   #   enable = true;
