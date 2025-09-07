@@ -73,7 +73,7 @@ in {
   ];
 
   home.file = {
-    "bin/battary".source = ./scripts/battary;
+    ".local/bin/battary".source = ./scripts/battary;
   };
 
   home.sessionVariables = {
