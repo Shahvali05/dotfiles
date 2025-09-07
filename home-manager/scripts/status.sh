@@ -49,7 +49,7 @@ get_bat() {
         else
             icon=""
         fi
-        echo -n "$icon $battery_percentage%"
+        echo -n "$icon$battery_percentage%"
     else
         echo -n "N/A"
     fi
@@ -73,7 +73,7 @@ get_vol() {
     # Проверяем mute
     local icon
     if [[ "$volume_info" == *"[MUTED]"* ]]; then
-        icon=" "
+        icon=""
         echo -n "$icon"
         return
     elif [[ "$volume" -ge 80 ]]; then
@@ -84,7 +84,7 @@ get_vol() {
         icon=""
     fi
 
-    echo -n "$icon $volume%"
+    echo -n "$icon$volume%"
 }
 
 get_mic() {
@@ -114,24 +114,24 @@ get_net() {
         wifi_strength=$(nmcli -t -f IN-USE,SIGNAL dev wifi | grep '^\*' | awk -F: '{print $2}')
         if [[ -n "$wifi_strength" ]]; then
             if (( wifi_strength > 80 )); then
-                wifi_icon="󰤨 "
+                wifi_icon="󰣺"
             elif (( wifi_strength > 60 )); then
-                wifi_icon="󰤥 "
+                wifi_icon="󰣸"
             elif (( wifi_strength > 40 )); then
-                wifi_icon="󰤢 "
+                wifi_icon="󰣶"
             elif (( wifi_strength > 20 )); then
-                wifi_icon="󰤟 "
+                wifi_icon="󰣴"
             else
-                wifi_icon="󰤯 "
+                wifi_icon="󰣾"
             fi
         else
-            wifi_icon="󰤭 "
+            wifi_icon="󰣼"
         fi
     fi
 
     ethernet_icon=""
     if [[ "$connection_status" == *"ethernet:connected"* ]]; then
-        ethernet_icon="󰈀 "
+        ethernet_icon="󰈀"
     fi
 
     bluetooth_status=$(bluetoothctl show | grep -i "Powered" | awk '{print $2}')
@@ -139,16 +139,16 @@ get_net() {
 
     if [[ "$bluetooth_status" == "yes" ]]; then
         if (( bluetooth_connected > 0 )); then
-            bluetooth_icon="󰂱 "
+            bluetooth_icon="󰂱"
         else
-            bluetooth_icon="󰂯 "
+            bluetooth_icon="󰂯"
         fi
     else
         bluetooth_icon=""
     fi
 
     if [[ -z "$wifi_icon" && -z "$ethernet_icon" && -z "$bluetooth_icon" ]]; then
-        echo -n "󰀝 "
+        echo -n "󰀝"
     else
         echo -n "$bluetooth_icon$ethernet_icon$wifi_icon"
     fi
