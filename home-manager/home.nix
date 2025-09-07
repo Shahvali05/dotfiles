@@ -73,7 +73,7 @@ in {
   ];
 
   home.file = {
-    ".local/bin/battery".source = ./scripts/battery;
+    "status.sh" = ./scripts/status.sh;
   };
 
   home.sessionVariables = {
@@ -82,7 +82,7 @@ in {
     XDG_SESSION_TYPE = "wayland";
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
-    # EDITOR = "emacs";
+    EDITOR = "zed";
   };
 
   programs.home-manager.enable = true;
