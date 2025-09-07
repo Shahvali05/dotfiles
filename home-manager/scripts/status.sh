@@ -73,16 +73,18 @@ get_vol() {
     # Проверяем mute
     local icon
     if [[ "$volume_info" == *"[MUTED]"* ]]; then
-        icon=""
+        icon="󰎊"
         echo -n "$icon"
         return
     elif [[ "$volume" -ge 80 ]]; then
-        icon=""
+        icon="󰎇"
     elif [[ "$volume" -ge 40 ]]; then
-        icon=""
+        icon="󰎋"
     else
-        icon=""
+        icon="󰎉"
     fi
+
+    # 󰎋 󰎇
 
     echo -n "$icon$volume%"
 }
