@@ -77,6 +77,7 @@ in {
   };
 
   home.sessionVariables = {
+    PATH = "${config.home.homeDirectory}/.local/bin:${pkgs.coreutils}/bin:${pkgs.bash}/bin:$PATH";
     # XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     QT_QPA_PLATFORM = "wayland";
