@@ -32,7 +32,7 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "wbg", "/home/laraeter/.wallpapers/1.png", NULL,
+        "wbg", "/home/laraeter/.wallpapers/pexels-pok-rie-33563-2049422.jpg", NULL,
         NULL /* terminate */
 };
 
@@ -184,15 +184,27 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_greater,    tagmon,         {.i = WLR_DIRECTION_RIGHT} },
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                     0),
 	TAGKEYS(          XKB_KEY_2, XKB_KEY_at,                         1),
+        TAGKEYS(          XKB_KEY_2, 0x22,                               1),
 	TAGKEYS(          XKB_KEY_3, XKB_KEY_numbersign,                 2),
+        TAGKEYS(          XKB_KEY_3, 0x6b0,                              2),
 	TAGKEYS(          XKB_KEY_4, XKB_KEY_dollar,                     3),
+        TAGKEYS(          XKB_KEY_4, 0x3b,                               3),
 	TAGKEYS(          XKB_KEY_5, XKB_KEY_percent,                    4),
 	TAGKEYS(          XKB_KEY_6, XKB_KEY_asciicircum,                5),
+        TAGKEYS(          XKB_KEY_6, 0x3a,                               5),
 	TAGKEYS(          XKB_KEY_7, XKB_KEY_ampersand,                  6),
+        TAGKEYS(          XKB_KEY_7, 0x3f,                               6),
 	TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                   7),
 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                  8),
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
         { MODKEY|WLR_MODIFIER_SHIFT, 0x6ea,              quit,           {0} }, // Й
+	{ 0,                         0x1008ff12,         spawn,          {.v = (const char*[]) { "pamixer", "--toggle-mute", NULL }} },
+	{ 0,                         0x1008ff11,         spawn,          {.v = (const char*[]) { "pamixer", "-d", "5", NULL },
+	{ 0,                         0x1008ff13,         spawn,          {.v = (const char*[]) { "pamixer", "-i", "5", NULL },
+        { 0,                         0x1008ffb2,         spawn,          {.v = (const char*[]) { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL },
+        { 0,                         0x1008ff03,         spawn,          {.v = (const char*[]) { "brightnessctl", "set", "10%-", NULL },
+        { 0,                         0x1008ff02,         spawn,          {.v = (const char*[]) { "brightnessctl", "set", "+10%", NULL },
+        { 0,                         0xff61,             spawn,          {.v = (const char*[]) { "grim", "-g", "\"$(slurp)\"", "-", "|", "wl-copy", NULL },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },

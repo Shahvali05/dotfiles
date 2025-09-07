@@ -62,16 +62,20 @@ get_vol() {
         return
     fi
 
-    # Получаем громкость в процентах
+    # Получаем вывод команды wpctl get-volume
+    local volume_info
+    volume_info=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+
+    # Извлекаем громкость в процентах
     local volume
-    volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf "%d", $2*100}')
+    volume=$(echo "$volume_info" | awk '{printf "%d", $2*100}')
 
     # Проверяем mute
-    local muted
-    muted=$(wpctl get-mute @DEFAULT_AUDIO_SINK@)
     local icon
-    if [[ "$muted" == "yes" ]]; then
-        icon=""
+    if [[ "$volume_info" == *"[MUTED]"* ]]; then
+        icon=" "
+        echo -n "$icon"
+        return
     elif [[ "$volume" -ge 80 ]]; then
         icon=""
     elif [[ "$volume" -ge 40 ]]; then
