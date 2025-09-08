@@ -47,10 +47,10 @@
     qt5.qtbase
     qt5.qtwayland
     qt5.qtdeclarative
-    libxcb
-    libX11
-    libICE
-    libSM
+    xorg.libxcb
+    xorg.libX11
+    xorg.libICE
+    xorg.libSM
     
     # Programming languages and tools
     gcc
