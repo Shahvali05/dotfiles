@@ -89,10 +89,6 @@ in {
     EDITOR = "zed";
   };
 
-  programs.envVars = {
-    QT_QPA_PLATFORM = "wayland";
-  };
-
   programs.home-manager.enable = true;
 
   # programs.eww = {
