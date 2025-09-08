@@ -44,7 +44,7 @@
     networkmanagerapplet
     pavucontrol
     pulseaudio
-    qt5.qtbase.x11
+    qt6.qtbase
     libxcb
     libX11
     libICE
