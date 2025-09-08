@@ -44,13 +44,6 @@
     networkmanagerapplet
     pavucontrol
     pulseaudio
-    qt5.qtbase
-    qt5.qtwayland
-    qt5.qtdeclarative
-    xorg.libxcb
-    xorg.libX11
-    xorg.libICE
-    xorg.libSM
     
     # Programming languages and tools
     gcc
