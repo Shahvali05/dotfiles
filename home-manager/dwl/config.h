@@ -205,7 +205,7 @@ static const Key keys[] = {
         { 0,                         0x1008ff03,         spawn,          {.v = (const char*[]) { "brightnessctl", "set", "10%-", NULL }} },
         { 0,                         0x1008ff02,         spawn,          {.v = (const char*[]) { "brightnessctl", "set", "+10%", NULL }} },
         { 0,                         0xff61,             spawn,          {.v = (const char*[]) { "grim", "-g", "\"$(slurp)\"", "-", "|", "wl-copy", NULL }} },
-	{ MODKEY, XKB_KEY_s, spawn, {.v = (const char*[]){ "sh", "-c", "grim -g \"$(slurp)\" - | swappy -f -", NULL }} },
+	{ MODKEY, XKB_KEY_s, spawn, {.v = (const char*[]){ "sh", "-c", "grim -g \"$(slurp)\" - | wl-copy", NULL }} },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
