@@ -108,9 +108,9 @@ get_mic() {
     mic_status=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
 
     if [[ "$mic_status" == *"[MUTED]"* ]]; then
-        echo -n "󰍬"  # микрофон выключен
+        echo -n "󰍭"  # микрофон выключен
     else
-        echo -n "󰍭"  # микрофон включен
+        echo -n "󰍬"  # микрофон включен
     fi
 }
 
