@@ -115,50 +115,92 @@ get_mic() {
 }
 
 get_net() {
-    local connection_status wifi_icon ethernet_icon bluetooth_icon
+    local wifi_icon="" ethernet_icon="" bluetooth_icon=""
+    local has_wifi=0
 
-    connection_status=$(nmcli -t -f DEVICE,TYPE,STATE dev status | grep -e 'wifi' -e 'ethernet')
+    # ---- Ethernet (по имени интерфейса, + fallback по наличию /device) ----
+    for path in /sys/class/net/*; do
+        iface=${path##*/}
+        [[ "$iface" == "lo" ]] && continue
 
-    wifi_icon=""
-    if [[ "$connection_status" == *"wifi:connected"* ]]; then
-        wifi_strength=$(nmcli -t -f IN-USE,SIGNAL dev wifi | grep '^\*' | awk -F: '{print $2}')
-        if [[ -n "$wifi_strength" ]]; then
-            if (( wifi_strength > 80 )); then
-                wifi_icon="󰣺"
-            elif (( wifi_strength > 60 )); then
-                wifi_icon="󰣸"
-            elif (( wifi_strength > 40 )); then
-                wifi_icon="󰣶"
-            elif (( wifi_strength > 20 )); then
-                wifi_icon="󰣴"
-            else
-                wifi_icon="󰣾"
+        case "$iface" in
+            virbr*|docker*|br-*|veth*|vmnet*|tun*|tap* ) continue ;;
+        esac
+
+        # wireless будет обработан отдельно
+        [[ -d "/sys/class/net/$iface/wireless" ]] && { has_wifi=1; continue; }
+
+        if [[ "$iface" =~ ^(en|eth|eno|ens|enx)[0-9a-zA-Z:\._-]*$ ]]; then
+            state=$(</sys/class/net/"$iface"/operstate 2>/dev/null || echo down)
+            if [[ "$state" == "up" ]]; then
+                ethernet_icon="󰈀"
+                break
             fi
         else
-            wifi_icon="󰣼"
+            # fallback: физическое устройство (PCI/USB) скорее всего — сетевой контроллер
+            if [[ -d "/sys/class/net/$iface/device" ]]; then
+                state=$(</sys/class/net/"$iface"/operstate 2>/dev/null || echo down)
+                if [[ "$state" == "up" ]]; then
+                    ethernet_icon="󰈀"
+                    break
+                fi
+            fi
+        fi
+    done
+
+    # ---- Wi-Fi: сначала пробуем считать уровень из /proc/net/wireless ----
+    if [[ $has_wifi -eq 1 ]]; then
+        for wifacepath in /sys/class/net/*/wireless; do
+            [[ -d "$wifacepath" ]] || continue
+            wiface=${wifacepath%%/wireless}
+            wiface=${wiface##*/}
+
+            # состояние интерфейса
+            state=$(</sys/class/net/"$wiface"/operstate 2>/dev/null || echo down)
+            # в /proc/net/wireless 3-я колонка — качество (может быть пусто, если не ассоциирован)
+            wifi_strength=$(awk -v iface="$wiface" '$1 ~ iface":" {print int($3)}' /proc/net/wireless 2>/dev/null)
+
+            if [[ -n "$wifi_strength" && "$wifi_strength" -ge 0 ]]; then
+                if (( wifi_strength > 80 )); then
+                    wifi_icon="󰣺"
+                elif (( wifi_strength > 60 )); then
+                    wifi_icon="󰣸"
+                elif (( wifi_strength > 40 )); then
+                    wifi_icon="󰣶"
+                elif (( wifi_strength > 20 )); then
+                    wifi_icon="󰣴"
+                else
+                    wifi_icon="󰣾"
+                fi
+                break
+            fi
+        done
+
+        # Если уровня нет, но аппаратная часть Wi-Fi есть — проверить состояние радиомодулей через rfkill
+        if [[ -z "$wifi_icon" ]]; then
+            if command -v rfkill &>/dev/null; then
+                # ищем блоки с упоминанием wlan|wifi|wireless и проверяем, есть ли среди них Soft blocked: no
+                if rfkill list all | grep -i -E 'wlan|wifi|wireless' -A1 | grep -q 'Soft blocked: no'; then
+                    # радио включено, но нет ассоциации -> показываем "Wi-Fi включён, не подключён"
+                    wifi_icon="󰣼"
+                fi
+            else
+                # rfkill недоступен — если есть беспроводной интерфейс, показываем fallback-иконку
+                wifi_icon="󰣼"
+            fi
         fi
     fi
 
-    ethernet_icon=""
-    if [[ "$connection_status" == *"ethernet:connected"* ]]; then
-        ethernet_icon="󰈀"
-    fi
-
-    bluetooth_status=$(bluetoothctl show | grep -i "Powered" | awk '{print $2}')
-    bluetooth_connected=$(bluetoothctl devices Connected | wc -l)
-
-    if [[ "$bluetooth_status" == "yes" ]]; then
-        if (( bluetooth_connected > 0 )); then
-            bluetooth_icon="󰂱"
-        else
-            bluetooth_icon=""
+    # ---- Bluetooth: показываем, если радио включено (через rfkill) ----
+    if command -v rfkill &>/dev/null; then
+        if rfkill list all | grep -i -E 'bluetooth' -A2 | grep -q 'Soft blocked: no'; then
+            bluetooth_icon=""  # радио Bluetooth включено (не проверяем подключённые девайсы — это можно добавить позже)
         fi
-    else
-        bluetooth_icon=""
     fi
 
+    # ---- Итоговый вывод ----
     if [[ -z "$wifi_icon" && -z "$ethernet_icon" && -z "$bluetooth_icon" ]]; then
-        echo -n "󰀝"
+        echo -n "󰀝"   # ничего не включено / авиарежим
     else
         echo -n "$bluetooth_icon$ethernet_icon$wifi_icon"
     fi
@@ -166,7 +208,7 @@ get_net() {
 
 # Интервалы обновления в секундах
 BAT_INTERVAL=20
-NET_INTERVAL=5
+NET_INTERVAL=3
 
 # Начальные значения
 TIME=$(get_time)
