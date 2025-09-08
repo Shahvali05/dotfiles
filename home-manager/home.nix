@@ -71,6 +71,7 @@ in {
     wbg
 
     myDwl
+    stalonetray
   ];
 
   home.file = {
