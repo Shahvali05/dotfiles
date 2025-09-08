@@ -44,11 +44,6 @@
     networkmanagerapplet
     pavucontrol
     pulseaudio
-    qt6.qtbase
-    libxcb
-    libX11
-    libICE
-    libSM
     
     # Programming languages and tools
     gcc
