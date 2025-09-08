@@ -10,8 +10,6 @@ static const int smartgaps                 = 0;
 static int gaps                            = 1;
 static const unsigned int gappx            = 10;
 static const unsigned int borderpx         = 2;  /* border pixel of windows */
-static const unsigned int systrayspacing   = 2; /* systray spacing */
-static const int showsystray               = 1; /* 0 means no systray */
 static const int showbar                   = 1; /* 0 means no bar */
 static const int topbar                    = 0; /* 0 means bottom bar */
 static const char *fonts[]                 = {"JetBrainsMono Nerd Font Mono:size=16"};
@@ -141,7 +139,6 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "alacritty", NULL };
 static const char *menucmd[] = { "wofi", NULL };
-static const char *dmenucmd[] = { "wmenu", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
@@ -231,8 +228,4 @@ static const Button buttons[] = {
 	{ ClkTagBar,   0,      BTN_RIGHT,  toggleview,     {0} },
 	{ ClkTagBar,   MODKEY, BTN_LEFT,   tag,            {0} },
 	{ ClkTagBar,   MODKEY, BTN_RIGHT,  toggletag,      {0} },
-	{ ClkTray,     0,      BTN_LEFT,   trayactivate,   {0} },
-	{ ClkTray,     0,      BTN_RIGHT,  traymenu,       {0} },
 };
-
-
