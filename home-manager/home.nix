@@ -17,6 +17,7 @@ let
       pkgs.libdrm
       pkgs.pixman
       pkgs.pango
+      pkgs.dbus
     ];
 
     patches = (old.patches or []) ++ [
