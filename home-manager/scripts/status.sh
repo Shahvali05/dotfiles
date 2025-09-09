@@ -246,7 +246,7 @@ while true; do
     MIC=$(get_mic)
 
     # Вывод
-    echo "({layout})|$BAT|$VOL|$MIC|$NET|$TIME"
+    echo "|{layout}|$BAT|$VOL|$MIC|$NET|$TIME"
 
     sleep 0.1
 done
