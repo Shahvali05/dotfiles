@@ -20,7 +20,7 @@
     LC_TIME = "ru_RU.UTF-8";
   };
 
-  networking.firewall.allowedTCPPorts = [ 8000 69 18101 19132 ];
+  networking.firewall.allowedTCPPorts = [ 8000 69 18101 19132 7777 ];
   networking.firewall.allowedUDPPorts = [ 19132 7551 7777 ];
 
   # networking.interfaces.wlp4s0.ipv4.addresses = [
