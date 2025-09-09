@@ -194,7 +194,7 @@ get_net() {
     # ---- Bluetooth: показываем, если радио включено (через rfkill) ----
     if command -v rfkill &>/dev/null; then
         if rfkill list all | grep -i -E 'bluetooth' -A2 | grep -q 'Soft blocked: no'; then
-            bluetooth_icon=""  # радио Bluetooth включено (не проверяем подключённые девайсы — это можно добавить позже)
+            bluetooth_icon=""
         fi
     fi
 
@@ -246,7 +246,7 @@ while true; do
     MIC=$(get_mic)
 
     # Вывод
-    echo " {layout}|$BAT|$VOL|$MIC|$NET|$TIME"
+    echo "{layout}|$BAT|$VOL|$MIC|$NET|$TIME"
 
     sleep 0.1
 done
