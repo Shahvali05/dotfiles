@@ -329,7 +329,7 @@ index 0000000000000000000000000000000000000000..b06a73689eb2e534e22d3143cb7eb6e9
 +	fcft_fini();
 +}
 diff --git a/dwl.c b/dwl.c
-index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e702d77831 100644
+index a2711f67245f4162555361a2660eded49684df4b..03d2be62b9171c18116679b181cab1e15dcfc2c4 100644
 --- a/dwl.c
 +++ b/dwl.c
 @@ -5,6 +5,7 @@
@@ -822,7 +822,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  
  	/* The xdg-protocol specifies:
  	 *
-@@ -1336,6 +1570,129 @@ dirtomon(enum wlr_direction dir)
+@@ -1336,6 +1570,133 @@ dirtomon(enum wlr_direction dir)
  	return selmon;
  }
  
@@ -842,6 +842,10 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
 +        return;
 +    if (!(buf = bufmon(m)))
 +        return;
++
++    /* Сначала заполняем всю панель фоновым цветом */
++    drwl_setscheme(m->drw, colors[SchemeNorm]);
++    drwl_rect(m->drw, 0, 0, m->b.width, m->b.height, 1, 1);
 +
 +    /* Подсчёт видимых окон для вычисления ширины */
 +    wl_list_for_each(c, &clients, link) {
@@ -894,9 +898,9 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
 +        		const char *lname = xkb_keymap_layout_get_name(kbd->keymap, idx);
 +
 +				if (strcmp(lname, "English (US)") == 0)
-+					layout = "us";
++					layout = "US";
 +				else if (strcmp(lname, "Russian") == 0)
-+					layout = "ru";
++					layout = "RU";
 +				else
 +					layout = lname; /* fallback */
 +            }
@@ -952,7 +956,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  void
  focusclient(Client *c, int lift)
  {
-@@ -1371,13 +1728,13 @@ focusclient(Client *c, int lift)
+@@ -1371,13 +1732,13 @@ focusclient(Client *c, int lift)
  		/* Don't change border color if there is an exclusive focus or we are
  		 * handling a drag operation */
  		if (!exclusive_focus && !seat->drag)
@@ -968,7 +972,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  		 * and focus it after the overlay is closed. */
  		if (old_client_type == LayerShell && wlr_scene_node_coords(
  					&old_l->scene->node, &unused_lx, &unused_ly)
-@@ -1388,12 +1745,11 @@ focusclient(Client *c, int lift)
+@@ -1388,12 +1749,11 @@ focusclient(Client *c, int lift)
  		/* Don't deactivate old client if the new one wants focus, as this causes issues with winecfg
  		 * and probably other clients */
  		} else if (old_c && !client_is_unmanaged(old_c) && (!c || !client_wants_focus(c))) {
@@ -983,7 +987,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  
  	if (!c) {
  		/* With no client, all we have left is to clear focus */
-@@ -1498,18 +1854,31 @@ void
+@@ -1498,18 +1858,31 @@ void
  handlesig(int signo)
  {
  	if (signo == SIGCHLD) {
@@ -1020,7 +1024,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  	} else if (signo == SIGINT || signo == SIGTERM) {
  		quit(NULL);
  	}
-@@ -1520,7 +1889,7 @@ incnmaster(const Arg *arg)
+@@ -1520,7 +1893,7 @@ incnmaster(const Arg *arg)
  {
  	if (!arg || !selmon)
  		return;
@@ -1029,7 +1033,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  	arrange(selmon);
  }
  
-@@ -1715,7 +2084,7 @@ mapnotify(struct wl_listener *listener, void *data)
+@@ -1715,7 +2088,7 @@ mapnotify(struct wl_listener *listener, void *data)
  
  	for (i = 0; i < 4; i++) {
  		c->border[i] = wlr_scene_rect_create(c->scene, 0, 0,
@@ -1038,7 +1042,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  		c->border[i]->node.data = c;
  	}
  
-@@ -1734,11 +2103,15 @@ mapnotify(struct wl_listener *listener, void *data)
+@@ -1734,11 +2107,15 @@ mapnotify(struct wl_listener *listener, void *data)
  	 * try to apply rules for them */
  	if ((p = client_get_parent(c))) {
  		c->isfloating = 1;
@@ -1055,7 +1059,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  
  unset_fullscreen:
  	m = c->mon ? c->mon : xytomon(c->geom.x, c->geom.y);
-@@ -1775,7 +2148,12 @@ monocle(Monitor *m)
+@@ -1775,7 +2152,12 @@ monocle(Monitor *m)
  	wl_list_for_each(c, &clients, link) {
  		if (!VISIBLEON(c, m) || c->isfloating || c->isfullscreen)
  			continue;
@@ -1069,7 +1073,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  		n++;
  	}
  	if (n)
-@@ -2032,46 +2410,6 @@ pointerfocus(Client *c, struct wlr_surface *surface, double sx, double sy,
+@@ -2032,46 +2414,6 @@ pointerfocus(Client *c, struct wlr_surface *surface, double sx, double sy,
  	wlr_seat_pointer_notify_motion(seat, time, sx, sy);
  }
  
@@ -1116,7 +1120,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  
  void
  powermgrsetmode(struct wl_listener *listener, void *data)
-@@ -2225,31 +2563,19 @@ run(char *startup_cmd)
+@@ -2225,31 +2567,19 @@ run(char *startup_cmd)
  		die("startup: backend_start");
  
  	/* Now that the socket exists and the backend is started, run the startup command */
@@ -1151,7 +1155,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  
  	/* At this point the outputs are initialized, choose initial selmon based on
  	 * cursor position, and set default cursor image */
-@@ -2315,7 +2641,7 @@ setfloating(Client *c, int floating)
+@@ -2315,7 +2645,7 @@ setfloating(Client *c, int floating)
  			(p && p->isfullscreen) ? LyrFS
  			: c->isfloating ? LyrFloat : LyrTile]);
  	arrange(c->mon);
@@ -1160,7 +1164,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  }
  
  void
-@@ -2338,7 +2664,7 @@ setfullscreen(Client *c, int fullscreen)
+@@ -2338,7 +2668,7 @@ setfullscreen(Client *c, int fullscreen)
  		resize(c, c->prev, 0);
  	}
  	arrange(c->mon);
@@ -1169,7 +1173,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  }
  
  void
-@@ -2358,12 +2684,12 @@ setlayout(const Arg *arg)
+@@ -2358,12 +2688,12 @@ setlayout(const Arg *arg)
  	if (!selmon)
  		return;
  	if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
@@ -1185,7 +1189,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  }
  
  /* arg > 1.0 will set mfact absolutely */
-@@ -2377,7 +2703,7 @@ setmfact(const Arg *arg)
+@@ -2377,7 +2707,7 @@ setmfact(const Arg *arg)
  	f = arg->f < 1.0f ? arg->f + selmon->mfact : arg->f - 1.0f;
  	if (f < 0.1 || f > 0.9)
  		return;
@@ -1194,7 +1198,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  	arrange(selmon);
  }
  
-@@ -2436,6 +2762,7 @@ setup(void)
+@@ -2436,6 +2766,7 @@ setup(void)
  	for (i = 0; i < (int)LENGTH(sig); i++)
  		sigaction(sig[i], &sa, NULL);
  
@@ -1202,7 +1206,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  	wlr_log_init(log_level, NULL);
  
  	/* The Wayland display is managed by libwayland. It handles accepting
-@@ -2625,6 +2952,11 @@ setup(void)
+@@ -2625,6 +2956,11 @@ setup(void)
  	LISTEN_STATIC(&output_mgr->events.apply, outputmgrapply);
  	LISTEN_STATIC(&output_mgr->events.test, outputmgrtest);
  
@@ -1214,7 +1218,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  	/* Make sure XWayland clients don't connect to the parent X server,
  	 * e.g when running in the x11 backend or the wayland backend and the
  	 * compositor has Xwayland support */
-@@ -2649,6 +2981,7 @@ void
+@@ -2649,6 +2985,7 @@ void
  spawn(const Arg *arg)
  {
  	if (fork() == 0) {
@@ -1222,7 +1226,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  		dup2(STDERR_FILENO, STDOUT_FILENO);
  		setsid();
  		execvp(((char **)arg->v)[0], (char **)arg->v);
-@@ -2667,6 +3000,30 @@ startdrag(struct wl_listener *listener, void *data)
+@@ -2667,6 +3004,30 @@ startdrag(struct wl_listener *listener, void *data)
  	LISTEN_STATIC(&drag->icon->events.destroy, destroydragicon);
  }
  
@@ -1253,7 +1257,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  void
  tag(const Arg *arg)
  {
-@@ -2677,7 +3034,7 @@ tag(const Arg *arg)
+@@ -2677,7 +3038,7 @@ tag(const Arg *arg)
  	sel->tags = arg->ui & TAGMASK;
  	focusclient(focustop(selmon), 1);
  	arrange(selmon);
@@ -1262,7 +1266,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  }
  
  void
-@@ -2691,7 +3048,7 @@ tagmon(const Arg *arg)
+@@ -2691,7 +3052,7 @@ tagmon(const Arg *arg)
  void
  tile(Monitor *m)
  {
@@ -1271,7 +1275,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  	int i, n = 0;
  	Client *c;
  
-@@ -2700,28 +3057,43 @@ tile(Monitor *m)
+@@ -2700,28 +3061,43 @@ tile(Monitor *m)
  			n++;
  	if (n == 0)
  		return;
@@ -1322,7 +1326,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  void
  togglefloating(const Arg *arg)
  {
-@@ -2739,6 +3111,13 @@ togglefullscreen(const Arg *arg)
+@@ -2739,6 +3115,13 @@ togglefullscreen(const Arg *arg)
  		setfullscreen(sel, !sel->isfullscreen);
  }
  
@@ -1336,7 +1340,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  void
  toggletag(const Arg *arg)
  {
-@@ -2750,20 +3129,40 @@ toggletag(const Arg *arg)
+@@ -2750,20 +3133,40 @@ toggletag(const Arg *arg)
  	sel->tags = newtags;
  	focusclient(focustop(selmon), 1);
  	arrange(selmon);
@@ -1379,7 +1383,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  }
  
  void
-@@ -2811,7 +3210,7 @@ unmapnotify(struct wl_listener *listener, void *data)
+@@ -2811,7 +3214,7 @@ unmapnotify(struct wl_listener *listener, void *data)
  	}
  
  	wlr_scene_node_destroy(&c->scene->node);
@@ -1388,7 +1392,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  	motionnotify(0, NULL, 0, 0, 0, 0);
  }
  
-@@ -2911,6 +3310,13 @@ updatemons(struct wl_listener *listener, void *data)
+@@ -2911,6 +3314,13 @@ updatemons(struct wl_listener *listener, void *data)
  		}
  	}
  
@@ -1402,7 +1406,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  	/* FIXME: figure out why the cursor image is at 0,0 after turning all
  	 * the monitors on.
  	 * Move the cursor image where it used to be. It does not generate a
-@@ -2921,12 +3327,45 @@ updatemons(struct wl_listener *listener, void *data)
+@@ -2921,12 +3331,45 @@ updatemons(struct wl_listener *listener, void *data)
  	wlr_output_manager_v1_set_configuration(output_mgr, config);
  }
  
@@ -1449,7 +1453,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  }
  
  void
-@@ -2939,23 +3378,45 @@ urgent(struct wl_listener *listener, void *data)
+@@ -2939,23 +3382,45 @@ urgent(struct wl_listener *listener, void *data)
  		return;
  
  	c->isurgent = 1;
@@ -1500,7 +1504,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  }
  
  void
-@@ -2996,6 +3457,7 @@ xytonode(double x, double y, struct wlr_surface **psurface,
+@@ -2996,6 +3461,7 @@ xytonode(double x, double y, struct wlr_surface **psurface,
  {
  	struct wlr_scene_node *node, *pnode;
  	struct wlr_surface *surface = NULL;
@@ -1508,7 +1512,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  	Client *c = NULL;
  	LayerSurface *l = NULL;
  	int layer;
-@@ -3004,9 +3466,12 @@ xytonode(double x, double y, struct wlr_surface **psurface,
+@@ -3004,9 +3470,12 @@ xytonode(double x, double y, struct wlr_surface **psurface,
  		if (!(node = wlr_scene_node_at(&layers[layer]->node, x, y, nx, ny)))
  			continue;
  
@@ -1524,7 +1528,7 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
  		/* Walk the tree to find a node that knows the client */
  		for (pnode = node; pnode && !c; pnode = &pnode->parent->node)
  			c = pnode->data;
-@@ -3145,10 +3610,10 @@ sethints(struct wl_listener *listener, void *data)
+@@ -3145,10 +3614,10 @@ sethints(struct wl_listener *listener, void *data)
  		return;
  
  	c->isurgent = xcb_icccm_wm_hints_get_urgency(c->surface.xwayland->hints);
