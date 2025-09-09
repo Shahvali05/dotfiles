@@ -894,9 +894,9 @@ index a2711f67245f4162555361a2660eded49684df4b..bbb415817ecd9a44d730cac1e293b8e7
 +        		const char *lname = xkb_keymap_layout_get_name(kbd->keymap, idx);
 +
 +				if (strcmp(lname, "English (US)") == 0)
-+					layout = "US";
++					layout = "🇺🇸";
 +				else if (strcmp(lname, "Russian") == 0)
-+					layout = "RU";
++					layout = "🇷🇺";
 +				else
 +					layout = lname; /* fallback */
 +            }
