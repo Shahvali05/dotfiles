@@ -18,6 +18,7 @@ local function format(bufnr)
         if exit_code == 0 then
           -- Обновляем буфер после форматирования
           vim.cmd("edit")
+          vim.notify("Black formatting successful", vim.log.levels.INFO)
         else
           vim.notify("Black formatting failed", vim.log.levels.ERROR)
         end
