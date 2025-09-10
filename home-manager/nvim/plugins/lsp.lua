@@ -1,34 +1,8 @@
 local lspconfig = require('lspconfig')
 
-
 -- ============================================================================
 -- Основные конфигурации LSP
 -- ============================================================================
-
-
--- Функция для форматирования
-local function format(bufnr)
-  local filetype = vim.bo[bufnr].filetype
-  local filepath = vim.api.nvim_buf_get_name(bufnr)
-
-  if filetype == "python" then
-    -- Запускаем black для текущего файла
-    vim.fn.jobstart({ "black", "--quiet", filepath }, {
-      on_exit = function(_, exit_code)
-        if exit_code == 0 then
-          -- Обновляем буфер после форматирования
-          vim.cmd("edit")
-          vim.notify("Black formatting successful", vim.log.levels.INFO)
-        else
-          vim.notify("Black formatting failed", vim.log.levels.ERROR)
-        end
-      end,
-    })
-  else
-    -- Для всех остальных используем LSP
-    vim.lsp.buf.format({ async = false })
-  end
-end
 
 local configs = {
   -- Функция для привязки клавиш и настройки буфера при подключении LSP
@@ -42,27 +16,32 @@ local configs = {
     vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
 
-    -- Автоформат при сохранении
-    if client.server_capabilities.documentFormattingProvider then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        callback = function()
-          -- vim.lsp.buf.format({ async = false })
-          format(bufnr)
-        end,
-      })
-    end
+    -- Форматирование через внешние форматтеры (например, black для Python)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        local filetype = vim.bo[bufnr].filetype
+        if filetype == "python" then
+          -- Используем black для форматирования Python
+          vim.fn.system({ "black", "--quiet", vim.api.nvim_buf_get_name(bufnr) })
+          vim.api.nvim_buf_call(bufnr, function()
+            vim.cmd("edit!") -- Перезагружаем буфер после форматирования
+          end)
+        elseif client.server_capabilities.documentFormattingProvider then
+          -- Асинхронное форматирование для других языков
+          vim.lsp.buf.format({ async = true })
+        end
+      end,
+    })
   end,
 
   -- Настройка возможностей автодополнения
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 }
 
-
 -- ============================================================================
 -- Конфигурация LSP серверов
 -- ============================================================================
-
 
 -- Определяем путь к Python
 local venv_path = os.getenv('VIRTUAL_ENV')
@@ -111,28 +90,6 @@ local lsp_servers = {
     }
   },
 
-  -- pyright = {
-  --   setup = {
-  --     on_attach = configs.on_attach,
-  --     capabilities = configs.capabilities,
-  --     root_dir = lspconfig.util.root_pattern('.git', 'pyproject.toml', 'setup.py') or vim.fn.getcwd(),
-  --     settings = {
-  --       pyright = {
-  --         disableOrganizeImports = true, -- Ruff сам сортирует импорты
-  --         disableTaggedHints = true, -- Отключаем подсказки для аннотаций
-  --       },
-  --       python = {
-  --         analysis = {
-  --           ignore = { '*' }, -- Игнорируем все правила линтера Pyright
-  --           typeCheckingMode = "basic", -- "off", "basic", "strict"
-  --           diagnosticMode = "openFilesOnly", -- Проверять только открытые файлы
-  --           pythonPath = py_path, -- Указываем путь к интерпретатору Python
-  --         },
-  --       },
-  --     },
-  --   }
-  -- },
-
   jsonls = {
     setup = {
       on_attach = configs.on_attach,
@@ -147,9 +104,14 @@ local lsp_servers = {
     },
   },
 
-  ts_ls = { -- Заменяем tsserver на ts_ls
+  ts_ls = {
     setup = {
-      on_attach = configs.on_attach,
+      on_attach = function(client, bufnr)
+        -- Отключаем форматирование для ts_ls
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+        configs.on_attach(client, bufnr)
+      end,
       capabilities = configs.capabilities,
       root_dir = lspconfig.util.root_pattern('package.json', '.git') or vim.fn.getcwd(),
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
@@ -233,11 +195,9 @@ local lsp_servers = {
   },
 }
 
-
 -- ============================================================================
 -- Инициализация настроек LSP
 -- ============================================================================
-
 
 local function setup()
   -- Настройка LSP серверов
