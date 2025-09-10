@@ -72,6 +72,7 @@ in {
     wbg
 
     myDwl
+    protonplus
   ];
 
   home.file = {
