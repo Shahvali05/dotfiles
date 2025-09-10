@@ -6,6 +6,29 @@ local lspconfig = require('lspconfig')
 -- ============================================================================
 
 
+-- Функция для форматирования
+local function format(bufnr)
+  local filetype = vim.bo[bufnr].filetype
+  local filepath = vim.api.nvim_buf_get_name(bufnr)
+
+  if filetype == "python" then
+    -- Запускаем black для текущего файла
+    vim.fn.jobstart({ "black", "--quiet", filepath }, {
+      on_exit = function(_, exit_code)
+        if exit_code == 0 then
+          -- Обновляем буфер после форматирования
+          vim.cmd("edit")
+        else
+          vim.notify("Black formatting failed", vim.log.levels.ERROR)
+        end
+      end,
+    })
+  else
+    -- Для всех остальных используем LSP
+    vim.lsp.buf.format({ async = false })
+  end
+end
+
 local configs = {
   -- Функция для привязки клавиш и настройки буфера при подключении LSP
   on_attach = function(client, bufnr)
@@ -23,7 +46,8 @@ local configs = {
       vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format({ async = false })
+          -- vim.lsp.buf.format({ async = false })
+          format(bufnr)
         end,
       })
     end
