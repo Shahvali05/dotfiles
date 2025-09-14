@@ -40,6 +40,7 @@ in
         clang-tools
         clang
         lua-language-server
+        universal-ctags
       ];
       plugins = with pkgs.vimPlugins; [
         alpha-nvim
