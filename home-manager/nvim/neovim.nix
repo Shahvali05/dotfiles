@@ -83,6 +83,7 @@ in
         codeium-vim
         codeium-nvim
         vim-jukit
+        tagbar
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
