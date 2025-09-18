@@ -3,11 +3,13 @@
 {
   services.mako = {
     enable = true;  # включает mako (устанавливает пакет и запускает daemon)
-    anchor = "top-right";    # позиционирование уведомлений
-    borderRadius = 8;        # радиус скругления углов
-    backgroundColor = "#445577CC";  # цвет фона (CC = ~0.8 прозрачности)
-    textColor = "#FFFFFFFF";  # цвет текста (здесь — белый непрозрачный)
-    defaultTimeout = 5000;   # время (мс) показа уведомления, 0 = бесконечно
-    ignoreTimeout = false;  # использовать указанный default-timeout
+    settings = {
+      ignore-timeout = false;
+      default-timeout = 5000;
+      border-radius = 0;
+      text-color = "#FFFFFFFF";
+      background-color = "#445577CC";
+      anchor = "bottom-right";
+    };
   };
 }
