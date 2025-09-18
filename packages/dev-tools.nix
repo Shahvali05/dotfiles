@@ -2,7 +2,12 @@
 
 let
   # Импортируем nixpkgs версии 24.11
-  pkgs2411 = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/24.11.tar.gz") {};
+  pkgs2411 = import (pkgs.fetchFromGitHub {
+    owner = "NixOS";
+    repo = "nixpkgs";
+    rev = "release-24.11";  # Используем тег release-24.11
+    sha256 = "sha256:0000000000000000000000000000000000000000000000000000"; # Замените на актуальный хеш
+  }) {};
 in
 {
   environment.systemPackages = with pkgs; [
