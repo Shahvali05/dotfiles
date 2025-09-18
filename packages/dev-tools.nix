@@ -1,12 +1,11 @@
 { config, pkgs, ... }:
 
 let
-  # Импортируем nixpkgs версии 24.11
   pkgs2411 = import (pkgs.fetchFromGitHub {
     owner = "NixOS";
     repo = "nixpkgs";
-    rev = "release-24.11";  # Используем тег release-24.11
-    sha256 = "sha256:0000000000000000000000000000000000000000000000000000"; # Замените на актуальный хеш
+    rev = "release-24.11";
+    sha256 = "sha256-kNf+obkpJZWar7HZymXZbW+Rlk3HTEIMlpc6FCNz0Ds";
   }) {};
 in
 {
