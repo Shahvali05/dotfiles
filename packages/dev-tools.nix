@@ -1,14 +1,12 @@
 { config, pkgs, ... }:
 
 let
-  pkgs2411 = import (pkgs.fetchFromGitHub {
-    owner = "NixOS";
-    repo = "nixpkgs";
-    rev = "release-24.11";
-    sha256 = "sha256-kNf+obkpJZWar7HZymXZbW+Rlk3HTEIMlpc6FCNz0Ds";
-    system = pkgs.system;
-    config = config.nixpkgs.config;
-  }) {};
+  pkgs2411 = let
+    nixpkgsSrc = builtins.fetchTarball {
+      url = "https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz";
+      sha256 = "sha256-kNf+obkpJZWar7HZymXZbW+Rlk3HTEIMlpc6FCNz0Ds";
+    };
+  in import nixpkgsSrc { config = config.nixpkgs.config; };
 in
 {
   environment.systemPackages = with pkgs; [
