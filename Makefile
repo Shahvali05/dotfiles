@@ -9,4 +9,7 @@ test:
 dry:
 	nixos-rebuild dry-run -I nixos-config=$(CONFIG_PATH)
 
+update_flake:
+	nix flake update
+
 .PHONY: rebuild test dry
