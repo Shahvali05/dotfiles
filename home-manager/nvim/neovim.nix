@@ -81,8 +81,7 @@ in
         telescope-fzf-native-nvim
         tokyonight-nvim
         which-key-nvim
-        codeium-vim
-        codeium-nvim
+        windsurf-vim
         vim-jukit
         tagbar
       ];
