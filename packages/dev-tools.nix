@@ -1,13 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  pkgs2411 = let
-    nixpkgsSrc = builtins.fetchTarball {
-      url = "https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz";
-      sha256 = "sha256-kNf+obkpJZWar7HZymXZbW+Rlk3HTEIMlpc6FCNz0Ds";
-    };
-  in import nixpkgsSrc { config = config.nixpkgs.config; };
-in
 {
   environment.systemPackages = with pkgs; [
     # Development tools
@@ -21,7 +13,8 @@ in
     python312Packages.pgcli
     qpwgraph
     pom
-    pkgs2411.nekoray
+    nekoray
+    v2rayn
     simplex-chat-desktop
     typora
     aseprite
