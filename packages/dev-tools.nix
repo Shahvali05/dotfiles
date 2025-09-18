@@ -6,6 +6,8 @@ let
     repo = "nixpkgs";
     rev = "release-24.11";
     sha256 = "sha256-kNf+obkpJZWar7HZymXZbW+Rlk3HTEIMlpc6FCNz0Ds";
+    system = pkgs.system;
+    config = config.nixpkgs.config;
   }) {};
 in
 {
