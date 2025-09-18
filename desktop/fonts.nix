@@ -2,9 +2,9 @@
 
 {
   fonts.packages = with pkgs; [
-    nerd-fonts.JetBrainsMono
-    nerd-fonts.DroidSansMono
-    nerd-fonts.FiraCode
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.fira-code
     # (nerdfonts.override { fonts = [ "JetBrainsMono" "DroidSansMono" "FiraCode" ]; })
     font-awesome
     liberation_ttf
