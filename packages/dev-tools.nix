@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+  # Импортируем nixpkgs версии 24.11
+  pkgs2411 = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/24.11.tar.gz") {};
+in
 {
   environment.systemPackages = with pkgs; [
     # Development tools
@@ -13,7 +17,7 @@
     python312Packages.pgcli
     qpwgraph
     pom
-    (nekoray.override { version = "24.11"; })
+    pkgs2411.nekoray
     simplex-chat-desktop
     typora
     aseprite
