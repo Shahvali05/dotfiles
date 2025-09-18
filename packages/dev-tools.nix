@@ -13,7 +13,7 @@
     python312Packages.pgcli
     qpwgraph
     pom
-    nekoray
+    (nekoray.override { version = "24.11"; })
     simplex-chat-desktop
     typora
     aseprite
