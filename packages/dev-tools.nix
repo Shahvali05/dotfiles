@@ -14,7 +14,6 @@
     qpwgraph
     pom
     nekoray
-    v2rayn
     simplex-chat-desktop
     typora
     aseprite
