@@ -19,9 +19,6 @@
     aseprite
     
     # System utilities
-    xdg-desktop-portal
-    xdg-desktop-portal-wlr
-
     bridge-utils
     bluez
     libvirt
