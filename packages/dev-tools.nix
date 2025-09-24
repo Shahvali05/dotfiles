@@ -19,6 +19,11 @@
     aseprite
     
     # System utilities
+    pipewire
+    pipewire-pulse
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
+
     bridge-utils
     bluez
     libvirt
