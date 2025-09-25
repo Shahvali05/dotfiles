@@ -27,7 +27,7 @@
 
 
   # Установим dwl
-  xdg.portal{
+  xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   }
