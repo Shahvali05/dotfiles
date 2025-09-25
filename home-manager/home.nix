@@ -72,6 +72,8 @@ in {
     wbg
 
     myDwl
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
     protonplus
   ];
 

@@ -33,7 +33,7 @@
     gtk3
     gtk4
     hicolor-icon-theme
-    xdg-desktop-portal-gtk
+    # xdg-desktop-portal-gtk
     fuse
     v4l-utils
     openjdk11
