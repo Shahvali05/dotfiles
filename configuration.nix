@@ -27,8 +27,11 @@
 
 
   # Установим dwl
-  xdg.portal.enable = true;
-  xdg.portal.wlr.enable = true;
+  xdg.portal{
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+  }
+  # xdg.portal.wlr.enable = true;
 
   # services.xserver.desktopManager.gnome.enable = true;
   # services.xserver.displayManager.gdm.enable = true;
