@@ -3,7 +3,9 @@
 {
   environment.systemPackages = with pkgs; [
     # Development tools
-    # qemu
+    qemu
+    OVMF
+    virt-viewer
     android-tools
     inetutils
     gdb
