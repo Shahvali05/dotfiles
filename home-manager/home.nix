@@ -80,7 +80,7 @@ in {
   home.file = {
     "status.sh" = {
       source = ./scripts/status.sh;
-      executable = true; # чтобы можно было запускать
+      executable = true;
     };
   };
 
@@ -95,9 +95,4 @@ in {
   };
 
   programs.home-manager.enable = true;
-
-  # programs.eww = {
-  #   enable = true;
-  #   configDir = ./eww;  # путь к конфигурации
-  # };
 }

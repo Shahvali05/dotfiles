@@ -65,7 +65,6 @@
     heroic
     gnome-software
     gnome-disk-utility
-    virt-manager
     zathura
     pomodoro-gtk
     bottles

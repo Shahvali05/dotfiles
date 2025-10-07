@@ -14,10 +14,7 @@
   # virt-manager
   programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.package = pkgs.qemu_kvm;
-  };
+  virtualisation.libvirtd.enable = true;
   
   programs.adb.enable = true;
   hardware.graphics.enable = true;
