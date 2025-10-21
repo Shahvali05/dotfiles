@@ -32,9 +32,9 @@ in {
     ./mako/mako.nix
     # ./qtile/qtile.nix
   ];
-  home.username = "laraeter";
-  home.homeDirectory = "/home/laraeter";
-  home.stateVersion = "24.11";
+  home.username = "red";
+  home.homeDirectory = "/home/red";
+  home.stateVersion = "25.05";
 
 
   # Пакеты для пользователя

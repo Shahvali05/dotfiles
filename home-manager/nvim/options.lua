@@ -31,7 +31,7 @@ opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- Папка для undo-ф�
 
 
 -- Настройка PATH для NixOS
-vim.env.PATH = vim.env.PATH .. ":/run/current-system/sw/bin:/home/laraeter/.local/bin"
+-- vim.env.PATH = vim.env.PATH .. ":/run/current-system/sw/bin:/home/laraeter/.local/bin"
 
 -- Закомментированные настройки (оставлены для примера)
 -- opt.wrap = false            -- Отключить перенос строк

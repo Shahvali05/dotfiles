@@ -22,9 +22,9 @@
   systemd.services.lxcfs.enable = true;
   
   users.extraGroups = {
-    vboxusers.members = [ "laraeter" ];
-    docker.members = [ "laraeter" ];
-    libvirtd.members = [ "laraeter" ];
-    waydroid.members = [ "laraeter" ];
+    vboxusers.members = [ "red" ];
+    docker.members = [ "red" ];
+    libvirtd.members = [ "red" ];
+    waydroid.members = [ "red" ];
   };
 }

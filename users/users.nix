@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  users.users.laraeter = {
+  users.users.red = {
     isNormalUser = true;
     description = "Shahvali";
     extraGroups = [ "networkmanager" "wheel" "disk" "storage" "plugdev" ];
@@ -16,5 +16,5 @@
     fi
   '';
 
-  services.getty.autologinUser = "laraeter";
+  services.getty.autologinUser = "red";
 }
