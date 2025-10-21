@@ -93,6 +93,7 @@ in {
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
     EDITOR = "zed";
+    XCURSOR_SIZE = "48";
   };
 
   programs.home-manager.enable = true;
