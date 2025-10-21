@@ -30,7 +30,7 @@ get_mem() {
 
 # Функция для батареи (через sysfs, без команды battery)
 get_bat() {
-    local battery_path="/sys/class/power_supply/BAT1"
+    local battery_path="/sys/class/power_supply/BAT0"
     if [[ -d "$battery_path" ]]; then
         local battery_percentage=$(cat "$battery_path/capacity")
         local battery_state=$(cat "$battery_path/status")
