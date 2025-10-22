@@ -34,7 +34,7 @@ static int log_level = WLR_ERROR;
 static const char *const autostart[] = {
         // "dbus-daemon", "--session", "--address=unix:path=$XDG_RUNTIME_DIR/bus", "--nofork", NULL,
         "wbg", "/home/red/.wallpapers/pexels-pok-rie-33563-2049422.jpg", NULL,
-        "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL,
+        // "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL,
         NULL /* terminate */
 };
 
