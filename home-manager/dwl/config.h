@@ -32,10 +32,10 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        // "dbus-daemon", "--session", "--address=unix:path=$XDG_RUNTIME_DIR/bus", "--nofork", NULL,
-        "wbg", "/home/red/.wallpapers/pexels-pok-rie-33563-2049422.jpg", NULL,
-        // "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL,
-        NULL /* terminate */
+        "sh", "-c",
+        "export GDK_SCALE=2 GDK_DPI_SCALE=0.5 QT_SCALE_FACTOR=2 QT_AUTO_SCREEN_SCALE_FACTOR=1 XCURSOR_SIZE=32; \
+         wbg /home/red/.wallpapers/pexels-pok-rie-33563-2049422.jpg",
+        NULL
 };
 
 /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
