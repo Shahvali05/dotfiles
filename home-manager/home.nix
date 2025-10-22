@@ -76,6 +76,7 @@ in {
     xdg-desktop-portal
     xdg-desktop-portal-wlr
     protonplus
+    zoom-us
   ];
 
   home.file = {
@@ -93,11 +94,6 @@ in {
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
     EDITOR = "zed";
-    # GDK_SCALE = "2";
-    # GDK_DPI_SCALE = "0.5";
-    # QT_SCALE_FACTOR = "2";
-    # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    # XCURSOR_SIZE = "32";
   };
 
   programs.home-manager.enable = true;
