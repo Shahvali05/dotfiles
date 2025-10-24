@@ -64,7 +64,7 @@
     repo = "SilentSDDM";
     rev = "main";
     # ⚠️ при первой сборке Nix выдаст ошибку с настоящим sha256, вставь его сюда:
-    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    sha256 = "sha256-yOE3CA5VzThSTTtwv4K0iR0BUq1qc9vE6Kxoe0KXplo=";
   };
 
   programs.xwayland.enable = true;
