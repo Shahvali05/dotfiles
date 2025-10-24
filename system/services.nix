@@ -52,7 +52,7 @@
   };
 
   # Подтягиваем тему SilentSDDM из GitHub
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs.qt6; [
     qtbase
     qtsvg
     qtvirtualkeyboard
