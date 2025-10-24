@@ -35,10 +35,37 @@
   #   };
   # };
 
-  # services.displayManager.sddm = {
-  #   enable = true;
-  #   wayland.enable = true;
-  # };
+  # Устанавливаем и включаем SDDM с темой SilentSDDM
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+
+    # Указываем тему (см. ниже — мы добавим её в environment)
+    theme = "SilentSDDM";
+
+    settings = {
+      General = {
+        InputMethod = "qtvirtualkeyboard";
+        GreeterEnvironment = "QML2_IMPORT_PATH=/usr/share/sddm/themes/SilentSDDM/components/,QT_IM_MODULE=qtvirtualkeyboard";
+      };
+    };
+  };
+
+  # Подтягиваем тему SilentSDDM из GitHub
+  environment.systemPackages = with pkgs; [
+    qt6.qtbase
+    qt6.qt6svg
+    qt6.qt6virtualkeyboard
+    qt6.qt6multimedia
+  ];
+
+  environment.etc."sddm/themes/SilentSDDM".source = pkgs.fetchFromGitHub {
+    owner = "uiriansan";
+    repo = "SilentSDDM";
+    rev = "main";
+    # ⚠️ при первой сборке Nix выдаст ошибку с настоящим sha256, вставь его сюда:
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+  };
 
   programs.xwayland.enable = true;
 

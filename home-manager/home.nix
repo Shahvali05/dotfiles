@@ -97,38 +97,4 @@ in {
   };
 
   programs.home-manager.enable = true;
-
-  systems.x86_64-linux = nixosSystem {
-    # ...
-    modules = [
-      ({ pkgs, inputs, ... }: let
-          sddmTheme = inputs.silentSDDM.packages.${pkgs.system}.default.override {
-            theme = "rei";  # выбор конфигурации из темы (например, “rei”)
-          };
-        in {
-          environment.systemPackages = [
-            sddmTheme
-            sddmTheme.test  # опционально — скрипт тестирования
-          ];
-
-          # нужны qt зависимости
-          # (возможно уже включены, но можно явно)
-          qt.enable = true;
-
-          services.displayManager.sddm = {
-            package = pkgs.kdePackages.sddm;  # убедись, что используешь версию с Qt6
-            enable = true;
-            theme = sddmTheme.pname;
-            extraPackages = sddmTheme.propagatedBuildInputs;  # зависимости темы
-            settings = {
-              General = {
-                GreeterEnvironment = "QML2_IMPORT_PATH=${sddmTheme}/share/sddm/themes/${sddmTheme.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard";
-                InputMethod = "qtvirtualkeyboard";
-              };
-            };
-          };
-        })
-    ];
-  };
-
 }
