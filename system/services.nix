@@ -59,13 +59,36 @@
     qtmultimedia
   ];
 
-  environment.etc."sddm/themes/SilentSDDM".source = pkgs.fetchFromGitHub {
-    owner = "uiriansan";
-    repo = "SilentSDDM";
-    rev = "main";
-    # ⚠️ при первой сборке Nix выдаст ошибку с настоящим sha256, вставь его сюда:
-    sha256 = "sha256-yOE3CA5VzThSTTtwv4K0iR0BUq1qc9vE6Kxoe0KXplo=";
-  };
+  environment.systemPackages = with pkgs.qt6; [
+    qtbase
+    qtsvg
+    qtvirtualkeyboard
+    qtmultimedia
+
+    (pkgs.fetchFromGitHub {
+      owner = "uiriansan";
+      repo = "SilentSDDM";
+      rev = "main";
+      sha256 = "sha256-yOE3CA5VzThSTTtwv4K0iR0BUq1qc9vE6Kxoe0KXplo=";
+    })
+  ];
+
+  services.displayManager.sddm.theme = "SilentSDDM";
+  environment.systemPackages = [
+    (pkgs.stdenv.mkDerivation {
+      name = "sddm-theme-SilentSDDM";
+      src = pkgs.fetchFromGitHub {
+        owner = "uiriansan";
+        repo = "SilentSDDM";
+        rev = "main";
+        sha256 = "sha256-yOE3CA5VzThSTTtwv4K0iR0BUq1qc9vE6Kxoe0KXplo=";
+      };
+      installPhase = ''
+        mkdir -p $out/share/sddm/themes/SilentSDDM
+        cp -r * $out/share/sddm/themes/SilentSDDM/
+      '';
+    })
+  ];
 
   programs.xwayland.enable = true;
 
