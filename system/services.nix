@@ -53,10 +53,10 @@
 
   # Подтягиваем тему SilentSDDM из GitHub
   environment.systemPackages = with pkgs; [
-    qt6.qtbase
-    qt6.qt6svg
-    qt6.qt6virtualkeyboard
-    qt6.qt6multimedia
+    qtbase
+    qtsvg
+    qtvirtualkeyboard
+    qtmultimedia
   ];
 
   environment.etc."sddm/themes/SilentSDDM".source = pkgs.fetchFromGitHub {
