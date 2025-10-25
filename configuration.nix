@@ -5,8 +5,8 @@
     ./hardware/hardware-configuration.nix
     ./system/boot.nix
     ./system/network.nix
-    ./system/services.nix
     ./system/virtualization.nix
+    ./system/services.nix
     ./desktop/display.nix
     ./desktop/hyprland.nix
     ./desktop/fonts.nix
