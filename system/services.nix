@@ -35,12 +35,10 @@
   #   };
   # };
 
-  services.displayManager.sddm = {
+  services.displayManager.ly = {
     enable = true;
     wayland.enable = true;
   };
-
-  services.displayManager.ly.enable = true;
 
   programs.xwayland.enable = true;
 
