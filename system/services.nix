@@ -40,7 +40,7 @@
     wayland.enable = true;
   };
 
-  services.displayManager.loginx.enable = true;
+  services.displayManager.ly.enable = true;
 
   programs.xwayland.enable = true;
 
