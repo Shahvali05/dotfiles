@@ -35,60 +35,12 @@
   #   };
   # };
 
-  # Устанавливаем и включаем SDDM с темой SilentSDDM
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-
-    # Указываем тему (см. ниже — мы добавим её в environment)
-    theme = "SilentSDDM";
-
-    settings = {
-      General = {
-        InputMethod = "qtvirtualkeyboard";
-        GreeterEnvironment = "QML2_IMPORT_PATH=/usr/share/sddm/themes/SilentSDDM/components/,QT_IM_MODULE=qtvirtualkeyboard";
-      };
-    };
   };
 
-  # Подтягиваем тему SilentSDDM из GitHub
-  environment.systemPackages = with pkgs.qt6; [
-    qtbase
-    qtsvg
-    qtvirtualkeyboard
-    qtmultimedia
-  ];
-
-  environment.systemPackages = with pkgs.qt6; [
-    qtbase
-    qtsvg
-    qtvirtualkeyboard
-    qtmultimedia
-
-    (pkgs.fetchFromGitHub {
-      owner = "uiriansan";
-      repo = "SilentSDDM";
-      rev = "main";
-      sha256 = "sha256-yOE3CA5VzThSTTtwv4K0iR0BUq1qc9vE6Kxoe0KXplo=";
-    })
-  ];
-
-  services.displayManager.sddm.theme = "SilentSDDM";
-  environment.systemPackages = [
-    (pkgs.stdenv.mkDerivation {
-      name = "sddm-theme-SilentSDDM";
-      src = pkgs.fetchFromGitHub {
-        owner = "uiriansan";
-        repo = "SilentSDDM";
-        rev = "main";
-        sha256 = "sha256-yOE3CA5VzThSTTtwv4K0iR0BUq1qc9vE6Kxoe0KXplo=";
-      };
-      installPhase = ''
-        mkdir -p $out/share/sddm/themes/SilentSDDM
-        cp -r * $out/share/sddm/themes/SilentSDDM/
-      '';
-    })
-  ];
+  services.displayManager.loginx.enable = true;
 
   programs.xwayland.enable = true;
 
