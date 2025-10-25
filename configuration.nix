@@ -6,13 +6,13 @@
     ./system/boot.nix
     ./system/network.nix
     ./system/virtualization.nix
-    ./system/services.nix
     ./desktop/display.nix
     ./desktop/hyprland.nix
     ./desktop/fonts.nix
     ./users/users.nix
     ./packages/system-packages.nix
     ./packages/dev-tools.nix
+    ./system/services.nix
   ];
 
   nix.gc = {
@@ -24,11 +24,4 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.05";
-
-
-  # Установим dwl
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
-  };
 }
