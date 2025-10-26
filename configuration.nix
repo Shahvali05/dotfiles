@@ -1,9 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
-    inputs.end4-dots.nixosModules.hyprland
-    inputs.end4-dots.nixosModules.stylix
     ./hardware/hardware-configuration.nix
     ./system/boot.nix
     ./system/network.nix
@@ -26,4 +24,6 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.05";
+
+  programs.niri.enable = true;
 }

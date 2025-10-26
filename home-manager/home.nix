@@ -28,7 +28,6 @@ let
   });
 in {
   imports = [
-    inputs.end4-dots.homeManagerModules.hyprland
     ./nvim/neovim.nix
     ./mako/mako.nix
     # ./qtile/qtile.nix
