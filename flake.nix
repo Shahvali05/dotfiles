@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    inputs.end4-dots.url = "github:xBLACKICEx/end-4-dots-hyprland-nixos";
+    end4-dots.url = "github:xBLACKICEx/end-4-dots-hyprland-nixos";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
