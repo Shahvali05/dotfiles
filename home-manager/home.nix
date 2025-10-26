@@ -90,7 +90,7 @@ in {
     PATH = "$HOME/.local/bin:${pkgs.coreutils}/bin:${pkgs.bash}/bin:$PATH";
     # XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
-    XDG_CURRENT_DESKTOP = "sway";
+    XDG_CURRENT_DESKTOP = "niri";
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
     EDITOR = "zed";
