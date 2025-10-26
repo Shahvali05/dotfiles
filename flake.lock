@@ -3,22 +3,22 @@
     "aquamarine": {
       "inputs": {
         "hyprutils": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprutils"
         ],
         "hyprwayland-scanner": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprwayland-scanner"
         ],
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "systems"
         ]
@@ -34,6 +34,30 @@
       "original": {
         "owner": "hyprwm",
         "repo": "aquamarine",
+        "type": "github"
+      }
+    },
+    "end4-dots": {
+      "inputs": {
+        "hyprland": "hyprland",
+        "hyprland-plugins": "hyprland-plugins",
+        "illogical-impulse-dotfiles": "illogical-impulse-dotfiles",
+        "nixpkgs": "nixpkgs_2",
+        "nur": "nur",
+        "quickshell": "quickshell",
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1754868792,
+        "narHash": "sha256-NGvMfZhU7An/ZG9OkR8iOaK7rU3TzeyjItpNLY7K03s=",
+        "owner": "xBLACKICEx",
+        "repo": "end-4-dots-hyprland-nixos",
+        "rev": "fd187fea854478cbf83fd8c9cab5506d3785321c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xBLACKICEx",
+        "repo": "end-4-dots-hyprland-nixos",
         "type": "github"
       }
     },
@@ -56,7 +80,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "illogical-impulse",
+          "end4-dots",
           "nur",
           "nixpkgs"
         ]
@@ -78,7 +102,7 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "pre-commit-hooks",
           "nixpkgs"
@@ -122,17 +146,17 @@
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprlang"
         ],
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "systems"
         ]
@@ -154,17 +178,17 @@
     "hyprgraphics": {
       "inputs": {
         "hyprutils": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprutils"
         ],
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "systems"
         ]
@@ -215,17 +239,17 @@
     "hyprland-plugins": {
       "inputs": {
         "hyprland": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland"
         ],
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland-plugins",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland-plugins",
           "hyprland",
           "systems"
@@ -248,12 +272,12 @@
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "systems"
         ]
@@ -275,19 +299,19 @@
     "hyprland-qt-support": {
       "inputs": {
         "hyprlang": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprland-qtutils",
           "hyprlang"
         ],
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprland-qtutils",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprland-qtutils",
           "systems"
@@ -311,24 +335,24 @@
       "inputs": {
         "hyprland-qt-support": "hyprland-qt-support",
         "hyprlang": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprlang"
         ],
         "hyprutils": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprland-qtutils",
           "hyprlang",
           "hyprutils"
         ],
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "systems"
         ]
@@ -350,17 +374,17 @@
     "hyprlang": {
       "inputs": {
         "hyprutils": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprutils"
         ],
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "systems"
         ]
@@ -382,12 +406,12 @@
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "systems"
         ]
@@ -409,12 +433,12 @@
     "hyprwayland-scanner": {
       "inputs": {
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "systems"
         ]
@@ -430,30 +454,6 @@
       "original": {
         "owner": "hyprwm",
         "repo": "hyprwayland-scanner",
-        "type": "github"
-      }
-    },
-    "illogical-impulse": {
-      "inputs": {
-        "hyprland": "hyprland",
-        "hyprland-plugins": "hyprland-plugins",
-        "illogical-impulse-dotfiles": "illogical-impulse-dotfiles",
-        "nixpkgs": "nixpkgs_2",
-        "nur": "nur",
-        "quickshell": "quickshell",
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1754868792,
-        "narHash": "sha256-NGvMfZhU7An/ZG9OkR8iOaK7rU3TzeyjItpNLY7K03s=",
-        "owner": "xBLACKICEx",
-        "repo": "end-4-dots-hyprland-nixos",
-        "rev": "fd187fea854478cbf83fd8c9cab5506d3785321c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "xBLACKICEx",
-        "repo": "end-4-dots-hyprland-nixos",
         "type": "github"
       }
     },
@@ -526,7 +526,7 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "nixpkgs"
         ]
       },
@@ -549,7 +549,7 @@
         "flake-compat": "flake-compat",
         "gitignore": "gitignore",
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "nixpkgs"
         ]
@@ -571,7 +571,7 @@
     "quickshell": {
       "inputs": {
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "nixpkgs"
         ]
       },
@@ -591,8 +591,8 @@
     },
     "root": {
       "inputs": {
+        "end4-dots": "end4-dots",
         "home-manager": "home-manager",
-        "illogical-impulse": "illogical-impulse",
         "nixpkgs": "nixpkgs_3"
       }
     },
@@ -629,32 +629,32 @@
     "xdph": {
       "inputs": {
         "hyprland-protocols": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprland-protocols"
         ],
         "hyprlang": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprlang"
         ],
         "hyprutils": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprutils"
         ],
         "hyprwayland-scanner": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "hyprwayland-scanner"
         ],
         "nixpkgs": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "illogical-impulse",
+          "end4-dots",
           "hyprland",
           "systems"
         ]
