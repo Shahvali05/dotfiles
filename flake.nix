@@ -10,7 +10,7 @@
     illogical-impulse.url = "github:xBLACKICEx/end-4-dots-hyprland-nixos";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
