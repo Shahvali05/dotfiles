@@ -77,6 +77,7 @@ in {
     xdg-desktop-portal-wlr
     protonplus
     zoom-us
+    fuzzel
   ];
 
   home.file = {
