@@ -97,4 +97,25 @@ in {
   };
 
   programs.home-manager.enable = true;
+
+  illogical-impulse = {
+    # Включаем весь набор dotfiles
+    enable = true;
+
+    # Настройки Hyprland (использует кастомный билд)
+    hyprland = {
+      package = hypr.hyprland;  # Кастомный Hyprland
+      xdgPortalPackage = hypr.xdg-desktop-portal-hyprland;  # Портал для Wayland
+
+      # Включаем Wayland для Ozone (для Electron-приложений)
+      ozoneWayland.enable = true;
+    };
+
+    # Включаем dotfiles (примеры; настройте под себя)
+    dotfiles = {
+      fish.enable = true;    # Shell: Fish
+      kitty.enable = true;   # Терминал: Kitty
+      # Добавьте другие: e.g., waybar.enable = true; hyprpaper.enable = true;
+    };
+  };
 }

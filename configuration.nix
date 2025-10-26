@@ -5,6 +5,7 @@
     ./hardware/hardware-configuration.nix
     ./system/boot.nix
     ./system/network.nix
+    ./system/services.nix
     ./system/virtualization.nix
     ./desktop/display.nix
     ./desktop/hyprland.nix
@@ -12,7 +13,7 @@
     ./users/users.nix
     ./packages/system-packages.nix
     ./packages/dev-tools.nix
-    ./system/services.nix
+    inputs.illogical-impulse.homeManagerModules.default
   ];
 
   nix.gc = {
