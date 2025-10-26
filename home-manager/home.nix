@@ -78,6 +78,7 @@ in {
     protonplus
     zoom-us
     fuzzel
+    orca
   ];
 
   home.file = {
