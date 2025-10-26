@@ -28,9 +28,9 @@ let
   });
 in {
   imports = [
+    inputs.end4-dots.homeManagerModules.hyprland
     ./nvim/neovim.nix
     ./mako/mako.nix
-    inputs.illogical-impulse.homeManagerModules.default
     # ./qtile/qtile.nix
   ];
   home.username = "red";
@@ -91,30 +91,11 @@ in {
     PATH = "$HOME/.local/bin:${pkgs.coreutils}/bin:${pkgs.bash}/bin:$PATH";
     # XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
-    # XDG_CURRENT_DESKTOP = "sway";
+    XDG_CURRENT_DESKTOP = "sway";
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
     EDITOR = "zed";
   };
 
   programs.home-manager.enable = true;
-
-  illogical-impulse = {
-    enable = true;
-
-    hyprland = {
-      package = inputs.illogical-impulse.packages.${pkgs.system}.hyprland;
-      xdgPortalPackage = inputs.illogical-impulse.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-
-      # Включаем Wayland для Ozone (для Electron-приложений)
-      ozoneWayland.enable = true;
-    };
-
-    # Включаем dotfiles (примеры; настройте под себя)
-    dotfiles = {
-      fish.enable = true;    # Shell: Fish
-      kitty.enable = true;   # Терминал: Kitty
-      # Добавьте другие: e.g., waybar.enable = true; hyprpaper.enable = true;
-    };
-  };
 }

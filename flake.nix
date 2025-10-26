@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    illogical-impulse.url = "github:xBLACKICEx/end-4-dots-hyprland-nixos";
+    inputs.end4-dots.url = "github:xBLACKICEx/end-4-dots-hyprland-nixos";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -17,7 +17,7 @@
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
+      # specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager
