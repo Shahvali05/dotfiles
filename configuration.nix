@@ -13,7 +13,6 @@
     ./users/users.nix
     ./packages/system-packages.nix
     ./packages/dev-tools.nix
-    inputs.illogical-impulse.homeManagerModules.default
   ];
 
   nix.gc = {

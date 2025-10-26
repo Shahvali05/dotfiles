@@ -30,6 +30,7 @@ in {
   imports = [
     ./nvim/neovim.nix
     ./mako/mako.nix
+    inputs.illogical-impulse.homeManagerModules.default
     # ./qtile/qtile.nix
   ];
   home.username = "red";
