@@ -2,8 +2,8 @@
 
 {
   imports = [
-    end4-dots.nixosModules.hyprland
-    end4-dots.nixosModules.stylix
+    inputs.end4-dots.nixosModules.hyprland
+    inputs.end4-dots.nixosModules.stylix
     ./hardware/hardware-configuration.nix
     ./system/boot.nix
     ./system/network.nix
