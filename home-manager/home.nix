@@ -91,7 +91,7 @@ in {
     PATH = "$HOME/.local/bin:${pkgs.coreutils}/bin:${pkgs.bash}/bin:$PATH";
     # XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
-    XDG_CURRENT_DESKTOP = "sway";
+    # XDG_CURRENT_DESKTOP = "sway";
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
     EDITOR = "zed";
@@ -100,13 +100,11 @@ in {
   programs.home-manager.enable = true;
 
   illogical-impulse = {
-    # Включаем весь набор dotfiles
     enable = true;
 
-    # Настройки Hyprland (использует кастомный билд)
     hyprland = {
-      package = hypr.hyprland;  # Кастомный Hyprland
-      xdgPortalPackage = hypr.xdg-desktop-portal-hyprland;  # Портал для Wayland
+      package = inputs.illogical-impulse.packages.${pkgs.system}.hyprland;
+      xdgPortalPackage = inputs.illogical-impulse.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
 
       # Включаем Wayland для Ozone (для Electron-приложений)
       ozoneWayland.enable = true;
