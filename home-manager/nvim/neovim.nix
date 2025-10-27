@@ -73,6 +73,7 @@ in
         nvim-dap-rego
         nvim-tree-lua
         nvim-web-devicons
+        mini-icons
         nvim-ufo
         refactoring-nvim
         nvim-treesitter.withAllGrammars
