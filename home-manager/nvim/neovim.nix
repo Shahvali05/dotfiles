@@ -44,7 +44,6 @@ in
       ];
       plugins = with pkgs.vimPlugins; [
         alpha-nvim
-        auto-session
         nvim-autopairs
         cmp-path
         nvim-cmp
@@ -90,7 +89,6 @@ in
         ${builtins.readFile ./options.lua}
         ${builtins.readFile ./keymaps.lua}
         ${builtins.readFile ./plugins/alpha.lua}
-        ${builtins.readFile ./plugins/auto-session.lua}
         ${builtins.readFile ./plugins/autopairs.lua}
         ${builtins.readFile ./plugins/blankline.lua}
         ${builtins.readFile ./plugins/bufferline.lua}
