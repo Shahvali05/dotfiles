@@ -79,6 +79,7 @@ in {
     zoom-us
     fuzzel
     orca
+    acpi
   ];
 
   home.file = {
