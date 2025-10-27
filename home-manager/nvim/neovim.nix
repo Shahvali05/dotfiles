@@ -84,6 +84,7 @@ in
         windsurf-vim
         vim-jukit
         tagbar
+        tree-sitter
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
