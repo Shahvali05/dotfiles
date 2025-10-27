@@ -54,6 +54,7 @@
     # Desktop programs
     # dwl
     wayland
+    xwayland-satellite
     wlroots
     libinput
     libxkbcommon
