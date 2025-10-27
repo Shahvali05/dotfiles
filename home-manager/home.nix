@@ -80,6 +80,7 @@ in {
     fuzzel
     orca
     acpi
+    code-cursor
   ];
 
   home.file = {
