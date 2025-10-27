@@ -30,6 +30,7 @@ opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- Папка для undo-ф�
 -- ============================================================================
 
 
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 -- Настройка PATH для NixOS
 -- vim.env.PATH = vim.env.PATH .. ":/run/current-system/sw/bin:/home/laraeter/.local/bin"
 
