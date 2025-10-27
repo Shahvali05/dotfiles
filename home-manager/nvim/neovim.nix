@@ -41,6 +41,7 @@ in
         clang
         lua-language-server
         universal-ctags
+        tree-sitter
       ];
       plugins = with pkgs.vimPlugins; [
         alpha-nvim
@@ -84,7 +85,6 @@ in
         windsurf-vim
         vim-jukit
         tagbar
-        tree-sitter
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
