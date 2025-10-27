@@ -23,7 +23,7 @@ in
   programs = {
     neovim = {
       enable = true;
-      withNodeJs = true;
+      # withNodeJs = true;
       extraPackages = with pkgs; [
         ripgrep
         codeium
@@ -41,7 +41,6 @@ in
         clang
         lua-language-server
         universal-ctags
-        tree-sitter
       ];
       plugins = with pkgs.vimPlugins; [
         alpha-nvim
