@@ -1,41 +1,34 @@
 #!/usr/bin/env bash
 
-# Функция для времени
+# Function for time (HH:MM)
 get_time() {
     date +"%I:%M"
 }
 
-# Функция для даты
-get_date() {
-    date +"%Y-%m-%d"
-}
-
-# Функция для CPU
+# Efficient CPU usage using /proc/stat (avoids top)
 get_cpu() {
-    top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
+    local cpu_prev=($(awk '/^cpu / {print $2+$4, $2+$4+$5}' /proc/stat))
+    sleep 0.1
+    local cpu_now=($(awk '/^cpu / {print $2+$4, $2+$4+$5}' /proc/stat))
+    echo "$(( (100 * (${cpu_now[0]} - ${cpu_prev[0]})) / (${cpu_now[1]} - ${cpu_prev[1]}) ))%"
 }
 
-# Функция для памяти
+# Memory in GB
 get_mem() {
-    # Получаем используемую и общую память в килобайтах
     local used=$(free -k | awk '/^Mem/ {print $3}')
     local total=$(free -k | awk '/^Mem/ {print $2}')
-    
-    # Переводим в гигабайты с одним знаком после запятой
     local used_g=$(awk "BEGIN {printf \"%.1f\", $used/1024/1024}")
     local total_g=$(awk "BEGIN {printf \"%.1f\", $total/1024/1024}")
-    
     echo "${used_g}G/${total_g}G"
 }
 
-# Функция для батареи (через sysfs, без команды battery)
+# Battery via sysfs
 get_bat() {
     local battery_path="/sys/class/power_supply/BAT0"
     if [[ -d "$battery_path" ]]; then
-        local battery_percentage=$(cat "$battery_path/capacity")
-        local battery_state=$(cat "$battery_path/status")
+        local battery_percentage=$(cat "$battery_path/capacity" 2>/dev/null || echo 0)
+        local battery_state=$(cat "$battery_path/status" 2>/dev/null || echo "Unknown")
         local icon
-
         if [[ "$battery_state" == "Charging" ]]; then
             icon="󰂄"
         elif [[ "$battery_percentage" -ge 80 ]]; then
@@ -63,22 +56,14 @@ get_bat() {
     fi
 }
 
+# Volume (wpctl if available)
 get_vol() {
-    # Проверяем наличие wpctl
     if ! command -v wpctl &>/dev/null; then
         echo "N/A"
         return
     fi
-
-    # Получаем вывод команды wpctl get-volume
-    local volume_info
-    volume_info=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
-
-    # Извлекаем громкость в процентах
-    local volume
-    volume=$(echo "$volume_info" | awk '{printf "%d", $2*100}')
-
-    # Проверяем mute
+    local volume_info=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null)
+    local volume=$(echo "$volume_info" | awk '{printf "%d", $2*100}')
     local icon
     if [[ "$volume_info" == *"[MUTED]"* ]]; then
         icon="󰎊"
@@ -91,162 +76,127 @@ get_vol() {
     else
         icon="󰎉"
     fi
-
-    # 󰎋 󰎇
-
     echo -n "$icon$volume%"
 }
 
+# Mic status
 get_mic() {
     if ! command -v wpctl &>/dev/null; then
         echo "N/A"
         return
     fi
-
-    # Смотрим вывод wpctl get-volume для микрофона
-    local mic_status
-    mic_status=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
-
+    local mic_status=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ 2>/dev/null)
     if [[ "$mic_status" == *"[MUTED]"* ]]; then
-        echo -n "󰍭"  # микрофон выключен
+        echo -n "󰍭"
     else
-        echo -n "󰍬"  # микрофон включен
+        echo -n "󰍬"
     fi
 }
 
+# Streamlined network status
 get_net() {
     local wifi_icon="" ethernet_icon="" bluetooth_icon=""
     local has_wifi=0
 
-    # ---- Ethernet (по имени интерфейса, + fallback по наличию /device) ----
-    for path in /sys/class/net/*; do
+    # Ethernet check (prioritize common interfaces)
+    for path in /sys/class/net/e*; do
         iface=${path##*/}
         [[ "$iface" == "lo" ]] && continue
-
-        case "$iface" in
-            virbr*|docker*|br-*|veth*|vmnet*|tun*|tap* ) continue ;;
-        esac
-
-        # wireless будет обработан отдельно
-        [[ -d "/sys/class/net/$iface/wireless" ]] && { has_wifi=1; continue; }
-
-        if [[ "$iface" =~ ^(en|eth|eno|ens|enx)[0-9a-zA-Z:\._-]*$ ]]; then
-            state=$(</sys/class/net/"$iface"/operstate 2>/dev/null || echo down)
-            if [[ "$state" == "up" ]]; then
-                ethernet_icon="󰈀"
-                break
-            fi
-        else
-            # fallback: физическое устройство (PCI/USB) скорее всего — сетевой контроллер
-            if [[ -d "/sys/class/net/$iface/device" ]]; then
-                state=$(</sys/class/net/"$iface"/operstate 2>/dev/null || echo down)
-                if [[ "$state" == "up" ]]; then
-                    ethernet_icon="󰈀"
-                    break
-                fi
-            fi
+        if [[ -d "$path/wireless" ]]; then has_wifi=1; continue; fi
+        state=$(cat "$path/operstate" 2>/dev/null)
+        if [[ "$state" == "up" ]]; then
+            ethernet_icon="󰈀"
+            break
         fi
     done
 
-    # ---- Wi-Fi: сначала пробуем считать уровень из /proc/net/wireless ----
+    # Wi-Fi strength if available
     if [[ $has_wifi -eq 1 ]]; then
-        for wifacepath in /sys/class/net/*/wireless; do
-            [[ -d "$wifacepath" ]] || continue
-            wiface=${wifacepath%%/wireless}
-            wiface=${wiface##*/}
-
-            # состояние интерфейса
-            state=$(</sys/class/net/"$wiface"/operstate 2>/dev/null || echo down)
-            # в /proc/net/wireless 3-я колонка — качество (может быть пусто, если не ассоциирован)
-            wifi_strength=$(awk -v iface="$wiface" '$1 ~ iface":" {print int($3)}' /proc/net/wireless 2>/dev/null)
-
-            if [[ -n "$wifi_strength" && "$wifi_strength" -ge 0 ]]; then
-                if (( wifi_strength > 80 )); then
-                    wifi_icon="󰣺"
-                elif (( wifi_strength > 60 )); then
-                    wifi_icon="󰣸"
-                elif (( wifi_strength > 40 )); then
-                    wifi_icon="󰣶"
-                elif (( wifi_strength > 20 )); then
-                    wifi_icon="󰣴"
-                else
-                    wifi_icon="󰣾"
-                fi
-                break
+        wifi_strength=$(awk 'NR==3 {print int($3)}' /proc/net/wireless 2>/dev/null)
+        if [[ -n "$wifi_strength" ]]; then
+            if (( wifi_strength > 80 )); then wifi_icon="󰣺"
+            elif (( wifi_strength > 60 )); then wifi_icon="󰣸"
+            elif (( wifi_strength > 40 )); then wifi_icon="󰣶"
+            elif (( wifi_strength > 20 )); then wifi_icon="󰣴"
+            else wifi_icon="󰣾"
             fi
-        done
-
-        # Если уровня нет, но аппаратная часть Wi-Fi есть — проверить состояние радиомодулей через rfkill
-        if [[ -z "$wifi_icon" ]]; then
-            if command -v rfkill &>/dev/null; then
-                # ищем блоки с упоминанием wlan|wifi|wireless и проверяем, есть ли среди них Soft blocked: no
-                if rfkill list all | grep -i -E 'wlan|wifi|wireless' -A1 | grep -q 'Soft blocked: no'; then
-                    # радио включено, но нет ассоциации -> показываем "Wi-Fi включён, не подключён"
-                    wifi_icon="󰣼"
-                fi
-            else
-                # rfkill недоступен — если есть беспроводной интерфейс, показываем fallback-иконку
-                wifi_icon="󰣼"
-            fi
+        elif command -v rfkill &>/dev/null && rfkill list wifi | grep -q 'Soft blocked: no'; then
+            wifi_icon="󰣼"
         fi
     fi
 
-    # ---- Bluetooth: показываем, если радио включено (через rfkill) ----
-    if command -v rfkill &>/dev/null; then
-        if rfkill list all | grep -i -E 'bluetooth' -A2 | grep -q 'Soft blocked: no'; then
-            bluetooth_icon=""
-        fi
+    # Bluetooth if rfkill available
+    if command -v rfkill &>/dev/null && rfkill list bluetooth | grep -q 'Soft blocked: no'; then
+        bluetooth_icon=""
     fi
 
-    # ---- Итоговый вывод ----
-    if [[ -z "$wifi_icon" && -z "$ethernet_icon" && -z "$bluetooth_icon" ]]; then
-        echo -n "󰀝"   # ничего не включено / авиарежим
+    if [[ -z "$wifi_icon$ethernet_icon$bluetooth_icon" ]]; then
+        echo -n "󰀝"
     else
         echo -n "$bluetooth_icon$ethernet_icon$wifi_icon"
     fi
 }
 
-# Интервалы обновления в секундах
-BAT_INTERVAL=20
-NET_INTERVAL=3
+# Update and print if changed
+update() {
+    local CPU=$(get_cpu)
+    local MEM=$(get_mem)
+    local BAT=$(get_bat)
+    local VOL=$(get_vol)
+    local MIC=$(get_mic)
+    local NET=$(get_net)
+    local TIME=$(get_time)
 
-# Начальные значения
-TIME=$(get_time)
-DATE=$(get_date)
-CPU=$(get_cpu)
-MEM=$(get_mem)
-BAT=$(get_bat)
-VOL=$(get_vol)
-MIC=$(get_mic)
-NET=$(get_net)
-
-# Таймеры
-bat_last=0
-net_last=0
-
-while true; do
-    now=$(date +%s)
-
-      TIME=$(get_time)
-
-    # BAT каждые 20 секунд
-    if (( now - bat_last >= BAT_INTERVAL )); then
-        BAT=$(get_bat)
-        bat_last=$now
+    local new_output="$CPU $MEM |$BAT|$VOL|$MIC|$NET|$TIME"
+    if [[ "$new_output" != "$prev_output" ]]; then
+        echo "$new_output"
+        prev_output="$new_output"
     fi
+}
 
-    # NET каждые 5 секунд
-    if (( now - net_last >= NET_INTERVAL )); then
-        NET=$(get_net)
-        net_last=$now
+# Trap for updates
+trap 'update' USR1
+
+# Initial values
+prev_output=""
+update
+
+# Background monitors
+# Time: every minute
+( while true; do
+    sleep $((60 - $(date +%S) % 60))
+    kill -USR1 $$
+done ) &
+
+# Audio (volume/mic) via pactl subscribe (PipeWire compatible)
+( pactl subscribe 2>/dev/null | while read -r line; do
+    if [[ "$line" =~ change.*(sink|source) ]]; then
+        kill -USR1 $$
     fi
+done ) &
 
-    # VOL и MIC каждую итерацию
-    VOL=$(get_vol)
-    MIC=$(get_mic)
+# Battery via UPower dbus-monitor
+if command -v dbus-monitor &>/dev/null; then
+    ( dbus-monitor --system "type='signal',path='/org/freedesktop/UPower/devices/battery_BAT0',member='PropertiesChanged'" | while read -r; do
+        kill -USR1 $$
+    done ) &
+else
+    # Fallback poll every 30s if no dbus-monitor
+    ( while true; do sleep 30; kill -USR1 $$; done ) &
+fi
 
-    # Вывод
-    echo " {layout}|$BAT|$VOL|$MIC|$NET|$TIME"
+# Network via ip monitor
+if command -v ip &>/dev/null; then
+    ( ip monitor all 2>/dev/null | while read -r; do
+        kill -USR1 $$
+    done ) &
+else
+    # Fallback poll every 10s
+    ( while true; do sleep 10; kill -USR1 $$; done ) &
+fi
 
-    sleep 0.1
-done
+# For CPU/MEM periodic update (every 5s, optional for live stats)
+#( while true; do sleep 5; kill -USR1 $$; done ) &
+
+# Main loop: sleep forever, interrupted by traps
+while true; do sleep 86400; done
