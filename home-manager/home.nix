@@ -100,5 +100,7 @@ in {
     EDITOR = "zed";
   };
 
+  programs.gnome-keyring.enable = true;
+
   programs.home-manager.enable = true;
 }
