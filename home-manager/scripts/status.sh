@@ -92,8 +92,6 @@ get_vol() {
         icon="󰎉"
     fi
 
-    # 󰎋 󰎇
-
     echo -n "$icon$volume%"
 }
 
@@ -224,35 +222,44 @@ NET=$(get_net)
 bat_last=0
 net_last=0
 
-last_output=""
+# Обработка сигнала USR1 для принудительного обновления
+trap 'force_update=1' USR1
+
+force_update=0
 
 while true; do
     now=$(date +%s)
 
     TIME=$(get_time)
 
-    # BAT каждые 20 секунд
-    if (( now - bat_last >= BAT_INTERVAL )); then
+    # BAT каждые 20 секунд или при сигнале
+    if (( now - bat_last >= BAT_INTERVAL )) || [[ $force_update -eq 1 ]]; then
         BAT=$(get_bat)
         bat_last=$now
     fi
 
-    # NET каждые 5 секунд
-    if (( now - net_last >= NET_INTERVAL )); then
+    # NET каждые 3 секунды или при сигнале
+    if (( now - net_last >= NET_INTERVAL )) || [[ $force_update -eq 1 ]]; then
         NET=$(get_net)
         net_last=$now
     fi
 
-    # VOL и MIC каждую итерацию
+    # VOL и MIC всегда (каждые 15 сек, или при сигнале — но поскольку цикл, то всегда)
     VOL=$(get_vol)
     MIC=$(get_mic)
 
-    # Вывод
-    output=" {layout}|$BAT|$VOL|$MIC|$NET|$TIME"
-    if [[ "$output" != "$last_output" ]]; then
-        echo "$output"
-        last_output="$output"
-    fi
+    # Сброс флага после обновления
+    force_update=0
 
-    sleep 0.2
+    # Вывод каждый раз
+    output=" {layout}|$BAT|$VOL|$MIC|$NET|$TIME"
+    echo "$output"
+
+    # Прерываемый sleep: цикл с sleep 1 и проверкой флага
+    for i in {1..20}; do
+        sleep 1
+        if [[ $force_update -eq 1 ]]; then
+            break
+        fi
+    done
 done

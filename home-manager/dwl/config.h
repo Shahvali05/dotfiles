@@ -3,6 +3,7 @@
                         ((hex >> 16) & 0xFF) / 255.0f, \
                         ((hex >> 8) & 0xFF) / 255.0f, \
                         (hex & 0xFF) / 255.0f }
+#define BAR_KILL "kill -SIGUSR1 $(ps aux | grep '[b]ash ./status.sh' | awk '{print $2}' | head -n1)"
 /* appearance */
 static const int sloppyfocus               = 1;  /* focus follows mouse */
 static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
@@ -201,13 +202,14 @@ static const Key keys[] = {
 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                  8),
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
         { MODKEY|WLR_MODIFIER_SHIFT, 0x6ea,              quit,           {0} }, // Й
-	{ 0,                         0x1008ff12,         spawn,          {.v = (const char*[]) { "pamixer", "--toggle-mute", NULL }} },
+	{ 0, 0x1008ff12, spawn, {.v = (const char*[]) { "bash", "-c", "pamixer --toggle-mute && kill -SIGUSR1 $(ps aux | grep '[b]ash ./status.sh' | awk '{print $2}' | head -n1)", NULL } } },
 	{ 0,                         0x1008ff11,         spawn,          {.v = (const char*[]) { "pamixer", "-d", "5", NULL }} },
 	{ 0,                         0x1008ff13,         spawn,          {.v = (const char*[]) { "pamixer", "-i", "5", NULL }} },
         { 0,                         0x1008ffb2,         spawn,          {.v = (const char*[]) { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL }} },
         { 0,                         0x1008ff03,         spawn,          {.v = (const char*[]) { "brightnessctl", "set", "10%-", NULL }} },
         { 0,                         0x1008ff02,         spawn,          {.v = (const char*[]) { "brightnessctl", "set", "+10%", NULL }} },
 	{ 0,                         0xff61,             spawn,          {.v = (const char*[]) { "sh", "-c", "grim -g '0,0 1920x1080' - | wl-copy & notify-send \"Скрин сделан\"", NULL }} },
+  { 0,                         0xfe08,             spawn,          {.v = (const char*[]) { "bash", "-c", "kill -SIGUSR1 $(ps aux | grep '[b]ash ./status.sh' | awk '{print $2}' | head -n1)", NULL } } },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
