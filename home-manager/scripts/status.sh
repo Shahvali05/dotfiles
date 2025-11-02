@@ -205,8 +205,8 @@ get_net() {
 }
 
 # Интервалы обновления в секундах
-BAT_INTERVAL=20
-NET_INTERVAL=3
+BAT_INTERVAL=10
+NET_INTERVAL=30
 
 # Начальные значения
 TIME=$(get_time)
@@ -256,8 +256,8 @@ while true; do
     echo "$output"
 
     # Прерываемый sleep: цикл с sleep 1 и проверкой флага
-    for i in {1..20}; do
-        sleep 1
+    for i in {1..150}; do
+        sleep 0.2
         if [[ $force_update -eq 1 ]]; then
             break
         fi
