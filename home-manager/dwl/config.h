@@ -253,6 +253,14 @@ static const Key keys[] = {
               "bash", "-c",
               "pactl set-source-mute @DEFAULT_SOURCE@ toggle && " BAR_KILL,
               NULL}}},
+    {MODKEY,
+     0x1008ff12,
+     spawn,
+     {.v =
+          (const char *[]){
+              "bash", "-c",
+              "pactl set-source-mute @DEFAULT_SOURCE@ toggle && " BAR_KILL,
+              NULL}}},
     {0,
      0x1008ff03,
      spawn,
