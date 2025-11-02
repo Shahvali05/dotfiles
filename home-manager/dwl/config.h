@@ -3,7 +3,7 @@
   {((hex >> 24) & 0xFF) / 255.0f, ((hex >> 16) & 0xFF) / 255.0f,               \
    ((hex >> 8) & 0xFF) / 255.0f, (hex & 0xFF) / 255.0f}
 #define BAR_KILL                                                               \
-  "kill -SIGUSR1 $(ps aux | grep '[b]ash ./status.sh' | awk '{print $2}' | "   \
+  "kill -SIGUSR1 $(ps aux | grep '[b]ash ./.dwl_bar_status.sh' | awk '{print $2}' | "   \
   "head -n1)"
 /* appearance */
 static const int sloppyfocus = 1; /* focus follows mouse */

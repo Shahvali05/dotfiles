@@ -84,8 +84,8 @@ in {
   ];
 
   home.file = {
-    "status.sh" = {
-      source = ./scripts/status.sh;
+    ".dwl_bar_status.sh" = {
+      source = ./dwl/.dwl_bar_status.sh;
       executable = true;
     };
   };
