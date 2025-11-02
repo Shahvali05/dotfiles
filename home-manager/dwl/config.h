@@ -275,7 +275,7 @@ static const Key keys[] = {
      0xff61,
      spawn,
      {.v = (const char *[]){"sh", "-c",
-                            "grim -g '0,0 1920x1080' - | wl-copy & notify-send "
+                            "grim - | wl-copy & notify-send "
                             "\"Скрин сделан\"",
                             NULL}}},
     {0, 0xfe08, spawn, {.v = (const char *[]){"bash", "-c", BAR_KILL, NULL}}},
