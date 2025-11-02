@@ -68,9 +68,9 @@
     gnome-disk-utility
     zathura
     pomodoro-gtk
-    bottles.override {
+    (bottles.override {
       removeWarningPopup = true;
-    }
+    })
     gthumb
     github-desktop
     obs-studio
