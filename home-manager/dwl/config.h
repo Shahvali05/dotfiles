@@ -3,7 +3,8 @@
   {((hex >> 24) & 0xFF) / 255.0f, ((hex >> 16) & 0xFF) / 255.0f,               \
    ((hex >> 8) & 0xFF) / 255.0f, (hex & 0xFF) / 255.0f}
 #define BAR_KILL                                                               \
-  "kill -SIGUSR1 $(ps aux | grep '[b]ash ./.dwl_bar_status.sh' | awk '{print $2}' | "   \
+  "kill -SIGUSR1 $(ps aux | grep '[b]ash ./.dwl_bar_status.sh' | awk '{print " \
+  "$2}' | "                                                                    \
   "head -n1)"
 /* appearance */
 static const int sloppyfocus = 1; /* focus follows mouse */
@@ -44,9 +45,9 @@ static const char *const autostart[] = {
     // "dbus-daemon", "--session", "--address=unix:path=$XDG_RUNTIME_DIR/bus",
     // "--nofork", NULL,
     "wbg", "/home/red/.wallpapers/pexels-pok-rie-33563-2049422.jpg", NULL,
-    "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL,
-    "sh", "-c", "mkfifo /tmp/wobpipe || true", NULL,
-    "sh", "-c", "tail -f /tmp/wobpipe | wob", NULL,
+    "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL, "sh", "-c",
+    "mkfifo /tmp/wobpipe || true", NULL, "sh", "-c",
+    "tail -f /tmp/wobpipe | wob", NULL,
     // "xwayland-satellite", NULL,
     NULL /* terminate */
 };
@@ -237,23 +238,39 @@ static const Key keys[] = {
     {0,
      0x1008ff12,
      spawn,
-     {.v = (const char *[]){"bash", "-c", "pamixer --toggle-mute && " BAR_KILL,
-                            NULL}}},
+     {.v =
+          (const char *[]){
+              "bash", "-c",
+              "pamixer --toggle-mute && " BAR_KILL
+              " && (wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && "
+              "echo 0 > /tmp/wobpipe) || wpctl get-volume @DEFAULT_AUDIO_SINK@ "
+              "| sed 's/[^0-9]//g' > /tmp/wobpipe",
+              NULL}}},
     {0,
      0x1008ff11,
      spawn,
-     {.v = (const char *[]){"bash", "-c", "pamixer -d 5 && " BAR_KILL, NULL}}},
+     {.v = (const char *[]){"bash", "-c",
+                            "pamixer -d 5 && " BAR_KILL
+                            " && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "
+                            "'s/[^0-9]//g' > /tmp/wobpipe",
+                            NULL}}},
     {0,
      0x1008ff13,
      spawn,
-     {.v = (const char *[]){"bash", "-c", "pamixer -i 5 && " BAR_KILL, NULL}}},
+     {.v = (const char *[]){"bash", "-c", "pamixer -i 5 && " BAR_KILL,
+                            " && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "
+                            "'s/[^0-9]//g' > /tmp/wobpipe",
+                            NULL}}},
     {0,
      0x1008ffb2,
      spawn,
      {.v =
           (const char *[]){
               "bash", "-c",
-              "pactl set-source-mute @DEFAULT_SOURCE@ toggle && " BAR_KILL,
+              "pactl set-source-mute @DEFAULT_SOURCE@ toggle && " BAR_KILL
+              " && (wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && "
+              "echo 0 > /tmp/wobpipe) || wpctl get-volume "
+              "@DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g' > /tmp/wobpipe",
               NULL}}},
     {MODKEY,
      0x1008ff12,
@@ -261,17 +278,24 @@ static const Key keys[] = {
      {.v =
           (const char *[]){
               "bash", "-c",
-              "pactl set-source-mute @DEFAULT_SOURCE@ toggle && " BAR_KILL,
+              "pactl set-source-mute @DEFAULT_SOURCE@ toggle && " BAR_KILL
+              " && (wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && "
+              "echo 0 > /tmp/wobpipe) || wpctl get-volume "
+              "@DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g' > /tmp/wobpipe",
               NULL}}},
     {0,
      0x1008ff03,
      spawn,
-     {.v = (const char *[]){"bash", "-c", "brightnessctl set 10%- && " BAR_KILL,
+     {.v = (const char *[]){"bash", "-c",
+                            "brightnessctl set 10%- && " BAR_KILL
+                            " && light -G | cut -d'.' -f1 > /tmp/wobpipe",
                             NULL}}},
     {0,
      0x1008ff02,
      spawn,
-     {.v = (const char *[]){"bash", "-c", "brightnessctl set +10% && " BAR_KILL,
+     {.v = (const char *[]){"bash", "-c",
+                            "brightnessctl set +10% && " BAR_KILL
+                            " && light -G | cut -d'.' -f1 > /tmp/wobpipe",
                             NULL}}},
     {0,
      0xff61,
