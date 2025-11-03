@@ -257,7 +257,7 @@ static const Key keys[] = {
     {0,
      0x1008ff13,
      spawn,
-     {.v = (const char *[]){"bash", "-c", "pamixer -i 5 && " BAR_KILL,
+     {.v = (const char *[]){"bash", "-c", "pamixer -i 5 && " BAR_KILL
                             " && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "
                             "'s/[^0-9]//g' > /tmp/wobpipe",
                             NULL}}},
