@@ -74,7 +74,7 @@
         wine
         vkd3d
         dxvk
-      ]
+      ];
     })
     dxvk # for bottles
     vkd3d # for bottles
