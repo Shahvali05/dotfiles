@@ -30,7 +30,6 @@ in {
   imports = [
     ./nvim/neovim.nix
     ./mako/mako.nix
-    # ./qtile/qtile.nix
   ];
   home.username = "red";
   home.homeDirectory = "/home/red";
@@ -39,48 +38,52 @@ in {
 
   # Пакеты для пользователя
   home.packages = with pkgs; [
-    prismlauncher
-    wget
-    brave
-    lazydocker
-    docker-compose
-    mako
-    libnotify
-    mpv
-    remmina
-    conda
-    myPython
-    gimp
-    lutris
-    pipe-viewer
-    proxychains
-    zip
-    zed-editor
-    onlyoffice-desktopeditors
-    sqlitebrowser
-    pywalfox-native
-    rmtrash
-    lsd
-    mangareader
-    cool-retro-term
-    wine
+    # Десктопные приложения
+    prismlauncher # minecraft launcher
+    brave # браузер
+    mpv # воспроизведение видео
+    remmina # клиент для удаленного доступа
+    gimp # графический редактор
+    lutris # игры
+    zed-editor # IDE
+    onlyoffice-desktopeditors # документы
+    sqlitebrowser # редактор базы данных
+    mangareader # чтение манги
+    cool-retro-term # прикольный терминал
+    code-cursor # IDE
+    protonplus # запускает игры через steam
+    zoom-us # для видеоконференций
+    fuzzel # аналог rofi
 
-    eww
-    jq
-    socat
-    lm_sensors
-    wbg
+    # Утилиты
+    wget # получает файлы из интернета
+    lazydocker # docker в терминале
+    docker-compose # собирает контейнеры
+    conda # окружение python
+    myPython # окружение python
+    pipe-viewer # Youtube в терминале
+    zip # архиватор
+    rmtrash # удаляет файлы в корзину
+    lsd # лучшее ls
+    wine # для запуска exe файлов
+    proxychains # прокси
 
-    myDwl
-    wlr-randr
-    xdg-desktop-portal
-    xdg-desktop-portal-wlr
-    protonplus
-    zoom-us
-    fuzzel
-    orca
-    acpi
-    code-cursor
+    # Утилиты для wm
+    mako # уведомления
+    libnotify # уведомления
+    pywalfox-native # установка цветовой схемы
+    eww # бар
+    jq # обработка json. Нужна была для работы eww скриптов
+    socat # нужна была для работы eww скриптов
+    lm_sensors # нужна была для работы eww скриптов
+    myDwl # dwl
+    wbg # for dwl. Установка обоев
+    wlr-randr # для мониторов (используется для установки разрешения)
+    xdg-desktop-portal # для просмотра файлов
+    xdg-desktop-portal-wlr # для просмотра файлов
+    orca # не помню зачем
+    acpi # не помню зачем
+    wob # for dwl. Отображает всплывающую информацию
   ];
 
   home.file = {

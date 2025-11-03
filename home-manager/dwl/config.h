@@ -45,6 +45,8 @@ static const char *const autostart[] = {
     // "--nofork", NULL,
     "wbg", "/home/red/.wallpapers/pexels-pok-rie-33563-2049422.jpg", NULL,
     "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL,
+    "sh", "-c", "mkfifo /tmp/wobpipe || true", NULL,
+    "sh", "-c", "tail -f /tmp/wobpipe | wob", NULL,
     // "xwayland-satellite", NULL,
     NULL /* terminate */
 };
