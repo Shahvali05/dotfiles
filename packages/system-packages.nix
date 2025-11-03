@@ -70,11 +70,7 @@
     pomodoro-gtk
     (bottles.override {
       removeWarningPopup = true;
-      buildInputs = with pkgs; [
-        wine
-        vkd3d
-        dxvk
-      ];
+      buildInputs = oldAttrs.buildInputs ++ [ wine dxvk vkd3d ];
     })
     dxvk # for bottles
     vkd3d # for bottles
