@@ -63,18 +63,10 @@
     lmstudio
     clapper
     alacritty
-    heroic
     gnome-software
     gnome-disk-utility
     zathura
     pomodoro-gtk
-    (bottles.override {
-      removeWarningPopup = true;
-      buildInputs = oldAttrs.buildInputs ++ [ wine dxvk vkd3d ];
-    })
-    dxvk # for bottles
-    vkd3d # for bottles
-    wine # for bottles
     gthumb
     github-desktop
     obs-studio
