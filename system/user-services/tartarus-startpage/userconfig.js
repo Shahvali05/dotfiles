@@ -279,7 +279,7 @@ const default_config = {
               icon_color: "#7daea3",
             },
             {
-              name: "brand-upwork",
+              name: "upwork",
               url: "https://www.upwork.com",
               icon: "brand-upwork",
               icon_color: "#0F0F0F",

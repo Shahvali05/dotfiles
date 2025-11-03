@@ -71,6 +71,9 @@
     (bottles.override {
       removeWarningPopup = true;
     })
+    dxvk # for bottles
+    vkd3d # for bottles
+    wine # for bottles
     gthumb
     github-desktop
     obs-studio
