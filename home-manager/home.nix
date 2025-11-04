@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, inputs, ... }: 
 
 let
   myPython = pkgs.python312.withPackages (ps: with ps; [
