@@ -33,8 +33,6 @@ let
   #   sha256 = "sha256:189lwv8l10bm9fnksfkzy05pm86gmziy9z3bdn13zc8d636ylchj";
   # }) { };
   neovimPkgs = nixos24_11.packages.${mySystem};
-in
-
 in {
   imports = [
     (import ./nvim/neovim.nix { pkgs = neovimPkgs; })
