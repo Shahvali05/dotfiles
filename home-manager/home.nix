@@ -26,9 +26,14 @@ let
       # ./dwl/patches/bar-0.7.patch
     ];
   });
+  nixos24_11 = import (builtins.fetchTarball {
+    url = "https://channels.nixos.org/nixos-24.11/nixexprs.tar.xz";
+  }) { };
+  neovimPkgs = nixos24_11.pkgs;
 in {
   imports = [
-    ./nvim/neovim.nix
+    (import ./nvim/neovim.nix { pkgs = neovimPkgs; })
+    # ./nvim/neovim.nix
     ./mako/mako.nix
   ];
   home.username = "red";
