@@ -28,6 +28,7 @@ let
   });
   nixos24_11 = import (builtins.fetchTarball {
     url = "https://channels.nixos.org/nixos-24.11/nixexprs.tar.xz";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   }) { };
   neovimPkgs = nixos24_11.pkgs;
 in {
