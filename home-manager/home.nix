@@ -1,7 +1,6 @@
 { pkgs, ... }: 
 
 let
-  mySystem = pkgs.system;
   myPython = pkgs.python312.withPackages (ps: with ps; [
     matplotlib
     bpython
@@ -27,16 +26,9 @@ let
       # ./dwl/patches/bar-0.7.patch
     ];
   });
-  nixos24_11 = builtins.getFlake "github:NixOS/nixpkgs/nixos-24.11";
-  # nixos24_11 = import (builtins.fetchTarball {
-  #   url = "https://channels.nixos.org/nixos-24.11/nixexprs.tar.xz";
-  #   sha256 = "sha256:189lwv8l10bm9fnksfkzy05pm86gmziy9z3bdn13zc8d636ylchj";
-  # }) { };
-  neovimPkgs = nixos24_11.packages.${mySystem};
 in {
   imports = [
-    (import ./nvim/neovim.nix { pkgs = neovimPkgs; })
-    # ./nvim/neovim.nix
+    ./nvim/neovim.nix
     ./mako/mako.nix
   ];
   home.username = "red";
