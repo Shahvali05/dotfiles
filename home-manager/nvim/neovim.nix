@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 let
   python-with-my-plugins = pkgs.python312.withPackages (ps: with ps; [
