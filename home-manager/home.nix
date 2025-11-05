@@ -67,6 +67,7 @@ in {
     lsd # лучшее ls
     wine # для запуска exe файлов
     proxychains # прокси
+    mangohud # для lutris
 
     # Утилиты для wm
     mako # уведомления
