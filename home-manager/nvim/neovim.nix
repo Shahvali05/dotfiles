@@ -63,7 +63,7 @@ in
         SchemaStore-nvim
         lualine-nvim
         # noice-nvim
-        cmp-cmdline
+        dressing-nvim
         nvim-dap
         nvim-dap-ui
         nvim-dap-virtual-text
