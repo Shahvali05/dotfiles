@@ -98,7 +98,6 @@ in
         ${builtins.readFile ./plugins/lualine.lua}
         ${builtins.readFile ./plugins/nvim-dap.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
-        ${builtins.readFile ./plugins/nvim-ufo.lua}
         ${builtins.readFile ./plugins/refactoring.lua}
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/themes.lua}
