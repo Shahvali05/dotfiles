@@ -62,7 +62,7 @@ in
         nvim-lspconfig
         SchemaStore-nvim
         lualine-nvim
-        # noice-nvim
+        noice-nvim
         nvim-dap
         nvim-dap-ui
         nvim-dap-virtual-text
