@@ -72,7 +72,7 @@ in
         nvim-tree-lua
         nvim-web-devicons
         mini-icons
-        nvim-ufo
+        nvim-origami
         refactoring-nvim
         nvim-treesitter.withAllGrammars
         telescope-nvim
