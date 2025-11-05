@@ -56,6 +56,7 @@ in {
     fuzzel # аналог rofi
 
     # Утилиты
+    vim # редактор кода
     wget # получает файлы из интернета
     lazydocker # docker в терминале
     docker-compose # собирает контейнеры
