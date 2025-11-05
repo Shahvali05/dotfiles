@@ -19,8 +19,8 @@ nvimtree.setup({
   },
   view = {
     width = 35,
-    relativenumber = true,
-    adaptive_size = true,
+    relativenumber = false,
+    adaptive_size = false,
   },
   renderer = {
     indent_markers = {
