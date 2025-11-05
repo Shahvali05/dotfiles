@@ -98,7 +98,6 @@ in
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/lsp.lua}
         ${builtins.readFile ./plugins/lualine.lua}
-        # ${builtins.readFile ./plugins/noice.lua}
         ${builtins.readFile ./plugins/nvim-dap.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
         ${builtins.readFile ./plugins/nvim-ufo.lua}
