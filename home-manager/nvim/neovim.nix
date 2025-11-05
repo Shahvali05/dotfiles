@@ -72,7 +72,6 @@ in
         nvim-tree-lua
         nvim-web-devicons
         mini-icons
-        nvim-origami
         refactoring-nvim
         nvim-treesitter.withAllGrammars
         telescope-nvim
