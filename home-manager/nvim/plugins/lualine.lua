@@ -71,12 +71,4 @@ require('lualine').setup({
   },
 })
 
--- Автоматически обновлять lualine при входе/выходе из командного режима
-vim.api.nvim_create_autocmd({ "CmdlineEnter", "CmdlineLeave" }, {
-  callback = function(event)
-    -- когда входим в командный режим, обновляем lualine
-    require('lualine').refresh()
-  end,
-})
-
 -- require('lualine').setup{}
