@@ -82,6 +82,7 @@ in
         windsurf-vim
         vim-jukit
         tagbar
+        oil-nvim # Открытие файлов в Neovim
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
@@ -98,6 +99,7 @@ in
         ${builtins.readFile ./plugins/lualine.lua}
         ${builtins.readFile ./plugins/nvim-dap.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
+        ${builtins.readFile ./plugins/oil.lua}
         ${builtins.readFile ./plugins/refactoring.lua}
         ${builtins.readFile ./plugins/telescope.lua}
         ${builtins.readFile ./plugins/themes.lua}
