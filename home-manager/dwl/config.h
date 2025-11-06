@@ -95,7 +95,7 @@ static const struct xkb_rule_names xkb_rules = {
     */
     .layout = "us,ru",
     .variant = ",",
-    .options = "caps:ctrl_modifier,grp:ctrl_toggle",
+    .options = "ctrl:swapcaps,grp:win_space",
 };
 
 static const int repeat_rate = 25;
