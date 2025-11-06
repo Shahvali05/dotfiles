@@ -43,46 +43,46 @@ in
         universal-ctags
       ];
       plugins = with pkgs.vimPlugins; [
-        alpha-nvim
+        alpha-nvim # Стартовый экран
         nvim-autopairs
         cmp-path
         nvim-cmp
         cmp-nvim-lsp
         cmp-buffer
         luasnip
-        bufferline-nvim
+        bufferline-nvim # Показывает вкладки
         cmp_luasnip
         indent-blankline-nvim
         lspkind-nvim
         nvim-colorizer-lua
-        comment-nvim
-        vim-commentary
-        todo-comments-nvim
+        comment-nvim # Комментирует выделенный текст
+        vim-commentary # Комментирует выделенный текст
+        todo-comments-nvim # todo плагин
         nvim-ts-context-commentstring
         nvim-lspconfig
         SchemaStore-nvim
-        lualine-nvim
-        nvim-dap
-        nvim-dap-ui
-        nvim-dap-virtual-text
-        nvim-dap-python
-        nvim-dap-go
-        nvim-dap-rr
-        nvim-dap-rego
-        nvim-tree-lua
+        lualine-nvim # Статусная строка
+        nvim-dap # Дебаг плагин
+        nvim-dap-ui # Интерфейс для дебага
+        nvim-dap-virtual-text # Виртуальный текст
+        nvim-dap-python # Поддержка дебага python
+        nvim-dap-go # Поддержка дебага go
+        nvim-dap-rr # Поддержка дебага rust
+        nvim-dap-rego # Поддержка дебага rego
+        nvim-tree-lua # Файловый менеджер
         nvim-web-devicons
         mini-icons
-        refactoring-nvim
-        nvim-treesitter.withAllGrammars
-        telescope-nvim
+        refactoring-nvim # Рефакторинг
+        nvim-treesitter.withAllGrammars # Подсветка синтаксиса
+        telescope-nvim # Поиск
         telescope-dap-nvim
         telescope-fzf-native-nvim
-        tokyonight-nvim
-        which-key-nvim
-        windsurf-vim
-        vim-jukit
+        tokyonight-nvim # Тема
+        which-key-nvim # Подсказывает команды
+        windsurf-vim # ИИ для автокомплита
+        vim-jukit # jupyter notebook
         tagbar
-        oil-nvim # Открытие файлов в Neovim
+        oil-nvim # Минималистичный файловый менеджер
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
