@@ -63,4 +63,3 @@ map("x", "<", "<gv", opts) -- Уменьшить отступ
 
 
 keymap.set("n", "<F8>", "<cmd>Tagbar<CR>", { desc = "Открыть Tagbar" })
-keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Открыть Undotree" })
