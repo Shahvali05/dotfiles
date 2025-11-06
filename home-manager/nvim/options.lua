@@ -30,7 +30,12 @@ vim.opt.cmdheight = 0          -- Отключить строку команд
 -- Дополнительные настройки
 -- ============================================================================
 
-
+-- Отключить буфер в терминале
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function()
+    vim.opt_local.buflisted = false
+  end,
+})
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 -- Настройка PATH для NixOS
 -- vim.env.PATH = vim.env.PATH .. ":/run/current-system/sw/bin:/home/laraeter/.local/bin"
