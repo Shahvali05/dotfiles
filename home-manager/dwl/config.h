@@ -95,7 +95,7 @@ static const struct xkb_rule_names xkb_rules = {
     */
     .layout = "us,ru",
     .variant = ",",
-    .options = "ctrl:swapcaps,grp:win_space_toggle",
+    .options = "grp:caps_toggle",
 };
 
 static const int repeat_rate = 25;
@@ -304,7 +304,7 @@ static const Key keys[] = {
                             "grim - | wl-copy & notify-send "
                             "\"Скрин сделан\"",
                             NULL}}},
-    {MODKEY, 0xfe08, spawn, {.v = (const char *[]){"bash", "-c", BAR_KILL, NULL}}},
+    {0, 0xfe08, spawn, {.v = (const char *[]){"bash", "-c", BAR_KILL, NULL}}},
 
     /* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
     {WLR_MODIFIER_CTRL | WLR_MODIFIER_ALT, XKB_KEY_Terminate_Server, quit, {0}},
