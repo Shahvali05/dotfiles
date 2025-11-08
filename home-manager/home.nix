@@ -69,6 +69,7 @@ in {
     wine # для запуска exe файлов
     proxychains # прокси
     mangohud # для lutris
+    libsForQt5.kdenlive # видео редактор
 
     # Утилиты для wm
     mako # уведомления
