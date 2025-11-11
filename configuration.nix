@@ -18,7 +18,7 @@
   nix.gc = {
     automatic = true; # Включить автоматическую очистку
     dates = "weekly"; # Запускать раз в неделю
-    options = "--delete-older-than 30d"; # Удалять поколения старше 30 дней
+    options = "--delete-older-than 7d"; # Удалять поколения старше 7 дней
   };
 
   nixpkgs.config.allowUnfree = true;
