@@ -54,7 +54,7 @@ in {
     protonplus # запускает игры через steam
     zoom-us # для видеоконференций
     fuzzel # аналог rofi
-    wasistlos # WhatsApp
+    whatsie # WhatsApp
 
     # Утилиты
     vim # редактор кода
