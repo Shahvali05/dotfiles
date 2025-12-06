@@ -42,6 +42,7 @@ in {
     prismlauncher # minecraft launcher
     brave # браузер
     mpv # воспроизведение видео
+    vlc # воспроизведение видео
     remmina # клиент для удаленного доступа
     gimp # графический редактор
     lutris # игры
