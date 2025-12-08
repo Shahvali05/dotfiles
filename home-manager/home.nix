@@ -56,6 +56,7 @@ in {
     zoom-us # для видеоконференций
     fuzzel # аналог rofi
     whatsie # WhatsApp
+    photoflare # фото-редактор
 
     # Утилиты
     vim # редактор кода
