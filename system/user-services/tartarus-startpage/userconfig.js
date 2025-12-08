@@ -112,16 +112,10 @@ const default_config = {
           name: "Hosting & Domains",
           links: [
             {
-              name: "PQH",
-              url: "https://bill.pq.hosting/billmgr?startform=dashboard",
+              name: "ihc",
+              url: "https://my.ihc.ru/",
               icon: "server",
               icon_color: "#172D6A",
-            },
-            {
-              name: "zetalink",
-              url: "https://bill.zetalink.ru",
-              icon: "cloud",
-              icon_color: "#120853",
             },
             {
               name: "domain",
