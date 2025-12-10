@@ -57,6 +57,7 @@ in {
     fuzzel # аналог rofi
     whatsie # WhatsApp
     photoflare # фото-редактор
+    nautilus # файловый менеджер
 
     # Утилиты
     vim # редактор кода
