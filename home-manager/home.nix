@@ -78,6 +78,7 @@ in {
     glava # audio spectrum visualizer (for qtile)
     conky # system monitor (for qtile)
     feh # wallpaper manager (for qtile)
+    picom # compositor (for qtile)
 
     # Утилиты для wm
     mako # уведомления
