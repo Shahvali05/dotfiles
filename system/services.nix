@@ -68,4 +68,6 @@
   services.displayManager.ly = {
     enable = true;
   };
+
+  services.xserver.windowManager.qtile.enable = true;
 }
