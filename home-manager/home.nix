@@ -75,6 +75,8 @@ in {
     proxychains # прокси
     mangohud # для lutris
     libsForQt5.kdenlive # видео редактор
+    glava # audio spectrum visualizer (for qtile)
+    conky # system monitor (for qtile)
 
     # Утилиты для wm
     mako # уведомления
