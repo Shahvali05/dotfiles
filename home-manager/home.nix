@@ -8,6 +8,7 @@ let
     ipykernel
     jupyter
     ueberzug
+    qtile
   ]);
   myDwl = (pkgs.dwl.override {
     configH = builtins.readFile ./dwl/config.h;
