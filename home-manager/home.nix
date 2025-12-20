@@ -59,6 +59,7 @@ in {
     whatsie # WhatsApp
     photoflare # фото-редактор
     nautilus # файловый менеджер
+    kodi-wayland # киносервис
 
     # Утилиты
     vim # редактор кода
