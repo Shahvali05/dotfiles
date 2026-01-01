@@ -56,7 +56,6 @@ in {
     protonplus # запускает игры через steam
     zoom-us # для видеоконференций
     fuzzel # аналог rofi
-    whatsie # WhatsApp
     photoflare # фото-редактор
     nautilus # файловый менеджер
     kodi-wayland # киносервис
