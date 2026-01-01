@@ -75,7 +75,7 @@ in {
     wine # для запуска exe файлов
     proxychains # прокси
     mangohud # для lutris
-    libsForQt5.kdenlive # видео редактор
+    # libsForQt5.kdenlive # видео редактор
     glava # audio spectrum visualizer (for qtile)
     conky # system monitor (for qtile)
     feh # wallpaper manager (for qtile)
