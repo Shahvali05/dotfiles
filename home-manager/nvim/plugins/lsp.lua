@@ -1,5 +1,3 @@
-local lspconfig = require('lspconfig')
-
 -- ============================================================================
 -- Основные конфигурации LSP
 -- ============================================================================
@@ -107,7 +105,7 @@ local lsp_servers = {
     setup = {
       on_attach = configs.on_attach,
       capabilities = configs.capabilities,
-      root_dir = lspconfig.util.root_pattern('.git', 'pyproject.toml', 'setup.py'),
+      root_dir = vim.lsp.config.util.root_pattern('.git', 'pyproject.toml', 'setup.py'),
     }
   },
 
@@ -146,7 +144,7 @@ local lsp_servers = {
     setup = {
       on_attach = configs.on_attach,
       capabilities = configs.capabilities,
-      root_dir = lspconfig.util.root_pattern('package.json', '.git'),
+      root_dir = vim.lsp.config.util.root_pattern('package.json', '.git'),
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     }
   },
@@ -160,7 +158,7 @@ local lsp_servers = {
         client.server_capabilities.documentRangeFormattingProvider = true
       end,
       capabilities = configs.capabilities,
-      root_dir = lspconfig.util.root_pattern('.eslintrc', '.eslintrc.js', '.eslintrc.json', 'package.json'),
+      root_dir = vim.lsp.config.util.root_pattern('.eslintrc', '.eslintrc.js', '.eslintrc.json', 'package.json'),
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       settings = {
         format = { enable = true },
@@ -173,7 +171,7 @@ local lsp_servers = {
     setup = {
       on_attach = configs.on_attach,
       capabilities = configs.capabilities,
-      root_dir = lspconfig.util.root_pattern('package.json', '.git'),
+      root_dir = vim.lsp.config.util.root_pattern('package.json', '.git'),
       filetypes = { "html" },
       init_options = {
         provideFormatter = true,
@@ -190,7 +188,7 @@ local lsp_servers = {
     setup = {
       on_attach = configs.on_attach,
       capabilities = configs.capabilities,
-      root_dir = lspconfig.util.root_pattern('go.mod', '.git'),
+      root_dir = vim.lsp.config.util.root_pattern('go.mod', '.git'),
       filetypes = { "go", "gomod", "gowork", "gotmpl" },
       settings = {
         gopls = {
@@ -214,7 +212,7 @@ local lsp_servers = {
     setup = {
       on_attach = configs.on_attach,
       capabilities = configs.capabilities,
-      root_dir = lspconfig.util.root_pattern('.git', 'compile_commands.json', 'build'),
+      root_dir = vim.lsp.config.util.root_pattern('.git', 'compile_commands.json', 'build'),
       filetypes = { "c", "cpp", "objc", "objcpp" },
       cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy" },
       settings = {
@@ -234,14 +232,14 @@ local lsp_servers = {
 
 local function setup()
   -- Настройка LSP серверов
-  -- lspconfig.ruff.setup(lsp_servers.ruff.setup) -- включай если нужен
-  lspconfig.basedpyright.setup(lsp_servers.basedpyright.setup)
-  lspconfig.jsonls.setup(lsp_servers.jsonls.setup)
-  lspconfig.ts_ls.setup(lsp_servers.ts_ls.setup)
-  lspconfig.eslint.setup(lsp_servers.eslint.setup)
-  lspconfig.html.setup(lsp_servers.html.setup)
-  lspconfig.gopls.setup(lsp_servers.gopls.setup)
-  lspconfig.clangd.setup(lsp_servers.clangd.setup)
+  -- vim.lsp.config.ruff.setup(lsp_servers.ruff.setup) -- включай если нужен
+  vim.lsp.config.basedpyright.setup(lsp_servers.basedpyright.setup)
+  vim.lsp.config.jsonls.setup(lsp_servers.jsonls.setup)
+  vim.lsp.config.ts_ls.setup(lsp_servers.ts_ls.setup)
+  vim.lsp.config.eslint.setup(lsp_servers.eslint.setup)
+  vim.lsp.config.html.setup(lsp_servers.html.setup)
+  vim.lsp.config.gopls.setup(lsp_servers.gopls.setup)
+  vim.lsp.config.clangd.setup(lsp_servers.clangd.setup)
 
   -- Настройка отображения диагностики
   vim.diagnostic.config({
