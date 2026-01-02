@@ -14,7 +14,7 @@
     python312Packages.pgcli
     qpwgraph
     pom
-    nekoray
+    # nekoray
     simplex-chat-desktop
     typora
     aseprite
