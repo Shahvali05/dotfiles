@@ -14,6 +14,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  services.power-profiles-daemon.enable = true;
 
   # services.postgresql = {
   #   enable = true;
