@@ -7,7 +7,7 @@
     enable = true;
     tunMode = {
       enable = true;
-    }
+    };
   };
   programs = {
     gamescope = {
