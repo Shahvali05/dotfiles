@@ -88,5 +88,6 @@
     telegram-desktop
     obsidian
     wf-recorder
+    chromium
   ];
 }
