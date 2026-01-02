@@ -9,6 +9,8 @@
       enable = true;
     };
   };
+  programs.thunar.enable = true;
+  programs.chromium.enable = true;
   programs = {
     gamescope = {
       enable = true;
@@ -86,8 +88,5 @@
     telegram-desktop
     obsidian
     wf-recorder
-    chromium
-    xfce.thunar
-    xfce.thunar-volman
   ];
 }
