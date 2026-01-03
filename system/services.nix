@@ -71,5 +71,9 @@
   # };
 
   services.xserver.windowManager.qtile.enable = true;
-  services.pgadmin.enable = true;
+  services.pgadmin = {
+    enable = true;
+    initialEmail = "admin@example.com";
+    initialPassword = "strong-password";
+  };
 }
