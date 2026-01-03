@@ -71,4 +71,5 @@
   # };
 
   services.xserver.windowManager.qtile.enable = true;
+  services.pgadmin.enable = true;
 }
