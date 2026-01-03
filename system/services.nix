@@ -74,5 +74,6 @@
   services.pgadmin = {
     enable = true;
     initialEmail = "admin@example.com";
+    initialPasswordFile = "/etc/pgadmin-password";
   };
 }
