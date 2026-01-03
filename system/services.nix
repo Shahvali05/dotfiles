@@ -74,6 +74,5 @@
   services.pgadmin = {
     enable = true;
     initialEmail = "admin@example.com";
-    initialPassword = "strong-password";
   };
 }
