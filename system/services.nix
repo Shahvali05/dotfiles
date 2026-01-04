@@ -71,13 +71,4 @@
   # };
 
   services.xserver.windowManager.qtile.enable = true;
-  services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_16;
-  };
-  services.pgadmin = {
-    enable = true;
-    initialEmail = "admin@example.com";
-    initialPasswordFile = "/etc/pgadmin-password";
-  };
 }
