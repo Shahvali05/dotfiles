@@ -58,7 +58,7 @@ in {
     fuzzel # аналог rofi
     photoflare # фото-редактор
     nautilus # файловый менеджер
-    kodi-wayland # киносервис
+    pomodoro-gtk # таймер
 
     # Утилиты
     vim # редактор кода
