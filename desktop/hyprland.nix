@@ -7,6 +7,7 @@
     waybar
     swww
     hyprlock
+    hypridle
     wofi
     shared-mime-info
     adwaita-icon-theme
