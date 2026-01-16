@@ -60,7 +60,6 @@ in {
     nautilus # файловый менеджер
     pomodoro-gtk # таймер
     dbeaver-bin # для работы с базами данных
-    postman # для работы с api
 
     # Утилиты
     vim # редактор кода
