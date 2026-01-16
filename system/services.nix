@@ -8,6 +8,10 @@
   services.blueman.enable = true;
   
   security.rtkit.enable = true;
+  security.pam.services.login.fprintAuth = true;
+  security.pam.services.sudo.fprintAuth = true;
+  security.pam.services.polkit-1.fprintAuth = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -71,4 +75,6 @@
   # };
 
   services.xserver.windowManager.qtile.enable = true;
+
+  services.fprintd.enable = true;
 }
