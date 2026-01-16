@@ -16,6 +16,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Очистить подсв
 keymap.set("n", "<Tab>",     "<cmd>bnext<CR>",   { desc = "Следующая вкладка" })
 keymap.set("n", "<S-Tab>",   "<cmd>bNext<CR>",   { desc = "Предыдущая вкладка" })
 keymap.set("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Закрыть текущую вкладку" })
+keymap.set("n", "<leader>X", "<cmd>%bd|e#|bd#<CR>", { desc = "Закрыть все вкладки" })
 
 
 -- ============================================================================
