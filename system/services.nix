@@ -18,6 +18,15 @@
   };
   services.power-profiles-daemon.enable = true;
 
+  services.xdg.portal = {
+  enable = true;
+    wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
+
   # services.postgresql = {
   #   enable = true;
   #   ensureDatabases = [ "mydatabase" ];
