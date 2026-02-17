@@ -81,6 +81,7 @@ in {
     conky # system monitor (for qtile)
     feh # wallpaper manager (for qtile)
     picom # compositor (for qtile)
+    claude-code # ИИ агент
 
     # Утилиты для wm
     mako # уведомления
