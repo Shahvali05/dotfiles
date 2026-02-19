@@ -83,6 +83,7 @@ in {
     feh # wallpaper manager (for qtile)
     picom # compositor (for qtile)
     claude-code # ИИ агент
+    poppler # нужна для отрисовки обложки pdf в файловом менеджере
 
     # Утилиты для wm
     mako # уведомления
