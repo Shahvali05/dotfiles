@@ -61,6 +61,7 @@ in {
     pomodoro-gtk # таймер
     dbeaver-bin # для работы с базами данных
     insomnia # для работы с api
+    evince # для чтения pdf
 
     # Утилиты
     vim # редактор кода
