@@ -118,10 +118,8 @@ in {
     # XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     XDG_CURRENT_DESKTOP = "wlroots";
-    NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
-    MOZ_ENABLE_WAYLAND = "1";
     EDITOR = "zed";
   };
 
