@@ -42,14 +42,21 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-    // "dbus-daemon", "--session", "--address=unix:path=$XDG_RUNTIME_DIR/bus",
-    // "--nofork", NULL,
-    "wbg", "/home/red/.wallpapers/Stone wall (2880x1800).jpg", NULL,
-    "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL, "sh", "-c",
-    "mkfifo /tmp/wobpipe || true", NULL, "sh", "-c",
-    "tail -f /tmp/wobpipe | wob", NULL,
-    // "xwayland-satellite", NULL,
-    NULL /* terminate */
+  // D-Bus
+  "dbus-update-activation-environment", "--systemd", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP=wlroots", NULL,
+
+  // Настройка экрана
+  "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL, "sh", "-c",
+
+  // Обои
+  "wbg", "/home/red/.wallpapers/Stone wall (2880x1800).jpg", NULL,
+
+  // wob
+  "mkfifo /tmp/wobpipe || true", NULL, "sh", "-c",
+  "tail -f /tmp/wobpipe | wob", NULL,
+
+  // "xwayland-satellite", NULL,
+  NULL /* terminate */
 };
 
 /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at
