@@ -43,7 +43,7 @@ static int log_level = WLR_ERROR;
 /* Autostart */
 static const char *const autostart[] = {
   // D-Bus
-  "dbus-update-activation-environment", "--systemd", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP=wlroots", NULL,
+  "dbus-update-activation-environment", "--systemd", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP=wlroots", "NIXOS_OZONE_WL=1", NULL,
 
   // Настройка экрана
   "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL,
