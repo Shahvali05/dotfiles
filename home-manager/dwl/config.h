@@ -46,15 +46,14 @@ static const char *const autostart[] = {
   "dbus-update-activation-environment", "--systemd", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP=wlroots", NULL,
 
   // Настройка экрана
-  "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL, "sh", "-c",
+  "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL,
 
   // Обои
   "wbg", "/home/red/.wallpapers/Stone wall (2880x1800).jpg", NULL,
 
   // wob
-  "mkfifo /tmp/wobpipe || true", NULL, "sh", "-c",
-  "tail -f /tmp/wobpipe | wob", NULL,
-
+  "sh", "-c", "mkfifo /tmp/wobpipe || true", NULL,
+  "sh", "-c", "tail -f /tmp/wobpipe | wob", NULL,
   // "xwayland-satellite", NULL,
   NULL /* terminate */
 };
