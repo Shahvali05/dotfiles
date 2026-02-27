@@ -8,7 +8,7 @@
     ./system/services.nix
     ./system/virtualization.nix
     ./desktop/display.nix
-    ./desktop/hyprland.nix
+    # ./desktop/hyprland.nix
     ./desktop/fonts.nix
     ./users/users.nix
     ./packages/system-packages.nix
