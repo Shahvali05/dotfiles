@@ -9,7 +9,6 @@
     hyprlock
     hypridle
     shared-mime-info
-    adwaita-icon-theme
     hyprpicker
     xdg-desktop-portal-hyprland
   ];

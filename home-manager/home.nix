@@ -105,6 +105,7 @@ in {
     wob # for dwl. Отображает всплывающую информацию
     light # for dwl. Используется для получения информации о яркости экрана
     wofi
+    adwaita-icon-theme
   ];
 
   home.file = {
