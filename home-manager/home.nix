@@ -106,6 +106,7 @@ in {
     light # for dwl. Используется для получения информации о яркости экрана
     wofi
     adwaita-icon-theme
+    slurp
   ];
 
   home.file = {
