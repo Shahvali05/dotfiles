@@ -104,6 +104,7 @@ in {
     acpi # не помню зачем
     wob # for dwl. Отображает всплывающую информацию
     light # for dwl. Используется для получения информации о яркости экрана
+    slurp # для выбора области экрана при трансляции
   ];
 
   home.file = {
@@ -121,7 +122,23 @@ in {
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
     EDITOR = "zed";
+    NIXOS_OZONE_WL = "1";
   };
+
+  xdg.configFile."xdg-desktop-portal/portals.conf".text = ''
+    [preferred]
+    default=wlr;gtk
+    org.freedesktop.impl.portal.ScreenCast=wlr
+    org.freedesktop.impl.portal.Screenshot=wlr
+  '';
+
+  xdg.configFile."xdg-desktop-portal-wlr/config".text = ''
+    [screencast]
+    output_name=
+    max_fps=30
+    chooser_type=simple
+    chooser_cmd=slurp -f %o -o
+  '';
 
   services.gnome-keyring.enable = true;
 
