@@ -116,6 +116,22 @@ in {
     };
   };
 
+  xdg.configFile."xdg-desktop-portal/portals.conf".text = ''
+    [preferred]
+    default=wlr;gtk
+    org.freedesktop.impl.portal.ScreenCast=wlr
+    org.freedesktop.impl.portal.Screenshot=wlr
+  '';
+
+  xdg.configFile."xdg-desktop-portal-wlr/config".text = ''
+    [screencast]
+    output_name=
+    max_fps=30
+    chooser_type=simple
+    chooser_cmd=slurp -f %o -o
+  '';
+
+
   home.sessionVariables = {
     PATH = "$HOME/.local/bin:${pkgs.coreutils}/bin:${pkgs.bash}/bin:$PATH";
     # XDG_CURRENT_DESKTOP = "Hyprland";
@@ -128,6 +144,21 @@ in {
   };
 
   services.gnome-keyring.enable = true;
+
+  systemd.user.services.import-wayland-env = {
+    Unit = {
+      Description = "Import WAYLAND_DISPLAY into systemd user environment";
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP'";
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 
   programs.home-manager.enable = true;
 }

@@ -21,14 +21,6 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    config = {
-      common = {
-        default = [ "gtk" ]; # GTK портал нужен для отрисовки диалогов "Открыть/Сохранить файл"
-      };
-      wlroots = {
-        default = [ "wlr" "gtk" ];
-      };
-    };
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-wlr
