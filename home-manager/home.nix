@@ -69,6 +69,7 @@ in {
     vim # редактор кода
     wget # получает файлы из интернета
     lazydocker # docker в терминале
+    lazygit # git в терминале
     docker-compose # собирает контейнеры
     conda # окружение python
     myPython # окружение python
@@ -107,6 +108,9 @@ in {
     wofi
     adwaita-icon-theme
     slurp
+
+    # Зависимости
+    libadwaita
   ];
 
   home.file = {
