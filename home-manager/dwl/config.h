@@ -18,17 +18,17 @@ static const unsigned int borderpx = 3; /* border pixel of windows */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 0;            /* 0 means bottom bar */
 static const char *fonts[] = {"JetBrainsMono Nerd Font Mono:size=16"};
-static const float rootcolor[] = COLOR(0x282828ff);
-/* Background when no clients */
-static const float fullscreen_bg[] = {0.16f, 0.16f, 0.16f, 1.0f};
+static const float rootcolor[] = COLOR(0x32302fff);
+/* чуть светлее и мягче фон */
+static const float fullscreen_bg[] = {0.20f, 0.19f, 0.18f, 1.0f};
 
 static uint32_t colors[][3] = {
     /*               fg          bg          border    */
-    [SchemeNorm] = {0xEBDBB2FF, 0x282828FF,
-                    0x3C3836FF}, // светлый текст, тёмный фон
-    [SchemeSel] = {0x282828FF, 0xFABD2FFF,
-                   0xFABD2FFF}, // жёлтый акцент (gruvbox yellow)
-    [SchemeUrg] = {0xFB4934FF, 0x282828FF, 0xFB4934FF}, // красный urgent
+    [SchemeNorm] = {0xD5C4A1FF, 0x32302FFF,
+                    0x504945FF}, // мягкий крем + серо-коричневый фон
+    [SchemeSel] = {0x32302FFF, 0xD79921FF,
+                   0xD79921FF}, // приглушённый жёлтый (менее кричащий)
+    [SchemeUrg] = {0xFB4934FF, 0x32302FFF, 0xFB4934FF}, // оставляем красный
 };
 
 /* tagging - TAGCOUNT must be no greater than 31 */
