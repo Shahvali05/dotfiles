@@ -18,18 +18,17 @@ static const unsigned int borderpx = 3; /* border pixel of windows */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 0;            /* 0 means bottom bar */
 static const char *fonts[] = {"JetBrainsMono Nerd Font Mono:size=16"};
-static const float rootcolor[] = COLOR(0x000000ff);
-/* This conforms to the xdg-protocol. Set the alpha to zero to restore the old
- * behavior */
-static const float fullscreen_bg[] = {0.1f, 0.1f, 0.1f,
-                                      1.0f}; /* You can also use glsl colors */
+static const float rootcolor[] = COLOR(0x282828ff);
+/* Background when no clients */
+static const float fullscreen_bg[] = {0.16f, 0.16f, 0.16f, 1.0f};
+
 static uint32_t colors[][3] = {
     /*               fg          bg          border    */
-    [SchemeNorm] = {0xE1F9D8FF, 0x2E3440FF, 0x3B4252FF},
-    [SchemeSel] = {0xE1F9D8FF, 0x81A1C1FF,
-                   0x81A1C1FF}, // светлый синий для выделенного
-    [SchemeUrg] = {0xEBCB8BFF, 0xBF616AFF,
-                   0xBF616AFF}, // желто-красный для urgent
+    [SchemeNorm] = {0xEBDBB2FF, 0x282828FF,
+                    0x3C3836FF}, // светлый текст, тёмный фон
+    [SchemeSel] = {0x282828FF, 0xFABD2FFF,
+                   0xFABD2FFF}, // жёлтый акцент (gruvbox yellow)
+    [SchemeUrg] = {0xFB4934FF, 0x282828FF, 0xFB4934FF}, // красный urgent
 };
 
 /* tagging - TAGCOUNT must be no greater than 31 */
@@ -42,21 +41,26 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-  // D-Bus - обновляем переменные окружения для systemd и dbus
-  "sh", "-c", "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots XDG_SESSION_TYPE=wayland && sleep 1 && systemctl --user restart xdg-desktop-portal-wlr.service xdg-desktop-portal.service", NULL,
-  // "sh", "-c", "dbus-update-activation-environment --systemd --all", NULL,
+    // D-Bus - обновляем переменные окружения для systemd и dbus
+    "sh", "-c",
+    "dbus-update-activation-environment --systemd WAYLAND_DISPLAY "
+    "XDG_CURRENT_DESKTOP=wlroots XDG_SESSION_TYPE=wayland && sleep 1 && "
+    "systemctl --user restart xdg-desktop-portal-wlr.service "
+    "xdg-desktop-portal.service",
+    NULL,
+    // "sh", "-c", "dbus-update-activation-environment --systemd --all", NULL,
 
-  // Настройка экрана
-  "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL,
+    // Настройка экрана
+    "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL,
 
-  // Обои
-  "wbg", "/home/red/.wallpapers/Stone wall (2880x1800).jpg", NULL,
+    // Обои
+    "wbg", "/home/red/.wallpapers/Stone wall (2880x1800).jpg", NULL,
 
-  // wob
-  "sh", "-c", "mkfifo /tmp/wobpipe || true", NULL,
-  "sh", "-c", "tail -f /tmp/wobpipe | wob", NULL,
-  // "xwayland-satellite", NULL,
-  NULL /* terminate */
+    // wob
+    "sh", "-c", "mkfifo /tmp/wobpipe || true", NULL, "sh", "-c",
+    "tail -f /tmp/wobpipe | wob", NULL,
+    // "xwayland-satellite", NULL,
+    NULL /* terminate */
 };
 
 /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at
@@ -264,7 +268,8 @@ static const Key keys[] = {
     {0,
      0x1008ff13,
      spawn,
-     {.v = (const char *[]){"bash", "-c", "pamixer -i 5 && " BAR_KILL
+     {.v = (const char *[]){"bash", "-c",
+                            "pamixer -i 5 && " BAR_KILL
                             " && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "
                             "'s/[^0-9]//g' > /tmp/wobpipe",
                             NULL}}},
