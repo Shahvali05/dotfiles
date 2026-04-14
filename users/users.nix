@@ -16,5 +16,5 @@
     fi
   '';
 
-  services.getty.autologinUser = "red";
+  # services.getty.autologinUser = "red";
 }

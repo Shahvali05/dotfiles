@@ -44,6 +44,7 @@ static int log_level = WLR_ERROR;
 static const char *const autostart[] = {
   // D-Bus - обновляем переменные окружения для systemd и dbus
   "sh", "-c", "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots XDG_SESSION_TYPE=wayland && sleep 1 && systemctl --user restart xdg-desktop-portal-wlr.service xdg-desktop-portal.service", NULL,
+  // "sh", "-c", "dbus-update-activation-environment --systemd --all", NULL,
 
   // Настройка экрана
   "wlr-randr", "--output", "eDP-1", "--scale", "2", NULL,

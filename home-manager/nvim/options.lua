@@ -16,7 +16,7 @@ opt.ignorecase = true          -- Игнорировать регистр при
 opt.smartcase = true           -- Учитывать регистр, если в запросе есть заглавные
 opt.termguicolors = true       -- Поддержка 24-битных цветов
 opt.background = "dark"        -- Темный фон
-opt.mouse = "a"                -- Включить мышь во всех режимах
+-- opt.mouse = "a"                -- Включить мышь во всех режимах
 opt.cursorline = true          -- Подсвечивать текущую строку
 opt.backspace = "indent,eol,start" -- Поведение backspace
 opt.clipboard:append("unnamedplus") -- Интеграция с системным буфером обмена
@@ -24,6 +24,7 @@ opt.swapfile = false           -- Отключить swap-файлы
 opt.undofile = true            -- Включить постоянное сохранение undo
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- Папка для undo-файлов
 vim.opt.cmdheight = 0          -- Отключить строку команд
+opt.scrolloff = 5              -- Отступ сверху/снизу при скролле
 
 
 -- ============================================================================

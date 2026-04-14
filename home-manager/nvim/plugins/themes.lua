@@ -3,7 +3,7 @@
 -- ============================================================================
 
 
-local selected_theme = "tokyonight"
+local selected_theme = "gruvbox"
 
 
 -- ============================================================================
@@ -29,24 +29,22 @@ end
 
 
 -- ============================================================================
--- catppuccin
+-- gruvbox
 -- ============================================================================
 
 
-local function setup_catppuccin()
-  require("catppuccin").setup({
-    flavour = "mocha",
-    term_colors = true,
-    transparent_background = false,
-    integrations = {
-      nvimtree = true,
-      lsp = false,
-      treesitter = true,
-      gitsigns = true,
-      telescope = true,
+local function setup_gruvbox()
+  require("gruvbox").setup({
+    terminal_colors = true,
+    contrast = "hard", -- soft, medium, hard
+    transparent_mode = true,
+
+    overrides = {
+      Comment = { italic = true },
     },
   })
-  vim.cmd.colorscheme("catppuccin")
+
+  vim.cmd.colorscheme("gruvbox")
 end
 
 
@@ -73,8 +71,8 @@ end
 
 if selected_theme == "tokyonight" then
   setup_tokyonight()
-elseif selected_theme == "catppuccin" then
-  setup_catppuccin()
+elseif selected_theme == "gruvbox" then
+  setup_gruvbox()
 elseif selected_theme == "custom" then
   setup_custom()
 else

@@ -8,7 +8,6 @@ let
     ipykernel
     jupyter
     ueberzug
-    qtile
   ]);
   myDwl = (pkgs.dwl.override {
     configH = builtins.readFile ./dwl/config.h;
@@ -29,13 +28,16 @@ let
   });
 in {
   imports = [
-    ./nvim/neovim.nix
-    ./mako/mako.nix
+    ./nvim
+    ./mako
   ];
   home.username = "red";
   home.homeDirectory = "/home/red";
   home.stateVersion = "25.05";
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   # Пакеты для пользователя
   home.packages = with pkgs; [
@@ -52,7 +54,6 @@ in {
     sqlitebrowser # редактор базы данных
     mangareader # чтение манги
     cool-retro-term # прикольный терминал
-    code-cursor # IDE
     protonplus # запускает игры через steam
     zoom-us # для видеоконференций
     fuzzel # аналог rofi
@@ -64,6 +65,12 @@ in {
     evince # для чтения pdf
     waydroid-helper # для работы с android
     cage # для работы с android
+    (pkgs.vscode.override {
+      commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ];
+    })
 
     # Утилиты
     vim # редактор кода
@@ -89,7 +96,6 @@ in {
     poppler # нужна для отрисовки обложки pdf в файловом менеджере
 
     # Утилиты для wm
-    mako # уведомления
     libnotify # уведомления
     pywalfox-native # установка цветовой схемы
     eww # бар
@@ -99,8 +105,6 @@ in {
     myDwl # dwl
     wbg # for dwl. Установка обоев
     wlr-randr # для мониторов (используется для установки разрешения)
-    xdg-desktop-portal # для просмотра файлов
-    xdg-desktop-portal-wlr # для просмотра файлов
     orca # не помню зачем
     acpi # не помню зачем
     wob # for dwl. Отображает всплывающую информацию
@@ -108,9 +112,6 @@ in {
     wofi
     adwaita-icon-theme
     slurp
-
-    # Зависимости
-    libadwaita
   ];
 
   home.file = {
@@ -120,49 +121,19 @@ in {
     };
   };
 
-  xdg.configFile."xdg-desktop-portal/portals.conf".text = ''
-    [preferred]
-    default=wlr;gtk
-    org.freedesktop.impl.portal.ScreenCast=wlr
-    org.freedesktop.impl.portal.Screenshot=wlr
-  '';
-
-  xdg.configFile."xdg-desktop-portal-wlr/config".text = ''
-    [screencast]
-    output_name=
-    max_fps=30
-    chooser_type=simple
-    chooser_cmd=slurp -f %o -o
-  '';
-
-
   home.sessionVariables = {
-    PATH = "$HOME/.local/bin:${pkgs.coreutils}/bin:${pkgs.bash}/bin:$PATH";
     # XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     XDG_CURRENT_DESKTOP = "wlroots";
+    # WAYLAND_DISPLAY = "wayland-0";
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
     EDITOR = "zed";
     NIXOS_OZONE_WL = "1";
   };
 
-  services.gnome-keyring.enable = true;
-
-  systemd.user.services.import-wayland-env = {
-    Unit = {
-      Description = "Import WAYLAND_DISPLAY into systemd user environment";
-      After = [ "graphical-session-pre.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-    Service = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash -c 'systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP'";
-    };
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
-  };
+  # Автоматическая разблокировка keyring
+  # services.gnome-keyring.enable = true;
 
   programs.home-manager.enable = true;
 }

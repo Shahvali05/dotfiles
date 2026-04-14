@@ -33,6 +33,8 @@ in
         nodePackages.typescript
         nodePackages.typescript-language-server
         nodePackages.eslint
+        nodePackages.prettier
+        vue-language-server
         black
         # pyright
         basedpyright
@@ -78,15 +80,20 @@ in
         telescope-dap-nvim
         telescope-fzf-native-nvim
         tokyonight-nvim # Тема
+        gruvbox-nvim # Тема
         which-key-nvim # Подсказывает команды
         windsurf-vim # ИИ для автокомплита
         vim-jukit # jupyter notebook
         tagbar
         oil-nvim # Минималистичный файловый менеджер
+        nvim-ufo # Свернуть/развернуть блоки
+        promise-async # Зависимость для nvim-ufo
+        auto-session # Управление сессиями
       ];
       extraLuaConfig = ''
         ${builtins.readFile ./options.lua}
         ${builtins.readFile ./keymaps.lua}
+        ${builtins.readFile ./plugins/auto-session.lua}
         ${builtins.readFile ./plugins/alpha.lua}
         ${builtins.readFile ./plugins/autopairs.lua}
         ${builtins.readFile ./plugins/blankline.lua}
@@ -97,6 +104,7 @@ in
         ${builtins.readFile ./plugins/formatter.lua}
         ${builtins.readFile ./plugins/lsp.lua}
         ${builtins.readFile ./plugins/lualine.lua}
+        ${builtins.readFile ./plugins/mark.lua}
         ${builtins.readFile ./plugins/nvim-dap.lua}
         ${builtins.readFile ./plugins/nvim-tree.lua}
         ${builtins.readFile ./plugins/oil.lua}
@@ -105,6 +113,7 @@ in
         ${builtins.readFile ./plugins/themes.lua}
         ${builtins.readFile ./plugins/todo-comments.lua}
         ${builtins.readFile ./plugins/treesitter.lua}
+        ${builtins.readFile ./plugins/ufo.lua}
         ${builtins.readFile ./plugins/vim-markdown.lua}
         ${builtins.readFile ./plugins/which-key.lua}
         vim.cmd('source ${./plugins/vim-jukit.vim}')

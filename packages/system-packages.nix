@@ -80,7 +80,6 @@
     obs-studio
     keepassxc
     filezilla
-    vscode
     qbittorrent
     libreoffice
     # blueman

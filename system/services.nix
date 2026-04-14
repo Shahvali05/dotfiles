@@ -6,6 +6,7 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
+  services.upower.enable = true;
   
   security.rtkit.enable = true;
   security.polkit.enable = true;
@@ -83,4 +84,11 @@
   # };
 
   services.xserver.windowManager.qtile.enable = true;
+
+  services.syncthing = {
+    enable = true;
+    user = "red";
+    dataDir = "/home/red/.local/share/syncthing";
+    configDir = "/home/red/.config/syncthing";
+  };
 }
