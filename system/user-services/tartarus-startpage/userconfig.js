@@ -85,6 +85,18 @@ const default_config = {
             icon_color: "#1C0B13",
           },
           {
+            name: "claude",
+            url: "https://claude.ai",
+            icon: "sparkles",
+            icon_color: "#D97757",
+          },
+          {
+            name: "gemini",
+            url: "https://gemini.google.com",
+            icon: "brand-google",
+            icon_color: "#4285F4",
+          },
+          {
             name: "notebooklm",
             url: "https://notebooklm.google.com",
             icon: "notebook",
