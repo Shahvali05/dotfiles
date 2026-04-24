@@ -130,6 +130,7 @@ in {
     GDK_BACKEND = "wayland";
     EDITOR = "zed";
     NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   # Автоматическая разблокировка keyring
