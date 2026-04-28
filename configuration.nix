@@ -9,6 +9,7 @@
     ./system/virtualization.nix
     ./desktop/display.nix
     # ./desktop/hyprland.nix
+    ./desktop/niri.nix
     ./desktop/fonts.nix
     ./users/users.nix
     ./packages/system-packages.nix
@@ -25,5 +26,5 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.05";
 
-  programs.niri.enable = true;
+  # programs.niri.enable = true;
 }
