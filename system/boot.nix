@@ -3,6 +3,8 @@
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # boot.kernelPackages = pkgs.linuxPackages_7_0;
   
   boot.kernelModules = [ "binder_linux" "ashmem_linux" "fuse" ];
   boot.kernelParams = [

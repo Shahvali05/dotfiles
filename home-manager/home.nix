@@ -29,7 +29,8 @@ let
 in {
   imports = [
     ./nvim
-    ./mako
+    # ./mako
+    ./niri
   ];
   home.username = "red";
   home.homeDirectory = "/home/red";

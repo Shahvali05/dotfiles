@@ -69,6 +69,12 @@
     };
   };
 
+  programs.ssh.extraConfig = ''
+    Host *
+      ServerAliveInterval 60
+      ServerAliveCountMax 3
+  '';
+
   # services.redis.servers.default = {
   #   enable = true;
   #   port = 6379;

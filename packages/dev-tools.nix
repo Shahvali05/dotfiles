@@ -37,7 +37,7 @@
     # xdg-desktop-portal-gtk
     fuse
     v4l-utils
-    openjdk11
+    jdk21
     gitlab-runner
     # waydroid
     heimdall

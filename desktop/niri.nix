@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   programs.niri = {
     enable = true;
   };
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
+    niri
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    pkgs.xwayland-satellite
   ];
 }

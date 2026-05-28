@@ -1,0 +1,192 @@
+// Niri config — hotkeys ported from dwl/config.h
+// Mod = Super (Logo)
+
+input {
+    keyboard {
+        xkb {
+            layout "us,ru"
+            variant ","
+            options "grp:caps_toggle"
+        }
+        repeat-rate 25
+        repeat-delay 600
+        numlock
+    }
+
+    touchpad {
+        tap
+        drag-lock
+    }
+
+    warp-mouse-to-focus
+    // focus-follows-mouse max-scroll-amount="0%"
+}
+
+layout {
+    gaps 10
+
+    center-focused-column "always"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.8; }
+
+    focus-ring {
+        width 2
+        active-color "#5E81AC"
+        inactive-color "#2E3440"
+    }
+}
+
+workspace ""
+workspace "󰞷"
+workspace ""
+workspace ""
+workspace ""
+workspace ""
+workspace "󰊖"
+workspace ""
+workspace "󰠮"
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+spawn-at-startup "noctalia-shell"
+
+// Отключаем всплывашку с hotkeys при старте
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+binds {
+    // --- Hotkey overlay ---
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // --- Запуск приложений ---
+    Mod+Return { spawn "kitty"; }
+    Mod+M { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Ctrl+Alt+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+
+    // --- Закрытие окон ---
+    Mod+W { close-window; }
+    Mod+Q { close-window; }
+
+    // --- Навигация по окнам ---
+    Mod+H { focus-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+
+    // --- Перемещение окон ---
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Shift+J { move-window-down; }
+    Mod+Shift+K { move-window-up; }
+
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Down  { move-window-down; }
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Right { move-column-right; }
+
+    // --- Рабочие столы (как TAGKEYS в dwl) ---
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // Скролл по рабочим столам
+    Mod+D { focus-workspace-down; }
+    Mod+U { focus-workspace-up; }
+
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+
+    // --- Полноэкранный режим и флоат ---
+    Mod+Shift+F { fullscreen-window; }
+    Mod+F { maximize-column; }
+
+    Mod+Shift+Space { toggle-window-floating; }
+    Mod+V { toggle-window-floating; }
+
+    // --- Обзор ---
+    Mod+Tab repeat=false { toggle-overview; }
+
+    // --- Табы в колонке ---
+    Mod+Shift+W { toggle-column-tabbed-display; }
+
+    // --- Ширина колонки ---
+    Mod+R { switch-preset-column-width; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+C { center-column; }
+
+    // --- Consume/expel окна ---
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // --- Выход ---
+    Mod+Shift+Q { quit; }
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+
+    // --- Выключение мониторов ---
+    Mod+Shift+P { power-off-monitors; }
+
+    // --- Скриншоты ---
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // --- Громкость (медиа-клавиши) ---
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    // --- Плеер (медиа-клавиши) ---
+    XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    // --- Яркость ---
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "10%-"; }
+
+    // --- Аварийный выход из ингибита клавиш ---
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+}

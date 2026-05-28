@@ -70,7 +70,6 @@
     steamEnv
     lmstudio
     clapper
-    alacritty
     gnome-software
     gnome-disk-utility
     zathura

@@ -124,8 +124,8 @@ const default_config = {
           name: "Hosting & Domains",
           links: [
             {
-              name: "ihc",
-              url: "https://my.ihc.ru/",
+              name: "4vps",
+              url: "https://4vps.su/dashboard/myservers/",
               icon: "server",
               icon_color: "#172D6A",
             },
